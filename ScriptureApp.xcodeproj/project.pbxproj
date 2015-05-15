@@ -7,15 +7,231 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		633F41BB1B06264500F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
+		633F41C81B0626FB00F25662 /* AppLibScriptureConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */; };
+		633F422E1B0628A500F25662 /* CallerType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D01B0628A500F25662 /* CallerType.java */; };
+		633F422F1B0628A500F25662 /* Config.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D11B0628A500F25662 /* Config.java */; };
+		633F42301B0628A500F25662 /* DefaultColors.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D21B0628A500F25662 /* DefaultColors.java */; };
+		633F42311B0628A500F25662 /* DefaultFeatures.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D31B0628A500F25662 /* DefaultFeatures.java */; };
+		633F42321B0628A500F25662 /* DefaultStrings.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D51B0628A500F25662 /* DefaultStrings.java */; };
+		633F42331B0628A500F25662 /* DefaultStyles.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D61B0628A500F25662 /* DefaultStyles.java */; };
+		633F42341B0628A500F25662 /* ScriptureFeatureName.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D71B0628A500F25662 /* ScriptureFeatureName.java */; };
+		633F42351B0628A500F25662 /* ScriptureStringId.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D81B0628A500F25662 /* ScriptureStringId.java */; };
+		633F42361B0628A500F25662 /* StyleName.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D91B0628A500F25662 /* StyleName.java */; };
+		633F42371B0628A500F25662 /* ContentsItem.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41DB1B0628A500F25662 /* ContentsItem.java */; };
+		633F42381B0628A500F25662 /* ContentsItems.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41DC1B0628A500F25662 /* ContentsItems.java */; };
+		633F42391B0628A500F25662 /* ContentsScreen.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41DD1B0628A500F25662 /* ContentsScreen.java */; };
+		633F423A1B0628A500F25662 /* ContentsScreens.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41DE1B0628A500F25662 /* ContentsScreens.java */; };
+		633F423B1B0628A500F25662 /* LinkType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41DF1B0628A500F25662 /* LinkType.java */; };
+		633F423C1B0628A500F25662 /* AppLibrary.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E11B0628A500F25662 /* AppLibrary.java */; };
+		633F423D1B0628A500F25662 /* AudioInfo.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E31B0628A500F25662 /* AudioInfo.java */; };
+		633F423E1B0628A500F25662 /* Book.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E41B0628A500F25662 /* Book.java */; };
+		633F423F1B0628A500F25662 /* BookCodes.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E51B0628A500F25662 /* BookCodes.java */; };
+		633F42401B0628A500F25662 /* BookCollection.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E61B0628A500F25662 /* BookCollection.java */; };
+		633F42411B0628A500F25662 /* BookType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E71B0628A500F25662 /* BookType.java */; };
+		633F42421B0628A500F25662 /* Chapter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E81B0628A500F25662 /* Chapter.java */; };
+		633F42431B0628A500F25662 /* Element.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41E91B0628A500F25662 /* Element.java */; };
+		633F42441B0628A500F25662 /* Elements.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41EA1B0628A500F25662 /* Elements.java */; };
+		633F42451B0628A500F25662 /* EpubSettings.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41EB1B0628A500F25662 /* EpubSettings.java */; };
+		633F42461B0628A500F25662 /* Footnote.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41EC1B0628A500F25662 /* Footnote.java */; };
+		633F42471B0628A500F25662 /* Glossary.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41ED1B0628A500F25662 /* Glossary.java */; };
+		633F42481B0628A500F25662 /* GlossaryEntry.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41EE1B0628A500F25662 /* GlossaryEntry.java */; };
+		633F42491B0628A500F25662 /* Introduction.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41EF1B0628A500F25662 /* Introduction.java */; };
+		633F424A1B0628A500F25662 /* Links.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F01B0628A500F25662 /* Links.java */; };
+		633F424B1B0628A500F25662 /* Reading.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F11B0628A500F25662 /* Reading.java */; };
+		633F424C1B0628A500F25662 /* ReadingPlan.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F21B0628A500F25662 /* ReadingPlan.java */; };
+		633F424D1B0628A500F25662 /* Reference.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F31B0628A500F25662 /* Reference.java */; };
+		633F424E1B0628A500F25662 /* References.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F41B0628A500F25662 /* References.java */; };
+		633F424F1B0628A500F25662 /* SearchResult.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F51B0628A500F25662 /* SearchResult.java */; };
+		633F42501B0628A500F25662 /* Section.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F61B0628A500F25662 /* Section.java */; };
+		633F42511B0628A500F25662 /* Sections.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F71B0628A500F25662 /* Sections.java */; };
+		633F42521B0628A500F25662 /* Timing.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F81B0628A500F25662 /* Timing.java */; };
+		633F42531B0628A500F25662 /* TimingLevel.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41F91B0628A500F25662 /* TimingLevel.java */; };
+		633F42541B0628A500F25662 /* Timings.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41FA1B0628A500F25662 /* Timings.java */; };
+		633F42551B0628A500F25662 /* AudioTimingParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41FC1B0628A500F25662 /* AudioTimingParser.java */; };
+		633F42561B0628A500F25662 /* ConfigParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41FE1B0628A500F25662 /* ConfigParser.java */; };
+		633F42571B0628A500F25662 /* ScriptureConfigHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41FF1B0628A500F25662 /* ScriptureConfigHandler.java */; };
+		633F42581B0628A500F25662 /* DblBook.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42011B0628A500F25662 /* DblBook.java */; };
+		633F42591B0628A500F25662 /* DblBooks.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42021B0628A500F25662 /* DblBooks.java */; };
+		633F425A1B0628A500F25662 /* DblLanguage.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42031B0628A500F25662 /* DblLanguage.java */; };
+		633F425B1B0628A500F25662 /* DblMetadata.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42041B0628A500F25662 /* DblMetadata.java */; };
+		633F425C1B0628A500F25662 /* DblMetadataHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42051B0628A500F25662 /* DblMetadataHandler.java */; };
+		633F425D1B0628A500F25662 /* DblMetadataParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42061B0628A500F25662 /* DblMetadataParser.java */; };
+		633F425E1B0628A500F25662 /* DocxHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42081B0628A500F25662 /* DocxHandler.java */; };
+		633F425F1B0628A500F25662 /* DocxParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42091B0628A500F25662 /* DocxParser.java */; };
+		633F42601B0628A500F25662 /* DocxPropsHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F420A1B0628A500F25662 /* DocxPropsHandler.java */; };
+		633F42611B0628A500F25662 /* DocxPropsParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F420B1B0628A500F25662 /* DocxPropsParser.java */; };
+		633F42621B0628A500F25662 /* DocxRelsHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F420C1B0628A500F25662 /* DocxRelsHandler.java */; };
+		633F42631B0628A500F25662 /* DocxRelsParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F420D1B0628A500F25662 /* DocxRelsParser.java */; };
+		633F42641B0628A500F25662 /* SaAudioDocument.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F420F1B0628A500F25662 /* SaAudioDocument.java */; };
+		633F42651B0628A500F25662 /* SaXmlHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42101B0628A500F25662 /* SaXmlHandler.java */; };
+		633F42661B0628A500F25662 /* SaXmlParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42111B0628A500F25662 /* SaXmlParser.java */; };
+		633F42671B0628A500F25662 /* SegmentData.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42121B0628A500F25662 /* SegmentData.java */; };
+		633F42681B0628A500F25662 /* SftFileParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42131B0628A500F25662 /* SftFileParser.java */; };
+		633F42691B0628A500F25662 /* Marker.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42151B0628A500F25662 /* Marker.java */; };
+		633F426A1B0628A500F25662 /* Markers.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42161B0628A500F25662 /* Markers.java */; };
+		633F426B1B0628A500F25662 /* SfmMarkerType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42171B0628A500F25662 /* SfmMarkerType.java */; };
+		633F426C1B0628A500F25662 /* SfmParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42181B0628A500F25662 /* SfmParser.java */; };
+		633F426D1B0628A500F25662 /* StyleType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42191B0628A500F25662 /* StyleType.java */; };
+		633F426E1B0628A500F25662 /* UsxBook.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F421B1B0628A500F25662 /* UsxBook.java */; };
+		633F426F1B0628A500F25662 /* UsxChapter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F421C1B0628A500F25662 /* UsxChapter.java */; };
+		633F42701B0628A500F25662 /* UsxHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F421D1B0628A500F25662 /* UsxHandler.java */; };
+		633F42711B0628A500F25662 /* UsxPara.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F421E1B0628A500F25662 /* UsxPara.java */; };
+		633F42721B0628A500F25662 /* UsxParas.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F421F1B0628A500F25662 /* UsxParas.java */; };
+		633F42731B0628A500F25662 /* UsxParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42201B0628A500F25662 /* UsxParser.java */; };
+		633F42741B0628A500F25662 /* UsxToUsfmConverter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42211B0628A500F25662 /* UsxToUsfmConverter.java */; };
+		633F42751B0628A500F25662 /* LabeledPhrase.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42231B0628A500F25662 /* LabeledPhrase.java */; };
+		633F42761B0628A500F25662 /* LabeledPhrases.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42241B0628A500F25662 /* LabeledPhrases.java */; };
+		633F42771B0628A500F25662 /* PhraseListWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42251B0628A500F25662 /* PhraseListWriter.java */; };
+		633F42781B0628A500F25662 /* PhrasesExportType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42261B0628A500F25662 /* PhrasesExportType.java */; };
+		633F42791B0628A500F25662 /* PhrasesInfo.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42271B0628A500F25662 /* PhrasesInfo.java */; };
+		633F427A1B0628A500F25662 /* TimingValidator.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F42281B0628A500F25662 /* TimingValidator.java */; };
+		633F427B1B0628A500F25662 /* BaseWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F422A1B0628A500F25662 /* BaseWriter.java */; };
+		633F427C1B0628A500F25662 /* DisplayWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F422B1B0628A500F25662 /* DisplayWriter.java */; };
+		633F427D1B0628A500F25662 /* ScriptureConfigWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */; };
+		633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
+		63DD00001B057A4400B57DF7 /* LangCodes.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAB1B057A4400B57DF7 /* LangCodes.java */; };
+		63DD00011B057A4400B57DF7 /* LangCodesParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAC1B057A4400B57DF7 /* LangCodesParser.java */; };
+		63DD00021B057A4400B57DF7 /* ConfigHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAE1B057A4400B57DF7 /* ConfigHandler.java */; };
+		63DD00031B057A4400B57DF7 /* StringsParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAF1B057A4400B57DF7 /* StringsParser.java */; };
+		63DD00041B057A4400B57DF7 /* AndroidVersions.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB11B057A4400B57DF7 /* AndroidVersions.java */; };
+		63DD00061B057A4400B57DF7 /* ColorUtils.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB31B057A4400B57DF7 /* ColorUtils.java */; };
+		63DD00071B057A4400B57DF7 /* NumeralSystem.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB41B057A4400B57DF7 /* NumeralSystem.java */; };
+		63DD00081B057A4400B57DF7 /* NumeralUtils.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB51B057A4400B57DF7 /* NumeralUtils.java */; };
+		63DD00091B057A4400B57DF7 /* Param.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB61B057A4400B57DF7 /* Param.java */; };
+		63DD000A1B057A4400B57DF7 /* Params.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB71B057A4400B57DF7 /* Params.java */; };
+		63DD000B1B057A4400B57DF7 /* StringManager.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB81B057A4400B57DF7 /* StringManager.java */; };
+		63DD000C1B057A4400B57DF7 /* StringUtils.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFB91B057A4400B57DF7 /* StringUtils.java */; };
+		63DD000D1B057A4400B57DF7 /* Version.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFBA1B057A4400B57DF7 /* Version.java */; };
+		63DD000E1B057A4400B57DF7 /* ConfigWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFBC1B057A4400B57DF7 /* ConfigWriter.java */; };
+		63DD000F1B057A4400B57DF7 /* DocxFont.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFBE1B057A4400B57DF7 /* DocxFont.java */; };
+		63DD00101B057A4400B57DF7 /* DocxProps.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFBF1B057A4400B57DF7 /* DocxProps.java */; };
+		63DD00111B057A4400B57DF7 /* DocxRelationship.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC01B057A4400B57DF7 /* DocxRelationship.java */; };
+		63DD00121B057A4400B57DF7 /* DocxRelationships.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC11B057A4400B57DF7 /* DocxRelationships.java */; };
+		63DD00131B057A4400B57DF7 /* DocxStyle.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC21B057A4400B57DF7 /* DocxStyle.java */; };
+		63DD00141B057A4400B57DF7 /* DocxStyles.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC31B057A4400B57DF7 /* DocxStyles.java */; };
+		63DD00151B057A4400B57DF7 /* DocxWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC41B057A4400B57DF7 /* DocxWriter.java */; };
+		63DD00161B057A4400B57DF7 /* EpubContentItem.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC61B057A4400B57DF7 /* EpubContentItem.java */; };
+		63DD00171B057A4400B57DF7 /* EpubMediaType.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC71B057A4400B57DF7 /* EpubMediaType.java */; };
+		63DD00181B057A4400B57DF7 /* EpubSmil.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC81B057A4400B57DF7 /* EpubSmil.java */; };
+		63DD00191B057A4400B57DF7 /* EpubSmilItem.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFC91B057A4400B57DF7 /* EpubSmilItem.java */; };
+		63DD001A1B057A4400B57DF7 /* EpubTocItem.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFCA1B057A4400B57DF7 /* EpubTocItem.java */; };
+		63DD001B1B057A4400B57DF7 /* EpubWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFCB1B057A4400B57DF7 /* EpubWriter.java */; };
+		63DD001C1B057A4400B57DF7 /* XmlWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFCC1B057A4400B57DF7 /* XmlWriter.java */; };
+		63DD001D1B057A4400B57DF7 /* XmlHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFCE1B057A4400B57DF7 /* XmlHandler.java */; };
+		63DD001E1B057A4400B57DF7 /* XmlParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFCF1B057A4400B57DF7 /* XmlParser.java */; };
+		63DD00221B057BEB00B57DF7 /* libAppLibCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */; };
 		63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF321B0575C400B57DF7 /* AppDelegate.swift */; };
 		63DDFF351B0575C400B57DF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF341B0575C400B57DF7 /* ViewController.swift */; };
 		63DDFF381B0575C400B57DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF361B0575C400B57DF7 /* Main.storyboard */; };
 		63DDFF3A1B0575C400B57DF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF391B0575C400B57DF7 /* Images.xcassets */; };
 		63DDFF3D1B0575C400B57DF7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */; };
 		63DDFF491B0575C400B57DF7 /* ScriptureAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF481B0575C400B57DF7 /* ScriptureAppTests.swift */; };
+		63DDFF611B05775D00B57DF7 /* libAppLibCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */; };
+		63DDFFD01B057A4400B57DF7 /* AppConfig.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF751B057A4400B57DF7 /* AppConfig.java */; };
+		63DDFFD11B057A4400B57DF7 /* AppDefinition.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF761B057A4400B57DF7 /* AppDefinition.java */; };
+		63DDFFD21B057A4400B57DF7 /* c.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF781B057A4400B57DF7 /* c.java */; };
+		63DDFFD31B057A4400B57DF7 /* About.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7A1B057A4400B57DF7 /* About.java */; };
+		63DDFFD41B057A4400B57DF7 /* Analytics.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7B1B057A4400B57DF7 /* Analytics.java */; };
+		63DDFFD51B057A4400B57DF7 /* AudioSource.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7C1B057A4400B57DF7 /* AudioSource.java */; };
+		63DDFFD61B057A4400B57DF7 /* AudioSourceType.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7D1B057A4400B57DF7 /* AudioSourceType.java */; };
+		63DDFFD71B057A4400B57DF7 /* Change.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7E1B057A4400B57DF7 /* Change.java */; };
+		63DDFFD81B057A4400B57DF7 /* Changes.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7F1B057A4400B57DF7 /* Changes.java */; };
+		63DDFFD91B057A4400B57DF7 /* CharacterInfo.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF801B057A4400B57DF7 /* CharacterInfo.java */; };
+		63DDFFDA1B057A4400B57DF7 /* CharacterInventory.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF811B057A4400B57DF7 /* CharacterInventory.java */; };
+		63DDFFDB1B057A4400B57DF7 /* ColorDef.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF831B057A4400B57DF7 /* ColorDef.java */; };
+		63DDFFDC1B057A4400B57DF7 /* ColorDefs.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF841B057A4400B57DF7 /* ColorDefs.java */; };
+		63DDFFDD1B057A4400B57DF7 /* ColorMapping.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF851B057A4400B57DF7 /* ColorMapping.java */; };
+		63DDFFDE1B057A4400B57DF7 /* ColorScheme.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF861B057A4400B57DF7 /* ColorScheme.java */; };
+		63DDFFDF1B057A4400B57DF7 /* ColorTheme.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF871B057A4400B57DF7 /* ColorTheme.java */; };
+		63DDFFE01B057A4400B57DF7 /* ColorThemes.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF881B057A4400B57DF7 /* ColorThemes.java */; };
+		63DDFFE11B057A4400B57DF7 /* CommonFeatureName.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF891B057A4400B57DF7 /* CommonFeatureName.java */; };
+		63DDFFE21B057A4400B57DF7 /* CommonStringId.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF8A1B057A4400B57DF7 /* CommonStringId.java */; };
+		63DDFFE31B057A4400B57DF7 /* Expiry.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF8B1B057A4400B57DF7 /* Expiry.java */; };
+		63DDFFE41B057A4400B57DF7 /* ExpiryType.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF8C1B057A4400B57DF7 /* ExpiryType.java */; };
+		63DDFFE51B057A4400B57DF7 /* Feature.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF8D1B057A4400B57DF7 /* Feature.java */; };
+		63DDFFE61B057A4400B57DF7 /* Features.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF8E1B057A4400B57DF7 /* Features.java */; };
+		63DDFFE71B057A4400B57DF7 /* Font.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF901B057A4400B57DF7 /* Font.java */; };
+		63DDFFE81B057A4400B57DF7 /* FontCompare.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF911B057A4400B57DF7 /* FontCompare.java */; };
+		63DDFFE91B057A4400B57DF7 /* FontGroup.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF921B057A4400B57DF7 /* FontGroup.java */; };
+		63DDFFEA1B057A4400B57DF7 /* FontGroups.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF931B057A4400B57DF7 /* FontGroups.java */; };
+		63DDFFEB1B057A4400B57DF7 /* Fonts.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF941B057A4400B57DF7 /* Fonts.java */; };
+		63DDFFEC1B057A4400B57DF7 /* Image.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF951B057A4400B57DF7 /* Image.java */; };
+		63DDFFED1B057A4400B57DF7 /* ImageCollections.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF961B057A4400B57DF7 /* ImageCollections.java */; };
+		63DDFFEE1B057A4400B57DF7 /* Images.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF971B057A4400B57DF7 /* Images.java */; };
+		63DDFFEF1B057A4400B57DF7 /* InputButton.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF981B057A4400B57DF7 /* InputButton.java */; };
+		63DDFFF01B057A4400B57DF7 /* InputButtonRow.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF991B057A4400B57DF7 /* InputButtonRow.java */; };
+		63DDFFF11B057A4400B57DF7 /* InputButtonRows.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF9A1B057A4400B57DF7 /* InputButtonRows.java */; };
+		63DDFFF21B057A4400B57DF7 /* PropertyName.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF9B1B057A4400B57DF7 /* PropertyName.java */; };
+		63DDFFF31B057A4400B57DF7 /* SearchParameters.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF9C1B057A4400B57DF7 /* SearchParameters.java */; };
+		63DDFFF41B057A4400B57DF7 /* Signing.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF9D1B057A4400B57DF7 /* Signing.java */; };
+		63DDFFF51B057A4400B57DF7 /* BaseStyle.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF9F1B057A4400B57DF7 /* BaseStyle.java */; };
+		63DDFFF61B057A4400B57DF7 /* Style.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA01B057A4400B57DF7 /* Style.java */; };
+		63DDFFF71B057A4400B57DF7 /* StyleDeclaration.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA11B057A4400B57DF7 /* StyleDeclaration.java */; };
+		63DDFFF81B057A4400B57DF7 /* StyleDeclarations.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA21B057A4400B57DF7 /* StyleDeclarations.java */; };
+		63DDFFF91B057A4400B57DF7 /* Styles.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA31B057A4400B57DF7 /* Styles.java */; };
+		63DDFFFA1B057A4400B57DF7 /* Translation.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA41B057A4400B57DF7 /* Translation.java */; };
+		63DDFFFB1B057A4400B57DF7 /* TranslationMapping.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA51B057A4400B57DF7 /* TranslationMapping.java */; };
+		63DDFFFC1B057A4400B57DF7 /* TranslationMappings.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA61B057A4400B57DF7 /* TranslationMappings.java */; };
+		63DDFFFD1B057A4400B57DF7 /* Translations.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA71B057A4400B57DF7 /* Translations.java */; };
+		63DDFFFE1B057A4400B57DF7 /* Values.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA81B057A4400B57DF7 /* Values.java */; };
+		63DDFFFF1B057A4400B57DF7 /* LangCodeInfo.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAA1B057A4400B57DF7 /* LangCodeInfo.java */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		633F427E1B0628DA00F25662 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.java;
+			isEditable = 1;
+			outputFiles = (
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
+			);
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods -g ${INPUT_FILE_PATH};\n";
+		};
+		63DD001F1B057AD100B57DF7 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.java;
+			isEditable = 1;
+			outputFiles = (
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
+			);
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods -g ${INPUT_FILE_PATH};\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
+		633F41BC1B06264500F25662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 633F41AF1B06264500F25662;
+			remoteInfo = AppLibScripture;
+		};
+		633F427F1B062A2A00F25662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DDFF551B05775D00B57DF7;
+			remoteInfo = AppLibCommon;
+		};
+		633F42811B062A3A00F25662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 633F41AF1B06264500F25662;
+			remoteInfo = AppLibScripture;
+		};
+		63DD00201B057BE300B57DF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DDFF551B05775D00B57DF7;
+			remoteInfo = AppLibCommon;
+		};
 		63DDFF431B0575C400B57DF7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
@@ -23,9 +239,125 @@
 			remoteGlobalIDString = 63DDFF2C1B0575C400B57DF7;
 			remoteInfo = ScriptureApp;
 		};
+		63DDFF621B05775D00B57DF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DDFF551B05775D00B57DF7;
+			remoteInfo = AppLibCommon;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		633F41AE1B06264500F25662 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DDFF541B05775D00B57DF7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		633F41B01B06264500F25662 /* libAppLibScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		633F41C01B06264500F25662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppLibScriptureConfig.xcconfig; sourceTree = "<group>"; };
+		633F41D01B0628A500F25662 /* CallerType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CallerType.java; sourceTree = "<group>"; };
+		633F41D11B0628A500F25662 /* Config.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Config.java; sourceTree = "<group>"; };
+		633F41D21B0628A500F25662 /* DefaultColors.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultColors.java; sourceTree = "<group>"; };
+		633F41D31B0628A500F25662 /* DefaultFeatures.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultFeatures.java; sourceTree = "<group>"; };
+		633F41D41B0628A500F25662 /* DefaultFeatures.java.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DefaultFeatures.java.orig; sourceTree = "<group>"; };
+		633F41D51B0628A500F25662 /* DefaultStrings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultStrings.java; sourceTree = "<group>"; };
+		633F41D61B0628A500F25662 /* DefaultStyles.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultStyles.java; sourceTree = "<group>"; };
+		633F41D71B0628A500F25662 /* ScriptureFeatureName.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureFeatureName.java; sourceTree = "<group>"; };
+		633F41D81B0628A500F25662 /* ScriptureStringId.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureStringId.java; sourceTree = "<group>"; };
+		633F41D91B0628A500F25662 /* StyleName.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StyleName.java; sourceTree = "<group>"; };
+		633F41DB1B0628A500F25662 /* ContentsItem.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsItem.java; sourceTree = "<group>"; };
+		633F41DC1B0628A500F25662 /* ContentsItems.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsItems.java; sourceTree = "<group>"; };
+		633F41DD1B0628A500F25662 /* ContentsScreen.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsScreen.java; sourceTree = "<group>"; };
+		633F41DE1B0628A500F25662 /* ContentsScreens.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsScreens.java; sourceTree = "<group>"; };
+		633F41DF1B0628A500F25662 /* LinkType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LinkType.java; sourceTree = "<group>"; };
+		633F41E11B0628A500F25662 /* AppLibrary.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AppLibrary.java; sourceTree = "<group>"; };
+		633F41E21B0628A500F25662 /* AppLibrary.java.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppLibrary.java.orig; sourceTree = "<group>"; };
+		633F41E31B0628A500F25662 /* AudioInfo.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AudioInfo.java; sourceTree = "<group>"; };
+		633F41E41B0628A500F25662 /* Book.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Book.java; sourceTree = "<group>"; };
+		633F41E51B0628A500F25662 /* BookCodes.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BookCodes.java; sourceTree = "<group>"; };
+		633F41E61B0628A500F25662 /* BookCollection.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BookCollection.java; sourceTree = "<group>"; };
+		633F41E71B0628A500F25662 /* BookType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BookType.java; sourceTree = "<group>"; };
+		633F41E81B0628A500F25662 /* Chapter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Chapter.java; sourceTree = "<group>"; };
+		633F41E91B0628A500F25662 /* Element.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Element.java; sourceTree = "<group>"; };
+		633F41EA1B0628A500F25662 /* Elements.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Elements.java; sourceTree = "<group>"; };
+		633F41EB1B0628A500F25662 /* EpubSettings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EpubSettings.java; sourceTree = "<group>"; };
+		633F41EC1B0628A500F25662 /* Footnote.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Footnote.java; sourceTree = "<group>"; };
+		633F41ED1B0628A500F25662 /* Glossary.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Glossary.java; sourceTree = "<group>"; };
+		633F41EE1B0628A500F25662 /* GlossaryEntry.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = GlossaryEntry.java; sourceTree = "<group>"; };
+		633F41EF1B0628A500F25662 /* Introduction.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Introduction.java; sourceTree = "<group>"; };
+		633F41F01B0628A500F25662 /* Links.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Links.java; sourceTree = "<group>"; };
+		633F41F11B0628A500F25662 /* Reading.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Reading.java; sourceTree = "<group>"; };
+		633F41F21B0628A500F25662 /* ReadingPlan.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ReadingPlan.java; sourceTree = "<group>"; };
+		633F41F31B0628A500F25662 /* Reference.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Reference.java; sourceTree = "<group>"; };
+		633F41F41B0628A500F25662 /* References.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = References.java; sourceTree = "<group>"; };
+		633F41F51B0628A500F25662 /* SearchResult.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SearchResult.java; sourceTree = "<group>"; };
+		633F41F61B0628A500F25662 /* Section.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Section.java; sourceTree = "<group>"; };
+		633F41F71B0628A500F25662 /* Sections.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Sections.java; sourceTree = "<group>"; };
+		633F41F81B0628A500F25662 /* Timing.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Timing.java; sourceTree = "<group>"; };
+		633F41F91B0628A500F25662 /* TimingLevel.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TimingLevel.java; sourceTree = "<group>"; };
+		633F41FA1B0628A500F25662 /* Timings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Timings.java; sourceTree = "<group>"; };
+		633F41FC1B0628A500F25662 /* AudioTimingParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AudioTimingParser.java; sourceTree = "<group>"; };
+		633F41FE1B0628A500F25662 /* ConfigParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ConfigParser.java; sourceTree = "<group>"; };
+		633F41FF1B0628A500F25662 /* ScriptureConfigHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureConfigHandler.java; sourceTree = "<group>"; };
+		633F42011B0628A500F25662 /* DblBook.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DblBook.java; sourceTree = "<group>"; };
+		633F42021B0628A500F25662 /* DblBooks.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DblBooks.java; sourceTree = "<group>"; };
+		633F42031B0628A500F25662 /* DblLanguage.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DblLanguage.java; sourceTree = "<group>"; };
+		633F42041B0628A500F25662 /* DblMetadata.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DblMetadata.java; sourceTree = "<group>"; };
+		633F42051B0628A500F25662 /* DblMetadataHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DblMetadataHandler.java; sourceTree = "<group>"; };
+		633F42061B0628A500F25662 /* DblMetadataParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DblMetadataParser.java; sourceTree = "<group>"; };
+		633F42081B0628A500F25662 /* DocxHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxHandler.java; sourceTree = "<group>"; };
+		633F42091B0628A500F25662 /* DocxParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxParser.java; sourceTree = "<group>"; };
+		633F420A1B0628A500F25662 /* DocxPropsHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxPropsHandler.java; sourceTree = "<group>"; };
+		633F420B1B0628A500F25662 /* DocxPropsParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxPropsParser.java; sourceTree = "<group>"; };
+		633F420C1B0628A500F25662 /* DocxRelsHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxRelsHandler.java; sourceTree = "<group>"; };
+		633F420D1B0628A500F25662 /* DocxRelsParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxRelsParser.java; sourceTree = "<group>"; };
+		633F420F1B0628A500F25662 /* SaAudioDocument.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SaAudioDocument.java; sourceTree = "<group>"; };
+		633F42101B0628A500F25662 /* SaXmlHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SaXmlHandler.java; sourceTree = "<group>"; };
+		633F42111B0628A500F25662 /* SaXmlParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SaXmlParser.java; sourceTree = "<group>"; };
+		633F42121B0628A500F25662 /* SegmentData.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SegmentData.java; sourceTree = "<group>"; };
+		633F42131B0628A500F25662 /* SftFileParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SftFileParser.java; sourceTree = "<group>"; };
+		633F42151B0628A500F25662 /* Marker.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Marker.java; sourceTree = "<group>"; };
+		633F42161B0628A500F25662 /* Markers.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Markers.java; sourceTree = "<group>"; };
+		633F42171B0628A500F25662 /* SfmMarkerType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SfmMarkerType.java; sourceTree = "<group>"; };
+		633F42181B0628A500F25662 /* SfmParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SfmParser.java; sourceTree = "<group>"; };
+		633F42191B0628A500F25662 /* StyleType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StyleType.java; sourceTree = "<group>"; };
+		633F421B1B0628A500F25662 /* UsxBook.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = UsxBook.java; sourceTree = "<group>"; };
+		633F421C1B0628A500F25662 /* UsxChapter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = UsxChapter.java; sourceTree = "<group>"; };
+		633F421D1B0628A500F25662 /* UsxHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = UsxHandler.java; sourceTree = "<group>"; };
+		633F421E1B0628A500F25662 /* UsxPara.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = UsxPara.java; sourceTree = "<group>"; };
+		633F421F1B0628A500F25662 /* UsxParas.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = UsxParas.java; sourceTree = "<group>"; };
+		633F42201B0628A500F25662 /* UsxParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = UsxParser.java; sourceTree = "<group>"; };
+		633F42211B0628A500F25662 /* UsxToUsfmConverter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = UsxToUsfmConverter.java; sourceTree = "<group>"; };
+		633F42231B0628A500F25662 /* LabeledPhrase.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LabeledPhrase.java; sourceTree = "<group>"; };
+		633F42241B0628A500F25662 /* LabeledPhrases.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LabeledPhrases.java; sourceTree = "<group>"; };
+		633F42251B0628A500F25662 /* PhraseListWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = PhraseListWriter.java; sourceTree = "<group>"; };
+		633F42261B0628A500F25662 /* PhrasesExportType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = PhrasesExportType.java; sourceTree = "<group>"; };
+		633F42271B0628A500F25662 /* PhrasesInfo.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = PhrasesInfo.java; sourceTree = "<group>"; };
+		633F42281B0628A500F25662 /* TimingValidator.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TimingValidator.java; sourceTree = "<group>"; };
+		633F422A1B0628A500F25662 /* BaseWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BaseWriter.java; sourceTree = "<group>"; };
+		633F422B1B0628A500F25662 /* DisplayWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DisplayWriter.java; sourceTree = "<group>"; };
+		633F422C1B0628A500F25662 /* DisplayWriter.java.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DisplayWriter.java.orig; sourceTree = "<group>"; };
+		633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureConfigWriter.java; sourceTree = "<group>"; };
+		63DD00231B05850000B57DF7 /* appLibCommon-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "appLibCommon-Bridging-Header.h"; sourceTree = "<group>"; };
 		63DDFF2D1B0575C400B57DF7 /* ScriptureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScriptureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DDFF311B0575C400B57DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63DDFF321B0575C400B57DF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,13 +368,113 @@
 		63DDFF421B0575C400B57DF7 /* ScriptureAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScriptureAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DDFF471B0575C400B57DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63DDFF481B0575C400B57DF7 /* ScriptureAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptureAppTests.swift; sourceTree = "<group>"; };
+		63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		63DDFF601B05775D00B57DF7 /* AppLibCommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibCommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63DDFF661B05775D00B57DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppLibCommonConfig.xcconfig; sourceTree = "<group>"; };
+		63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppConfig.xcconfig; sourceTree = "<group>"; };
+		63DDFF751B057A4400B57DF7 /* AppConfig.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AppConfig.java; sourceTree = "<group>"; };
+		63DDFF761B057A4400B57DF7 /* AppDefinition.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AppDefinition.java; sourceTree = "<group>"; };
+		63DDFF781B057A4400B57DF7 /* c.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = c.java; sourceTree = "<group>"; };
+		63DDFF7A1B057A4400B57DF7 /* About.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = About.java; sourceTree = "<group>"; };
+		63DDFF7B1B057A4400B57DF7 /* Analytics.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Analytics.java; sourceTree = "<group>"; };
+		63DDFF7C1B057A4400B57DF7 /* AudioSource.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AudioSource.java; sourceTree = "<group>"; };
+		63DDFF7D1B057A4400B57DF7 /* AudioSourceType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AudioSourceType.java; sourceTree = "<group>"; };
+		63DDFF7E1B057A4400B57DF7 /* Change.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Change.java; sourceTree = "<group>"; };
+		63DDFF7F1B057A4400B57DF7 /* Changes.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Changes.java; sourceTree = "<group>"; };
+		63DDFF801B057A4400B57DF7 /* CharacterInfo.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CharacterInfo.java; sourceTree = "<group>"; };
+		63DDFF811B057A4400B57DF7 /* CharacterInventory.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CharacterInventory.java; sourceTree = "<group>"; };
+		63DDFF831B057A4400B57DF7 /* ColorDef.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ColorDef.java; sourceTree = "<group>"; };
+		63DDFF841B057A4400B57DF7 /* ColorDefs.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ColorDefs.java; sourceTree = "<group>"; };
+		63DDFF851B057A4400B57DF7 /* ColorMapping.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ColorMapping.java; sourceTree = "<group>"; };
+		63DDFF861B057A4400B57DF7 /* ColorScheme.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ColorScheme.java; sourceTree = "<group>"; };
+		63DDFF871B057A4400B57DF7 /* ColorTheme.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ColorTheme.java; sourceTree = "<group>"; };
+		63DDFF881B057A4400B57DF7 /* ColorThemes.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ColorThemes.java; sourceTree = "<group>"; };
+		63DDFF891B057A4400B57DF7 /* CommonFeatureName.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CommonFeatureName.java; sourceTree = "<group>"; };
+		63DDFF8A1B057A4400B57DF7 /* CommonStringId.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CommonStringId.java; sourceTree = "<group>"; };
+		63DDFF8B1B057A4400B57DF7 /* Expiry.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Expiry.java; sourceTree = "<group>"; };
+		63DDFF8C1B057A4400B57DF7 /* ExpiryType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ExpiryType.java; sourceTree = "<group>"; };
+		63DDFF8D1B057A4400B57DF7 /* Feature.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Feature.java; sourceTree = "<group>"; };
+		63DDFF8E1B057A4400B57DF7 /* Features.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Features.java; sourceTree = "<group>"; };
+		63DDFF901B057A4400B57DF7 /* Font.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Font.java; sourceTree = "<group>"; };
+		63DDFF911B057A4400B57DF7 /* FontCompare.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FontCompare.java; sourceTree = "<group>"; };
+		63DDFF921B057A4400B57DF7 /* FontGroup.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FontGroup.java; sourceTree = "<group>"; };
+		63DDFF931B057A4400B57DF7 /* FontGroups.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FontGroups.java; sourceTree = "<group>"; };
+		63DDFF941B057A4400B57DF7 /* Fonts.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Fonts.java; sourceTree = "<group>"; };
+		63DDFF951B057A4400B57DF7 /* Image.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Image.java; sourceTree = "<group>"; };
+		63DDFF961B057A4400B57DF7 /* ImageCollections.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ImageCollections.java; sourceTree = "<group>"; };
+		63DDFF971B057A4400B57DF7 /* Images.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Images.java; sourceTree = "<group>"; };
+		63DDFF981B057A4400B57DF7 /* InputButton.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = InputButton.java; sourceTree = "<group>"; };
+		63DDFF991B057A4400B57DF7 /* InputButtonRow.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = InputButtonRow.java; sourceTree = "<group>"; };
+		63DDFF9A1B057A4400B57DF7 /* InputButtonRows.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = InputButtonRows.java; sourceTree = "<group>"; };
+		63DDFF9B1B057A4400B57DF7 /* PropertyName.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = PropertyName.java; sourceTree = "<group>"; };
+		63DDFF9C1B057A4400B57DF7 /* SearchParameters.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SearchParameters.java; sourceTree = "<group>"; };
+		63DDFF9D1B057A4400B57DF7 /* Signing.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Signing.java; sourceTree = "<group>"; };
+		63DDFF9F1B057A4400B57DF7 /* BaseStyle.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BaseStyle.java; sourceTree = "<group>"; };
+		63DDFFA01B057A4400B57DF7 /* Style.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Style.java; sourceTree = "<group>"; };
+		63DDFFA11B057A4400B57DF7 /* StyleDeclaration.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StyleDeclaration.java; sourceTree = "<group>"; };
+		63DDFFA21B057A4400B57DF7 /* StyleDeclarations.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StyleDeclarations.java; sourceTree = "<group>"; };
+		63DDFFA31B057A4400B57DF7 /* Styles.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Styles.java; sourceTree = "<group>"; };
+		63DDFFA41B057A4400B57DF7 /* Translation.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Translation.java; sourceTree = "<group>"; };
+		63DDFFA51B057A4400B57DF7 /* TranslationMapping.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TranslationMapping.java; sourceTree = "<group>"; };
+		63DDFFA61B057A4400B57DF7 /* TranslationMappings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TranslationMappings.java; sourceTree = "<group>"; };
+		63DDFFA71B057A4400B57DF7 /* Translations.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Translations.java; sourceTree = "<group>"; };
+		63DDFFA81B057A4400B57DF7 /* Values.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Values.java; sourceTree = "<group>"; };
+		63DDFFAA1B057A4400B57DF7 /* LangCodeInfo.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LangCodeInfo.java; sourceTree = "<group>"; };
+		63DDFFAB1B057A4400B57DF7 /* LangCodes.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LangCodes.java; sourceTree = "<group>"; };
+		63DDFFAC1B057A4400B57DF7 /* LangCodesParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LangCodesParser.java; sourceTree = "<group>"; };
+		63DDFFAE1B057A4400B57DF7 /* ConfigHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ConfigHandler.java; sourceTree = "<group>"; };
+		63DDFFAF1B057A4400B57DF7 /* StringsParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StringsParser.java; sourceTree = "<group>"; };
+		63DDFFB11B057A4400B57DF7 /* AndroidVersions.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AndroidVersions.java; sourceTree = "<group>"; };
+		63DDFFB31B057A4400B57DF7 /* ColorUtils.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ColorUtils.java; sourceTree = "<group>"; };
+		63DDFFB41B057A4400B57DF7 /* NumeralSystem.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = NumeralSystem.java; sourceTree = "<group>"; };
+		63DDFFB51B057A4400B57DF7 /* NumeralUtils.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = NumeralUtils.java; sourceTree = "<group>"; };
+		63DDFFB61B057A4400B57DF7 /* Param.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Param.java; sourceTree = "<group>"; };
+		63DDFFB71B057A4400B57DF7 /* Params.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Params.java; sourceTree = "<group>"; };
+		63DDFFB81B057A4400B57DF7 /* StringManager.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StringManager.java; sourceTree = "<group>"; };
+		63DDFFB91B057A4400B57DF7 /* StringUtils.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = StringUtils.java; sourceTree = "<group>"; };
+		63DDFFBA1B057A4400B57DF7 /* Version.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Version.java; sourceTree = "<group>"; };
+		63DDFFBC1B057A4400B57DF7 /* ConfigWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ConfigWriter.java; sourceTree = "<group>"; };
+		63DDFFBE1B057A4400B57DF7 /* DocxFont.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxFont.java; sourceTree = "<group>"; };
+		63DDFFBF1B057A4400B57DF7 /* DocxProps.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxProps.java; sourceTree = "<group>"; };
+		63DDFFC01B057A4400B57DF7 /* DocxRelationship.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxRelationship.java; sourceTree = "<group>"; };
+		63DDFFC11B057A4400B57DF7 /* DocxRelationships.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxRelationships.java; sourceTree = "<group>"; };
+		63DDFFC21B057A4400B57DF7 /* DocxStyle.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxStyle.java; sourceTree = "<group>"; };
+		63DDFFC31B057A4400B57DF7 /* DocxStyles.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxStyles.java; sourceTree = "<group>"; };
+		63DDFFC41B057A4400B57DF7 /* DocxWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DocxWriter.java; sourceTree = "<group>"; };
+		63DDFFC61B057A4400B57DF7 /* EpubContentItem.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EpubContentItem.java; sourceTree = "<group>"; };
+		63DDFFC71B057A4400B57DF7 /* EpubMediaType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EpubMediaType.java; sourceTree = "<group>"; };
+		63DDFFC81B057A4400B57DF7 /* EpubSmil.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EpubSmil.java; sourceTree = "<group>"; };
+		63DDFFC91B057A4400B57DF7 /* EpubSmilItem.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EpubSmilItem.java; sourceTree = "<group>"; };
+		63DDFFCA1B057A4400B57DF7 /* EpubTocItem.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EpubTocItem.java; sourceTree = "<group>"; };
+		63DDFFCB1B057A4400B57DF7 /* EpubWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EpubWriter.java; sourceTree = "<group>"; };
+		63DDFFCC1B057A4400B57DF7 /* XmlWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XmlWriter.java; sourceTree = "<group>"; };
+		63DDFFCE1B057A4400B57DF7 /* XmlHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XmlHandler.java; sourceTree = "<group>"; };
+		63DDFFCF1B057A4400B57DF7 /* XmlParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XmlParser.java; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		633F41AD1B06264500F25662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633F41B71B06264500F25662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633F41BB1B06264500F25662 /* libAppLibScripture.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DDFF2A1B0575C400B57DF7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63DD00221B057BEB00B57DF7 /* libAppLibCommon.a in Frameworks */,
+				633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,14 +485,285 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63DDFF531B05775D00B57DF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DDFF5D1B05775D00B57DF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63DDFF611B05775D00B57DF7 /* libAppLibCommon.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		633F41B11B06264500F25662 /* AppLibScripture */ = {
+			isa = PBXGroup;
+			children = (
+				633F41C91B0628A500F25662 /* src */,
+				633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */,
+			);
+			path = AppLibScripture;
+			sourceTree = "<group>";
+		};
+		633F41BE1B06264500F25662 /* AppLibScriptureTests */ = {
+			isa = PBXGroup;
+			children = (
+				633F41BF1B06264500F25662 /* Supporting Files */,
+			);
+			path = AppLibScriptureTests;
+			sourceTree = "<group>";
+		};
+		633F41BF1B06264500F25662 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				633F41C01B06264500F25662 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		633F41C91B0628A500F25662 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				633F41CA1B0628A500F25662 /* org */,
+			);
+			name = src;
+			path = "../../app-builders/source/scripture/app-lib-scripture/src";
+			sourceTree = "<group>";
+		};
+		633F41CA1B0628A500F25662 /* org */ = {
+			isa = PBXGroup;
+			children = (
+				633F41CB1B0628A500F25662 /* sil */,
+			);
+			path = org;
+			sourceTree = "<group>";
+		};
+		633F41CB1B0628A500F25662 /* sil */ = {
+			isa = PBXGroup;
+			children = (
+				633F41CC1B0628A500F25662 /* app */,
+			);
+			path = sil;
+			sourceTree = "<group>";
+		};
+		633F41CC1B0628A500F25662 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				633F41CD1B0628A500F25662 /* lib */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		633F41CD1B0628A500F25662 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				633F41CE1B0628A500F25662 /* scripture */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		633F41CE1B0628A500F25662 /* scripture */ = {
+			isa = PBXGroup;
+			children = (
+				633F41CF1B0628A500F25662 /* config */,
+				633F41DA1B0628A500F25662 /* contents */,
+				633F41E01B0628A500F25662 /* library */,
+				633F41FB1B0628A500F25662 /* parser */,
+				633F42221B0628A500F25662 /* phrases */,
+				633F42291B0628A500F25662 /* writer */,
+			);
+			path = scripture;
+			sourceTree = "<group>";
+		};
+		633F41CF1B0628A500F25662 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				633F41D01B0628A500F25662 /* CallerType.java */,
+				633F41D11B0628A500F25662 /* Config.java */,
+				633F41D21B0628A500F25662 /* DefaultColors.java */,
+				633F41D31B0628A500F25662 /* DefaultFeatures.java */,
+				633F41D41B0628A500F25662 /* DefaultFeatures.java.orig */,
+				633F41D51B0628A500F25662 /* DefaultStrings.java */,
+				633F41D61B0628A500F25662 /* DefaultStyles.java */,
+				633F41D71B0628A500F25662 /* ScriptureFeatureName.java */,
+				633F41D81B0628A500F25662 /* ScriptureStringId.java */,
+				633F41D91B0628A500F25662 /* StyleName.java */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		633F41DA1B0628A500F25662 /* contents */ = {
+			isa = PBXGroup;
+			children = (
+				633F41DB1B0628A500F25662 /* ContentsItem.java */,
+				633F41DC1B0628A500F25662 /* ContentsItems.java */,
+				633F41DD1B0628A500F25662 /* ContentsScreen.java */,
+				633F41DE1B0628A500F25662 /* ContentsScreens.java */,
+				633F41DF1B0628A500F25662 /* LinkType.java */,
+			);
+			path = contents;
+			sourceTree = "<group>";
+		};
+		633F41E01B0628A500F25662 /* library */ = {
+			isa = PBXGroup;
+			children = (
+				633F41E11B0628A500F25662 /* AppLibrary.java */,
+				633F41E21B0628A500F25662 /* AppLibrary.java.orig */,
+				633F41E31B0628A500F25662 /* AudioInfo.java */,
+				633F41E41B0628A500F25662 /* Book.java */,
+				633F41E51B0628A500F25662 /* BookCodes.java */,
+				633F41E61B0628A500F25662 /* BookCollection.java */,
+				633F41E71B0628A500F25662 /* BookType.java */,
+				633F41E81B0628A500F25662 /* Chapter.java */,
+				633F41E91B0628A500F25662 /* Element.java */,
+				633F41EA1B0628A500F25662 /* Elements.java */,
+				633F41EB1B0628A500F25662 /* EpubSettings.java */,
+				633F41EC1B0628A500F25662 /* Footnote.java */,
+				633F41ED1B0628A500F25662 /* Glossary.java */,
+				633F41EE1B0628A500F25662 /* GlossaryEntry.java */,
+				633F41EF1B0628A500F25662 /* Introduction.java */,
+				633F41F01B0628A500F25662 /* Links.java */,
+				633F41F11B0628A500F25662 /* Reading.java */,
+				633F41F21B0628A500F25662 /* ReadingPlan.java */,
+				633F41F31B0628A500F25662 /* Reference.java */,
+				633F41F41B0628A500F25662 /* References.java */,
+				633F41F51B0628A500F25662 /* SearchResult.java */,
+				633F41F61B0628A500F25662 /* Section.java */,
+				633F41F71B0628A500F25662 /* Sections.java */,
+				633F41F81B0628A500F25662 /* Timing.java */,
+				633F41F91B0628A500F25662 /* TimingLevel.java */,
+				633F41FA1B0628A500F25662 /* Timings.java */,
+			);
+			path = library;
+			sourceTree = "<group>";
+		};
+		633F41FB1B0628A500F25662 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				633F41FC1B0628A500F25662 /* AudioTimingParser.java */,
+				633F41FD1B0628A500F25662 /* config */,
+				633F42001B0628A500F25662 /* dbl */,
+				633F42071B0628A500F25662 /* docx */,
+				633F420E1B0628A500F25662 /* sa */,
+				633F42141B0628A500F25662 /* sfm */,
+				633F421A1B0628A500F25662 /* usx */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		633F41FD1B0628A500F25662 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				633F41FE1B0628A500F25662 /* ConfigParser.java */,
+				633F41FF1B0628A500F25662 /* ScriptureConfigHandler.java */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		633F42001B0628A500F25662 /* dbl */ = {
+			isa = PBXGroup;
+			children = (
+				633F42011B0628A500F25662 /* DblBook.java */,
+				633F42021B0628A500F25662 /* DblBooks.java */,
+				633F42031B0628A500F25662 /* DblLanguage.java */,
+				633F42041B0628A500F25662 /* DblMetadata.java */,
+				633F42051B0628A500F25662 /* DblMetadataHandler.java */,
+				633F42061B0628A500F25662 /* DblMetadataParser.java */,
+			);
+			path = dbl;
+			sourceTree = "<group>";
+		};
+		633F42071B0628A500F25662 /* docx */ = {
+			isa = PBXGroup;
+			children = (
+				633F42081B0628A500F25662 /* DocxHandler.java */,
+				633F42091B0628A500F25662 /* DocxParser.java */,
+				633F420A1B0628A500F25662 /* DocxPropsHandler.java */,
+				633F420B1B0628A500F25662 /* DocxPropsParser.java */,
+				633F420C1B0628A500F25662 /* DocxRelsHandler.java */,
+				633F420D1B0628A500F25662 /* DocxRelsParser.java */,
+			);
+			path = docx;
+			sourceTree = "<group>";
+		};
+		633F420E1B0628A500F25662 /* sa */ = {
+			isa = PBXGroup;
+			children = (
+				633F420F1B0628A500F25662 /* SaAudioDocument.java */,
+				633F42101B0628A500F25662 /* SaXmlHandler.java */,
+				633F42111B0628A500F25662 /* SaXmlParser.java */,
+				633F42121B0628A500F25662 /* SegmentData.java */,
+				633F42131B0628A500F25662 /* SftFileParser.java */,
+			);
+			path = sa;
+			sourceTree = "<group>";
+		};
+		633F42141B0628A500F25662 /* sfm */ = {
+			isa = PBXGroup;
+			children = (
+				633F42151B0628A500F25662 /* Marker.java */,
+				633F42161B0628A500F25662 /* Markers.java */,
+				633F42171B0628A500F25662 /* SfmMarkerType.java */,
+				633F42181B0628A500F25662 /* SfmParser.java */,
+				633F42191B0628A500F25662 /* StyleType.java */,
+			);
+			path = sfm;
+			sourceTree = "<group>";
+		};
+		633F421A1B0628A500F25662 /* usx */ = {
+			isa = PBXGroup;
+			children = (
+				633F421B1B0628A500F25662 /* UsxBook.java */,
+				633F421C1B0628A500F25662 /* UsxChapter.java */,
+				633F421D1B0628A500F25662 /* UsxHandler.java */,
+				633F421E1B0628A500F25662 /* UsxPara.java */,
+				633F421F1B0628A500F25662 /* UsxParas.java */,
+				633F42201B0628A500F25662 /* UsxParser.java */,
+				633F42211B0628A500F25662 /* UsxToUsfmConverter.java */,
+			);
+			path = usx;
+			sourceTree = "<group>";
+		};
+		633F42221B0628A500F25662 /* phrases */ = {
+			isa = PBXGroup;
+			children = (
+				633F42231B0628A500F25662 /* LabeledPhrase.java */,
+				633F42241B0628A500F25662 /* LabeledPhrases.java */,
+				633F42251B0628A500F25662 /* PhraseListWriter.java */,
+				633F42261B0628A500F25662 /* PhrasesExportType.java */,
+				633F42271B0628A500F25662 /* PhrasesInfo.java */,
+				633F42281B0628A500F25662 /* TimingValidator.java */,
+			);
+			path = phrases;
+			sourceTree = "<group>";
+		};
+		633F42291B0628A500F25662 /* writer */ = {
+			isa = PBXGroup;
+			children = (
+				633F422A1B0628A500F25662 /* BaseWriter.java */,
+				633F422B1B0628A500F25662 /* DisplayWriter.java */,
+				633F422C1B0628A500F25662 /* DisplayWriter.java.orig */,
+				633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */,
+			);
+			path = writer;
+			sourceTree = "<group>";
+		};
 		63DDFF241B0575C400B57DF7 = {
 			isa = PBXGroup;
 			children = (
 				63DDFF2F1B0575C400B57DF7 /* ScriptureApp */,
 				63DDFF451B0575C400B57DF7 /* ScriptureAppTests */,
+				63DDFF571B05775D00B57DF7 /* AppLibCommon */,
+				63DDFF641B05775D00B57DF7 /* AppLibCommonTests */,
+				633F41B11B06264500F25662 /* AppLibScripture */,
+				633F41BE1B06264500F25662 /* AppLibScriptureTests */,
 				63DDFF2E1B0575C400B57DF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +773,10 @@
 			children = (
 				63DDFF2D1B0575C400B57DF7 /* ScriptureApp.app */,
 				63DDFF421B0575C400B57DF7 /* ScriptureAppTests.xctest */,
+				63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */,
+				63DDFF601B05775D00B57DF7 /* AppLibCommonTests.xctest */,
+				633F41B01B06264500F25662 /* libAppLibScripture.a */,
+				633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +790,8 @@
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
 				63DDFF301B0575C400B57DF7 /* Supporting Files */,
+				63DD00231B05850000B57DF7 /* appLibCommon-Bridging-Header.h */,
+				63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */,
 			);
 			path = ScriptureApp;
 			sourceTree = "<group>";
@@ -112,9 +821,293 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		63DDFF571B05775D00B57DF7 /* AppLibCommon */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF6F1B057A4400B57DF7 /* src */,
+				63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */,
+			);
+			path = AppLibCommon;
+			sourceTree = "<group>";
+		};
+		63DDFF641B05775D00B57DF7 /* AppLibCommonTests */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF651B05775D00B57DF7 /* Supporting Files */,
+			);
+			path = AppLibCommonTests;
+			sourceTree = "<group>";
+		};
+		63DDFF651B05775D00B57DF7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF661B05775D00B57DF7 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63DDFF6F1B057A4400B57DF7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF701B057A4400B57DF7 /* org */,
+			);
+			name = src;
+			path = "../../app-builders/source/common/app-lib-common/src";
+			sourceTree = "<group>";
+		};
+		63DDFF701B057A4400B57DF7 /* org */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF711B057A4400B57DF7 /* sil */,
+			);
+			path = org;
+			sourceTree = "<group>";
+		};
+		63DDFF711B057A4400B57DF7 /* sil */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF721B057A4400B57DF7 /* app */,
+			);
+			path = sil;
+			sourceTree = "<group>";
+		};
+		63DDFF721B057A4400B57DF7 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF731B057A4400B57DF7 /* lib */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		63DDFF731B057A4400B57DF7 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF741B057A4400B57DF7 /* common */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		63DDFF741B057A4400B57DF7 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF751B057A4400B57DF7 /* AppConfig.java */,
+				63DDFF761B057A4400B57DF7 /* AppDefinition.java */,
+				63DDFF771B057A4400B57DF7 /* c */,
+				63DDFF791B057A4400B57DF7 /* config */,
+				63DDFFA91B057A4400B57DF7 /* langcodes */,
+				63DDFFAD1B057A4400B57DF7 /* parser */,
+				63DDFFB01B057A4400B57DF7 /* utils */,
+				63DDFFBB1B057A4400B57DF7 /* writer */,
+				63DDFFCD1B057A4400B57DF7 /* xml */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		63DDFF771B057A4400B57DF7 /* c */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF781B057A4400B57DF7 /* c.java */,
+			);
+			path = c;
+			sourceTree = "<group>";
+		};
+		63DDFF791B057A4400B57DF7 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF7A1B057A4400B57DF7 /* About.java */,
+				63DDFF7B1B057A4400B57DF7 /* Analytics.java */,
+				63DDFF7C1B057A4400B57DF7 /* AudioSource.java */,
+				63DDFF7D1B057A4400B57DF7 /* AudioSourceType.java */,
+				63DDFF7E1B057A4400B57DF7 /* Change.java */,
+				63DDFF7F1B057A4400B57DF7 /* Changes.java */,
+				63DDFF801B057A4400B57DF7 /* CharacterInfo.java */,
+				63DDFF811B057A4400B57DF7 /* CharacterInventory.java */,
+				63DDFF821B057A4400B57DF7 /* color */,
+				63DDFF891B057A4400B57DF7 /* CommonFeatureName.java */,
+				63DDFF8A1B057A4400B57DF7 /* CommonStringId.java */,
+				63DDFF8B1B057A4400B57DF7 /* Expiry.java */,
+				63DDFF8C1B057A4400B57DF7 /* ExpiryType.java */,
+				63DDFF8D1B057A4400B57DF7 /* Feature.java */,
+				63DDFF8E1B057A4400B57DF7 /* Features.java */,
+				63DDFF8F1B057A4400B57DF7 /* font */,
+				63DDFF951B057A4400B57DF7 /* Image.java */,
+				63DDFF961B057A4400B57DF7 /* ImageCollections.java */,
+				63DDFF971B057A4400B57DF7 /* Images.java */,
+				63DDFF981B057A4400B57DF7 /* InputButton.java */,
+				63DDFF991B057A4400B57DF7 /* InputButtonRow.java */,
+				63DDFF9A1B057A4400B57DF7 /* InputButtonRows.java */,
+				63DDFF9B1B057A4400B57DF7 /* PropertyName.java */,
+				63DDFF9C1B057A4400B57DF7 /* SearchParameters.java */,
+				63DDFF9D1B057A4400B57DF7 /* Signing.java */,
+				63DDFF9E1B057A4400B57DF7 /* style */,
+				63DDFFA41B057A4400B57DF7 /* Translation.java */,
+				63DDFFA51B057A4400B57DF7 /* TranslationMapping.java */,
+				63DDFFA61B057A4400B57DF7 /* TranslationMappings.java */,
+				63DDFFA71B057A4400B57DF7 /* Translations.java */,
+				63DDFFA81B057A4400B57DF7 /* Values.java */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		63DDFF821B057A4400B57DF7 /* color */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF831B057A4400B57DF7 /* ColorDef.java */,
+				63DDFF841B057A4400B57DF7 /* ColorDefs.java */,
+				63DDFF851B057A4400B57DF7 /* ColorMapping.java */,
+				63DDFF861B057A4400B57DF7 /* ColorScheme.java */,
+				63DDFF871B057A4400B57DF7 /* ColorTheme.java */,
+				63DDFF881B057A4400B57DF7 /* ColorThemes.java */,
+			);
+			path = color;
+			sourceTree = "<group>";
+		};
+		63DDFF8F1B057A4400B57DF7 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF901B057A4400B57DF7 /* Font.java */,
+				63DDFF911B057A4400B57DF7 /* FontCompare.java */,
+				63DDFF921B057A4400B57DF7 /* FontGroup.java */,
+				63DDFF931B057A4400B57DF7 /* FontGroups.java */,
+				63DDFF941B057A4400B57DF7 /* Fonts.java */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		63DDFF9E1B057A4400B57DF7 /* style */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFF9F1B057A4400B57DF7 /* BaseStyle.java */,
+				63DDFFA01B057A4400B57DF7 /* Style.java */,
+				63DDFFA11B057A4400B57DF7 /* StyleDeclaration.java */,
+				63DDFFA21B057A4400B57DF7 /* StyleDeclarations.java */,
+				63DDFFA31B057A4400B57DF7 /* Styles.java */,
+			);
+			path = style;
+			sourceTree = "<group>";
+		};
+		63DDFFA91B057A4400B57DF7 /* langcodes */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFFAA1B057A4400B57DF7 /* LangCodeInfo.java */,
+				63DDFFAB1B057A4400B57DF7 /* LangCodes.java */,
+				63DDFFAC1B057A4400B57DF7 /* LangCodesParser.java */,
+			);
+			path = langcodes;
+			sourceTree = "<group>";
+		};
+		63DDFFAD1B057A4400B57DF7 /* parser */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFFAE1B057A4400B57DF7 /* ConfigHandler.java */,
+				63DDFFAF1B057A4400B57DF7 /* StringsParser.java */,
+			);
+			path = parser;
+			sourceTree = "<group>";
+		};
+		63DDFFB01B057A4400B57DF7 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFFB11B057A4400B57DF7 /* AndroidVersions.java */,
+				63DDFFB31B057A4400B57DF7 /* ColorUtils.java */,
+				63DDFFB41B057A4400B57DF7 /* NumeralSystem.java */,
+				63DDFFB51B057A4400B57DF7 /* NumeralUtils.java */,
+				63DDFFB61B057A4400B57DF7 /* Param.java */,
+				63DDFFB71B057A4400B57DF7 /* Params.java */,
+				63DDFFB81B057A4400B57DF7 /* StringManager.java */,
+				63DDFFB91B057A4400B57DF7 /* StringUtils.java */,
+				63DDFFBA1B057A4400B57DF7 /* Version.java */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		63DDFFBB1B057A4400B57DF7 /* writer */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFFBC1B057A4400B57DF7 /* ConfigWriter.java */,
+				63DDFFBD1B057A4400B57DF7 /* docx */,
+				63DDFFC51B057A4400B57DF7 /* epub */,
+				63DDFFCC1B057A4400B57DF7 /* XmlWriter.java */,
+			);
+			path = writer;
+			sourceTree = "<group>";
+		};
+		63DDFFBD1B057A4400B57DF7 /* docx */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFFBE1B057A4400B57DF7 /* DocxFont.java */,
+				63DDFFBF1B057A4400B57DF7 /* DocxProps.java */,
+				63DDFFC01B057A4400B57DF7 /* DocxRelationship.java */,
+				63DDFFC11B057A4400B57DF7 /* DocxRelationships.java */,
+				63DDFFC21B057A4400B57DF7 /* DocxStyle.java */,
+				63DDFFC31B057A4400B57DF7 /* DocxStyles.java */,
+				63DDFFC41B057A4400B57DF7 /* DocxWriter.java */,
+			);
+			path = docx;
+			sourceTree = "<group>";
+		};
+		63DDFFC51B057A4400B57DF7 /* epub */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFFC61B057A4400B57DF7 /* EpubContentItem.java */,
+				63DDFFC71B057A4400B57DF7 /* EpubMediaType.java */,
+				63DDFFC81B057A4400B57DF7 /* EpubSmil.java */,
+				63DDFFC91B057A4400B57DF7 /* EpubSmilItem.java */,
+				63DDFFCA1B057A4400B57DF7 /* EpubTocItem.java */,
+				63DDFFCB1B057A4400B57DF7 /* EpubWriter.java */,
+			);
+			path = epub;
+			sourceTree = "<group>";
+		};
+		63DDFFCD1B057A4400B57DF7 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				63DDFFCE1B057A4400B57DF7 /* XmlHandler.java */,
+				63DDFFCF1B057A4400B57DF7 /* XmlParser.java */,
+			);
+			path = xml;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		633F41AF1B06264500F25662 /* AppLibScripture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 633F41C51B06264600F25662 /* Build configuration list for PBXNativeTarget "AppLibScripture" */;
+			buildPhases = (
+				633F41AC1B06264500F25662 /* Sources */,
+				633F41AD1B06264500F25662 /* Frameworks */,
+				633F41AE1B06264500F25662 /* CopyFiles */,
+			);
+			buildRules = (
+				633F427E1B0628DA00F25662 /* PBXBuildRule */,
+			);
+			dependencies = (
+				633F42801B062A2A00F25662 /* PBXTargetDependency */,
+			);
+			name = AppLibScripture;
+			productName = AppLibScripture;
+			productReference = 633F41B01B06264500F25662 /* libAppLibScripture.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		633F41B91B06264500F25662 /* AppLibScriptureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 633F41C61B06264600F25662 /* Build configuration list for PBXNativeTarget "AppLibScriptureTests" */;
+			buildPhases = (
+				633F41B61B06264500F25662 /* Sources */,
+				633F41B71B06264500F25662 /* Frameworks */,
+				633F41B81B06264500F25662 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				633F41BD1B06264500F25662 /* PBXTargetDependency */,
+			);
+			name = AppLibScriptureTests;
+			productName = AppLibScriptureTests;
+			productReference = 633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63DDFF2C1B0575C400B57DF7 /* ScriptureApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63DDFF4C1B0575C400B57DF7 /* Build configuration list for PBXNativeTarget "ScriptureApp" */;
@@ -126,6 +1119,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				63DD00211B057BE300B57DF7 /* PBXTargetDependency */,
+				633F42821B062A3A00F25662 /* PBXTargetDependency */,
 			);
 			name = ScriptureApp;
 			productName = ScriptureApp;
@@ -150,6 +1145,42 @@
 			productReference = 63DDFF421B0575C400B57DF7 /* ScriptureAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		63DDFF551B05775D00B57DF7 /* AppLibCommon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63DDFF671B05775D00B57DF7 /* Build configuration list for PBXNativeTarget "AppLibCommon" */;
+			buildPhases = (
+				63DDFF521B05775D00B57DF7 /* Sources */,
+				63DDFF531B05775D00B57DF7 /* Frameworks */,
+				63DDFF541B05775D00B57DF7 /* CopyFiles */,
+			);
+			buildRules = (
+				63DD001F1B057AD100B57DF7 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = AppLibCommon;
+			productName = AppLibCommon;
+			productReference = 63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		63DDFF5F1B05775D00B57DF7 /* AppLibCommonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63DDFF6A1B05775D00B57DF7 /* Build configuration list for PBXNativeTarget "AppLibCommonTests" */;
+			buildPhases = (
+				63DDFF5C1B05775D00B57DF7 /* Sources */,
+				63DDFF5D1B05775D00B57DF7 /* Frameworks */,
+				63DDFF5E1B05775D00B57DF7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63DDFF631B05775D00B57DF7 /* PBXTargetDependency */,
+			);
+			name = AppLibCommonTests;
+			productName = AppLibCommonTests;
+			productReference = 63DDFF601B05775D00B57DF7 /* AppLibCommonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -159,12 +1190,24 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "David Moore";
 				TargetAttributes = {
+					633F41AF1B06264500F25662 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					633F41B91B06264500F25662 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					63DDFF2C1B0575C400B57DF7 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
 					63DDFF411B0575C400B57DF7 = {
 						CreatedOnToolsVersion = 6.3.1;
 						TestTargetID = 63DDFF2C1B0575C400B57DF7;
+					};
+					63DDFF551B05775D00B57DF7 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					63DDFF5F1B05775D00B57DF7 = {
+						CreatedOnToolsVersion = 6.3.1;
 					};
 				};
 			};
@@ -183,11 +1226,23 @@
 			targets = (
 				63DDFF2C1B0575C400B57DF7 /* ScriptureApp */,
 				63DDFF411B0575C400B57DF7 /* ScriptureAppTests */,
+				63DDFF551B05775D00B57DF7 /* AppLibCommon */,
+				63DDFF5F1B05775D00B57DF7 /* AppLibCommonTests */,
+				633F41AF1B06264500F25662 /* AppLibScripture */,
+				633F41B91B06264500F25662 /* AppLibScriptureTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		633F41B81B06264500F25662 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633F41C81B0626FB00F25662 /* AppLibScriptureConfig.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DDFF2B1B0575C400B57DF7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,9 +1260,110 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63DDFF5E1B05775D00B57DF7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		633F41AC1B06264500F25662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633F425E1B0628A500F25662 /* DocxHandler.java in Sources */,
+				633F42691B0628A500F25662 /* Marker.java in Sources */,
+				633F42441B0628A500F25662 /* Elements.java in Sources */,
+				633F42311B0628A500F25662 /* DefaultFeatures.java in Sources */,
+				633F424A1B0628A500F25662 /* Links.java in Sources */,
+				633F427C1B0628A500F25662 /* DisplayWriter.java in Sources */,
+				633F42391B0628A500F25662 /* ContentsScreen.java in Sources */,
+				633F42531B0628A500F25662 /* TimingLevel.java in Sources */,
+				633F42591B0628A500F25662 /* DblBooks.java in Sources */,
+				633F425D1B0628A500F25662 /* DblMetadataParser.java in Sources */,
+				633F42601B0628A500F25662 /* DocxPropsHandler.java in Sources */,
+				633F427A1B0628A500F25662 /* TimingValidator.java in Sources */,
+				633F42381B0628A500F25662 /* ContentsItems.java in Sources */,
+				633F42301B0628A500F25662 /* DefaultColors.java in Sources */,
+				633F427B1B0628A500F25662 /* BaseWriter.java in Sources */,
+				633F425C1B0628A500F25662 /* DblMetadataHandler.java in Sources */,
+				633F42631B0628A500F25662 /* DocxRelsParser.java in Sources */,
+				633F424E1B0628A500F25662 /* References.java in Sources */,
+				633F423A1B0628A500F25662 /* ContentsScreens.java in Sources */,
+				633F42371B0628A500F25662 /* ContentsItem.java in Sources */,
+				633F426D1B0628A500F25662 /* StyleType.java in Sources */,
+				633F42511B0628A500F25662 /* Sections.java in Sources */,
+				633F42321B0628A500F25662 /* DefaultStrings.java in Sources */,
+				633F42351B0628A500F25662 /* ScriptureStringId.java in Sources */,
+				633F42521B0628A500F25662 /* Timing.java in Sources */,
+				633F425F1B0628A500F25662 /* DocxParser.java in Sources */,
+				633F42621B0628A500F25662 /* DocxRelsHandler.java in Sources */,
+				633F426A1B0628A500F25662 /* Markers.java in Sources */,
+				633F425B1B0628A500F25662 /* DblMetadata.java in Sources */,
+				633F42581B0628A500F25662 /* DblBook.java in Sources */,
+				633F427D1B0628A500F25662 /* ScriptureConfigWriter.java in Sources */,
+				633F42681B0628A500F25662 /* SftFileParser.java in Sources */,
+				633F42361B0628A500F25662 /* StyleName.java in Sources */,
+				633F42641B0628A500F25662 /* SaAudioDocument.java in Sources */,
+				633F42661B0628A500F25662 /* SaXmlParser.java in Sources */,
+				633F423B1B0628A500F25662 /* LinkType.java in Sources */,
+				633F42401B0628A500F25662 /* BookCollection.java in Sources */,
+				633F42741B0628A500F25662 /* UsxToUsfmConverter.java in Sources */,
+				633F424F1B0628A500F25662 /* SearchResult.java in Sources */,
+				633F42761B0628A500F25662 /* LabeledPhrases.java in Sources */,
+				633F42561B0628A500F25662 /* ConfigParser.java in Sources */,
+				633F42771B0628A500F25662 /* PhraseListWriter.java in Sources */,
+				633F424D1B0628A500F25662 /* Reference.java in Sources */,
+				633F42481B0628A500F25662 /* GlossaryEntry.java in Sources */,
+				633F426C1B0628A500F25662 /* SfmParser.java in Sources */,
+				633F42781B0628A500F25662 /* PhrasesExportType.java in Sources */,
+				633F42671B0628A500F25662 /* SegmentData.java in Sources */,
+				633F423C1B0628A500F25662 /* AppLibrary.java in Sources */,
+				633F42551B0628A500F25662 /* AudioTimingParser.java in Sources */,
+				633F42721B0628A500F25662 /* UsxParas.java in Sources */,
+				633F42791B0628A500F25662 /* PhrasesInfo.java in Sources */,
+				633F42331B0628A500F25662 /* DefaultStyles.java in Sources */,
+				633F42541B0628A500F25662 /* Timings.java in Sources */,
+				633F42651B0628A500F25662 /* SaXmlHandler.java in Sources */,
+				633F42451B0628A500F25662 /* EpubSettings.java in Sources */,
+				633F423D1B0628A500F25662 /* AudioInfo.java in Sources */,
+				633F426F1B0628A500F25662 /* UsxChapter.java in Sources */,
+				633F42421B0628A500F25662 /* Chapter.java in Sources */,
+				633F42411B0628A500F25662 /* BookType.java in Sources */,
+				633F424B1B0628A500F25662 /* Reading.java in Sources */,
+				633F42341B0628A500F25662 /* ScriptureFeatureName.java in Sources */,
+				633F422E1B0628A500F25662 /* CallerType.java in Sources */,
+				633F42711B0628A500F25662 /* UsxPara.java in Sources */,
+				633F42431B0628A500F25662 /* Element.java in Sources */,
+				633F425A1B0628A500F25662 /* DblLanguage.java in Sources */,
+				633F42501B0628A500F25662 /* Section.java in Sources */,
+				633F42611B0628A500F25662 /* DocxPropsParser.java in Sources */,
+				633F42701B0628A500F25662 /* UsxHandler.java in Sources */,
+				633F42731B0628A500F25662 /* UsxParser.java in Sources */,
+				633F426E1B0628A500F25662 /* UsxBook.java in Sources */,
+				633F42751B0628A500F25662 /* LabeledPhrase.java in Sources */,
+				633F42571B0628A500F25662 /* ScriptureConfigHandler.java in Sources */,
+				633F42471B0628A500F25662 /* Glossary.java in Sources */,
+				633F423F1B0628A500F25662 /* BookCodes.java in Sources */,
+				633F424C1B0628A500F25662 /* ReadingPlan.java in Sources */,
+				633F423E1B0628A500F25662 /* Book.java in Sources */,
+				633F42461B0628A500F25662 /* Footnote.java in Sources */,
+				633F422F1B0628A500F25662 /* Config.java in Sources */,
+				633F426B1B0628A500F25662 /* SfmMarkerType.java in Sources */,
+				633F42491B0628A500F25662 /* Introduction.java in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633F41B61B06264500F25662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DDFF291B0575C400B57DF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,13 +1381,130 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63DDFF521B05775D00B57DF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63DDFFE21B057A4400B57DF7 /* CommonStringId.java in Sources */,
+				63DD00111B057A4400B57DF7 /* DocxRelationship.java in Sources */,
+				63DDFFD71B057A4400B57DF7 /* Change.java in Sources */,
+				63DDFFF71B057A4400B57DF7 /* StyleDeclaration.java in Sources */,
+				63DDFFDC1B057A4400B57DF7 /* ColorDefs.java in Sources */,
+				63DD00121B057A4400B57DF7 /* DocxRelationships.java in Sources */,
+				63DDFFE81B057A4400B57DF7 /* FontCompare.java in Sources */,
+				63DD00101B057A4400B57DF7 /* DocxProps.java in Sources */,
+				63DD001B1B057A4400B57DF7 /* EpubWriter.java in Sources */,
+				63DD001A1B057A4400B57DF7 /* EpubTocItem.java in Sources */,
+				63DDFFD61B057A4400B57DF7 /* AudioSourceType.java in Sources */,
+				63DDFFDE1B057A4400B57DF7 /* ColorScheme.java in Sources */,
+				63DDFFEB1B057A4400B57DF7 /* Fonts.java in Sources */,
+				63DD00181B057A4400B57DF7 /* EpubSmil.java in Sources */,
+				63DDFFDF1B057A4400B57DF7 /* ColorTheme.java in Sources */,
+				63DD00081B057A4400B57DF7 /* NumeralUtils.java in Sources */,
+				63DDFFE31B057A4400B57DF7 /* Expiry.java in Sources */,
+				63DD00071B057A4400B57DF7 /* NumeralSystem.java in Sources */,
+				63DDFFFE1B057A4400B57DF7 /* Values.java in Sources */,
+				63DDFFDB1B057A4400B57DF7 /* ColorDef.java in Sources */,
+				63DD000A1B057A4400B57DF7 /* Params.java in Sources */,
+				63DDFFF61B057A4400B57DF7 /* Style.java in Sources */,
+				63DDFFF01B057A4400B57DF7 /* InputButtonRow.java in Sources */,
+				63DDFFD31B057A4400B57DF7 /* About.java in Sources */,
+				63DDFFF91B057A4400B57DF7 /* Styles.java in Sources */,
+				63DD00011B057A4400B57DF7 /* LangCodesParser.java in Sources */,
+				63DDFFF51B057A4400B57DF7 /* BaseStyle.java in Sources */,
+				63DD001E1B057A4400B57DF7 /* XmlParser.java in Sources */,
+				63DDFFD51B057A4400B57DF7 /* AudioSource.java in Sources */,
+				63DDFFE71B057A4400B57DF7 /* Font.java in Sources */,
+				63DDFFE01B057A4400B57DF7 /* ColorThemes.java in Sources */,
+				63DD000B1B057A4400B57DF7 /* StringManager.java in Sources */,
+				63DDFFEC1B057A4400B57DF7 /* Image.java in Sources */,
+				63DDFFE61B057A4400B57DF7 /* Features.java in Sources */,
+				63DDFFEE1B057A4400B57DF7 /* Images.java in Sources */,
+				63DDFFD81B057A4400B57DF7 /* Changes.java in Sources */,
+				63DDFFE11B057A4400B57DF7 /* CommonFeatureName.java in Sources */,
+				63DDFFE41B057A4400B57DF7 /* ExpiryType.java in Sources */,
+				63DD00041B057A4400B57DF7 /* AndroidVersions.java in Sources */,
+				63DDFFEA1B057A4400B57DF7 /* FontGroups.java in Sources */,
+				63DD000C1B057A4400B57DF7 /* StringUtils.java in Sources */,
+				63DD00001B057A4400B57DF7 /* LangCodes.java in Sources */,
+				63DD00151B057A4400B57DF7 /* DocxWriter.java in Sources */,
+				63DD00061B057A4400B57DF7 /* ColorUtils.java in Sources */,
+				63DDFFE51B057A4400B57DF7 /* Feature.java in Sources */,
+				63DD001C1B057A4400B57DF7 /* XmlWriter.java in Sources */,
+				63DDFFED1B057A4400B57DF7 /* ImageCollections.java in Sources */,
+				63DD00091B057A4400B57DF7 /* Param.java in Sources */,
+				63DD00171B057A4400B57DF7 /* EpubMediaType.java in Sources */,
+				63DDFFDA1B057A4400B57DF7 /* CharacterInventory.java in Sources */,
+				63DD000F1B057A4400B57DF7 /* DocxFont.java in Sources */,
+				63DDFFD21B057A4400B57DF7 /* c.java in Sources */,
+				63DDFFFA1B057A4400B57DF7 /* Translation.java in Sources */,
+				63DDFFFF1B057A4400B57DF7 /* LangCodeInfo.java in Sources */,
+				63DD00031B057A4400B57DF7 /* StringsParser.java in Sources */,
+				63DDFFF81B057A4400B57DF7 /* StyleDeclarations.java in Sources */,
+				63DDFFF11B057A4400B57DF7 /* InputButtonRows.java in Sources */,
+				63DDFFE91B057A4400B57DF7 /* FontGroup.java in Sources */,
+				63DDFFD11B057A4400B57DF7 /* AppDefinition.java in Sources */,
+				63DDFFD41B057A4400B57DF7 /* Analytics.java in Sources */,
+				63DDFFF41B057A4400B57DF7 /* Signing.java in Sources */,
+				63DD000E1B057A4400B57DF7 /* ConfigWriter.java in Sources */,
+				63DDFFEF1B057A4400B57DF7 /* InputButton.java in Sources */,
+				63DDFFDD1B057A4400B57DF7 /* ColorMapping.java in Sources */,
+				63DD00191B057A4400B57DF7 /* EpubSmilItem.java in Sources */,
+				63DDFFD01B057A4400B57DF7 /* AppConfig.java in Sources */,
+				63DDFFFB1B057A4400B57DF7 /* TranslationMapping.java in Sources */,
+				63DD001D1B057A4400B57DF7 /* XmlHandler.java in Sources */,
+				63DD000D1B057A4400B57DF7 /* Version.java in Sources */,
+				63DD00021B057A4400B57DF7 /* ConfigHandler.java in Sources */,
+				63DD00131B057A4400B57DF7 /* DocxStyle.java in Sources */,
+				63DDFFFC1B057A4400B57DF7 /* TranslationMappings.java in Sources */,
+				63DD00161B057A4400B57DF7 /* EpubContentItem.java in Sources */,
+				63DDFFD91B057A4400B57DF7 /* CharacterInfo.java in Sources */,
+				63DDFFF21B057A4400B57DF7 /* PropertyName.java in Sources */,
+				63DDFFF31B057A4400B57DF7 /* SearchParameters.java in Sources */,
+				63DDFFFD1B057A4400B57DF7 /* Translations.java in Sources */,
+				63DD00141B057A4400B57DF7 /* DocxStyles.java in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63DDFF5C1B05775D00B57DF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		633F41BD1B06264500F25662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 633F41AF1B06264500F25662 /* AppLibScripture */;
+			targetProxy = 633F41BC1B06264500F25662 /* PBXContainerItemProxy */;
+		};
+		633F42801B062A2A00F25662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
+			targetProxy = 633F427F1B062A2A00F25662 /* PBXContainerItemProxy */;
+		};
+		633F42821B062A3A00F25662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 633F41AF1B06264500F25662 /* AppLibScripture */;
+			targetProxy = 633F42811B062A3A00F25662 /* PBXContainerItemProxy */;
+		};
+		63DD00211B057BE300B57DF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
+			targetProxy = 63DD00201B057BE300B57DF7 /* PBXContainerItemProxy */;
+		};
 		63DDFF441B0575C400B57DF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 63DDFF2C1B0575C400B57DF7 /* ScriptureApp */;
 			targetProxy = 63DDFF431B0575C400B57DF7 /* PBXContainerItemProxy */;
+		};
+		63DDFF631B05775D00B57DF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
+			targetProxy = 63DDFF621B05775D00B57DF7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -255,6 +1528,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		633F41C11B06264600F25662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		633F41C21B06264600F25662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		633F41C31B06264600F25662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibScriptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		633F41C41B06264600F25662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibScriptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		63DDFF4A1B0575C400B57DF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -340,26 +1669,34 @@
 		};
 		63DDFF4D1B0575C400B57DF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScriptureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "";
+				"SWIFT_INCLUDE_PATHS[arch=*]" = "${PROJECT_DIR}/ALCGenerated";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}//ScriptureApp/appLibCommon-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		63DDFF4E1B0575C400B57DF7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScriptureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/ALCGenerated";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}//ScriptureApp/appLibCommon-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		63DDFF501B0575C400B57DF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -379,6 +1716,7 @@
 		};
 		63DDFF511B0575C400B57DF7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -392,9 +1730,81 @@
 			};
 			name = Release;
 		};
+		63DDFF681B05775D00B57DF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		63DDFF691B05775D00B57DF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		63DDFF6B1B05775D00B57DF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibCommonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		63DDFF6C1B05775D00B57DF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibCommonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		633F41C51B06264600F25662 /* Build configuration list for PBXNativeTarget "AppLibScripture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633F41C11B06264600F25662 /* Debug */,
+				633F41C21B06264600F25662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		633F41C61B06264600F25662 /* Build configuration list for PBXNativeTarget "AppLibScriptureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633F41C31B06264600F25662 /* Debug */,
+				633F41C41B06264600F25662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		63DDFF281B0575C400B57DF7 /* Build configuration list for PBXProject "ScriptureApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -411,6 +1821,7 @@
 				63DDFF4E1B0575C400B57DF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63DDFF4F1B0575C400B57DF7 /* Build configuration list for PBXNativeTarget "ScriptureAppTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +1830,25 @@
 				63DDFF511B0575C400B57DF7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63DDFF671B05775D00B57DF7 /* Build configuration list for PBXNativeTarget "AppLibCommon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63DDFF681B05775D00B57DF7 /* Debug */,
+				63DDFF691B05775D00B57DF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63DDFF6A1B05775D00B57DF7 /* Build configuration list for PBXNativeTarget "AppLibCommonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63DDFF6B1B05775D00B57DF7 /* Debug */,
+				63DDFF6C1B05775D00B57DF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

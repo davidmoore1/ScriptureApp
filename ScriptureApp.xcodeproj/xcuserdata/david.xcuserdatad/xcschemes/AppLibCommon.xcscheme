@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63DDFF2C1B0575C400B57DF7"
-               BuildableName = "ScriptureApp.app"
-               BlueprintName = "ScriptureApp"
+               BlueprintIdentifier = "63DDFF551B05775D00B57DF7"
+               BuildableName = "libAppLibCommon.a"
+               BlueprintName = "AppLibCommon"
                ReferencedContainer = "container:ScriptureApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63DDFF411B0575C400B57DF7"
-               BuildableName = "ScriptureAppTests.xctest"
-               BlueprintName = "ScriptureAppTests"
+               BlueprintIdentifier = "63DDFF5F1B05775D00B57DF7"
+               BuildableName = "AppLibCommonTests.xctest"
+               BlueprintName = "AppLibCommonTests"
                ReferencedContainer = "container:ScriptureApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63DDFF411B0575C400B57DF7"
-               BuildableName = "ScriptureAppTests.xctest"
-               BlueprintName = "ScriptureAppTests"
+               BlueprintIdentifier = "63DDFF5F1B05775D00B57DF7"
+               BuildableName = "AppLibCommonTests.xctest"
+               BlueprintName = "AppLibCommonTests"
                ReferencedContainer = "container:ScriptureApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "63DDFF2C1B0575C400B57DF7"
-            BuildableName = "ScriptureApp.app"
-            BlueprintName = "ScriptureApp"
+            BlueprintIdentifier = "63DDFF551B05775D00B57DF7"
+            BuildableName = "libAppLibCommon.a"
+            BlueprintName = "AppLibCommon"
             ReferencedContainer = "container:ScriptureApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -72,16 +72,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "63DDFF2C1B0575C400B57DF7"
-            BuildableName = "ScriptureApp.app"
-            BlueprintName = "ScriptureApp"
+            BlueprintIdentifier = "63DDFF551B05775D00B57DF7"
+            BuildableName = "libAppLibCommon.a"
+            BlueprintName = "AppLibCommon"
             ReferencedContainer = "container:ScriptureApp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -91,16 +90,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "63DDFF2C1B0575C400B57DF7"
-            BuildableName = "ScriptureApp.app"
-            BlueprintName = "ScriptureApp"
+            BlueprintIdentifier = "63DDFF551B05775D00B57DF7"
+            BuildableName = "libAppLibCommon.a"
+            BlueprintName = "AppLibCommon"
             ReferencedContainer = "container:ScriptureApp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -4,10 +4,53 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AppLibCommon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>AppLibScripture.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>ScriptureApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>633F41AF1B06264500F25662</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>633F41B91B06264500F25662</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63DDFF2C1B0575C400B57DF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63DDFF411B0575C400B57DF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63DDFF551B05775D00B57DF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63DDFF5F1B05775D00B57DF7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
