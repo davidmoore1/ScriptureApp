@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    @IBOutlet weak var answerLabel2: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,7 +35,12 @@ class ViewController: UIViewController {
         else {
             answerLabel.text = "not blank"
         }
-
+        
+        let encryptor = Encryption()
+        var encryptedValue = encryptor.encrypt("TestPassword")
+        answerLabel.text = encryptedValue
+        var decryptedValue = encryptor.decrypt(answerLabel.text)
+        answerLabel2.text = decryptedValue
     }
 
 }

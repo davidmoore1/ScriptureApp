@@ -10,5 +10,6 @@
 #define ScriptureApp_appLibCommon_Bridging_Header_h
 #import "AppConfig.h"
 #import "StringUtils.h"
+#import "Encryption.h"
 
 #endif

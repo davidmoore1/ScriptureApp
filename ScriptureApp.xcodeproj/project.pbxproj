@@ -90,6 +90,8 @@
 		633F427C1B0628A500F25662 /* DisplayWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F422B1B0628A500F25662 /* DisplayWriter.java */; };
 		633F427D1B0628A500F25662 /* ScriptureConfigWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */; };
 		633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
+		633F42931B063CB500F25662 /* libAppLibIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F42881B063CB500F25662 /* libAppLibIOS.a */; };
+		633F42A71B06592E00F25662 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F42A61B06592E00F25662 /* Encryption.m */; };
 		63DD00001B057A4400B57DF7 /* LangCodes.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAB1B057A4400B57DF7 /* LangCodes.java */; };
 		63DD00011B057A4400B57DF7 /* LangCodesParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAC1B057A4400B57DF7 /* LangCodesParser.java */; };
 		63DD00021B057A4400B57DF7 /* ConfigHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAE1B057A4400B57DF7 /* ConfigHandler.java */; };
@@ -130,7 +132,6 @@
 		63DDFF611B05775D00B57DF7 /* libAppLibCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */; };
 		63DDFFD01B057A4400B57DF7 /* AppConfig.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF751B057A4400B57DF7 /* AppConfig.java */; };
 		63DDFFD11B057A4400B57DF7 /* AppDefinition.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF761B057A4400B57DF7 /* AppDefinition.java */; };
-		63DDFFD21B057A4400B57DF7 /* c.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF781B057A4400B57DF7 /* c.java */; };
 		63DDFFD31B057A4400B57DF7 /* About.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7A1B057A4400B57DF7 /* About.java */; };
 		63DDFFD41B057A4400B57DF7 /* Analytics.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7B1B057A4400B57DF7 /* Analytics.java */; };
 		63DDFFD51B057A4400B57DF7 /* AudioSource.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF7C1B057A4400B57DF7 /* AudioSource.java */; };
@@ -176,6 +177,7 @@
 		63DDFFFD1B057A4400B57DF7 /* Translations.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA71B057A4400B57DF7 /* Translations.java */; };
 		63DDFFFE1B057A4400B57DF7 /* Values.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA81B057A4400B57DF7 /* Values.java */; };
 		63DDFFFF1B057A4400B57DF7 /* LangCodeInfo.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAA1B057A4400B57DF7 /* LangCodeInfo.java */; };
+		63F539081B0B7B8A005EE653 /* libAppLibIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F42881B063CB500F25662 /* libAppLibIOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -225,6 +227,13 @@
 			remoteGlobalIDString = 633F41AF1B06264500F25662;
 			remoteInfo = AppLibScripture;
 		};
+		633F42941B063CB500F25662 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 633F42871B063CB500F25662;
+			remoteInfo = AppLibIOS;
+		};
 		63DD00201B057BE300B57DF7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
@@ -246,10 +255,26 @@
 			remoteGlobalIDString = 63DDFF551B05775D00B57DF7;
 			remoteInfo = AppLibCommon;
 		};
+		63F539091B0B7B93005EE653 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 633F42871B063CB500F25662;
+			remoteInfo = AppLibIOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		633F41AE1B06264500F25662 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633F42861B063CB500F25662 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -357,6 +382,12 @@
 		633F422B1B0628A500F25662 /* DisplayWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DisplayWriter.java; sourceTree = "<group>"; };
 		633F422C1B0628A500F25662 /* DisplayWriter.java.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DisplayWriter.java.orig; sourceTree = "<group>"; };
 		633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureConfigWriter.java; sourceTree = "<group>"; };
+		633F42881B063CB500F25662 /* libAppLibIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		633F42921B063CB500F25662 /* AppLibIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		633F42981B063CB500F25662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppLibIOSConfig.xcconfig; sourceTree = "<group>"; };
+		633F42A51B06592E00F25662 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
+		633F42A61B06592E00F25662 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
 		63DD00231B05850000B57DF7 /* appLibCommon-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "appLibCommon-Bridging-Header.h"; sourceTree = "<group>"; };
 		63DDFF2D1B0575C400B57DF7 /* ScriptureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScriptureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DDFF311B0575C400B57DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -375,7 +406,6 @@
 		63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppConfig.xcconfig; sourceTree = "<group>"; };
 		63DDFF751B057A4400B57DF7 /* AppConfig.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AppConfig.java; sourceTree = "<group>"; };
 		63DDFF761B057A4400B57DF7 /* AppDefinition.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AppDefinition.java; sourceTree = "<group>"; };
-		63DDFF781B057A4400B57DF7 /* c.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = c.java; sourceTree = "<group>"; };
 		63DDFF7A1B057A4400B57DF7 /* About.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = About.java; sourceTree = "<group>"; };
 		63DDFF7B1B057A4400B57DF7 /* Analytics.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Analytics.java; sourceTree = "<group>"; };
 		63DDFF7C1B057A4400B57DF7 /* AudioSource.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AudioSource.java; sourceTree = "<group>"; };
@@ -469,12 +499,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		633F42851B063CB500F25662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633F428F1B063CB500F25662 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633F42931B063CB500F25662 /* libAppLibIOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DDFF2A1B0575C400B57DF7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				63DD00221B057BEB00B57DF7 /* libAppLibCommon.a in Frameworks */,
 				633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */,
+				63F539081B0B7B8A005EE653 /* libAppLibIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,6 +801,32 @@
 			path = writer;
 			sourceTree = "<group>";
 		};
+		633F42891B063CB500F25662 /* AppLibIOS */ = {
+			isa = PBXGroup;
+			children = (
+				633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */,
+				633F42A51B06592E00F25662 /* Encryption.h */,
+				633F42A61B06592E00F25662 /* Encryption.m */,
+			);
+			path = AppLibIOS;
+			sourceTree = "<group>";
+		};
+		633F42961B063CB500F25662 /* AppLibIOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				633F42971B063CB500F25662 /* Supporting Files */,
+			);
+			path = AppLibIOSTests;
+			sourceTree = "<group>";
+		};
+		633F42971B063CB500F25662 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				633F42981B063CB500F25662 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		63DDFF241B0575C400B57DF7 = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +836,8 @@
 				63DDFF641B05775D00B57DF7 /* AppLibCommonTests */,
 				633F41B11B06264500F25662 /* AppLibScripture */,
 				633F41BE1B06264500F25662 /* AppLibScriptureTests */,
+				633F42891B063CB500F25662 /* AppLibIOS */,
+				633F42961B063CB500F25662 /* AppLibIOSTests */,
 				63DDFF2E1B0575C400B57DF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -777,6 +851,8 @@
 				63DDFF601B05775D00B57DF7 /* AppLibCommonTests.xctest */,
 				633F41B01B06264500F25662 /* libAppLibScripture.a */,
 				633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */,
+				633F42881B063CB500F25662 /* libAppLibIOS.a */,
+				633F42921B063CB500F25662 /* AppLibIOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -906,7 +982,6 @@
 		63DDFF771B057A4400B57DF7 /* c */ = {
 			isa = PBXGroup;
 			children = (
-				63DDFF781B057A4400B57DF7 /* c.java */,
 			);
 			path = c;
 			sourceTree = "<group>";
@@ -1108,6 +1183,41 @@
 			productReference = 633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		633F42871B063CB500F25662 /* AppLibIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 633F42991B063CB500F25662 /* Build configuration list for PBXNativeTarget "AppLibIOS" */;
+			buildPhases = (
+				633F42841B063CB500F25662 /* Sources */,
+				633F42851B063CB500F25662 /* Frameworks */,
+				633F42861B063CB500F25662 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppLibIOS;
+			productName = AppLibIOS;
+			productReference = 633F42881B063CB500F25662 /* libAppLibIOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		633F42911B063CB500F25662 /* AppLibIOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 633F429C1B063CB500F25662 /* Build configuration list for PBXNativeTarget "AppLibIOSTests" */;
+			buildPhases = (
+				633F428E1B063CB500F25662 /* Sources */,
+				633F428F1B063CB500F25662 /* Frameworks */,
+				633F42901B063CB500F25662 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				633F42951B063CB500F25662 /* PBXTargetDependency */,
+			);
+			name = AppLibIOSTests;
+			productName = AppLibIOSTests;
+			productReference = 633F42921B063CB500F25662 /* AppLibIOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63DDFF2C1B0575C400B57DF7 /* ScriptureApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63DDFF4C1B0575C400B57DF7 /* Build configuration list for PBXNativeTarget "ScriptureApp" */;
@@ -1121,6 +1231,7 @@
 			dependencies = (
 				63DD00211B057BE300B57DF7 /* PBXTargetDependency */,
 				633F42821B062A3A00F25662 /* PBXTargetDependency */,
+				63F5390A1B0B7B93005EE653 /* PBXTargetDependency */,
 			);
 			name = ScriptureApp;
 			productName = ScriptureApp;
@@ -1196,6 +1307,12 @@
 					633F41B91B06264500F25662 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
+					633F42871B063CB500F25662 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					633F42911B063CB500F25662 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
 					63DDFF2C1B0575C400B57DF7 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -1230,6 +1347,8 @@
 				63DDFF5F1B05775D00B57DF7 /* AppLibCommonTests */,
 				633F41AF1B06264500F25662 /* AppLibScripture */,
 				633F41B91B06264500F25662 /* AppLibScriptureTests */,
+				633F42871B063CB500F25662 /* AppLibIOS */,
+				633F42911B063CB500F25662 /* AppLibIOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1240,6 +1359,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				633F41C81B0626FB00F25662 /* AppLibScriptureConfig.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633F42901B063CB500F25662 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,6 +1490,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		633F42841B063CB500F25662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				633F42A71B06592E00F25662 /* Encryption.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		633F428E1B063CB500F25662 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63DDFF291B0575C400B57DF7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1436,7 +1577,6 @@
 				63DD00171B057A4400B57DF7 /* EpubMediaType.java in Sources */,
 				63DDFFDA1B057A4400B57DF7 /* CharacterInventory.java in Sources */,
 				63DD000F1B057A4400B57DF7 /* DocxFont.java in Sources */,
-				63DDFFD21B057A4400B57DF7 /* c.java in Sources */,
 				63DDFFFA1B057A4400B57DF7 /* Translation.java in Sources */,
 				63DDFFFF1B057A4400B57DF7 /* LangCodeInfo.java in Sources */,
 				63DD00031B057A4400B57DF7 /* StringsParser.java in Sources */,
@@ -1491,6 +1631,11 @@
 			target = 633F41AF1B06264500F25662 /* AppLibScripture */;
 			targetProxy = 633F42811B062A3A00F25662 /* PBXContainerItemProxy */;
 		};
+		633F42951B063CB500F25662 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 633F42871B063CB500F25662 /* AppLibIOS */;
+			targetProxy = 633F42941B063CB500F25662 /* PBXContainerItemProxy */;
+		};
 		63DD00211B057BE300B57DF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
@@ -1505,6 +1650,11 @@
 			isa = PBXTargetDependency;
 			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
 			targetProxy = 63DDFF621B05775D00B57DF7 /* PBXContainerItemProxy */;
+		};
+		63F5390A1B0B7B93005EE653 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 633F42871B063CB500F25662 /* AppLibIOS */;
+			targetProxy = 63F539091B0B7B93005EE653 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1579,6 +1729,62 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = AppLibScriptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		633F429A1B063CB500F25662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		633F429B1B063CB500F25662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		633F429D1B063CB500F25662 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibIOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		633F429E1B063CB500F25662 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibIOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1796,6 +2002,7 @@
 				633F41C21B06264600F25662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		633F41C61B06264600F25662 /* Build configuration list for PBXNativeTarget "AppLibScriptureTests" */ = {
 			isa = XCConfigurationList;
@@ -1804,6 +2011,25 @@
 				633F41C41B06264600F25662 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		633F42991B063CB500F25662 /* Build configuration list for PBXNativeTarget "AppLibIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633F429A1B063CB500F25662 /* Debug */,
+				633F429B1B063CB500F25662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		633F429C1B063CB500F25662 /* Build configuration list for PBXNativeTarget "AppLibIOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				633F429D1B063CB500F25662 /* Debug */,
+				633F429E1B063CB500F25662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63DDFF281B0575C400B57DF7 /* Build configuration list for PBXProject "ScriptureApp" */ = {
 			isa = XCConfigurationList;
