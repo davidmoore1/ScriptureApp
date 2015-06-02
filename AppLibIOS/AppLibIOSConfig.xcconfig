@@ -10,5 +10,6 @@
 // Change to your actual J2OBJC_HOME path.
 
 J2OBJC_HOME = ${HOME}/Develop/j2objc;
+GENERATED_AIS_FILES_DIR = ${SRCROOT}/AISGenerated;
 
-HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include";
+HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_AIS_FILES_DIR}";

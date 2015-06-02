@@ -11,6 +11,6 @@
 @interface Encryption : NSObject
 @property (strong, nonatomic) NSString *key;
 //- (instancetype)initWithNSString:(NSString *)key;
-- (NSString *)decrypt:(NSString *)encryptedText;
-- (NSString *)encrypt:(NSString *)data;
+- (NSString *)decryptWithNSString:(NSString *)encryptedText;
+- (NSString *)encryptWithNSString:(NSString *)plainText;
 @end

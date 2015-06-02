@@ -14,8 +14,10 @@
 J2OBJC_HOME = ${HOME}/Develop/j2objc;
 
 GENERATED_FILES_DIR = ${SRCROOT}/ALCGenerated;
+GENERATED_AIS_FILES_DIR = ${SRCROOT}/AISGenerated;
+GENERATED_ALS_FILES_DIR = ${SRCROOT}/ALSGenerated;
 
-HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_DIR}";
+HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_DIR}" "${GENERATED_AIS_FILES_DIR}" "${GENERATED_ALS_FILES_DIR}";
 LIBRARY_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/lib";
 
 OTHER_LDFLAGS = $(inherited) -l"jre_emul" -l"icucore";

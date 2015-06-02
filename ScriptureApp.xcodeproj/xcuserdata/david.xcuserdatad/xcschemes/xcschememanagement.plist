@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AppIOSScripture.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>AppLibApplicationCommon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>AppLibCommon.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -43,6 +53,26 @@
 			<true/>
 		</dict>
 		<key>633F42911B063CB500F25662</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63BE1A741B0E39C30040F6D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63BE1A7E1B0E39C30040F6D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63BE1AD81B0E3E390040F6D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63BE1AE21B0E3E390040F6D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

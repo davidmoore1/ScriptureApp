@@ -19,7 +19,7 @@
     return self;
 }
 
-- (NSString *)encrypt:(NSString *)plainText {
+- (NSString *)encryptWithNSString:(NSString *)plainText {
     
     NSData *tempData = [plainText dataUsingEncoding:NSASCIIStringEncoding];
     NSData *myData = [self cryptoCommonWithNSData:tempData withCCOperation:kCCEncrypt withsize_t:[plainText length]];
@@ -29,7 +29,7 @@
 }
 
 
-- (NSString *)decrypt:(NSString *)encryptedText {
+- (NSString *)decryptWithNSString:(NSString *)encryptedText {
 
     NSData *tempData = [[NSData alloc] initWithBase64EncodedString:encryptedText options:0];
     
@@ -62,7 +62,6 @@
     memset((void *)bufferPtr, 0x0, bufferPtrSize+1);
     
     NSData *_keyData = [_key dataUsingEncoding:NSASCIIStringEncoding];
-    
     ccStatus = CCCrypt(op,
                        kCCAlgorithmDES,
                        kCCOptionPKCS7Padding | kCCOptionECBMode,
