@@ -18,6 +18,11 @@
     }
     return self;
 }
+- (NSString *)encodeWithNSString:(NSString *)inString {
+    NSData *data = [inString dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *retVal = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    return retVal;
+}
 
 - (NSString *)encryptWithNSString:(NSString *)plainText {
     

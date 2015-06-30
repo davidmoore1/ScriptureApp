@@ -8,6 +8,7 @@
 
 #import "IOSFactory.h"
 #include "Encryption.h"
+
 @implementation IOSFactory
 
 
@@ -17,7 +18,6 @@
 
     return decryptedString;
 }
-
 
 @end
 

@@ -9,9 +9,9 @@
 #ifndef ScriptureApp_IOSFactory_h
 #define ScriptureApp_IOSFactory_h
 #import <Foundation/Foundation.h>
-#import "CommonFactory.h"
+#import "ScriptureFactoryIOS.h"
 
-@interface IOSFactory : AASCommonFactory
+@interface IOSFactory : AISScriptureFactoryIOS
 @end
 
 #endif

@@ -13,4 +13,5 @@
 //- (instancetype)initWithNSString:(NSString *)key;
 - (NSString *)decryptWithNSString:(NSString *)encryptedText;
 - (NSString *)encryptWithNSString:(NSString *)plainText;
+- (NSString *)encodeWithNSString:(NSString *)inString;
 @end

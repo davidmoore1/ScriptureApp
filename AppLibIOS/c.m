@@ -5,6 +5,7 @@
 #include "J2ObjC_source.h"
 #include "c.h"
 #include "java/util/List.h"
+#include "FontManager.h"
 
 
 @implementation ALCc
@@ -36,24 +37,17 @@
   return &_ALCc;
 }
 
-/*static inline NSArray *ArrayWithJavaUtilList(id<JavaUtilList> list) {
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    id <JavaUtilIterator> iterator = [list iterator];
-    
-}*/
 
 + (NSString *)deobfuscateWithNSString:(NSString *)obfuscatedText {
-    IOSByteArray *buffer = [IOSByteArray arrayWithLength:obfuscatedText.length];
-    [buffer replaceBytes:[obfuscatedText UTF8String] length:obfuscatedText.length offset:0];
-    ALCc_deobfuscateWithByteArray_withInt_(buffer, obfuscatedText.length);
+    IOSByteArray *buffer = [IOSByteArray arrayWithBytes:[obfuscatedText UTF8String] count:[obfuscatedText lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
+    ALCc_deobfuscateWithByteArray_withInt_(buffer, [buffer length]);
     NSString *str = [NSString stringWithBytes:buffer];
     return str;
 }
 
 + (NSString *)obfuscateWithNSString:(NSString *)clearText {
-    IOSByteArray *buffer = [IOSByteArray arrayWithLength:clearText.length];
-    [buffer replaceBytes:[clearText UTF8String] length:clearText.length offset:0];
-    ALCc_deobfuscateWithByteArray_withInt_(buffer, clearText.length);
+    IOSByteArray *buffer = [IOSByteArray arrayWithBytes:[clearText UTF8String] count:[clearText lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
+    ALCc_obfuscateWithByteArray_withInt_(buffer, [buffer length]);
     NSString *str = [NSString stringWithBytes:buffer];
     return str;
 }
@@ -62,11 +56,17 @@
 
 void ALCc_obfuscateWithByteArray_withInt_(IOSByteArray *data, jint length) {
   ALCc_initialize();
+    [FontManager initWithArray:data withLength:length];
+    NSString *str = [NSString stringWithBytes:data];
+    IOSByteArray *buffer = [IOSByteArray arrayWithBytes:[str UTF8String] count:[str lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
+ //   ALCc_deobfuscateWithByteArray_withInt_(data, length);
+    ALCc_deobfuscateWithByteArray_withInt_(buffer, length);
 
 }
 
 void ALCc_deobfuscateWithByteArray_withInt_(IOSByteArray *data, jint length) {
   ALCc_initialize();
+    [FontManager initMobileWithArray:data withLength:length];
 }
 
 void ALCc_init(ALCc *self) {

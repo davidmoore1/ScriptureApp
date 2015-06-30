@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>AppLibIOSCommon.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>AppLibScripture.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -53,6 +58,16 @@
 			<true/>
 		</dict>
 		<key>633F42911B063CB500F25662</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6347D5C51B375B250065B075</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6347D5CF1B375B250065B075</key>
 		<dict>
 			<key>primary</key>
 			<true/>

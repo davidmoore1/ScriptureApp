@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB21B29D5DA003915FE /* Scripture.swift */; };
+		630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB41B2A5CB5003915FE /* DetailViewController.swift */; };
+		633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A591F1B39F1C9004550A1 /* BookTableViewController.swift */; };
+		633A59C01B3B0827004550A1 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 633A59BF1B3B0827004550A1 /* assets */; };
+		633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */; };
 		633F41BB1B06264500F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
 		633F41C81B0626FB00F25662 /* AppLibScriptureConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */; };
 		633F422E1B0628A500F25662 /* CallerType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D01B0628A500F25662 /* CallerType.java */; };
@@ -92,18 +97,26 @@
 		633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
 		633F42931B063CB500F25662 /* libAppLibIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F42881B063CB500F25662 /* libAppLibIOS.a */; };
 		633F42A71B06592E00F25662 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F42A61B06592E00F25662 /* Encryption.m */; };
+		6347D5C11B37590A0065B075 /* ScriptureFactoryIOS.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */; };
+		6347D5D11B375B250065B075 /* libAppLibIOSCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */; };
+		6347D5E61B375FBD0065B075 /* FileManagerIOS.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5E51B375FBD0065B075 /* FileManagerIOS.java */; };
+		6347D5EF1B3760DD0065B075 /* AudioSettings.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5ED1B3760DD0065B075 /* AudioSettings.java */; };
+		6347D5F01B3760DD0065B075 /* CommonDefaultColors.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5EE1B3760DD0065B075 /* CommonDefaultColors.java */; };
+		6347D5F21B384CB40065B075 /* FactoryCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F11B384CB40065B075 /* FactoryCommon.java */; };
+		6347D5F51B384CDA0065B075 /* SyncTask.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F31B384CDA0065B075 /* SyncTask.java */; };
+		6347D5F61B384CDA0065B075 /* SyncTaskWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F41B384CDA0065B075 /* SyncTaskWriter.java */; };
+		6347D5F81B3850120065B075 /* FileManagerCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F71B3850120065B075 /* FileManagerCommon.java */; };
+		6347D5FB1B38538D0065B075 /* libAppLibIOSCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */; };
 		6359B3C71B1E4A9400F3FC2F /* IOSFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */; };
+		637430F91B3D969A00850F32 /* AnnotationHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 637430F81B3D969A00850F32 /* AnnotationHandler.java */; };
+		637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637430FA1B3DE21200850F32 /* AnnotationViewController.swift */; };
+		637430FD1B42D3EC00850F32 /* SearchHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 637430FC1B42D3EC00850F32 /* SearchHandler.java */; };
+		637A561F1B2873C200239C64 /* libFontManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637A561E1B2873C200239C64 /* libFontManager.a */; };
 		637FA3A21B16675500082215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 637FA3A11B16675500082215 /* libz.dylib */; };
 		63BE1A8E1B0E3A120040F6D7 /* c.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1A8D1B0E3A120040F6D7 /* c.m */; };
 		63BE1AE41B0E3E390040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1B3D1B0E441B0040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1BAE1B0FC9DF0040F6D7 /* FileUtilsCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1BAD1B0FC9DF0040F6D7 /* FileUtilsCommon.java */; };
-		63BE1BB01B14BC9D0040F6D7 /* CommonFactory.java in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1BAF1B14BC9D0040F6D7 /* CommonFactory.java */; };
-		63BE1BC01B15F39E0040F6D7 /* iM0Hs4W5pCq7fzQ2OcPw in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63BE1BB31B1516320040F6D7 /* iM0Hs4W5pCq7fzQ2OcPw */; };
-		63BE1BC11B15F3BA0040F6D7 /* NXNleuK2zNjNbDQtLWXg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63BE1BB41B1516320040F6D7 /* NXNleuK2zNjNbDQtLWXg */; };
-		63BE1BCE1B15FA390040F6D7 /* i2vQpoMmm92qkjx8K4jk in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63BE1BC21B15F6C40040F6D7 /* i2vQpoMmm92qkjx8K4jk */; };
-		63BE1BCF1B15FA9A0040F6D7 /* Qg6beFfK9VNE2WQS2K7z in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63BE1BC31B15F6C40040F6D7 /* Qg6beFfK9VNE2WQS2K7z */; };
-		63BE1BD01B15FB1E0040F6D7 /* XxgQZTvVwLG0OPUJTgMX in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63BE1BC41B15F6C40040F6D7 /* XxgQZTvVwLG0OPUJTgMX */; };
 		63DD00001B057A4400B57DF7 /* LangCodes.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAB1B057A4400B57DF7 /* LangCodes.java */; };
 		63DD00011B057A4400B57DF7 /* LangCodesParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAC1B057A4400B57DF7 /* LangCodesParser.java */; };
 		63DD00021B057A4400B57DF7 /* ConfigHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAE1B057A4400B57DF7 /* ConfigHandler.java */; };
@@ -136,7 +149,6 @@
 		63DD001E1B057A4400B57DF7 /* XmlParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFCF1B057A4400B57DF7 /* XmlParser.java */; };
 		63DD00221B057BEB00B57DF7 /* libAppLibCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF321B0575C400B57DF7 /* AppDelegate.swift */; };
-		63DDFF351B0575C400B57DF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF341B0575C400B57DF7 /* ViewController.swift */; };
 		63DDFF381B0575C400B57DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF361B0575C400B57DF7 /* Main.storyboard */; };
 		63DDFF3A1B0575C400B57DF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF391B0575C400B57DF7 /* Images.xcassets */; };
 		63DDFF3D1B0575C400B57DF7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */; };
@@ -202,7 +214,18 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods -g ${INPUT_FILE_PATH};\n";
+		};
+		6347D5DE1B375F050065B075 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.java;
+			isEditable = 1;
+			outputFiles = (
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
+				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
+			);
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods ${INPUT_FILE_PATH};\n";
 		};
 		63BE1B341B0E43760040F6D7 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -213,7 +236,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods -g ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods ${INPUT_FILE_PATH};\n";
 		};
 		63DD001F1B057AD100B57DF7 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -256,6 +279,55 @@
 			proxyType = 1;
 			remoteGlobalIDString = 633F42871B063CB500F25662;
 			remoteInfo = AppLibIOS;
+		};
+		6347D5D21B375B250065B075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6347D5C51B375B250065B075;
+			remoteInfo = AppLibIOSCommon;
+		};
+		6347D5E71B375FEF0065B075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 633F42871B063CB500F25662;
+			remoteInfo = AppLibIOS;
+		};
+		6347D5E91B375FF40065B075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DDFF551B05775D00B57DF7;
+			remoteInfo = AppLibCommon;
+		};
+		6347D5EB1B37603E0065B075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6347D5C51B375B250065B075;
+			remoteInfo = AppLibIOSCommon;
+		};
+		6347D5F91B3853840065B075 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6347D5C51B375B250065B075;
+			remoteInfo = AppLibIOSCommon;
+		};
+		637A56201B28B5B800239C64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63BE1AD81B0E3E390040F6D7;
+			remoteInfo = AppIOSScripture;
+		};
+		637A562E1B28DA9400239C64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 633F41AF1B06264500F25662;
+			remoteInfo = AppLibScripture;
 		};
 		63BE1AE51B0E3E390040F6D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -341,6 +413,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6347D5C41B375B250065B075 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63BE1AD71B0E3E390040F6D7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,11 +437,6 @@
 			dstPath = assets;
 			dstSubfolderSpec = 7;
 			files = (
-				63BE1BD01B15FB1E0040F6D7 /* XxgQZTvVwLG0OPUJTgMX in CopyFiles */,
-				63BE1BCF1B15FA9A0040F6D7 /* Qg6beFfK9VNE2WQS2K7z in CopyFiles */,
-				63BE1BCE1B15FA390040F6D7 /* i2vQpoMmm92qkjx8K4jk in CopyFiles */,
-				63BE1BC11B15F3BA0040F6D7 /* NXNleuK2zNjNbDQtLWXg in CopyFiles */,
-				63BE1BC01B15F39E0040F6D7 /* iM0Hs4W5pCq7fzQ2OcPw in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +452,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
+		630D5DB41B2A5CB5003915FE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		633A591F1B39F1C9004550A1 /* BookTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
+		633A59BF1B3B0827004550A1 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
+		633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerseTableViewController.swift; sourceTree = "<group>"; };
 		633F41B01B06264500F25662 /* libAppLibScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F41C01B06264500F25662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -469,8 +550,25 @@
 		633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppLibIOSConfig.xcconfig; sourceTree = "<group>"; };
 		633F42A51B06592E00F25662 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
 		633F42A61B06592E00F25662 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
+		6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureFactoryIOS.java; sourceTree = "<group>"; };
+		6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibIOSCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347D5D01B375B250065B075 /* AppLibIOSCommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibIOSCommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6347D5D61B375B250065B075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6347D5DD1B375CF70065B075 /* AppIOSCommonConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppIOSCommonConfig.xcconfig; sourceTree = "<group>"; };
+		6347D5E51B375FBD0065B075 /* FileManagerIOS.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FileManagerIOS.java; sourceTree = "<group>"; };
+		6347D5ED1B3760DD0065B075 /* AudioSettings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = AudioSettings.java; path = "../../app-builders/source/common/app-lib-common/src/org/sil/app/lib/common/config/AudioSettings.java"; sourceTree = "<group>"; };
+		6347D5EE1B3760DD0065B075 /* CommonDefaultColors.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = CommonDefaultColors.java; path = "../../app-builders/source/common/app-lib-common/src/org/sil/app/lib/common/config/CommonDefaultColors.java"; sourceTree = "<group>"; };
+		6347D5F11B384CB40065B075 /* FactoryCommon.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FactoryCommon.java; sourceTree = "<group>"; };
+		6347D5F31B384CDA0065B075 /* SyncTask.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = SyncTask.java; path = phrases/SyncTask.java; sourceTree = "<group>"; };
+		6347D5F41B384CDA0065B075 /* SyncTaskWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = SyncTaskWriter.java; path = phrases/SyncTaskWriter.java; sourceTree = "<group>"; };
+		6347D5F71B3850120065B075 /* FileManagerCommon.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FileManagerCommon.java; sourceTree = "<group>"; };
 		6359B3C51B1E4A9400F3FC2F /* IOSFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSFactory.h; sourceTree = "<group>"; };
 		6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSFactory.m; sourceTree = "<group>"; };
+		637430F81B3D969A00850F32 /* AnnotationHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AnnotationHandler.java; sourceTree = "<group>"; };
+		637430FA1B3DE21200850F32 /* AnnotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
+		637430FC1B42D3EC00850F32 /* SearchHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SearchHandler.java; sourceTree = "<group>"; };
+		637A561D1B2873C200239C64 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
+		637A561E1B2873C200239C64 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFontManager.a; sourceTree = "<group>"; };
 		637FA3A11B16675500082215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		63BE1A701B0E36850040F6D7 /* prefixes.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prefixes.properties; sourceTree = "<group>"; };
 		63BE1A8C1B0E3A120040F6D7 /* c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c.h; sourceTree = "<group>"; };
@@ -480,17 +578,10 @@
 		63BE1AE91B0E3E390040F6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BE1AF01B0E3E870040F6D7 /* AppIOSScriptureConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppIOSScriptureConfig.xcconfig; sourceTree = "<group>"; };
 		63BE1BAD1B0FC9DF0040F6D7 /* FileUtilsCommon.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FileUtilsCommon.java; sourceTree = "<group>"; };
-		63BE1BAF1B14BC9D0040F6D7 /* CommonFactory.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CommonFactory.java; sourceTree = "<group>"; };
-		63BE1BB31B1516320040F6D7 /* iM0Hs4W5pCq7fzQ2OcPw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iM0Hs4W5pCq7fzQ2OcPw; sourceTree = "<group>"; };
-		63BE1BB41B1516320040F6D7 /* NXNleuK2zNjNbDQtLWXg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NXNleuK2zNjNbDQtLWXg; sourceTree = "<group>"; };
-		63BE1BC21B15F6C40040F6D7 /* i2vQpoMmm92qkjx8K4jk */ = {isa = PBXFileReference; lastKnownFileType = file; path = i2vQpoMmm92qkjx8K4jk; sourceTree = "<group>"; };
-		63BE1BC31B15F6C40040F6D7 /* Qg6beFfK9VNE2WQS2K7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = Qg6beFfK9VNE2WQS2K7z; sourceTree = "<group>"; };
-		63BE1BC41B15F6C40040F6D7 /* XxgQZTvVwLG0OPUJTgMX */ = {isa = PBXFileReference; lastKnownFileType = file; path = XxgQZTvVwLG0OPUJTgMX; sourceTree = "<group>"; };
 		63DD00231B05850000B57DF7 /* appLibCommon-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "appLibCommon-Bridging-Header.h"; sourceTree = "<group>"; };
 		63DDFF2D1B0575C400B57DF7 /* ScriptureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScriptureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DDFF311B0575C400B57DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63DDFF321B0575C400B57DF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63DDFF341B0575C400B57DF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63DDFF371B0575C400B57DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63DDFF391B0575C400B57DF7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		63DDFF3C1B0575C400B57DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -601,6 +692,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637A561F1B2873C200239C64 /* libFontManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +701,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				633F42931B063CB500F25662 /* libAppLibIOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347D5C31B375B250065B075 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347D5CD1B375B250065B075 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6347D5D11B375B250065B075 /* libAppLibIOSCommon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +742,7 @@
 				63DD00221B057BEB00B57DF7 /* libAppLibCommon.a in Frameworks */,
 				633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */,
 				63F539081B0B7B8A005EE653 /* libAppLibIOS.a in Frameworks */,
+				6347D5FB1B38538D0065B075 /* libAppLibIOSCommon.a in Frameworks */,
 				63BE1B3D1B0E441B0040F6D7 /* libAppIOSScripture.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,6 +841,9 @@
 		633F41CE1B0628A500F25662 /* scripture */ = {
 			isa = PBXGroup;
 			children = (
+				6347D5F31B384CDA0065B075 /* SyncTask.java */,
+				6347D5F41B384CDA0065B075 /* SyncTaskWriter.java */,
+				6347D5F11B384CB40065B075 /* FactoryCommon.java */,
 				633F41CF1B0628A500F25662 /* config */,
 				633F41DA1B0628A500F25662 /* contents */,
 				633F41E01B0628A500F25662 /* library */,
@@ -919,6 +1030,8 @@
 		633F42891B063CB500F25662 /* AppLibIOS */ = {
 			isa = PBXGroup;
 			children = (
+				637A561D1B2873C200239C64 /* FontManager.h */,
+				637A561E1B2873C200239C64 /* libFontManager.a */,
 				6359B3C51B1E4A9400F3FC2F /* IOSFactory.h */,
 				6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */,
 				63BE1A8C1B0E3A120040F6D7 /* c.h */,
@@ -946,10 +1059,135 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6347D5C71B375B250065B075 /* AppLibIOSCommon */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5DF1B375FBD0065B075 /* src */,
+				6347D5DD1B375CF70065B075 /* AppIOSCommonConfig.xcconfig */,
+			);
+			path = AppLibIOSCommon;
+			sourceTree = "<group>";
+		};
+		6347D5D41B375B250065B075 /* AppLibIOSCommonTests */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5D51B375B250065B075 /* Supporting Files */,
+			);
+			path = AppLibIOSCommonTests;
+			sourceTree = "<group>";
+		};
+		6347D5D51B375B250065B075 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5D61B375B250065B075 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6347D5DF1B375FBD0065B075 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5E01B375FBD0065B075 /* org */,
+			);
+			name = src;
+			path = "../../app-builders/source/common/app-ios-common/src";
+			sourceTree = "<group>";
+		};
+		6347D5E01B375FBD0065B075 /* org */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5E11B375FBD0065B075 /* sil */,
+			);
+			path = org;
+			sourceTree = "<group>";
+		};
+		6347D5E11B375FBD0065B075 /* sil */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5E21B375FBD0065B075 /* app */,
+			);
+			path = sil;
+			sourceTree = "<group>";
+		};
+		6347D5E21B375FBD0065B075 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5E31B375FBD0065B075 /* ios */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		6347D5E31B375FBD0065B075 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5E41B375FBD0065B075 /* common */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		6347D5E41B375FBD0065B075 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				6347D5E51B375FBD0065B075 /* FileManagerIOS.java */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		637A56221B28D88600239C64 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				637A56231B28D88600239C64 /* org */,
+			);
+			name = src;
+			path = "../../app-builders/source/scripture/app-ios-scripture/src";
+			sourceTree = "<group>";
+		};
+		637A56231B28D88600239C64 /* org */ = {
+			isa = PBXGroup;
+			children = (
+				637A56241B28D88600239C64 /* sil */,
+			);
+			path = org;
+			sourceTree = "<group>";
+		};
+		637A56241B28D88600239C64 /* sil */ = {
+			isa = PBXGroup;
+			children = (
+				637A56251B28D88600239C64 /* app */,
+			);
+			path = sil;
+			sourceTree = "<group>";
+		};
+		637A56251B28D88600239C64 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				637A56261B28D88600239C64 /* ios */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		637A56261B28D88600239C64 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				637A56271B28D88600239C64 /* scripture */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		637A56271B28D88600239C64 /* scripture */ = {
+			isa = PBXGroup;
+			children = (
+				637430FC1B42D3EC00850F32 /* SearchHandler.java */,
+				637430F81B3D969A00850F32 /* AnnotationHandler.java */,
+				6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */,
+			);
+			path = scripture;
+			sourceTree = "<group>";
+		};
 		63BE1ADA1B0E3E390040F6D7 /* AppIOSScripture */ = {
 			isa = PBXGroup;
 			children = (
-				63BE1AF11B0E419F0040F6D7 /* src */,
+				637A56221B28D88600239C64 /* src */,
 				63BE1AF01B0E3E870040F6D7 /* AppIOSScriptureConfig.xcconfig */,
 			);
 			path = AppIOSScripture;
@@ -971,67 +1209,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		63BE1AF11B0E419F0040F6D7 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				63BE1AF21B0E419F0040F6D7 /* org */,
-			);
-			name = src;
-			path = "../../app-builders/source/scripture/app-android-scripture/src";
-			sourceTree = "<group>";
-		};
-		63BE1AF21B0E419F0040F6D7 /* org */ = {
-			isa = PBXGroup;
-			children = (
-				63BE1AF31B0E419F0040F6D7 /* sil */,
-			);
-			path = org;
-			sourceTree = "<group>";
-		};
-		63BE1AF31B0E419F0040F6D7 /* sil */ = {
-			isa = PBXGroup;
-			children = (
-				63BE1AF41B0E419F0040F6D7 /* app */,
-			);
-			path = sil;
-			sourceTree = "<group>";
-		};
-		63BE1AF41B0E419F0040F6D7 /* app */ = {
-			isa = PBXGroup;
-			children = (
-				63BE1AF51B0E419F0040F6D7 /* android */,
-			);
-			path = app;
-			sourceTree = "<group>";
-		};
-		63BE1AF51B0E419F0040F6D7 /* android */ = {
-			isa = PBXGroup;
-			children = (
-				63BE1AF61B0E419F0040F6D7 /* scripture */,
-			);
-			path = android;
-			sourceTree = "<group>";
-		};
-		63BE1AF61B0E419F0040F6D7 /* scripture */ = {
-			isa = PBXGroup;
-			children = (
-				63BE1BAF1B14BC9D0040F6D7 /* CommonFactory.java */,
-			);
-			path = scripture;
-			sourceTree = "<group>";
-		};
-		63BE1BB11B1516320040F6D7 /* assets */ = {
-			isa = PBXGroup;
-			children = (
-				63BE1BC21B15F6C40040F6D7 /* i2vQpoMmm92qkjx8K4jk */,
-				63BE1BC31B15F6C40040F6D7 /* Qg6beFfK9VNE2WQS2K7z */,
-				63BE1BC41B15F6C40040F6D7 /* XxgQZTvVwLG0OPUJTgMX */,
-				63BE1BB31B1516320040F6D7 /* iM0Hs4W5pCq7fzQ2OcPw */,
-				63BE1BB41B1516320040F6D7 /* NXNleuK2zNjNbDQtLWXg */,
-			);
-			path = assets;
-			sourceTree = "<group>";
-		};
 		63DDFF241B0575C400B57DF7 = {
 			isa = PBXGroup;
 			children = (
@@ -1046,6 +1223,8 @@
 				633F42961B063CB500F25662 /* AppLibIOSTests */,
 				63BE1ADA1B0E3E390040F6D7 /* AppIOSScripture */,
 				63BE1AE71B0E3E390040F6D7 /* AppIOSScriptureTests */,
+				6347D5C71B375B250065B075 /* AppLibIOSCommon */,
+				6347D5D41B375B250065B075 /* AppLibIOSCommonTests */,
 				63DDFF2E1B0575C400B57DF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1063,6 +1242,8 @@
 				633F42921B063CB500F25662 /* AppLibIOSTests.xctest */,
 				63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */,
 				63BE1AE31B0E3E390040F6D7 /* AppIOSScriptureTests.xctest */,
+				6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */,
+				6347D5D01B375B250065B075 /* AppLibIOSCommonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1071,8 +1252,12 @@
 			isa = PBXGroup;
 			children = (
 				63DDFF321B0575C400B57DF7 /* AppDelegate.swift */,
-				63DDFF341B0575C400B57DF7 /* ViewController.swift */,
+				630D5DB41B2A5CB5003915FE /* DetailViewController.swift */,
 				63DDFF361B0575C400B57DF7 /* Main.storyboard */,
+				633A591F1B39F1C9004550A1 /* BookTableViewController.swift */,
+				633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */,
+				630D5DB21B29D5DA003915FE /* Scripture.swift */,
+				637430FA1B3DE21200850F32 /* AnnotationViewController.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
 				63DDFF301B0575C400B57DF7 /* Supporting Files */,
@@ -1085,7 +1270,7 @@
 		63DDFF301B0575C400B57DF7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				63BE1BB11B1516320040F6D7 /* assets */,
+				633A59BF1B3B0827004550A1 /* assets */,
 				63DDFF311B0575C400B57DF7 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -1111,6 +1296,8 @@
 		63DDFF571B05775D00B57DF7 /* AppLibCommon */ = {
 			isa = PBXGroup;
 			children = (
+				6347D5ED1B3760DD0065B075 /* AudioSettings.java */,
+				6347D5EE1B3760DD0065B075 /* CommonDefaultColors.java */,
 				63BE1A701B0E36850040F6D7 /* prefixes.properties */,
 				63DDFF6F1B057A4400B57DF7 /* src */,
 				63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */,
@@ -1178,6 +1365,7 @@
 		63DDFF741B057A4400B57DF7 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				6347D5F71B3850120065B075 /* FileManagerCommon.java */,
 				63DDFF751B057A4400B57DF7 /* AppConfig.java */,
 				63DDFF761B057A4400B57DF7 /* AppDefinition.java */,
 				63DDFF771B057A4400B57DF7 /* c */,
@@ -1407,6 +1595,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				637A562F1B28DA9400239C64 /* PBXTargetDependency */,
+				637A56211B28B5B800239C64 /* PBXTargetDependency */,
 			);
 			name = AppLibIOS;
 			productName = AppLibIOS;
@@ -1431,6 +1621,44 @@
 			productReference = 633F42921B063CB500F25662 /* AppLibIOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6347D5C51B375B250065B075 /* AppLibIOSCommon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6347D5D71B375B250065B075 /* Build configuration list for PBXNativeTarget "AppLibIOSCommon" */;
+			buildPhases = (
+				6347D5C21B375B250065B075 /* Sources */,
+				6347D5C31B375B250065B075 /* Frameworks */,
+				6347D5C41B375B250065B075 /* CopyFiles */,
+			);
+			buildRules = (
+				6347D5DE1B375F050065B075 /* PBXBuildRule */,
+			);
+			dependencies = (
+				6347D5EA1B375FF40065B075 /* PBXTargetDependency */,
+				6347D5E81B375FEF0065B075 /* PBXTargetDependency */,
+			);
+			name = AppLibIOSCommon;
+			productName = AppLibIOSCommon;
+			productReference = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		6347D5CF1B375B250065B075 /* AppLibIOSCommonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6347D5DA1B375B250065B075 /* Build configuration list for PBXNativeTarget "AppLibIOSCommonTests" */;
+			buildPhases = (
+				6347D5CC1B375B250065B075 /* Sources */,
+				6347D5CD1B375B250065B075 /* Frameworks */,
+				6347D5CE1B375B250065B075 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6347D5D31B375B250065B075 /* PBXTargetDependency */,
+			);
+			name = AppLibIOSCommonTests;
+			productName = AppLibIOSCommonTests;
+			productReference = 6347D5D01B375B250065B075 /* AppLibIOSCommonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63BE1AD81B0E3E390040F6D7 /* AppIOSScripture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63BE1AEA1B0E3E390040F6D7 /* Build configuration list for PBXNativeTarget "AppIOSScripture" */;
@@ -1446,6 +1674,7 @@
 				63BE1B3A1B0E43FD0040F6D7 /* PBXTargetDependency */,
 				63BE1B381B0E43F70040F6D7 /* PBXTargetDependency */,
 				63BE1B361B0E43F10040F6D7 /* PBXTargetDependency */,
+				6347D5EC1B37603E0065B075 /* PBXTargetDependency */,
 			);
 			name = AppIOSScripture;
 			productName = AppIOSScripture;
@@ -1482,6 +1711,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6347D5FA1B3853840065B075 /* PBXTargetDependency */,
 				63DD00211B057BE300B57DF7 /* PBXTargetDependency */,
 				633F42821B062A3A00F25662 /* PBXTargetDependency */,
 				63F5390A1B0B7B93005EE653 /* PBXTargetDependency */,
@@ -1567,6 +1797,12 @@
 					633F42911B063CB500F25662 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
+					6347D5C51B375B250065B075 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					6347D5CF1B375B250065B075 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 					63BE1AD81B0E3E390040F6D7 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -1611,6 +1847,8 @@
 				633F42911B063CB500F25662 /* AppLibIOSTests */,
 				63BE1AD81B0E3E390040F6D7 /* AppIOSScripture */,
 				63BE1AE21B0E3E390040F6D7 /* AppIOSScriptureTests */,
+				6347D5C51B375B250065B075 /* AppLibIOSCommon */,
+				6347D5CF1B375B250065B075 /* AppLibIOSCommonTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1631,6 +1869,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6347D5CE1B375B250065B075 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63BE1AE11B0E3E390040F6D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1643,6 +1888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DDFF381B0575C400B57DF7 /* Main.storyboard in Resources */,
+				633A59C01B3B0827004550A1 /* assets in Resources */,
 				63DDFF3D1B0575C400B57DF7 /* LaunchScreen.xib in Resources */,
 				63DDFF3A1B0575C400B57DF7 /* Images.xcassets in Resources */,
 			);
@@ -1706,6 +1952,7 @@
 				633F42661B0628A500F25662 /* SaXmlParser.java in Sources */,
 				633F423B1B0628A500F25662 /* LinkType.java in Sources */,
 				633F42401B0628A500F25662 /* BookCollection.java in Sources */,
+				6347D5F61B384CDA0065B075 /* SyncTaskWriter.java in Sources */,
 				633F42741B0628A500F25662 /* UsxToUsfmConverter.java in Sources */,
 				633F424F1B0628A500F25662 /* SearchResult.java in Sources */,
 				633F42761B0628A500F25662 /* LabeledPhrases.java in Sources */,
@@ -1714,6 +1961,7 @@
 				633F424D1B0628A500F25662 /* Reference.java in Sources */,
 				633F42481B0628A500F25662 /* GlossaryEntry.java in Sources */,
 				633F426C1B0628A500F25662 /* SfmParser.java in Sources */,
+				6347D5F51B384CDA0065B075 /* SyncTask.java in Sources */,
 				633F42781B0628A500F25662 /* PhrasesExportType.java in Sources */,
 				633F42671B0628A500F25662 /* SegmentData.java in Sources */,
 				633F423C1B0628A500F25662 /* AppLibrary.java in Sources */,
@@ -1744,6 +1992,7 @@
 				633F42471B0628A500F25662 /* Glossary.java in Sources */,
 				633F423F1B0628A500F25662 /* BookCodes.java in Sources */,
 				633F424C1B0628A500F25662 /* ReadingPlan.java in Sources */,
+				6347D5F21B384CB40065B075 /* FactoryCommon.java in Sources */,
 				633F423E1B0628A500F25662 /* Book.java in Sources */,
 				633F42461B0628A500F25662 /* Footnote.java in Sources */,
 				633F422F1B0628A500F25662 /* Config.java in Sources */,
@@ -1776,11 +2025,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6347D5C21B375B250065B075 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6347D5E61B375FBD0065B075 /* FileManagerIOS.java in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6347D5CC1B375B250065B075 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63BE1AD51B0E3E390040F6D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63BE1BB01B14BC9D0040F6D7 /* CommonFactory.java in Sources */,
+				6347D5C11B37590A0065B075 /* ScriptureFactoryIOS.java in Sources */,
+				637430FD1B42D3EC00850F32 /* SearchHandler.java in Sources */,
+				637430F91B3D969A00850F32 /* AnnotationHandler.java in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,8 +2061,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63DDFF351B0575C400B57DF7 /* ViewController.swift in Sources */,
+				633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
+				633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */,
+				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
+				630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */,
+				630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1818,6 +2088,7 @@
 				63DDFFF71B057A4400B57DF7 /* StyleDeclaration.java in Sources */,
 				63DDFFDC1B057A4400B57DF7 /* ColorDefs.java in Sources */,
 				63DD00121B057A4400B57DF7 /* DocxRelationships.java in Sources */,
+				6347D5F81B3850120065B075 /* FileManagerCommon.java in Sources */,
 				63DDFFE81B057A4400B57DF7 /* FontCompare.java in Sources */,
 				63DD00101B057A4400B57DF7 /* DocxProps.java in Sources */,
 				63DD001B1B057A4400B57DF7 /* EpubWriter.java in Sources */,
@@ -1856,6 +2127,7 @@
 				63DD00001B057A4400B57DF7 /* LangCodes.java in Sources */,
 				63BE1BAE1B0FC9DF0040F6D7 /* FileUtilsCommon.java in Sources */,
 				63DD00151B057A4400B57DF7 /* DocxWriter.java in Sources */,
+				6347D5EF1B3760DD0065B075 /* AudioSettings.java in Sources */,
 				63DD00061B057A4400B57DF7 /* ColorUtils.java in Sources */,
 				63DDFFE51B057A4400B57DF7 /* Feature.java in Sources */,
 				63DD001C1B057A4400B57DF7 /* XmlWriter.java in Sources */,
@@ -1883,6 +2155,7 @@
 				63DD000D1B057A4400B57DF7 /* Version.java in Sources */,
 				63DD00021B057A4400B57DF7 /* ConfigHandler.java in Sources */,
 				63DD00131B057A4400B57DF7 /* DocxStyle.java in Sources */,
+				6347D5F01B3760DD0065B075 /* CommonDefaultColors.java in Sources */,
 				63DDFFFC1B057A4400B57DF7 /* TranslationMappings.java in Sources */,
 				63DD00161B057A4400B57DF7 /* EpubContentItem.java in Sources */,
 				63DDFFD91B057A4400B57DF7 /* CharacterInfo.java in Sources */,
@@ -1922,6 +2195,41 @@
 			isa = PBXTargetDependency;
 			target = 633F42871B063CB500F25662 /* AppLibIOS */;
 			targetProxy = 633F42941B063CB500F25662 /* PBXContainerItemProxy */;
+		};
+		6347D5D31B375B250065B075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6347D5C51B375B250065B075 /* AppLibIOSCommon */;
+			targetProxy = 6347D5D21B375B250065B075 /* PBXContainerItemProxy */;
+		};
+		6347D5E81B375FEF0065B075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 633F42871B063CB500F25662 /* AppLibIOS */;
+			targetProxy = 6347D5E71B375FEF0065B075 /* PBXContainerItemProxy */;
+		};
+		6347D5EA1B375FF40065B075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
+			targetProxy = 6347D5E91B375FF40065B075 /* PBXContainerItemProxy */;
+		};
+		6347D5EC1B37603E0065B075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6347D5C51B375B250065B075 /* AppLibIOSCommon */;
+			targetProxy = 6347D5EB1B37603E0065B075 /* PBXContainerItemProxy */;
+		};
+		6347D5FA1B3853840065B075 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6347D5C51B375B250065B075 /* AppLibIOSCommon */;
+			targetProxy = 6347D5F91B3853840065B075 /* PBXContainerItemProxy */;
+		};
+		637A56211B28B5B800239C64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63BE1AD81B0E3E390040F6D7 /* AppIOSScripture */;
+			targetProxy = 637A56201B28B5B800239C64 /* PBXContainerItemProxy */;
+		};
+		637A562F1B28DA9400239C64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 633F41AF1B06264500F25662 /* AppLibScripture */;
+			targetProxy = 637A562E1B28DA9400239C64 /* PBXContainerItemProxy */;
 		};
 		63BE1AE61B0E3E390040F6D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2054,6 +2362,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AppLibIOS",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2064,6 +2376,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */;
 			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AppLibIOS",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -2102,6 +2418,62 @@
 			};
 			name = Release;
 		};
+		6347D5D81B375B250065B075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6347D5DD1B375CF70065B075 /* AppIOSCommonConfig.xcconfig */;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6347D5D91B375B250065B075 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6347D5DD1B375CF70065B075 /* AppIOSCommonConfig.xcconfig */;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6347D5DB1B375B250065B075 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6347D5DD1B375CF70065B075 /* AppIOSCommonConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibIOSCommonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6347D5DC1B375B250065B075 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6347D5DD1B375CF70065B075 /* AppIOSCommonConfig.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibIOSCommonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		63BE1AEB1B0E3E390040F6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 63BE1AF01B0E3E870040F6D7 /* AppIOSScriptureConfig.xcconfig */;
@@ -2118,6 +2490,7 @@
 		};
 		63BE1AEC1B0E3E390040F6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63BE1AF01B0E3E870040F6D7 /* AppIOSScriptureConfig.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2146,6 +2519,7 @@
 		};
 		63BE1AEF1B0E3E390040F6D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63BE1AF01B0E3E870040F6D7 /* AppIOSScriptureConfig.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -2247,6 +2621,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScriptureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"jre_emul\"",
+					"-l\"icucore\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				"SWIFT_INCLUDE_PATHS[arch=*]" = "${PROJECT_DIR}/ALCGenerated";
@@ -2261,6 +2641,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScriptureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"jre_emul\"",
+					"-l\"icucore\"",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "${PROJECT_DIR}/ALCGenerated";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}//ScriptureApp/appLibCommon-Bridging-Header.h";
@@ -2394,6 +2780,24 @@
 			buildConfigurations = (
 				633F429D1B063CB500F25662 /* Debug */,
 				633F429E1B063CB500F25662 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6347D5D71B375B250065B075 /* Build configuration list for PBXNativeTarget "AppLibIOSCommon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6347D5D81B375B250065B075 /* Debug */,
+				6347D5D91B375B250065B075 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6347D5DA1B375B250065B075 /* Build configuration list for PBXNativeTarget "AppLibIOSCommonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6347D5DB1B375B250065B075 /* Debug */,
+				6347D5DC1B375B250065B075 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

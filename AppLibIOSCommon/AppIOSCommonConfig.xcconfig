@@ -1,5 +1,5 @@
 //
-//  AppIOSScriptureConfig.xcconfig
+//  AppIOSCommonConfig.xcconfig
 //  ScriptureApp
 //
 //  Created by David Moore on 5/21/15.
@@ -18,14 +18,13 @@ J2OBJC_HOME = ${HOME}/Develop/j2objc;
 
 GENERATED_APPCOMMON_FILES_DIR = ${SRCROOT}/ALCGenerated;
 GENERATED_APPSCRIPTURE_FILES_DIR = ${SRCROOT}/ALSGenerated;
-GENERATED_IOSCOMMON_FILES_DIR = ${SRCROOT}/AICGenerated;
-GENERATED_FILES_DIR = ${SRCROOT}/AISGenerated;
+GENERATED_FILES_DIR = ${SRCROOT}/AICGenerated;
 
-HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_DIR}" "${GENERATED_APPCOMMON_FILES_DIR}" "${GENERATED_APPSCRIPTURE_FILES_DIR}" "${GENERATED_IOSCOMMON_FILES_DIR}";
+HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_DIR}" "${GENERATED_APPCOMMON_FILES_DIR}" "${GENERATED_APPSCRIPTURE_FILES_DIR}";
 
 // In your own project, change this to your actual path that contains java code.
-JAVA_SOURCE_PATH = ${SRCROOT}/../app-builders/source/scripture/app-ios-scripture/src;
-JAVA_COMMON_SOURCE_PATH = ${SRCROOT}/../app-builders/source/common/app-lib-common/src:${SRCROOT}/../app-builders/source/scripture/app-lib-scripture/src:${SRCROOT}/../app-builders/source/common/app-ios-common/src;
+JAVA_SOURCE_PATH = ${SRCROOT}/../app-builders/source/common/app-ios-common/src;
+JAVA_COMMON_SOURCE_PATH = ${SRCROOT}/../app-builders/source/common/app-lib-common/src:${SRCROOT}/../app-builders/source/scripture/app-lib-scripture/src;
 
 CLANG_ENABLE_OBJC_ARC = NO
 
