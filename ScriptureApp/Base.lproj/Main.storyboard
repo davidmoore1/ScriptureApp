@@ -113,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5b-va-fzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="1847"/>
+            <point key="canvasLocation" x="975" y="1847"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="53P-fr-5YK">
@@ -165,9 +165,11 @@
                     </view>
                     <connections>
                         <outlet property="mWebView" destination="xjO-BH-vFC" id="aVd-0N-bqs"/>
-                        <segue destination="zb8-mr-MF1" kind="popoverPresentation" identifier="Annotation" popoverAnchorView="xjO-BH-vFC" id="kcO-IC-Ntn">
+                        <outlet property="searchButton" destination="TzJ-lx-SzS" id="A7P-ZN-UOk"/>
+                        <segue destination="zb8-mr-MF1" kind="popoverPresentation" identifier="Annotation" popoverAnchorView="xjO-BH-vFC" id="Qyc-7w-zQt">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="AAd-0I-o5B" kind="presentation" identifier="SearchRequest" id="r29-fe-abR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbR-YR-mD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,12 +239,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XOM-H0-EyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="363" y="1808"/>
+            <point key="canvasLocation" x="305" y="1790"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Select View Controller-->
         <scene sceneID="xbT-z5-XeY">
             <objects>
-                <viewController id="azV-Sb-hgf" sceneMemberID="viewController">
+                <viewController id="azV-Sb-hgf" customClass="SearchSelectViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="otH-bo-DUO"/>
                         <viewControllerLayoutGuide type="bottom" id="YZE-n3-MWP"/>
@@ -250,19 +252,88 @@
                     <view key="view" contentMode="scaleToFill" id="56J-G4-OnF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Match on Whole Words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VsZ-3a-8th">
+                                <rect key="frame" x="252" y="102" width="264" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yDz-Yc-ogz">
+                                <rect key="frame" x="79" y="64" width="521" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TLV-Fa-Eeg">
+                                <rect key="frame" x="528" y="97" width="51" height="31"/>
+                            </switch>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_action_search_light" translatesAutoresizingMaskIntoConstraints="NO" id="ysU-gM-IaJ">
+                                <rect key="frame" x="16" y="64" width="55" height="30"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIy-aq-QYG">
+                                <rect key="frame" x="536" y="136" width="48" height="30"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchClicked:" destination="azV-Sb-hgf" eventType="touchUpInside" id="TM9-Vt-5ZR"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ysU-gM-IaJ" firstAttribute="centerY" secondItem="yDz-Yc-ogz" secondAttribute="centerY" id="3Nd-rs-NWy"/>
+                            <constraint firstItem="VsZ-3a-8th" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="56J-G4-OnF" secondAttribute="leadingMargin" id="EE1-2q-p4L"/>
+                            <constraint firstItem="VsZ-3a-8th" firstAttribute="top" secondItem="yDz-Yc-ogz" secondAttribute="bottom" constant="8" symbolic="YES" id="FtF-bk-O6G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yDz-Yc-ogz" secondAttribute="trailing" id="Fxi-is-KPc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TLV-Fa-Eeg" secondAttribute="trailing" constant="7" id="J4n-np-g24"/>
+                            <constraint firstItem="TLV-Fa-Eeg" firstAttribute="centerY" secondItem="VsZ-3a-8th" secondAttribute="centerY" id="L3t-wr-gPZ"/>
+                            <constraint firstItem="yDz-Yc-ogz" firstAttribute="top" secondItem="otH-bo-DUO" secondAttribute="bottom" id="LFJ-6Y-e98"/>
+                            <constraint firstItem="TLV-Fa-Eeg" firstAttribute="leading" secondItem="VsZ-3a-8th" secondAttribute="trailing" constant="8" symbolic="YES" id="P6h-3W-mGn"/>
+                            <constraint firstItem="GIy-aq-QYG" firstAttribute="trailing" secondItem="56J-G4-OnF" secondAttribute="trailingMargin" id="fyb-XI-A4m"/>
+                            <constraint firstItem="GIy-aq-QYG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="56J-G4-OnF" secondAttribute="leadingMargin" id="kCA-An-Qw8"/>
+                            <constraint firstItem="GIy-aq-QYG" firstAttribute="top" secondItem="TLV-Fa-Eeg" secondAttribute="bottom" constant="8" symbolic="YES" id="q7S-Ts-wbi"/>
+                            <constraint firstItem="ysU-gM-IaJ" firstAttribute="leading" secondItem="56J-G4-OnF" secondAttribute="leadingMargin" id="rgd-yO-Gt6"/>
+                            <constraint firstItem="YZE-n3-MWP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GIy-aq-QYG" secondAttribute="bottom" constant="8" symbolic="YES" id="w5C-Mc-iwW"/>
+                            <constraint firstItem="yDz-Yc-ogz" firstAttribute="leading" secondItem="ysU-gM-IaJ" secondAttribute="trailing" constant="8" symbolic="YES" id="yOe-xG-Mia"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="cuZ-WO-8FS"/>
+                    <connections>
+                        <outlet property="matchLabel" destination="VsZ-3a-8th" id="Nvh-eG-GFt"/>
+                        <outlet property="matchSwitch" destination="TLV-Fa-Eeg" id="Tc1-PE-1Ry"/>
+                        <outlet property="searchButton" destination="GIy-aq-QYG" id="mso-Lk-nsD"/>
+                        <outlet property="searchText" destination="yDz-Yc-ogz" id="rei-Dy-2qj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4o-8E-ydZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362" y="2649"/>
+            <point key="canvasLocation" x="2174" y="2649"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0vR-cO-h1E">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AAd-0I-o5B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BmL-ra-c27">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="azV-Sb-hgf" kind="relationship" relationship="rootViewController" id="Xeb-Ko-kGI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aO6-Nd-nNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="246" y="2545"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_action_search_light" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kcO-IC-Ntn"/>
+        <segue reference="Qyc-7w-zQt"/>
         <segue reference="WUU-EO-W3x"/>
     </inferredMetricsTieBreakers>
 </document>

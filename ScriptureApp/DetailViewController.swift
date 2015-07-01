@@ -20,6 +20,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate, UIPopoverPresen
     var mScripture: Scripture? = nil
     private var mAnnotationHtml: String = ""
 
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var mWebView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +86,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate, UIPopoverPresen
         if let identifier = segue.identifier {
             switch identifier {
             case Constants.AnnotationSeque:
-                if let tvc = segue.destinationViewController as? AnnotationViewController {
+                if let tvc = segue.destinationViewController.contentViewController as? AnnotationViewController {
                     if let ppc = tvc.popoverPresentationController {
                         ppc.delegate = self
                     }

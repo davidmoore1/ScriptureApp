@@ -96,7 +96,6 @@
 		633F427D1B0628A500F25662 /* ScriptureConfigWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */; };
 		633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
 		633F42931B063CB500F25662 /* libAppLibIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F42881B063CB500F25662 /* libAppLibIOS.a */; };
-		633F42A71B06592E00F25662 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 633F42A61B06592E00F25662 /* Encryption.m */; };
 		6347D5C11B37590A0065B075 /* ScriptureFactoryIOS.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */; };
 		6347D5D11B375B250065B075 /* libAppLibIOSCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */; };
 		6347D5E61B375FBD0065B075 /* FileManagerIOS.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5E51B375FBD0065B075 /* FileManagerIOS.java */; };
@@ -108,12 +107,18 @@
 		6347D5F81B3850120065B075 /* FileManagerCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F71B3850120065B075 /* FileManagerCommon.java */; };
 		6347D5FB1B38538D0065B075 /* libAppLibIOSCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */; };
 		6359B3C71B1E4A9400F3FC2F /* IOSFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */; };
-		637430F91B3D969A00850F32 /* AnnotationHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 637430F81B3D969A00850F32 /* AnnotationHandler.java */; };
 		637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637430FA1B3DE21200850F32 /* AnnotationViewController.swift */; };
 		637430FD1B42D3EC00850F32 /* SearchHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 637430FC1B42D3EC00850F32 /* SearchHandler.java */; };
-		637A561F1B2873C200239C64 /* libFontManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637A561E1B2873C200239C64 /* libFontManager.a */; };
+		637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637430FE1B43324C00850F32 /* SearchSelectViewController.swift */; };
+		637431011B4457B000850F32 /* PopupHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 637431001B4457B000850F32 /* PopupHandler.java */; };
+		637431111B446B8100850F32 /* libAppLibIOSEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */; };
+		6374311E1B446C7400850F32 /* AppLibIOSEnc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */; };
+		637431271B446D1D00850F32 /* BaseEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431201B446D1D00850F32 /* BaseEncryption.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		637431281B446D1D00850F32 /* c.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431221B446D1D00850F32 /* c.m */; };
+		637431291B446D1D00850F32 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431241B446D1D00850F32 /* Encryption.m */; };
+		6374312A1B446D1D00850F32 /* libFontManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431261B446D1D00850F32 /* libFontManager.a */; };
+		6374312D1B446EDD00850F32 /* libAppLibIOSEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */; };
 		637FA3A21B16675500082215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 637FA3A11B16675500082215 /* libz.dylib */; };
-		63BE1A8E1B0E3A120040F6D7 /* c.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1A8D1B0E3A120040F6D7 /* c.m */; };
 		63BE1AE41B0E3E390040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1B3D1B0E441B0040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1BAE1B0FC9DF0040F6D7 /* FileUtilsCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1BAD1B0FC9DF0040F6D7 /* FileUtilsCommon.java */; };
@@ -247,7 +252,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods ${INPUT_FILE_PATH};\n";
 		};
 /* End PBXBuildRule section */
 
@@ -287,13 +292,6 @@
 			remoteGlobalIDString = 6347D5C51B375B250065B075;
 			remoteInfo = AppLibIOSCommon;
 		};
-		6347D5E71B375FEF0065B075 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 633F42871B063CB500F25662;
-			remoteInfo = AppLibIOS;
-		};
 		6347D5E91B375FF40065B075 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
@@ -314,6 +312,41 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6347D5C51B375B250065B075;
 			remoteInfo = AppLibIOSCommon;
+		};
+		637431121B446B8100850F32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 637431051B446B8000850F32;
+			remoteInfo = AppLibIOSEncryption;
+		};
+		6374312B1B446DB300850F32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 633F41AF1B06264500F25662;
+			remoteInfo = AppLibScripture;
+		};
+		6374312E1B446EEF00850F32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 637431051B446B8000850F32;
+			remoteInfo = AppLibIOSEncryption;
+		};
+		637431301B446FBD00850F32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 637431051B446B8000850F32;
+			remoteInfo = AppLibIOSEncryption;
+		};
+		637431321B446FD400850F32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 637431051B446B8000850F32;
+			remoteInfo = AppLibIOSEncryption;
 		};
 		637A56201B28B5B800239C64 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -349,13 +382,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 633F41AF1B06264500F25662;
 			remoteInfo = AppLibScripture;
-		};
-		63BE1B391B0E43FD0040F6D7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 633F42871B063CB500F25662;
-			remoteInfo = AppLibIOS;
 		};
 		63BE1B3B1B0E440D0040F6D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -414,6 +440,15 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6347D5C41B375B250065B075 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		637431041B446B8000850F32 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -548,8 +583,6 @@
 		633F42921B063CB500F25662 /* AppLibIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F42981B063CB500F25662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AppLibIOSConfig.xcconfig; sourceTree = "<group>"; };
-		633F42A51B06592E00F25662 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
-		633F42A61B06592E00F25662 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
 		6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureFactoryIOS.java; sourceTree = "<group>"; };
 		6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibIOSCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6347D5D01B375B250065B075 /* AppLibIOSCommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibIOSCommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -564,15 +597,24 @@
 		6347D5F71B3850120065B075 /* FileManagerCommon.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FileManagerCommon.java; sourceTree = "<group>"; };
 		6359B3C51B1E4A9400F3FC2F /* IOSFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSFactory.h; sourceTree = "<group>"; };
 		6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSFactory.m; sourceTree = "<group>"; };
-		637430F81B3D969A00850F32 /* AnnotationHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AnnotationHandler.java; sourceTree = "<group>"; };
 		637430FA1B3DE21200850F32 /* AnnotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
 		637430FC1B42D3EC00850F32 /* SearchHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SearchHandler.java; sourceTree = "<group>"; };
-		637A561D1B2873C200239C64 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
-		637A561E1B2873C200239C64 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFontManager.a; sourceTree = "<group>"; };
+		637430FE1B43324C00850F32 /* SearchSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSelectViewController.swift; sourceTree = "<group>"; };
+		637431001B4457B000850F32 /* PopupHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = PopupHandler.java; sourceTree = "<group>"; };
+		637431061B446B8000850F32 /* libAppLibIOSEncryption.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibIOSEncryption.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		637431101B446B8000850F32 /* AppLibIOSEncryptionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibIOSEncryptionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		637431161B446B8100850F32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppLibIOSEnc.xcconfig; sourceTree = "<group>"; };
+		6374311F1B446D1D00850F32 /* BaseEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEncryption.h; sourceTree = "<group>"; };
+		637431201B446D1D00850F32 /* BaseEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEncryption.m; sourceTree = "<group>"; };
+		637431211B446D1D00850F32 /* c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c.h; sourceTree = "<group>"; };
+		637431221B446D1D00850F32 /* c.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = c.m; sourceTree = "<group>"; };
+		637431231B446D1D00850F32 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
+		637431241B446D1D00850F32 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
+		637431251B446D1D00850F32 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
+		637431261B446D1D00850F32 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFontManager.a; sourceTree = "<group>"; };
 		637FA3A11B16675500082215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		63BE1A701B0E36850040F6D7 /* prefixes.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prefixes.properties; sourceTree = "<group>"; };
-		63BE1A8C1B0E3A120040F6D7 /* c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c.h; sourceTree = "<group>"; };
-		63BE1A8D1B0E3A120040F6D7 /* c.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = c.m; sourceTree = "<group>"; };
 		63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppIOSScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BE1AE31B0E3E390040F6D7 /* AppIOSScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppIOSScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BE1AE91B0E3E390040F6D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -692,7 +734,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637A561F1B2873C200239C64 /* libFontManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +760,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		637431031B446B8000850F32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6374312A1B446D1D00850F32 /* libFontManager.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6374310D1B446B8000850F32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				637431111B446B8100850F32 /* libAppLibIOSEncryption.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63BE1AD61B0E3E390040F6D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -738,6 +795,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6374312D1B446EDD00850F32 /* libAppLibIOSEncryption.a in Frameworks */,
 				637FA3A21B16675500082215 /* libz.dylib in Frameworks */,
 				63DD00221B057BEB00B57DF7 /* libAppLibCommon.a in Frameworks */,
 				633F42831B062A4800F25662 /* libAppLibScripture.a in Frameworks */,
@@ -1030,15 +1088,9 @@
 		633F42891B063CB500F25662 /* AppLibIOS */ = {
 			isa = PBXGroup;
 			children = (
-				637A561D1B2873C200239C64 /* FontManager.h */,
-				637A561E1B2873C200239C64 /* libFontManager.a */,
 				6359B3C51B1E4A9400F3FC2F /* IOSFactory.h */,
 				6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */,
-				63BE1A8C1B0E3A120040F6D7 /* c.h */,
-				63BE1A8D1B0E3A120040F6D7 /* c.m */,
 				633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */,
-				633F42A51B06592E00F25662 /* Encryption.h */,
-				633F42A61B06592E00F25662 /* Encryption.m */,
 			);
 			path = AppLibIOS;
 			sourceTree = "<group>";
@@ -1133,6 +1185,38 @@
 			path = common;
 			sourceTree = "<group>";
 		};
+		637431071B446B8000850F32 /* AppLibIOSEncryption */ = {
+			isa = PBXGroup;
+			children = (
+				6374311F1B446D1D00850F32 /* BaseEncryption.h */,
+				637431201B446D1D00850F32 /* BaseEncryption.m */,
+				637431211B446D1D00850F32 /* c.h */,
+				637431221B446D1D00850F32 /* c.m */,
+				637431231B446D1D00850F32 /* Encryption.h */,
+				637431241B446D1D00850F32 /* Encryption.m */,
+				637431251B446D1D00850F32 /* FontManager.h */,
+				637431261B446D1D00850F32 /* libFontManager.a */,
+				6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */,
+			);
+			path = AppLibIOSEncryption;
+			sourceTree = "<group>";
+		};
+		637431141B446B8100850F32 /* AppLibIOSEncryptionTests */ = {
+			isa = PBXGroup;
+			children = (
+				637431151B446B8100850F32 /* Supporting Files */,
+			);
+			path = AppLibIOSEncryptionTests;
+			sourceTree = "<group>";
+		};
+		637431151B446B8100850F32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				637431161B446B8100850F32 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		637A56221B28D88600239C64 /* src */ = {
 			isa = PBXGroup;
 			children = (
@@ -1177,8 +1261,8 @@
 		637A56271B28D88600239C64 /* scripture */ = {
 			isa = PBXGroup;
 			children = (
+				637431001B4457B000850F32 /* PopupHandler.java */,
 				637430FC1B42D3EC00850F32 /* SearchHandler.java */,
-				637430F81B3D969A00850F32 /* AnnotationHandler.java */,
 				6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */,
 			);
 			path = scripture;
@@ -1225,6 +1309,8 @@
 				63BE1AE71B0E3E390040F6D7 /* AppIOSScriptureTests */,
 				6347D5C71B375B250065B075 /* AppLibIOSCommon */,
 				6347D5D41B375B250065B075 /* AppLibIOSCommonTests */,
+				637431071B446B8000850F32 /* AppLibIOSEncryption */,
+				637431141B446B8100850F32 /* AppLibIOSEncryptionTests */,
 				63DDFF2E1B0575C400B57DF7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1244,6 +1330,8 @@
 				63BE1AE31B0E3E390040F6D7 /* AppIOSScriptureTests.xctest */,
 				6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */,
 				6347D5D01B375B250065B075 /* AppLibIOSCommonTests.xctest */,
+				637431061B446B8000850F32 /* libAppLibIOSEncryption.a */,
+				637431101B446B8000850F32 /* AppLibIOSEncryptionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1263,6 +1351,7 @@
 				63DDFF301B0575C400B57DF7 /* Supporting Files */,
 				63DD00231B05850000B57DF7 /* appLibCommon-Bridging-Header.h */,
 				63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */,
+				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 			);
 			path = ScriptureApp;
 			sourceTree = "<group>";
@@ -1633,8 +1722,8 @@
 				6347D5DE1B375F050065B075 /* PBXBuildRule */,
 			);
 			dependencies = (
+				637431331B446FD400850F32 /* PBXTargetDependency */,
 				6347D5EA1B375FF40065B075 /* PBXTargetDependency */,
-				6347D5E81B375FEF0065B075 /* PBXTargetDependency */,
 			);
 			name = AppLibIOSCommon;
 			productName = AppLibIOSCommon;
@@ -1659,6 +1748,42 @@
 			productReference = 6347D5D01B375B250065B075 /* AppLibIOSCommonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		637431051B446B8000850F32 /* AppLibIOSEncryption */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 637431171B446B8100850F32 /* Build configuration list for PBXNativeTarget "AppLibIOSEncryption" */;
+			buildPhases = (
+				637431021B446B8000850F32 /* Sources */,
+				637431031B446B8000850F32 /* Frameworks */,
+				637431041B446B8000850F32 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6374312C1B446DB300850F32 /* PBXTargetDependency */,
+			);
+			name = AppLibIOSEncryption;
+			productName = AppLibIOSEncryption;
+			productReference = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		6374310F1B446B8000850F32 /* AppLibIOSEncryptionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6374311A1B446B8100850F32 /* Build configuration list for PBXNativeTarget "AppLibIOSEncryptionTests" */;
+			buildPhases = (
+				6374310C1B446B8000850F32 /* Sources */,
+				6374310D1B446B8000850F32 /* Frameworks */,
+				6374310E1B446B8000850F32 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				637431131B446B8100850F32 /* PBXTargetDependency */,
+			);
+			name = AppLibIOSEncryptionTests;
+			productName = AppLibIOSEncryptionTests;
+			productReference = 637431101B446B8000850F32 /* AppLibIOSEncryptionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		63BE1AD81B0E3E390040F6D7 /* AppIOSScripture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63BE1AEA1B0E3E390040F6D7 /* Build configuration list for PBXNativeTarget "AppIOSScripture" */;
@@ -1671,7 +1796,7 @@
 				63BE1B341B0E43760040F6D7 /* PBXBuildRule */,
 			);
 			dependencies = (
-				63BE1B3A1B0E43FD0040F6D7 /* PBXTargetDependency */,
+				637431311B446FBD00850F32 /* PBXTargetDependency */,
 				63BE1B381B0E43F70040F6D7 /* PBXTargetDependency */,
 				63BE1B361B0E43F10040F6D7 /* PBXTargetDependency */,
 				6347D5EC1B37603E0065B075 /* PBXTargetDependency */,
@@ -1715,6 +1840,7 @@
 				63DD00211B057BE300B57DF7 /* PBXTargetDependency */,
 				633F42821B062A3A00F25662 /* PBXTargetDependency */,
 				63F5390A1B0B7B93005EE653 /* PBXTargetDependency */,
+				6374312F1B446EEF00850F32 /* PBXTargetDependency */,
 				63BE1B3C1B0E440D0040F6D7 /* PBXTargetDependency */,
 			);
 			name = ScriptureApp;
@@ -1803,6 +1929,12 @@
 					6347D5CF1B375B250065B075 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
+					637431051B446B8000850F32 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					6374310F1B446B8000850F32 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 					63BE1AD81B0E3E390040F6D7 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -1849,6 +1981,8 @@
 				63BE1AE21B0E3E390040F6D7 /* AppIOSScriptureTests */,
 				6347D5C51B375B250065B075 /* AppLibIOSCommon */,
 				6347D5CF1B375B250065B075 /* AppLibIOSCommonTests */,
+				637431051B446B8000850F32 /* AppLibIOSEncryption */,
+				6374310F1B446B8000850F32 /* AppLibIOSEncryptionTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1873,6 +2007,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6374310E1B446B8000850F32 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6374311E1B446C7400850F32 /* AppLibIOSEnc.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2012,9 +2154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				633F42A71B06592E00F25662 /* Encryption.m in Sources */,
 				6359B3C71B1E4A9400F3FC2F /* IOSFactory.m in Sources */,
-				63BE1A8E1B0E3A120040F6D7 /* c.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2040,13 +2180,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		637431021B446B8000850F32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				637431271B446D1D00850F32 /* BaseEncryption.m in Sources */,
+				637431291B446D1D00850F32 /* Encryption.m in Sources */,
+				637431281B446D1D00850F32 /* c.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6374310C1B446B8000850F32 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		63BE1AD51B0E3E390040F6D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6347D5C11B37590A0065B075 /* ScriptureFactoryIOS.java in Sources */,
 				637430FD1B42D3EC00850F32 /* SearchHandler.java in Sources */,
-				637430F91B3D969A00850F32 /* AnnotationHandler.java in Sources */,
+				637431011B4457B000850F32 /* PopupHandler.java in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2065,6 +2222,7 @@
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
 				633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
+				637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */,
 				630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */,
 				630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */,
 			);
@@ -2201,11 +2359,6 @@
 			target = 6347D5C51B375B250065B075 /* AppLibIOSCommon */;
 			targetProxy = 6347D5D21B375B250065B075 /* PBXContainerItemProxy */;
 		};
-		6347D5E81B375FEF0065B075 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 633F42871B063CB500F25662 /* AppLibIOS */;
-			targetProxy = 6347D5E71B375FEF0065B075 /* PBXContainerItemProxy */;
-		};
 		6347D5EA1B375FF40065B075 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
@@ -2220,6 +2373,31 @@
 			isa = PBXTargetDependency;
 			target = 6347D5C51B375B250065B075 /* AppLibIOSCommon */;
 			targetProxy = 6347D5F91B3853840065B075 /* PBXContainerItemProxy */;
+		};
+		637431131B446B8100850F32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 637431051B446B8000850F32 /* AppLibIOSEncryption */;
+			targetProxy = 637431121B446B8100850F32 /* PBXContainerItemProxy */;
+		};
+		6374312C1B446DB300850F32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 633F41AF1B06264500F25662 /* AppLibScripture */;
+			targetProxy = 6374312B1B446DB300850F32 /* PBXContainerItemProxy */;
+		};
+		6374312F1B446EEF00850F32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 637431051B446B8000850F32 /* AppLibIOSEncryption */;
+			targetProxy = 6374312E1B446EEF00850F32 /* PBXContainerItemProxy */;
+		};
+		637431311B446FBD00850F32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 637431051B446B8000850F32 /* AppLibIOSEncryption */;
+			targetProxy = 637431301B446FBD00850F32 /* PBXContainerItemProxy */;
+		};
+		637431331B446FD400850F32 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 637431051B446B8000850F32 /* AppLibIOSEncryption */;
+			targetProxy = 637431321B446FD400850F32 /* PBXContainerItemProxy */;
 		};
 		637A56211B28B5B800239C64 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2245,11 +2423,6 @@
 			isa = PBXTargetDependency;
 			target = 633F41AF1B06264500F25662 /* AppLibScripture */;
 			targetProxy = 63BE1B371B0E43F70040F6D7 /* PBXContainerItemProxy */;
-		};
-		63BE1B3A1B0E43FD0040F6D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 633F42871B063CB500F25662 /* AppLibIOS */;
-			targetProxy = 63BE1B391B0E43FD0040F6D7 /* PBXContainerItemProxy */;
 		};
 		63BE1B3C1B0E440D0040F6D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2469,6 +2642,70 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = AppLibIOSCommonTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		637431181B446B8100850F32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AppLibIOSEncryption",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		637431191B446B8100850F32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AppLibIOSEncryption",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6374311B1B446B8100850F32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibIOSEncryptionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6374311C1B446B8100850F32 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AppLibIOSEncryptionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2801,6 +3038,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		637431171B446B8100850F32 /* Build configuration list for PBXNativeTarget "AppLibIOSEncryption" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				637431181B446B8100850F32 /* Debug */,
+				637431191B446B8100850F32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6374311A1B446B8100850F32 /* Build configuration list for PBXNativeTarget "AppLibIOSEncryptionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6374311B1B446B8100850F32 /* Debug */,
+				6374311C1B446B8100850F32 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		63BE1AEA1B0E3E390040F6D7 /* Build configuration list for PBXNativeTarget "AppIOSScripture" */ = {
 			isa = XCConfigurationList;

@@ -15,8 +15,11 @@ class Scripture {
     private var mWriter: ALSDisplayWriter?
     private var mScripture: AISScriptureFactoryIOS = AISScriptureFactoryIOS()
     private var mLastChapterRequested: Int?
+    private var mPopupHandler = AISPopupHandler()
+    var mCurrentBookGroup: String
     
     init() {
+        mCurrentBookGroup = ""
         mAppConfig = ALCAppConfig();
         mAppConfig.initConfig()
         var bundle = NSBundle.mainBundle()
@@ -48,10 +51,11 @@ class Scripture {
         if (success) {
             mLibrary.getConfig().initFontSize()
         }
-        
+
+        mWriter = getDisplayWriter()
+        AISPopupHandler_initWithALSAppLibrary_withALSDisplayWriter_(mPopupHandler, mLibrary, mWriter)
+
 //        if (success && mLibrary.getConfig().hasFeatureWithNSString(ALCCommonFeatureName_SPLASH_SCREEN_)) {
-            mWriter = getDisplayWriter()
-            
             ALSFactoryCommon_parseGlossaryWithALSBook_withALSDisplayWriter_(glossaryBook, mWriter)
             AISScriptureFactoryIOS_prepareChaptersWithALSDisplayWriter_withALSBook_withALSAppLibrary_(mWriter, book, mLibrary)
 //            mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book, withALSAppLibrary: mLibrary)
@@ -67,8 +71,6 @@ class Scripture {
             // using paths...
             if let bundlePath = bundle.resourcePath
             {
-//              var assetsPath = bundlePath + "/assets"
-//                var fullFilePath = assetsPath + "/" + lBook!.getFilename()
                 success = mScripture.loadBookFromAssetsFileWithALSBook(lBook!,  withALSAppLibrary: mLibrary)
                 mLibrary.setCurrentBookWithALSBook(lBook)
             }
@@ -76,7 +78,6 @@ class Scripture {
         }
         return (success, lBook)
     }
-    
 
     func loadConfig() {
         var bundle = NSBundle.mainBundle()
@@ -117,9 +118,7 @@ class Scripture {
     }
     
     func getHtmlForAnnotation(url: String) -> String {
-        var annotationHandler = AISAnnotationHandler()
-        AISAnnotationHandler_initWithALSAppLibrary_withALSDisplayWriter_(annotationHandler, mLibrary, mWriter)
-        var html = annotationHandler.shouldOverrideUrlLoadingWithNSString(url)
+        var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url)
         return html
     }
 
@@ -177,10 +176,24 @@ class Scripture {
         var previousChapterNumber = mLastChapterRequested! - 1
         return getChapter(previousChapterNumber)
     }
-
+/*
+    func getBookGroupString(book: ALSBook, Bool firstBook) -> (useString: Bool, bookGroupString: String) {
+        if (firstBook) {
+            mPopupHandler.
+        }
+        
+    }*/
     func getDisplayWriter() -> ALSDisplayWriter {
         var writer: ALSDisplayWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
         return writer
+    }
+    
+    func configHasFeature(feature: String) -> Bool {
+        return mLibrary.getConfig().hasFeatureWithNSString(feature)
+    }
+    
+    func getString(id : String) -> String {
+        return ALSFactoryCommon_getStringWithNSString_(id)
     }
     
     func stringToUtilList(strings: [String]) -> (JavaUtilList) {

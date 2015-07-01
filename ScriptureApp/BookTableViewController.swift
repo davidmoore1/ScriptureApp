@@ -9,8 +9,8 @@
 import UIKit
 
 class BookTableViewController: UITableViewController, UITableViewDelegate {
-    var mScripture: Scripture = Scripture()
-    var mSelectedIndex: NSIndexPath?
+    private var mScripture: Scripture = Scripture()
+    private var mSelectedIndex: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
