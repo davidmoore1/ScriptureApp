@@ -11,17 +11,13 @@ import Foundation
 class Scripture {
     private var mLibrary: ALSAppLibrary = ALSAppLibrary()
     private var mParser: ALSConfigParser?
-    private var mAppConfig: ALCAppConfig
     private var mWriter: ALSDisplayWriter?
     private var mScripture: AISScriptureFactoryIOS = AISScriptureFactoryIOS()
     private var mLastChapterRequested: Int?
     private var mPopupHandler = AISPopupHandler()
-    var mCurrentBookGroup: String
     
     init() {
-        mCurrentBookGroup = ""
-        mAppConfig = ALCAppConfig();
-        mAppConfig.initConfig()
+        mLibrary.getConfig().initConfig()
         var bundle = NSBundle.mainBundle()
         // using paths...
         if let bundlePath = bundle.resourcePath
@@ -34,7 +30,7 @@ class Scripture {
         if (mLibrary.getBookCollections().size() > 0) {
             mLibrary.clear()
         }
-        var success = false
+         var success = false
         var glossaryBook: ALSBook? = nil;
         loadConfig()
         var book : ALSBook? = ALSFactoryCommon_getBookToShowFirstWithALSAppLibrary_withNSString_(mLibrary, "")
@@ -176,13 +172,20 @@ class Scripture {
         var previousChapterNumber = mLastChapterRequested! - 1
         return getChapter(previousChapterNumber)
     }
-/*
-    func getBookGroupString(book: ALSBook, Bool firstBook) -> (useString: Bool, bookGroupString: String) {
+
+    func getBookGroupString(book: ALSBook, firstBook: Bool) -> (newGroup: Bool, bookGroupString: String) {
+        var success = false
         if (firstBook) {
-            mPopupHandler.
+            // Reset the current group if this is the initial call for this pass
+            mPopupHandler.setCurrentBookGroupWithNSString("")
         }
-        
-    }*/
+        var showBookGroupTitles = configHasFeature(ALSScriptureFeatureName_BOOK_GROUP_TITLES_)
+        var retString = mPopupHandler.getBookGroupStringWithALSBook(book, withBoolean: showBookGroupTitles)
+        if (retString != "") {
+            success = true
+        }
+        return (success, retString)
+    }
     func getDisplayWriter() -> ALSDisplayWriter {
         var writer: ALSDisplayWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
         return writer

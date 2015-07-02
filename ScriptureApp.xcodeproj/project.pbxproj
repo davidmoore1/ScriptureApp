@@ -119,6 +119,8 @@
 		6374312A1B446D1D00850F32 /* libFontManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431261B446D1D00850F32 /* libFontManager.a */; };
 		6374312D1B446EDD00850F32 /* libAppLibIOSEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */; };
 		637FA3A21B16675500082215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 637FA3A11B16675500082215 /* libz.dylib */; };
+		63A04B3E1B45B35800DBA91A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3D1B45B35800DBA91A /* Book.swift */; };
+		63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */; };
 		63BE1AE41B0E3E390040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1B3D1B0E441B0040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1BAE1B0FC9DF0040F6D7 /* FileUtilsCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1BAD1B0FC9DF0040F6D7 /* FileUtilsCommon.java */; };
@@ -500,7 +502,6 @@
 		633F41D11B0628A500F25662 /* Config.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Config.java; sourceTree = "<group>"; };
 		633F41D21B0628A500F25662 /* DefaultColors.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultColors.java; sourceTree = "<group>"; };
 		633F41D31B0628A500F25662 /* DefaultFeatures.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultFeatures.java; sourceTree = "<group>"; };
-		633F41D41B0628A500F25662 /* DefaultFeatures.java.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DefaultFeatures.java.orig; sourceTree = "<group>"; };
 		633F41D51B0628A500F25662 /* DefaultStrings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultStrings.java; sourceTree = "<group>"; };
 		633F41D61B0628A500F25662 /* DefaultStyles.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DefaultStyles.java; sourceTree = "<group>"; };
 		633F41D71B0628A500F25662 /* ScriptureFeatureName.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureFeatureName.java; sourceTree = "<group>"; };
@@ -512,7 +513,6 @@
 		633F41DE1B0628A500F25662 /* ContentsScreens.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsScreens.java; sourceTree = "<group>"; };
 		633F41DF1B0628A500F25662 /* LinkType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LinkType.java; sourceTree = "<group>"; };
 		633F41E11B0628A500F25662 /* AppLibrary.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AppLibrary.java; sourceTree = "<group>"; };
-		633F41E21B0628A500F25662 /* AppLibrary.java.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppLibrary.java.orig; sourceTree = "<group>"; };
 		633F41E31B0628A500F25662 /* AudioInfo.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AudioInfo.java; sourceTree = "<group>"; };
 		633F41E41B0628A500F25662 /* Book.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Book.java; sourceTree = "<group>"; };
 		633F41E51B0628A500F25662 /* BookCodes.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BookCodes.java; sourceTree = "<group>"; };
@@ -614,6 +614,8 @@
 		637431251B446D1D00850F32 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
 		637431261B446D1D00850F32 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFontManager.a; sourceTree = "<group>"; };
 		637FA3A11B16675500082215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		63A04B3D1B45B35800DBA91A /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		63BE1A701B0E36850040F6D7 /* prefixes.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prefixes.properties; sourceTree = "<group>"; };
 		63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppIOSScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BE1AE31B0E3E390040F6D7 /* AppIOSScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppIOSScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -919,7 +921,6 @@
 				633F41D11B0628A500F25662 /* Config.java */,
 				633F41D21B0628A500F25662 /* DefaultColors.java */,
 				633F41D31B0628A500F25662 /* DefaultFeatures.java */,
-				633F41D41B0628A500F25662 /* DefaultFeatures.java.orig */,
 				633F41D51B0628A500F25662 /* DefaultStrings.java */,
 				633F41D61B0628A500F25662 /* DefaultStyles.java */,
 				633F41D71B0628A500F25662 /* ScriptureFeatureName.java */,
@@ -945,7 +946,6 @@
 			isa = PBXGroup;
 			children = (
 				633F41E11B0628A500F25662 /* AppLibrary.java */,
-				633F41E21B0628A500F25662 /* AppLibrary.java.orig */,
 				633F41E31B0628A500F25662 /* AudioInfo.java */,
 				633F41E41B0628A500F25662 /* Book.java */,
 				633F41E51B0628A500F25662 /* BookCodes.java */,
@@ -1343,9 +1343,11 @@
 				630D5DB41B2A5CB5003915FE /* DetailViewController.swift */,
 				63DDFF361B0575C400B57DF7 /* Main.storyboard */,
 				633A591F1B39F1C9004550A1 /* BookTableViewController.swift */,
+				63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */,
 				633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */,
-				630D5DB21B29D5DA003915FE /* Scripture.swift */,
 				637430FA1B3DE21200850F32 /* AnnotationViewController.swift */,
+				630D5DB21B29D5DA003915FE /* Scripture.swift */,
+				63A04B3D1B45B35800DBA91A /* Book.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
 				63DDFF301B0575C400B57DF7 /* Supporting Files */,
@@ -2218,9 +2220,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63A04B3E1B45B35800DBA91A /* Book.swift in Sources */,
 				633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
 				633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */,
+				63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
 				637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */,
 				630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */,
@@ -3046,6 +3050,7 @@
 				637431191B446B8100850F32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6374311A1B446B8100850F32 /* Build configuration list for PBXNativeTarget "AppLibIOSEncryptionTests" */ = {
 			isa = XCConfigurationList;
@@ -3054,6 +3059,7 @@
 				6374311C1B446B8100850F32 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63BE1AEA1B0E3E390040F6D7 /* Build configuration list for PBXNativeTarget "AppIOSScripture" */ = {
 			isa = XCConfigurationList;

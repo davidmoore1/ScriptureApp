@@ -49,6 +49,7 @@
 #import "PopupHandler.h"
 #import "ScriptureConfigHandler.h"
 #import "ScriptureFeatureName.h"
+#import "ScriptureStringId.h"  // From ScriptureString.java
 #import "StringManager.h"
 #import "StringUtils.h"
 #import "XMLParser.h"
