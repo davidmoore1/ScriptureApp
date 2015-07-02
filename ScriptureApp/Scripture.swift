@@ -15,6 +15,7 @@ class Scripture {
     private var mScripture: AISScriptureFactoryIOS = AISScriptureFactoryIOS()
     private var mLastChapterRequested: Int?
     private var mPopupHandler = AISPopupHandler()
+    private var mBookArray = [[Book]]()
     
     init() {
         mLibrary.getConfig().initConfig()
@@ -56,6 +57,7 @@ class Scripture {
             AISScriptureFactoryIOS_prepareChaptersWithALSDisplayWriter_withALSBook_withALSAppLibrary_(mWriter, book, mLibrary)
 //            mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book, withALSAppLibrary: mLibrary)
 //        }
+        createBookArray()
     }
     
     func loadBook(book: ALSBook?) -> (success: Bool, book: ALSBook?) {
@@ -111,6 +113,38 @@ class Scripture {
             let filenames = contents as! [String]
             return (filenames, nil)
         }
+    }
+    
+    func createBookArray() {
+        var groupIndex = 0
+        var currentGroupString = ""
+        var groupNumber = 0
+        mBookArray.removeAll()
+        var bookArray = [Book]()
+        for (var i=0; i < numberOfBooks; i++) {
+            let book = getBook(i)
+            let bookGroupString = getBookGroupString(book!, firstBook: (i == 0))
+            if bookGroupString.newGroup {
+                if bookArray.count > 0 {
+                    mBookArray.append(bookArray)
+                    groupNumber++
+                    groupIndex = 0
+                    bookArray.removeAll()
+                }
+                currentGroupString = bookGroupString.bookGroupString
+            }
+            let bookForArray = Book(book: book, index: i, group: groupNumber, groupIndex: groupIndex, groupString: currentGroupString)
+            groupIndex++
+            bookArray.append(bookForArray)
+        }
+        if (bookArray.count > 0) {
+            mBookArray.append(bookArray)
+        }
+        
+    }
+    
+    func getBookArray() -> [[Book]] {
+        return mBookArray
     }
     
     func getHtmlForAnnotation(url: String) -> String {

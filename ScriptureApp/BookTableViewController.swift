@@ -11,7 +11,6 @@ import UIKit
 class BookTableViewController: UITableViewController, UITableViewDelegate {
     private var mScripture: Scripture = Scripture()
     private var mSelectedIndex: NSIndexPath?
-    private var books = [[Book]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,31 +21,6 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         mScripture.loadLibrary()
-        var groupIndex = 0
-        var currentGroupString = ""
-        var groupNumber = 0
-        books.removeAll()
-        var bookArray = [Book]()
-        for (var i=0; i<mScripture.numberOfBooks; i++) {
-            let book = mScripture.getBook(i)
-            let bookGroupString = mScripture.getBookGroupString(book!, firstBook: (i == 0))
-            if bookGroupString.newGroup {
-                if bookArray.count > 0 {
-                    books.append(bookArray)
-                    groupNumber++
-                    groupIndex = 0
-                    bookArray.removeAll()
-                }
-                currentGroupString = bookGroupString.bookGroupString
-            }
-            let bookForArray = Book(book: book, index: i, group: groupNumber, groupIndex: groupIndex, groupString: currentGroupString)
-            groupIndex++
-            bookArray.append(bookForArray)
-        }
-        if (bookArray.count > 0) {
-            books.append(bookArray)
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +33,7 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return books.count
+        return mScripture.getBookArray().count
     }
 
     private struct Storyboard {
@@ -68,14 +42,14 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return books[section].count
+        return mScripture.getBookArray()[section].count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! BookTableViewCell
 
         // Configure the cell...
-        cell.book = books[indexPath.section][indexPath.row]
+        cell.book = mScripture.getBookArray()[indexPath.section][indexPath.row]
         return cell
     }
 
