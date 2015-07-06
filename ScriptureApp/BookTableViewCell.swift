@@ -23,6 +23,7 @@ class BookTableViewCell: UITableViewCell {
         } else {
             mGroupLabel?.text = ""
         }
-        mBookLabel?.text = book?.mBook!.getName()
+        mBookLabel?.text = book?.getName()
+        contentView.backgroundColor = book?.getBackgroundColor()
     }
 }

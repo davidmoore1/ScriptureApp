@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 David Moore. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class Scripture {
+public class Scripture {
     private var mLibrary: ALSAppLibrary = ALSAppLibrary()
     private var mParser: ALSConfigParser?
     private var mWriter: ALSDisplayWriter?
@@ -59,7 +59,16 @@ class Scripture {
 //        }
         createBookArray()
     }
-    
+
+    func loadBook(book: Book?) -> (success: Bool, book: Book?) {
+        var success = false
+        var lBook = book;
+        if (lBook != nil) {
+            var results = loadBook(lBook!.mBook)
+            success = results.success
+        }
+        return (success, lBook)
+    }
     func loadBook(book: ALSBook?) -> (success: Bool, book: ALSBook?) {
         var success = false
 
@@ -72,7 +81,6 @@ class Scripture {
                 success = mScripture.loadBookFromAssetsFileWithALSBook(lBook!,  withALSAppLibrary: mLibrary)
                 mLibrary.setCurrentBookWithALSBook(lBook)
             }
-            
         }
         return (success, lBook)
     }
@@ -133,7 +141,7 @@ class Scripture {
                 }
                 currentGroupString = bookGroupString.bookGroupString
             }
-            let bookForArray = Book(book: book, index: i, group: groupNumber, groupIndex: groupIndex, groupString: currentGroupString)
+            let bookForArray = Book(scripture: self, book: book, index: i, group: groupNumber, groupIndex: groupIndex, groupString: currentGroupString)
             groupIndex++
             bookArray.append(bookForArray)
         }
@@ -151,12 +159,21 @@ class Scripture {
         var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url)
         return html
     }
-
+    
     func numberOfChaptersInBook(book: ALSBook?) -> Int {
         // if config has feature hide empty chapters
         var retVal = -1
         if (book != nil) {
             retVal = Int(book!.getChapters().size())
+        }
+        return retVal
+    }
+
+    func numberOfChaptersInBook(book: Book?) -> Int {
+        // if config has feature hide empty chapters
+        var retVal = -1
+        if (book != nil) {
+            retVal = numberOfChaptersInBook(book!.mBook)
         }
         return retVal
     }
@@ -220,6 +237,7 @@ class Scripture {
         }
         return (success, retString)
     }
+   
     func getDisplayWriter() -> ALSDisplayWriter {
         var writer: ALSDisplayWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
         return writer
@@ -227,6 +245,16 @@ class Scripture {
     
     func configHasFeature(feature: String) -> Bool {
         return mLibrary.getConfig().hasFeatureWithNSString(feature)
+    }
+    
+    func getConfig() -> ALSConfig {
+        return mLibrary.getConfig()
+    }
+    
+    func useListView() -> Bool {
+        var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
+        var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption)
+        return isList
     }
     
     func getString(id : String) -> String {

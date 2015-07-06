@@ -106,7 +106,7 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
                 switch identifier {
                 case "ShowChapters" :
                     verseTVC.mScripture = mScripture
-                    verseTVC.mSelectedBookIndex = mSelectedIndex!.section
+                    verseTVC.mSelectedBook = mScripture.getBookArray()[mSelectedIndex!.section][mSelectedIndex!.row]
                 default: break
                 }
             }

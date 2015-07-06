@@ -17,13 +17,12 @@ extension UISplitViewController {
 
 class VerseTableViewController: UITableViewController {
     var mSelectedIndex: NSIndexPath?
-    var mSelectedBook: ALSBook?
+    var mSelectedBook: Book?
     var mScripture: Scripture?
-    var mSelectedBookIndex: Int?
+    var mSelectedBookIndex: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mSelectedBook = mScripture!.getBook(mSelectedBookIndex!)
         var success = false
         (success, mSelectedBook) = mScripture!.loadBook(mSelectedBook)
         // Uncomment the following line to preserve selection between presentations
