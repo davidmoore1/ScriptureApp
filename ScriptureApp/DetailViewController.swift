@@ -19,8 +19,6 @@ class DetailViewController: UIViewController, UIWebViewDelegate, UIPopoverPresen
     }
     var mScripture: Scripture? = nil
     private var mAnnotationHtml: String = ""
-
-    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var mWebView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +45,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate, UIPopoverPresen
         // Dispose of any resources that can be recreated.
     }
     private struct Constants {
+        static let SearchRequest = "SearchRequest"
         static let AnnotationSeque = "Annotation"
     }
     
@@ -92,6 +91,11 @@ class DetailViewController: UIViewController, UIWebViewDelegate, UIPopoverPresen
                     }
                     tvc.html = mAnnotationHtml
                 }
+            case Constants.SearchRequest:
+                if let tvc = segue.destinationViewController.contentViewController as? SearchSelectViewController {
+                    tvc.mScripture = mScripture
+                }
+                
             default: break
             }
         }

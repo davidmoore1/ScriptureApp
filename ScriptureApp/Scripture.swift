@@ -85,6 +85,22 @@ public class Scripture {
         return (success, lBook)
     }
 
+    func getLibrary() -> (ALSAppLibrary) {
+        return mLibrary
+    }
+    func getDisplayWriter() -> ALSDisplayWriter {
+        var writer: ALSDisplayWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
+        return writer
+    }
+    func getConfig() -> ALSConfig {
+        return mLibrary.getConfig()
+    }
+    func getBookArray() -> [[Book]] {
+        return mBookArray
+    }
+    func getFactory() -> AISScriptureFactoryIOS {
+        return mScripture
+    }
     func loadConfig() {
         var bundle = NSBundle.mainBundle()
         
@@ -149,10 +165,6 @@ public class Scripture {
             mBookArray.append(bookArray)
         }
         
-    }
-    
-    func getBookArray() -> [[Book]] {
-        return mBookArray
     }
     
     func getHtmlForAnnotation(url: String) -> String {
@@ -237,19 +249,11 @@ public class Scripture {
         }
         return (success, retString)
     }
-   
-    func getDisplayWriter() -> ALSDisplayWriter {
-        var writer: ALSDisplayWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
-        return writer
-    }
     
     func configHasFeature(feature: String) -> Bool {
         return mLibrary.getConfig().hasFeatureWithNSString(feature)
     }
     
-    func getConfig() -> ALSConfig {
-        return mLibrary.getConfig()
-    }
     
     func useListView() -> Bool {
         var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)

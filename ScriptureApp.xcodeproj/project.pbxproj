@@ -1346,6 +1346,7 @@
 				63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */,
 				633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */,
 				637430FA1B3DE21200850F32 /* AnnotationViewController.swift */,
+				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 				630D5DB21B29D5DA003915FE /* Scripture.swift */,
 				63A04B3D1B45B35800DBA91A /* Book.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
@@ -1353,7 +1354,6 @@
 				63DDFF301B0575C400B57DF7 /* Supporting Files */,
 				63DD00231B05850000B57DF7 /* appLibCommon-Bridging-Header.h */,
 				63DDFF6E1B05784D00B57DF7 /* AppConfig.xcconfig */,
-				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 			);
 			path = ScriptureApp;
 			sourceTree = "<group>";

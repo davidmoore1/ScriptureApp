@@ -53,6 +53,7 @@
 #import "ScriptureConfigHandler.h"
 #import "ScriptureFeatureName.h"
 #import "ScriptureStringId.h"  // From ScriptureString.java
+#import "SearchHandler.h"
 #import "StringManager.h"
 #import "StringUtils.h"
 #import "StyleName.h"
