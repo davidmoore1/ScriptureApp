@@ -107,13 +107,16 @@
 		6347D5F81B3850120065B075 /* FileManagerCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F71B3850120065B075 /* FileManagerCommon.java */; };
 		6347D5FB1B38538D0065B075 /* libAppLibIOSCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */; };
 		6359B3C71B1E4A9400F3FC2F /* IOSFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */; };
+		637286841B4D6C28009316A4 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637286831B4D6C28009316A4 /* SearchTableViewController.swift */; };
+		637286861B4D6D37009316A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637286851B4D6D37009316A4 /* Constants.swift */; };
+		637286881B4D703E009316A4 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637286871B4D703E009316A4 /* SearchTableViewCell.swift */; };
 		637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637430FA1B3DE21200850F32 /* AnnotationViewController.swift */; };
 		637430FD1B42D3EC00850F32 /* SearchHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 637430FC1B42D3EC00850F32 /* SearchHandler.java */; };
 		637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637430FE1B43324C00850F32 /* SearchSelectViewController.swift */; };
 		637431011B4457B000850F32 /* PopupHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 637431001B4457B000850F32 /* PopupHandler.java */; };
 		637431111B446B8100850F32 /* libAppLibIOSEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */; };
 		6374311E1B446C7400850F32 /* AppLibIOSEnc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */; };
-		637431271B446D1D00850F32 /* BaseEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431201B446D1D00850F32 /* BaseEncryption.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		637431271B446D1D00850F32 /* BaseEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431201B446D1D00850F32 /* BaseEncryption.m */; };
 		637431281B446D1D00850F32 /* c.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431221B446D1D00850F32 /* c.m */; };
 		637431291B446D1D00850F32 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431241B446D1D00850F32 /* Encryption.m */; };
 		6374312A1B446D1D00850F32 /* libFontManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431261B446D1D00850F32 /* libFontManager.a */; };
@@ -221,7 +224,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods -g ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods -use-arc -g ${INPUT_FILE_PATH};\n";
 		};
 		6347D5DE1B375F050065B075 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -232,7 +235,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g -use-arc --no-class-methods ${INPUT_FILE_PATH};\n";
 		};
 		63BE1B341B0E43760040F6D7 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -243,7 +246,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g -use-arc --no-class-methods ${INPUT_FILE_PATH};\n";
 		};
 		63DD001F1B057AD100B57DF7 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -254,7 +257,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods -use-arc ${INPUT_FILE_PATH};\n";
 		};
 /* End PBXBuildRule section */
 
@@ -577,7 +580,6 @@
 		633F42281B0628A500F25662 /* TimingValidator.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TimingValidator.java; sourceTree = "<group>"; };
 		633F422A1B0628A500F25662 /* BaseWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BaseWriter.java; sourceTree = "<group>"; };
 		633F422B1B0628A500F25662 /* DisplayWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DisplayWriter.java; sourceTree = "<group>"; };
-		633F422C1B0628A500F25662 /* DisplayWriter.java.orig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DisplayWriter.java.orig; sourceTree = "<group>"; };
 		633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ScriptureConfigWriter.java; sourceTree = "<group>"; };
 		633F42881B063CB500F25662 /* libAppLibIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F42921B063CB500F25662 /* AppLibIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -597,6 +599,9 @@
 		6347D5F71B3850120065B075 /* FileManagerCommon.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FileManagerCommon.java; sourceTree = "<group>"; };
 		6359B3C51B1E4A9400F3FC2F /* IOSFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSFactory.h; sourceTree = "<group>"; };
 		6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSFactory.m; sourceTree = "<group>"; };
+		637286831B4D6C28009316A4 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		637286851B4D6D37009316A4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		637286871B4D703E009316A4 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		637430FA1B3DE21200850F32 /* AnnotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationViewController.swift; sourceTree = "<group>"; };
 		637430FC1B42D3EC00850F32 /* SearchHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SearchHandler.java; sourceTree = "<group>"; };
 		637430FE1B43324C00850F32 /* SearchSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSelectViewController.swift; sourceTree = "<group>"; };
@@ -1079,7 +1084,6 @@
 			children = (
 				633F422A1B0628A500F25662 /* BaseWriter.java */,
 				633F422B1B0628A500F25662 /* DisplayWriter.java */,
-				633F422C1B0628A500F25662 /* DisplayWriter.java.orig */,
 				633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */,
 			);
 			path = writer;
@@ -1347,6 +1351,9 @@
 				633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */,
 				637430FA1B3DE21200850F32 /* AnnotationViewController.swift */,
 				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
+				637286831B4D6C28009316A4 /* SearchTableViewController.swift */,
+				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
+				637286851B4D6D37009316A4 /* Constants.swift */,
 				630D5DB21B29D5DA003915FE /* Scripture.swift */,
 				63A04B3D1B45B35800DBA91A /* Book.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
@@ -2221,12 +2228,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A04B3E1B45B35800DBA91A /* Book.swift in Sources */,
+				637286861B4D6D37009316A4 /* Constants.swift in Sources */,
 				633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
 				633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */,
 				63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
 				637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */,
+				637286841B4D6C28009316A4 /* SearchTableViewController.swift in Sources */,
+				637286881B4D703E009316A4 /* SearchTableViewCell.swift in Sources */,
 				630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */,
 				630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */,
 			);

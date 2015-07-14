@@ -13,11 +13,12 @@ public class Scripture {
     private var mParser: ALSConfigParser?
     private var mWriter: ALSDisplayWriter?
     private var mScripture: AISScriptureFactoryIOS = AISScriptureFactoryIOS()
-    private var mLastChapterRequested: Int?
     private var mPopupHandler = AISPopupHandler()
-    private var mBookArray = [[Book]]()
+    private var mBookArray: [[Book]]?
+    private var mCurrentBook: Book?
     
     init() {
+        mScripture.setLibraryWithALSAppLibrary(mLibrary)
         mLibrary.getConfig().initConfig()
         var bundle = NSBundle.mainBundle()
         // using paths...
@@ -50,13 +51,13 @@ public class Scripture {
         }
 
         mWriter = getDisplayWriter()
-        AISPopupHandler_initWithALSAppLibrary_withALSDisplayWriter_(mPopupHandler, mLibrary, mWriter)
+        AISPopupHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(mPopupHandler, mLibrary, mWriter, mScripture)
+        mPopupHandler.initBookPopup()
 
-//        if (success && mLibrary.getConfig().hasFeatureWithNSString(ALCCommonFeatureName_SPLASH_SCREEN_)) {
+        if (success && mLibrary.getConfig().hasFeatureWithNSString(ALCCommonFeatureName_SPLASH_SCREEN_)) {
             ALSFactoryCommon_parseGlossaryWithALSBook_withALSDisplayWriter_(glossaryBook, mWriter)
-            AISScriptureFactoryIOS_prepareChaptersWithALSDisplayWriter_withALSBook_withALSAppLibrary_(mWriter, book, mLibrary)
-//            mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book, withALSAppLibrary: mLibrary)
-//        }
+            mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book)
+        }
         createBookArray()
     }
 
@@ -70,36 +71,42 @@ public class Scripture {
         return (success, lBook)
     }
     func loadBook(book: ALSBook?) -> (success: Bool, book: ALSBook?) {
-        var success = false
-
-        var lBook = book;
-        if (lBook != nil)    {
-            var bundle = NSBundle.mainBundle()
-            // using paths...
-            if let bundlePath = bundle.resourcePath
-            {
-                success = mScripture.loadBookFromAssetsFileWithALSBook(lBook!,  withALSAppLibrary: mLibrary)
-                mLibrary.setCurrentBookWithALSBook(lBook)
-            }
-        }
-        return (success, lBook)
+        var success = mScripture.loadBookWithALSBook(book)
+        return (success, book)
     }
-
+    func updateCurrentBook(book: Book?) {
+        mCurrentBook = book
+        mScripture.updateCurrentBookWithALSBook(book!.mBook)
+    }
+    private func getALSBook(bookIndex: Int) -> ALSBook? {
+        let jintIndex = Int32(bookIndex)
+        let retBook  = mLibrary.getMainBookCollection().getBooks().getWithInt(jintIndex) as! ALSBook
+        return retBook
+    }  
+    func getCurrentBook() -> Book? {
+        return mCurrentBook
+    }
     func getLibrary() -> (ALSAppLibrary) {
         return mLibrary
     }
     func getDisplayWriter() -> ALSDisplayWriter {
-        var writer: ALSDisplayWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
-        return writer
+        if (mWriter == nil) {
+            mWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
+        }
+        return mWriter!
     }
     func getConfig() -> ALSConfig {
         return mLibrary.getConfig()
     }
-    func getBookArray() -> [[Book]] {
-        return mBookArray
-    }
     func getFactory() -> AISScriptureFactoryIOS {
         return mScripture
+    }
+    func getHtml(text: String) -> String {
+        var retString = ""
+        var htmlLinks = ALSLinks()
+        ALSLinks_init(htmlLinks)
+        retString = mWriter!.getHtmlForFootnoteWithNSString(text, withALSLinks: htmlLinks)
+        return retString
     }
     func loadConfig() {
         var bundle = NSBundle.mainBundle()
@@ -143,14 +150,19 @@ public class Scripture {
         var groupIndex = 0
         var currentGroupString = ""
         var groupNumber = 0
-        mBookArray.removeAll()
+        if (mBookArray == nil) {
+            mBookArray = [[Book]]()
+        }
+        else {
+            mBookArray!.removeAll()
+        }
         var bookArray = [Book]()
         for (var i=0; i < numberOfBooks; i++) {
-            let book = getBook(i)
+            let book = getALSBook(i)
             let bookGroupString = getBookGroupString(book!, firstBook: (i == 0))
             if bookGroupString.newGroup {
                 if bookArray.count > 0 {
-                    mBookArray.append(bookArray)
+                    mBookArray!.append(bookArray)
                     groupNumber++
                     groupIndex = 0
                     bookArray.removeAll()
@@ -162,80 +174,52 @@ public class Scripture {
             bookArray.append(bookForArray)
         }
         if (bookArray.count > 0) {
-            mBookArray.append(bookArray)
+            mBookArray!.append(bookArray)
         }
         
     }
-    
+    func getBookArray() -> [[Book]] {
+        if (mBookArray == nil) {
+            createBookArray()
+        }
+        return mBookArray!
+    }
+    func clearBookArray() {
+        if (mBookArray != nil) {
+            mBookArray!.removeAll()
+        }
+        mBookArray = nil
+    }
+    func findBookInArray(book: ALSBook) -> Book? {
+        var bookArray: [[Book]] = getBookArray()
+        for (var i = 0; i < bookArray.count; i++){
+            for (var j=0; j < bookArray[i].count; i++) {
+                if bookArray[i][j].sameBook(book) {
+                    return bookArray[i][j]
+                }
+            }
+        }
+        return nil
+    }
+    func findBookFromResult(result: ALSSearchResult) -> Book? {
+        var reference = result.getReference()
+        var retBook: Book? = nil
+        if let alsBook = mLibrary.getMainBookCollection().getBookWithNSString(reference.getBookId()) {
+            retBook = findBookInArray(alsBook)
+        }
+        return retBook
+    }
     func getHtmlForAnnotation(url: String) -> String {
         var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url)
         return html
     }
     
-    func numberOfChaptersInBook(book: ALSBook?) -> Int {
-        // if config has feature hide empty chapters
-        var retVal = -1
-        if (book != nil) {
-            retVal = Int(book!.getChapters().size())
-        }
-        return retVal
-    }
-
-    func numberOfChaptersInBook(book: Book?) -> Int {
-        // if config has feature hide empty chapters
-        var retVal = -1
-        if (book != nil) {
-            retVal = numberOfChaptersInBook(book!.mBook)
-        }
-        return retVal
-    }
     var numberOfBooks: Int {
         get {
             return Int(mLibrary.getMainBookCollection().getBooks().size())
         }
     }
     
-    func getBook(bookIndex: Int) -> ALSBook? {
-        let jintIndex = Int32(bookIndex)
-        let retBook  = mLibrary.getMainBookCollection().getBooks().getWithInt(jintIndex) as! ALSBook
-        return retBook
-    }
-    
-    func getCurrentBook() -> ALSBook? {
-        return mLibrary.getCurrentBook()
-    }
-    
-    func getChapter(chapterNumber: Int) -> (success: Bool, chapter: String?) {
-        var success = false
-        var chapterString : String? = nil
-        if ((chapterNumber <= numberOfChaptersInBook(mLibrary.getCurrentBook())) && (chapterNumber > 0)) {
-            mLastChapterRequested = chapterNumber
-            var iChapterNumber:CInt = CInt(chapterNumber)
-            chapterString = AISScriptureFactoryIOS_getChapterWithALSDisplayWriter_withALSBook_withALSAppLibrary_withInt_(mWriter, mLibrary.getCurrentBook(), mLibrary, iChapterNumber)
-            success = true
-        }
-        return (success, chapterString)
-    }
-    
-    func getFormattedBookChapter() -> String {
-        var bookName = getCurrentBook()?.getName()
-        return bookName! + " " + String(mLastChapterRequested!)
-        
-    }
-    func getCurrentChapterNumber() -> Int? {
-        return mLastChapterRequested
-    }
-   
-    func getNextChapter() -> (success: Bool, chapter: String?) {
-        var nextChapterNumber = mLastChapterRequested! + 1
-        return getChapter(nextChapterNumber)
-    }
-
-    func getPreviousChapter() -> (success: Bool, chapter: String?) {
-        var previousChapterNumber = mLastChapterRequested! - 1
-        return getChapter(previousChapterNumber)
-    }
-
     func getBookGroupString(book: ALSBook, firstBook: Bool) -> (newGroup: Bool, bookGroupString: String) {
         var success = false
         if (firstBook) {
@@ -254,7 +238,26 @@ public class Scripture {
         return mLibrary.getConfig().hasFeatureWithNSString(feature)
     }
     
-    
+    func goToReference(book: Book?, chapterNumber: Int, webView: UIWebView) -> Bool {
+        var success: Bool = false
+        if (book != nil) {
+            mScripture.loadBookIfNotAlreadyWithALSBook(book!.mBook)
+            updateCurrentBook(book)
+            if (chapterNumber > 0) {
+                var result = book!.getChapter(chapterNumber)
+                success = result.success
+                if (result.success) {
+                    webView.loadHTMLString(result.chapter, baseURL: nil)
+                }
+            }
+        }
+        return success
+    }
+    func goToVerse(verseNumber: String, webView: UIWebView) -> String? {
+        var javaString = "document.getElementById('" + verseNumber + "').scrollIntoView(true);"
+        let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
+        return result
+    }
     func useListView() -> Bool {
         var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
         var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption)

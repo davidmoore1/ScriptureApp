@@ -21,6 +21,9 @@ class VerseTableViewController: UITableViewController {
     var mScripture: Scripture?
     var mSelectedBookIndex: NSIndexPath?
     
+    @IBAction func backButtonClicked(sender: AnyObject) {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         var success = false
@@ -49,19 +52,18 @@ class VerseTableViewController: UITableViewController {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         var retVal = 1;
-        let numberOfChapters = mScripture?.numberOfChaptersInBook(mSelectedBook)
+        let numberOfChapters = mSelectedBook!.numberOfChapters()
         if (numberOfChapters > 0) {
-            retVal = numberOfChapters!
+            retVal = numberOfChapters
         }
         return retVal
     }
 
     private struct Storyboard {
-        static let CellReuseIdentifier = "Verse"
-    }
+     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.VerseCellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
         var chapterNumber = indexPath.row + 1
@@ -72,8 +74,7 @@ class VerseTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("You selected cell number: \(indexPath.row)!")
         mSelectedIndex = indexPath
-        self.splitViewController?.toggleMasterView()
-        self.performSegueWithIdentifier("DisplayChapter", sender: self)
+        self.performSegueWithIdentifier(Constants.DisplayChapterSeque, sender: self)
     }
 
     /*
@@ -120,17 +121,12 @@ class VerseTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if let ivc = segue.destinationViewController.contentViewController as? DetailViewController {
             if let identifier = segue.identifier {
-                var chapterHTML: String? = nil
-                var success: Bool = false
                 switch identifier {
-                case "DisplayChapter" :
+                case Constants.DisplayChapterSeque :
                     ivc.mScripture = mScripture
-                    var chapterNumber = mSelectedIndex!.row + 1
-                    (success, chapterHTML) = mScripture!.getChapter(chapterNumber)
-                    ivc.navigationItem.title = mScripture!.getFormattedBookChapter()
-                    if (success) {
-                        ivc.html = chapterHTML!
-                    }
+                    ivc.mSelectedBook = mSelectedBook
+                    ivc.mSelectedVerse = ""
+                    ivc.mSelectedChapter = mSelectedIndex!.row + 1
                     
                 default: break
                 }

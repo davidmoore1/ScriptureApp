@@ -65,13 +65,6 @@ J2OBJC_FIELD_SETTER(ALCUBaseEncryption, mKey_, NSString *)
   return nil;
 }
 
-- (void)dealloc {
-  RELEASE_(charsetName_);
-  RELEASE_(algorithm_);
-  RELEASE_(mKey_);
-  [super dealloc];
-}
-
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
     { "initWithNSString:", "BaseEncryption", NULL, 0x1, NULL, NULL },

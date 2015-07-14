@@ -9,9 +9,12 @@
 import UIKit
 
 class BookTableViewController: UITableViewController, UITableViewDelegate {
-    private var mScripture: Scripture = Scripture()
+    var mScripture: Scripture?
     private var mSelectedIndex: NSIndexPath?
     
+    @IBAction func backButtonClicked(sender: UIBarButtonItem) {
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +23,6 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        mScripture.loadLibrary()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,30 +35,27 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return mScripture.getBookArray().count
+        return mScripture!.getBookArray().count
     }
 
-    private struct Storyboard {
-        static let CellReuseIdentifier = "Book"
-    }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return mScripture.getBookArray()[section].count
+        return mScripture!.getBookArray()[section].count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! BookTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(Constants.BookReuseIdentifier, forIndexPath: indexPath) as! BookTableViewCell
 
         // Configure the cell...
-        cell.book = mScripture.getBookArray()[indexPath.section][indexPath.row]
+        cell.book = mScripture!.getBookArray()[indexPath.section][indexPath.row]
         return cell
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         NSLog("You selected cell number: \(indexPath.row)!")
         mSelectedIndex = indexPath
-        self.performSegueWithIdentifier("ShowChapters", sender: self)
+        self.performSegueWithIdentifier(Constants.ShowChaptersSeque, sender: self)
     }
     
     /*
@@ -104,9 +103,9 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
         if let verseTVC = segue.destinationViewController.contentViewController as? VerseTableViewController {
             if let identifier = segue.identifier {
                 switch identifier {
-                case "ShowChapters" :
+                case Constants.ShowChaptersSeque :
                     verseTVC.mScripture = mScripture
-                    verseTVC.mSelectedBook = mScripture.getBookArray()[mSelectedIndex!.section][mSelectedIndex!.row]
+                    verseTVC.mSelectedBook = mScripture!.getBookArray()[mSelectedIndex!.section][mSelectedIndex!.row]
                 default: break
                 }
             }

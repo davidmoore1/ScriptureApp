@@ -103,6 +103,7 @@
     }
     
     NSData *myData = [NSData dataWithBytes:(const void *)bufferPtr length:(NSUInteger)movedBytes];
+    free(bufferPtr);
     return myData;
 }
 

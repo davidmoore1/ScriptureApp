@@ -21,4 +21,4 @@ HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_D
 // In your own project, change this to your actual path that contains java code.
 JAVA_SOURCE_PATH = ${SRCROOT}/../app-builders/source/common/app-lib-common/src;
 
-CLANG_ENABLE_OBJC_ARC = NO
+//CLANG_ENABLE_OBJC_ARC = NO

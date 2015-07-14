@@ -26,4 +26,12 @@ class BookTableViewCell: UITableViewCell {
         mBookLabel?.text = book?.getName()
         contentView.backgroundColor = book?.getBackgroundColor()
     }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
 }

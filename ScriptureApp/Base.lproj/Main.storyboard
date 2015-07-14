@@ -44,14 +44,20 @@
                             <outlet property="delegate" destination="dGd-cd-1Na" id="MvH-OT-R8B"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="QQ4-hE-cXq"/>
+                    <navigationItem key="navigationItem" id="QQ4-hE-cXq">
+                        <barButtonItem key="leftBarButtonItem" title="❮ Back" id="XDa-35-qCd">
+                            <connections>
+                                <action selector="backButtonClicked:" destination="dGd-cd-1Na" id="IQr-Ss-vds"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <segue destination="2Qb-aj-Pv8" kind="show" identifier="ShowChapters" id="kxP-oK-CUk"/>
+                        <segue destination="2Qb-aj-Pv8" kind="presentation" identifier="ShowChapters" modalPresentationStyle="formSheet" id="kxP-oK-CUk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVA-eG-zMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="277" y="1021"/>
+            <point key="canvasLocation" x="-525" y="1817"/>
         </scene>
         <!--Verse Table View Controller-->
         <scene sceneID="c62-ze-i2V">
@@ -82,14 +88,20 @@
                             <outlet property="delegate" destination="299-jK-5Jb" id="9SA-em-v7B"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9tU-EN-kCS"/>
+                    <navigationItem key="navigationItem" id="9tU-EN-kCS">
+                        <barButtonItem key="leftBarButtonItem" title="❮ Book" id="Jf5-2j-Djg">
+                            <connections>
+                                <action selector="backButtonClicked:" destination="299-jK-5Jb" id="ftx-Jl-IXq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="lO4-JO-C94" kind="showDetail" identifier="DisplayChapter" id="QL9-dg-YNf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBb-xu-D2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642" y="1043"/>
+            <point key="canvasLocation" x="267" y="1812"/>
         </scene>
         <!--Annotation View Controller-->
         <scene sceneID="OkU-P2-FL9">
@@ -123,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5b-va-fzj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1787" y="1847"/>
+            <point key="canvasLocation" x="2803" y="1217"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="53P-fr-5YK">
@@ -159,7 +171,7 @@
                     <navigationItem key="navigationItem" id="yrl-o2-rc2">
                         <barButtonItem key="leftBarButtonItem" title="Select" id="3E3-jg-USC">
                             <connections>
-                                <segue destination="T6f-Cr-MWR" kind="show" id="Zq0-jL-Dbb"/>
+                                <segue destination="T6f-Cr-MWR" kind="presentation" identifier="SelectBook" modalPresentationStyle="formSheet" id="Zq0-jL-Dbb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic_action_search_light" id="IlK-De-cFi">
@@ -177,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbR-YR-mD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="1840"/>
+            <point key="canvasLocation" x="1762" y="36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fWc-gc-Rvb">
@@ -211,7 +223,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tvi-Q0-VLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="1028"/>
+            <point key="canvasLocation" x="267" y="1000"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vdK-B9-xts">
@@ -229,7 +241,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XOM-H0-EyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="1790"/>
+            <point key="canvasLocation" x="2091" y="1960"/>
         </scene>
         <!--Search Select View Controller-->
         <scene sceneID="xbT-z5-XeY">
@@ -288,11 +300,79 @@
                         <outlet property="matchSwitch" destination="TLV-Fa-Eeg" id="Tc1-PE-1Ry"/>
                         <outlet property="navBar" destination="y7e-ps-Xak" id="C6F-2u-IAc"/>
                         <outlet property="searchBar" destination="CUB-SY-dzj" id="KvS-PC-Jm7"/>
+                        <segue destination="w1E-nJ-YDA" kind="presentation" identifier="SearchResults" id="qpb-Sh-CCg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4o-8E-ydZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121" y="2540"/>
+            <point key="canvasLocation" x="2621" y="-380"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="4a4-i4-iLG">
+            <objects>
+                <tableViewController id="di3-Rh-DpY" customClass="SearchTableViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="7k3-Rj-Mfx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="hOV-re-Qzp">
+                            <rect key="frame" x="0.0" y="221" width="600" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Search" rowHeight="135" id="nBU-6H-wRY" customClass="SearchTableViewCell" customModule="ScriptureApp" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nBU-6H-wRY" id="PmY-Xc-byB">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <webView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbS-1H-Fcu">
+                                            <rect key="frame" x="8" y="37" width="584" height="89"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </webView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2y-AK-mmE">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="pbS-1H-Fcu" secondAttribute="bottom" id="Gyw-SI-VUa"/>
+                                        <constraint firstItem="v2y-AK-mmE" firstAttribute="top" secondItem="PmY-Xc-byB" secondAttribute="topMargin" id="cC1-Ka-DZd"/>
+                                        <constraint firstItem="pbS-1H-Fcu" firstAttribute="leading" secondItem="PmY-Xc-byB" secondAttribute="leadingMargin" id="g2V-R3-Epz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="v2y-AK-mmE" secondAttribute="trailing" id="lmt-dr-Wv4"/>
+                                        <constraint firstItem="v2y-AK-mmE" firstAttribute="leading" secondItem="PmY-Xc-byB" secondAttribute="leadingMargin" id="pUB-EC-eda"/>
+                                        <constraint firstItem="pbS-1H-Fcu" firstAttribute="top" secondItem="v2y-AK-mmE" secondAttribute="bottom" constant="8" symbolic="YES" id="rGc-kJ-ib7"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pbS-1H-Fcu" secondAttribute="trailing" id="vbf-Gd-gsH"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellWebView" destination="pbS-1H-Fcu" id="rWR-Cd-o7F"/>
+                                    <outlet property="referenceLabel" destination="v2y-AK-mmE" id="MhP-BO-A1t"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="di3-Rh-DpY" id="aYE-xN-Qqw"/>
+                            <outlet property="delegate" destination="di3-Rh-DpY" id="Lfp-fg-XvL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="tGK-nE-xxf">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="gor-zK-gsS">
+                            <connections>
+                                <action selector="closeClicked:" destination="di3-Rh-DpY" id="koM-uW-blt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="hOV-re-Qzp" id="HKO-5y-uuJ"/>
+                        <outlet property="mCloseButton" destination="gor-zK-gsS" id="DFh-EN-d1G"/>
+                        <segue destination="lO4-JO-C94" kind="show" identifier="SearchShowDetail" id="Lua-DG-n0x"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3no-kD-hBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3481" y="384"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rHb-50-F8I">
@@ -310,13 +390,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNb-W3-jId" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-530" y="1840"/>
+            <point key="canvasLocation" x="982" y="36"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aad-Be-EGc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w1E-nJ-YDA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NVm-sQ-KKz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="di3-Rh-DpY" kind="relationship" relationship="rootViewController" id="s3R-cD-P7f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pZ-pG-ajf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3457" y="-380"/>
         </scene>
     </scenes>
     <resources>
         <image name="ic_action_search_light" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Lua-DG-n0x"/>
         <segue reference="Qyc-7w-zQt"/>
     </inferredMetricsTieBreakers>
 </document>

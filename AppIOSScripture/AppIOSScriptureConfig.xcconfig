@@ -27,6 +27,6 @@ HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_D
 JAVA_SOURCE_PATH = ${SRCROOT}/../app-builders/source/scripture/app-ios-scripture/src;
 JAVA_COMMON_SOURCE_PATH = ${SRCROOT}/../app-builders/source/common/app-lib-common/src:${SRCROOT}/../app-builders/source/scripture/app-lib-scripture/src:${SRCROOT}/../app-builders/source/common/app-ios-common/src;
 
-CLANG_ENABLE_OBJC_ARC = NO
+//CLANG_ENABLE_OBJC_ARC = NO
 
 JAVA_CLASS_PATH = "${JAVA_SOURCE_PATH}:${JAVA_COMMON_SOURCE_PATH}:"

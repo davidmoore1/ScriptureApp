@@ -15,6 +15,7 @@ public class Book {
     var mGroupIndex: Int?
     var mBookGroupString: String?
     var mScripture: Scripture?
+    private var mLastChapterRequested: Int
     
     public init (scripture: Scripture?, book: ALSBook?, index: Int?, group: Int?, groupIndex: Int?, groupString: String?) {
         mScripture = scripture
@@ -23,6 +24,7 @@ public class Book {
         mGroup = group
         mGroupIndex = groupIndex
         mBookGroupString = groupString
+        mLastChapterRequested = 0
     }
     func getBackgroundColor() -> UIColor {
         var style = mScripture!.useListView() ? ALSStyleName_UI_BOOK_BUTTON_LIST_ : ALSStyleName_UI_BOOK_BUTTON_GRID_
@@ -30,7 +32,7 @@ public class Book {
         var colorTheme = mScripture!.getConfig().getCurrentColorTheme()
         var returnColorString = mScripture!.getConfig().getStylePropertyColorValueWithNSString(style, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
         if ALCStringUtils_isNotBlankWithNSString_(currentBookSubGroup) {
-            var backgroundStringColor = mScripture!.getConfig().getColorDefs().getColorStringFromNameWithNSString(currentBookSubGroup, withNSString: colorTheme)
+            var backgroundStringColor = mScripture!.getConfig().getBookColorDefs().getColorStringFromNameWithNSString(currentBookSubGroup, withNSString: colorTheme)
             if ALCStringUtils_isNotBlankWithNSString_(backgroundStringColor) {
                 returnColorString = backgroundStringColor
             }
@@ -46,7 +48,55 @@ public class Book {
     func getName() -> String {
         return mBook!.getName()
     }
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+
+    func numberOfChapters() -> Int {
+        // if config has feature hide empty chapters
+        var retVal = -1
+        if (mBook != nil) {
+            retVal = Int(mBook!.getChapters().size())
+        }
+        return retVal
+    }
+    
+    func getChapter(chapterNumber: Int) -> (success: Bool, chapter: String?) {
+        var success = false
+        var chapterString : String? = nil
+        if ((chapterNumber <= numberOfChapters()) && (chapterNumber > 0)) {
+            mLastChapterRequested = chapterNumber
+            var iChapterNumber:CInt = CInt(chapterNumber)
+            chapterString = mScripture!.getFactory().getChapterWithALSDisplayWriter(mScripture!.getDisplayWriter(), withALSBook: mScripture!.getLibrary().getCurrentBook(), withInt: iChapterNumber)
+            success = true
+        }
+        return (success, chapterString)
+    }
+    func getCurrentChapterNumber() -> Int? {
+        return mLastChapterRequested
+    }
+    func getNextChapter(webView: UIWebView) -> Bool {
+        var nextChapterNumber = mLastChapterRequested + 1
+        return mScripture!.goToReference(self, chapterNumber: nextChapterNumber, webView: webView)
+    }
+    func getPreviousChapter(webView: UIWebView) -> Bool {
+        var previousChapterNumber = mLastChapterRequested - 1
+        return mScripture!.goToReference(self, chapterNumber: previousChapterNumber, webView: webView)
+    }
+    func setLastChapter(chapterNumber: Int) {
+        mLastChapterRequested = chapterNumber
+    }
+    
+    func getFormattedBookChapter() -> String {
+        var bookName = getName()
+        return bookName + " " + String(getCurrentChapterNumber()!)
+    }
+    
+    func sameBook(book: ALSBook) -> Bool {
+        return book == mBook
+    }
+    private func runJavascript(jscript: String, webView: UIWebView) {
+        webView.stringByEvaluatingJavaScriptFromString(jscript)
+    }
+    
+    private func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
