@@ -65,7 +65,7 @@ public class Scripture {
         var success = false
         var lBook = book;
         if (lBook != nil) {
-            var results = loadBook(lBook!.mBook)
+            var results = loadBook(lBook!.getALSBook())
             success = results.success
         }
         return (success, lBook)
@@ -76,9 +76,9 @@ public class Scripture {
     }
     func updateCurrentBook(book: Book?) {
         mCurrentBook = book
-        mScripture.updateCurrentBookWithALSBook(book!.mBook)
+        mScripture.updateCurrentBookWithALSBook(book!.getALSBook())
     }
-    private func getALSBook(bookIndex: Int) -> ALSBook? {
+    private func getALSBookFromCollection(bookIndex: Int) -> ALSBook? {
         let jintIndex = Int32(bookIndex)
         let retBook  = mLibrary.getMainBookCollection().getBooks().getWithInt(jintIndex) as! ALSBook
         return retBook
@@ -158,7 +158,7 @@ public class Scripture {
         }
         var bookArray = [Book]()
         for (var i=0; i < numberOfBooks; i++) {
-            let book = getALSBook(i)
+            let book = getALSBookFromCollection(i)
             let bookGroupString = getBookGroupString(book!, firstBook: (i == 0))
             if bookGroupString.newGroup {
                 if bookArray.count > 0 {
@@ -241,9 +241,15 @@ public class Scripture {
     func goToReference(book: Book?, chapterNumber: Int, webView: UIWebView) -> Bool {
         var success: Bool = false
         if (book != nil) {
-            mScripture.loadBookIfNotAlreadyWithALSBook(book!.mBook)
+            mScripture.loadBookIfNotAlreadyWithALSBook(book!.getALSBook())
             updateCurrentBook(book)
-            if (chapterNumber > 0) {
+            if (book!.hasIntroduction() && chapterNumber == 0) {
+                var result = book!.getIntroduction()
+                success = result.success
+                if (result.success) {
+                    webView.loadHTMLString(result.chapter, baseURL: nil)
+                }
+            } else if (chapterNumber > 0) {
                 var result = book!.getChapter(chapterNumber)
                 success = result.success
                 if (result.success) {
@@ -258,6 +264,30 @@ public class Scripture {
         let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
         return result
     }
+    func highlightVerse(verseNumber: String, webView: UIWebView) -> String? {
+        var backColor = mLibrary.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_TEXT_HIGHLIGHTING_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
+        var javaString = "(function colorElement(id) { "
+        javaString += "var i = 0; "
+        // Get first matching element
+        javaString += "var el = document.getElementById(id); " +
+            
+            // If not found, try with 'a' after it
+            "if (!el) {" +
+            "  el = document.getElementById(id + 'a'); " +
+            "}" +
+            
+            // For each matching element, change background color.
+            "while (el) {" +
+            "  el.style.backgroundColor = '" + backColor + "';" +
+            "  i++;" +
+            "  el = document.getElementById(id + '+' + i); " +
+            "}" +
+            
+            " })('" + verseNumber + "')"
+        let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
+        return result
+    }
+    
     func useListView() -> Bool {
         var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
         var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption)

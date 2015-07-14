@@ -56,18 +56,22 @@ class VerseTableViewController: UITableViewController {
         if (numberOfChapters > 0) {
             retVal = numberOfChapters
         }
+        if (mSelectedBook!.hasIntroduction()) {
+            retVal++
+        }
         return retVal
     }
 
-    private struct Storyboard {
-     }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.VerseCellReuseIdentifier, forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
-        var chapterNumber = indexPath.row + 1
-        cell.textLabel?.text =  String(chapterNumber)
+        if (indexPath.row == 0) {
+            cell.textLabel?.text = mSelectedBook!.hasIntroduction() ? mScripture!.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_) : "1"
+        } else {
+            var chapterNumber = mSelectedBook!.hasIntroduction() ? indexPath.row : indexPath.row + 1
+            cell.textLabel?.text =  String(chapterNumber)
+        }
         return cell
     }
     
@@ -126,7 +130,7 @@ class VerseTableViewController: UITableViewController {
                     ivc.mScripture = mScripture
                     ivc.mSelectedBook = mSelectedBook
                     ivc.mSelectedVerse = ""
-                    ivc.mSelectedChapter = mSelectedIndex!.row + 1
+                    ivc.mSelectedChapter = mSelectedBook!.hasIntroduction() ? mSelectedIndex!.row : mSelectedIndex!.row + 1
                     
                 default: break
                 }

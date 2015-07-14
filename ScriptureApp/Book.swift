@@ -9,7 +9,7 @@
 import UIKit
 
 public class Book {
-    var mBook: ALSBook?
+    private var mBook: ALSBook?
     var mIndex: Int?
     var mGroup: Int?
     var mGroupIndex: Int?
@@ -48,7 +48,12 @@ public class Book {
     func getName() -> String {
         return mBook!.getName()
     }
-
+    func getAbbrevName() -> String {
+        return mBook!.getAbbrevName()
+    }
+    func getALSBook() -> ALSBook? {
+        return mBook
+    }
     func numberOfChapters() -> Int {
         // if config has feature hide empty chapters
         var retVal = -1
@@ -69,6 +74,16 @@ public class Book {
         }
         return (success, chapterString)
     }
+    func getIntroduction() -> (success: Bool, chapter: String?) {
+        var success = false
+        var chapterString : String? = nil
+        if (hasIntroduction()) {
+            mLastChapterRequested = 0
+            chapterString = mScripture!.getFactory().getIntroductionWithALSDisplayWriter(mScripture!.getDisplayWriter(), withALSBook: mBook)
+            success = true
+        }
+        return (success, chapterString)
+    }
     func getCurrentChapterNumber() -> Int? {
         return mLastChapterRequested
     }
@@ -85,10 +100,17 @@ public class Book {
     }
     
     func getFormattedBookChapter() -> String {
-        var bookName = getName()
-        return bookName + " " + String(getCurrentChapterNumber()!)
+        var retString = getName()
+        if (getCurrentChapterNumber() == 0) {
+            retString = retString + " " + mScripture!.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
+        } else {
+            retString = retString + " " + String(getCurrentChapterNumber()!)
+        }
+        return retString
     }
-    
+    func hasIntroduction() -> Bool {
+        return mBook!.hasIntroduction()
+    }
     func sameBook(book: ALSBook) -> Bool {
         return book == mBook
     }

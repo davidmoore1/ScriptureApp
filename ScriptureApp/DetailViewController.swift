@@ -88,7 +88,8 @@ class DetailViewController: UIViewController, UIWebViewDelegate, UIPopoverPresen
     func webViewDidFinishLoad(webView: UIWebView) {
         if mSelectedVerse != "" {
             var result = mScripture!.goToVerse(mSelectedVerse, webView: mWebView)
-//            NSLog("Bad verse navigation: \(mSelectedVerse)!: \(result)")
+            result = mScripture!.highlightVerse(mSelectedVerse, webView: mWebView)
+            mSelectedVerse = ""
         }
     }
 
