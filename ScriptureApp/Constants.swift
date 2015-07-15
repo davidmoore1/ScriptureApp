@@ -19,4 +19,9 @@ public struct Constants {
     static let BookReuseIdentifier = "Book"
     static let VerseCellReuseIdentifier = "Verse"
     static let SearchCellReuseIdentifier = "Search"
+    static let AboutSeque = "about"
+    static let TextSizeSeque = "text size"
+    static let UP_ARROW = "▴"
+    static let SELECT_BOOK_IDENTIFIER = "selectBook"
+    static let SELECT_CHAPTER_IDENTIFIER = "selectChapter"
 }

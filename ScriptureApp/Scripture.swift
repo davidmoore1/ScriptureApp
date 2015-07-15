@@ -274,6 +274,11 @@ public class Scripture {
         let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
         return result
     }
+    func popup(webView: UIWebView) -> String? {
+        var javaString = "window.alert('Hello there');"
+        let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
+        return result
+    }
     func highlightVerse(verseNumber: String, webView: UIWebView) -> String? {
         var backColor = mLibrary.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_TEXT_HIGHLIGHTING_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
         var javaString = "(function colorElement(id) { "

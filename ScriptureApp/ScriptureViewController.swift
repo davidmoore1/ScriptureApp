@@ -10,16 +10,13 @@ import UIKit
 
 class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     
-    struct Constants {
-        static let UP_ARROW = "▴"
-        static let SELECT_BOOK_IDENTIFIER = "selectBook"
-        static let SELECT_CHAPTER_IDENTIFIER = "selectChapter"
-    }
-    
     let scripture = Scripture()
     var scrollOffsetPrevious = CGPointZero
     var scrollOffsetNext = CGPointZero
     var scrollOffsetLoad = CGPointZero
+    var point = CGPointZero
+    private var mAnnotationHtml: String = ""
+    private var annotationWaiting: Bool = false
     
     @IBOutlet var tap: UITapGestureRecognizer!
     @IBOutlet var leftSwipe: UISwipeGestureRecognizer!
@@ -103,10 +100,16 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     override func viewDidLoad() {
         webView.delegate = self
         tap.delegate = self
+        let singleTapSelector : Selector = "single:"
+        let singleTap = UITapGestureRecognizer(target: self, action: singleTapSelector)
+        singleTap.numberOfTapsRequired = 1
+        singleTap.requireGestureRecognizerToFail(tap)
+        singleTap.delegate = self
         
         webView.addGestureRecognizer(leftSwipe)
         webView.addGestureRecognizer(rightSwipe)
         webView.addGestureRecognizer(tap)
+        webView.addGestureRecognizer(singleTap)
         
         scripture.loadConfig()
         scripture.loadLibrary()
@@ -126,35 +129,49 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     @IBAction func handleTap(sender: UITapGestureRecognizer) {
         toggleFullscreen()
     }
-
+    @IBAction func single(sender:UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            if annotationWaiting {
+                point = sender.locationInView(webView)
+                self.performSegueWithIdentifier(Constants.AnnotationSeque, sender: self)
+            }
+        }
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
-            if identifier == Constants.SELECT_BOOK_IDENTIFIER {
+            switch identifier {
+            case Constants.SELECT_BOOK_IDENTIFIER:
                 let vc = segue.destinationViewController as! BookCollectionViewController
                 vc.popoverPresentationController?.delegate = self
                 vc.sectionBooks = scripture.getBookArray().map { $0.map { self.getBookName($0) } }
                 vc.sectionHeadings = scripture.getBookArray().map { $0.first!.mBookGroupString! }
-            }
-            if identifier == Constants.SELECT_CHAPTER_IDENTIFIER {
+            case Constants.SELECT_CHAPTER_IDENTIFIER:
                 let vc = segue.destinationViewController as! ChapterCollectionViewController
                 vc.popoverPresentationController?.delegate = self
                 vc.chapters = scripture.getCurrentBook()?.numberOfChapters() ?? 0
                 vc.introduction = scripture.getCurrentBook()?.hasIntroduction() ?? false
-            }
-            if identifier == "about" {
+            case Constants.AboutSeque:
                 let vc = segue.destinationViewController as! UIViewController
                 vc.popoverPresentationController?.delegate = self
-            }
-            if identifier == "search" {
+            case Constants.SearchRequest :
                 let nav = segue.destinationViewController as! UINavigationController
                 let vc = nav.topViewController as! SearchViewController
                 vc.rootNavigationController = navigationController
-            }
-            if identifier == "text size" {
+            case Constants.TextSizeSeque:
                 let vc = segue.destinationViewController as! TextSizeViewController
                 vc.popoverPresentationController?.delegate = vc
+            case Constants.AnnotationSeque:
+                if let tvc = segue.destinationViewController.contentViewController as? AnnotationViewController {
+                    if let ppc = tvc.popoverPresentationController {
+                        ppc.delegate = self
+                        tvc.modalPresentationStyle = UIModalPresentationStyle.Popover
+                        ppc.sourceRect = CGRect(x: point.x, y: point.y, width: 3, height: 3)
+                    }
+                    tvc.html = mAnnotationHtml
+                }
+            default: break
             }
-        }
+       }
         
     }
     
@@ -166,11 +183,34 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         return UINavigationController(rootViewController: controller.presentedViewController)
     }
-    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        if (annotationWaiting) {
+            annotationWaiting = false
+            return UIModalPresentationStyle.None
+        }
+        return UIModalPresentationStyle.CurrentContext
+    }
     func dismiss() {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if navigationType == UIWebViewNavigationType.LinkClicked {
+            let url = request.URL!.absoluteString
+            mAnnotationHtml = scripture.getHtmlForAnnotation(url!)
+            if !mAnnotationHtml.isEmpty {
+                annotationWaiting = true
+                return false
+            }
+        }
+        return true
+    }
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch = touches.first as! UITouch
+        point = touch.locationInView(self.view)
+        let pointY = point.y
+        let pointX = point.x
+        super.touchesEnded(touches, withEvent: event)
+    }
     func webViewDidFinishLoad(webView: UIWebView) {
         webView.scrollView.setContentOffset(scrollOffsetLoad, animated: false)
     }
@@ -193,8 +233,6 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     @IBAction func selectIntroduction(segue: UIStoryboardSegue) {
         chapterNumber = 0
     }
-    
-
 }
 
 extension Scripture {
@@ -223,4 +261,13 @@ extension Scripture {
         }
     }
     
+}
+
+extension UIViewController {
+    var contentViewController: UIViewController {
+        if let navcon = self as? UINavigationController {
+            return navcon.visibleViewController
+        }
+        return self
+    }
 }

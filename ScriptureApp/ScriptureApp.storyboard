@@ -83,6 +83,9 @@
                         <outlet property="rightSwipe" destination="nW5-Wg-ebb" id="bo1-FO-aXB"/>
                         <outlet property="tap" destination="SvN-Yc-Btf" id="d7y-n9-RlB"/>
                         <outlet property="webView" destination="JkE-JE-rV8" id="zn1-cA-BzE"/>
+                        <segue destination="Ccb-qX-h2p" kind="popoverPresentation" identifier="Annotation" popoverAnchorView="c6h-EM-VRZ" id="p7M-EI-Una">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Joq-ux-RDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,7 +105,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1178" y="421"/>
+            <point key="canvasLocation" x="1194" y="435"/>
         </scene>
         <!--Chapter-->
         <scene sceneID="JpS-5z-uLa">
@@ -217,7 +220,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-Mt-o9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7qT-us-CFJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="1214"/>
+            <point key="canvasLocation" x="1194" y="1220"/>
         </scene>
         <!--Search-->
         <scene sceneID="LKT-Md-qyf">
@@ -456,6 +459,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ma-LR-H4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1890" y="97"/>
+        </scene>
+        <!--Annotation View Controller-->
+        <scene sceneID="atY-Mm-ytf">
+            <objects>
+                <viewController wantsFullScreenLayout="YES" id="Ccb-qX-h2p" customClass="AnnotationViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="acl-ee-MCW"/>
+                        <viewControllerLayoutGuide type="bottom" id="jhS-CC-Wmz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fkm-NF-Kfp">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-eg-cqi">
+                                <rect key="frame" x="0.0" y="-71" width="600" height="355"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LIk-eg-cqi" firstAttribute="top" secondItem="acl-ee-MCW" secondAttribute="bottom" constant="8" symbolic="YES" id="VxD-v5-L2l"/>
+                            <constraint firstItem="jhS-CC-Wmz" firstAttribute="top" secondItem="LIk-eg-cqi" secondAttribute="bottom" constant="8" symbolic="YES" id="nbu-uz-Yb9"/>
+                            <constraint firstItem="LIk-eg-cqi" firstAttribute="leading" secondItem="Fkm-NF-Kfp" secondAttribute="leadingMargin" id="rWb-Oi-XlL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LIk-eg-cqi" secondAttribute="trailing" id="yYs-AJ-CtE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uM2-P2-Q4l">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="1Bj-hP-o9G">
+                            <connections>
+                                <action selector="donePushed:" destination="Ccb-qX-h2p" id="rTb-b7-p29"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="200"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="200"/>
+                    <connections>
+                        <outlet property="mAnnotationWebView" destination="LIk-eg-cqi" id="KYN-4f-muA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tB4-CL-szF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1982" y="1543"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

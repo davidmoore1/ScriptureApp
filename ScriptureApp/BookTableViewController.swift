@@ -113,11 +113,3 @@ class BookTableViewController: UITableViewController, UITableViewDelegate {
     }
 }
 
-extension UIViewController {
-    var contentViewController: UIViewController {
-        if let navcon = self as? UINavigationController {
-            return navcon.visibleViewController
-        }
-        return self
-    }
-}
