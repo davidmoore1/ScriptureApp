@@ -98,7 +98,35 @@ public class Book {
     func setLastChapter(chapterNumber: Int) {
         mLastChapterRequested = chapterNumber
     }
+    func canGetChapter(number: Int) -> Bool {
+        var lowThreshold = hasIntroduction() ? -1 : 0
+        if let chapter = getCurrentChapterNumber() {
+            var success = (number <= numberOfChapters()) && (number > lowThreshold)
+            return success
+        } else {
+            return false
+        }
+    }
     
+/*    func canGetNextChapter() -> Bool {
+        if let chapter = getCurrentChapterNumber() {
+            let success = getNextChapter()
+            getChapter(chapter)
+            return success
+        } else {
+            return false
+        }
+    }
+    
+    func canGetPreviousChapter() -> Bool {
+        if let chapter = getCurrentChapterNumber() {
+            let (success, _) = getPreviousChapter()
+            getChapter(chapter)
+            return success
+        } else {
+            return false
+        }
+    }*/
     func getFormattedBookChapter() -> String {
         var retString = getName()
         if (getCurrentChapterNumber() == 0) {

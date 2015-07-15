@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VCD-yX-cj2">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scripture View Controller-->
+        <scene sceneID="CRV-53-uTR">
+            <objects>
+                <viewController id="MIN-0G-K8i" customClass="ScriptureViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dHI-1j-iYs"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bix-gH-kiF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c6h-EM-VRZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JkE-JE-rV8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JkE-JE-rV8" firstAttribute="leading" secondItem="c6h-EM-VRZ" secondAttribute="leading" id="34Q-qi-oSh"/>
+                            <constraint firstItem="JkE-JE-rV8" firstAttribute="bottom" secondItem="Bix-gH-kiF" secondAttribute="top" id="aYN-nR-EIf"/>
+                            <constraint firstAttribute="trailing" secondItem="JkE-JE-rV8" secondAttribute="trailing" id="pSS-yU-917"/>
+                            <constraint firstItem="JkE-JE-rV8" firstAttribute="top" secondItem="c6h-EM-VRZ" secondAttribute="top" id="qfr-Wi-FMj"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="Book" id="byx-u2-Jve">
+                            <connections>
+                                <segue destination="Ozf-vf-dGa" kind="popoverPresentation" identifier="selectBook" popoverAnchorBarButtonItem="byx-u2-Jve" id="kQa-zd-9aV">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Chapter" id="fum-dW-XAT">
+                            <connections>
+                                <segue destination="yEC-Zm-3JY" kind="popoverPresentation" identifier="selectChapter" popoverAnchorBarButtonItem="fum-dW-XAT" id="hkY-ap-PkI">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dxY-kY-QQj"/>
+                        <barButtonItem systemItem="play" id="I49-xc-a0a"/>
+                        <barButtonItem systemItem="search" id="wFt-BN-iIt">
+                            <connections>
+                                <segue destination="b7v-1i-b2O" kind="show" identifier="search" id="nbt-RN-EXU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="αA" id="omh-Ea-pAX">
+                            <connections>
+                                <segue destination="Xbe-i7-TBz" kind="popoverPresentation" identifier="text size" popoverAnchorBarButtonItem="omh-Ea-pAX" id="y5N-XN-Xtb">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" id="Nwg-3r-oUM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="agK-LM-5mC">
+                                <rect key="frame" x="553" y="5" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vcR-Pn-BrY" kind="popoverPresentation" identifier="about" popoverAnchorView="agK-LM-5mC" id="J9p-CE-Iw6">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="LBa-yB-2hF"/>
+                    <connections>
+                        <outlet property="bookButton" destination="byx-u2-Jve" id="mEF-p5-Zwo"/>
+                        <outlet property="chapterButton" destination="fum-dW-XAT" id="lyS-Bl-liD"/>
+                        <outlet property="leftSwipe" destination="78x-85-YKT" id="JQV-11-3ua"/>
+                        <outlet property="rightSwipe" destination="nW5-Wg-ebb" id="bo1-FO-aXB"/>
+                        <outlet property="tap" destination="SvN-Yc-Btf" id="d7y-n9-RlB"/>
+                        <outlet property="webView" destination="JkE-JE-rV8" id="zn1-cA-BzE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Joq-ux-RDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="SvN-Yc-Btf">
+                    <connections>
+                        <action selector="handleTap:" destination="MIN-0G-K8i" id="aP8-4D-2Vm"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="78x-85-YKT">
+                    <connections>
+                        <action selector="handleLeftSwipe:" destination="MIN-0G-K8i" id="Sj6-tr-ShI"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="nW5-Wg-ebb">
+                    <connections>
+                        <action selector="handleRightSwipe:" destination="MIN-0G-K8i" id="o1E-wR-FcI"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1178" y="421"/>
+        </scene>
+        <!--Chapter-->
+        <scene sceneID="JpS-5z-uLa">
+            <objects>
+                <collectionViewController id="yEC-Zm-3JY" customClass="ChapterCollectionViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Pnc-Bt-YTh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sYI-PA-FTr">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChapterButtonCell" id="2df-BX-dBH" customClass="ChapterCollectionViewCell" customModule="ScriptureApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3u-9G-VIf" customClass="ChapterButton" customModule="ScriptureApp" customModuleProvider="target">
+                                            <rect key="frame" x="-2" y="10" width="55" height="30"/>
+                                            <state key="normal" title="Chapter">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="selectChapter:" destination="yEC-Zm-3JY" eventType="touchUpInside" id="oGn-wB-3mn"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="s3u-9G-VIf" firstAttribute="centerY" secondItem="2df-BX-dBH" secondAttribute="centerY" id="5AO-1l-a3N"/>
+                                    <constraint firstItem="s3u-9G-VIf" firstAttribute="centerX" secondItem="2df-BX-dBH" secondAttribute="centerX" id="zOX-Re-ncT"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="button" destination="s3u-9G-VIf" id="3uT-fN-H0z"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IntroductionCell" id="FmO-23-o4s" customClass="IntroductionCollectionReusableView" customModule="ScriptureApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UA-F4-m9k">
+                                    <rect key="frame" x="8" y="8" width="584" height="34"/>
+                                    <state key="normal" title="Introduction">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="selectIntroduction:" destination="yEC-Zm-3JY" eventType="touchUpInside" id="91D-eo-VIs"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="5UA-F4-m9k" firstAttribute="bottom" secondItem="FmO-23-o4s" secondAttribute="bottomMargin" id="949-Vb-3h9"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="5UA-F4-m9k" secondAttribute="trailing" id="Oh2-pR-H28"/>
+                                <constraint firstItem="5UA-F4-m9k" firstAttribute="top" secondItem="FmO-23-o4s" secondAttribute="topMargin" id="huB-oa-6fS"/>
+                                <constraint firstItem="5UA-F4-m9k" firstAttribute="leading" secondItem="FmO-23-o4s" secondAttribute="leadingMargin" id="veT-x1-YVa"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="button" destination="5UA-F4-m9k" id="LsD-3T-Ls2"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="yEC-Zm-3JY" id="ayk-2o-bvd"/>
+                            <outlet property="delegate" destination="yEC-Zm-3JY" id="63y-Oi-h0a"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Chapter" id="BPN-Lm-QZh">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="adD-h9-bqB">
+                            <connections>
+                                <segue destination="kR5-Dk-NHg" kind="unwind" identifier="" unwindAction="cancelToScriptureViewController:" id="Jbl-iA-fcF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="kR5-Dk-NHg" kind="unwind" identifier="unwindChapter" unwindAction="selectChapter:" id="iQ0-jK-9s5"/>
+                        <segue destination="kR5-Dk-NHg" kind="unwind" identifier="unwindIntroduction" unwindAction="selectIntroduction:" id="dK6-UA-9Bk"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5a-6w-m9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kR5-Dk-NHg" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="474" y="765"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="kAu-pR-yfH">
+            <objects>
+                <viewController id="vcR-Pn-BrY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8DI-P7-cIh"/>
+                        <viewControllerLayoutGuide type="bottom" id="VE7-hf-UcI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p5a-VX-tjY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="rEI-Ep-LAc">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Jk5-Eo-aQM">
+                            <connections>
+                                <segue destination="7qT-us-CFJ" kind="unwind" unwindAction="cancelToScriptureViewController:" id="og6-4q-G30"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-Mt-o9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7qT-us-CFJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="1214"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="LKT-Md-qyf">
+            <objects>
+                <viewController id="i9B-PW-TPA" customClass="SearchViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mnh-4S-92I"/>
+                        <viewControllerLayoutGuide type="bottom" id="cpx-Qv-uOl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x7s-bQ-viN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="hLH-f3-FDF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBk-gF-Fz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2583" y="97"/>
+        </scene>
+        <!--Text Size View Controller-->
+        <scene sceneID="zzT-J8-MiC">
+            <objects>
+                <viewController id="Xbe-i7-TBz" customClass="TextSizeViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CCk-xW-s56"/>
+                        <viewControllerLayoutGuide type="bottom" id="jah-es-HME"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Kt-cS-xhf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9GW-Xz-xze">
+                                <rect key="frame" x="14" y="28" width="572" height="31"/>
+                            </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Kra-bX-Lwr">
+                                <rect key="frame" x="16" y="66" width="568" height="29"/>
+                                <segments>
+                                    <segment title="Plain"/>
+                                    <segment title="Sepia"/>
+                                    <segment title="Dark"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9GW-Xz-xze" firstAttribute="leading" secondItem="2Kt-cS-xhf" secondAttribute="leadingMargin" id="6sb-1l-2wZ"/>
+                            <constraint firstItem="9GW-Xz-xze" firstAttribute="top" secondItem="CCk-xW-s56" secondAttribute="bottom" constant="8" id="Czk-fb-kzn"/>
+                            <constraint firstItem="Kra-bX-Lwr" firstAttribute="leading" secondItem="2Kt-cS-xhf" secondAttribute="leadingMargin" id="Jlg-xU-AFe"/>
+                            <constraint firstItem="Kra-bX-Lwr" firstAttribute="top" secondItem="9GW-Xz-xze" secondAttribute="bottom" constant="8" id="cID-XK-9yf"/>
+                            <constraint firstItem="Kra-bX-Lwr" firstAttribute="trailing" secondItem="2Kt-cS-xhf" secondAttribute="trailingMargin" id="tBn-Vb-q2u"/>
+                            <constraint firstItem="9GW-Xz-xze" firstAttribute="trailing" secondItem="2Kt-cS-xhf" secondAttribute="trailingMargin" id="uu3-DC-VVu"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EGa-4S-7BO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1890" y="765"/>
+        </scene>
+        <!--Book-->
+        <scene sceneID="sfg-39-VQD">
+            <objects>
+                <collectionViewController id="Ozf-vf-dGa" customClass="BookCollectionViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="hN7-mR-Mer">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="olL-Jo-Pqf">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookButtonCell" id="w4p-sw-GlP" customClass="BookCollectionViewCell" customModule="ScriptureApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOi-oA-e3f" customClass="BookButton" customModule="ScriptureApp" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                            <state key="normal" title="Book">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="selectBook:" destination="Ozf-vf-dGa" eventType="touchUpInside" id="XGJ-4W-6Be"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="vOi-oA-e3f" firstAttribute="top" secondItem="w4p-sw-GlP" secondAttribute="topMargin" id="0Zx-Ju-RTj"/>
+                                    <constraint firstItem="vOi-oA-e3f" firstAttribute="leading" secondItem="w4p-sw-GlP" secondAttribute="leadingMargin" id="31p-nJ-v8d"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="vOi-oA-e3f" secondAttribute="bottom" id="MbI-rn-TNV"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="vOi-oA-e3f" secondAttribute="trailing" id="QXR-sh-nPg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="button" destination="vOi-oA-e3f" id="OFP-Th-7VA"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookSectionHeadingCell" id="We2-18-dSz" customClass="BookSectionCollectionReusableView" customModule="ScriptureApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPW-Er-eDM">
+                                    <rect key="frame" x="8" y="8" width="584" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="qPW-Er-eDM" firstAttribute="top" secondItem="We2-18-dSz" secondAttribute="topMargin" id="Hru-sk-cKa"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="qPW-Er-eDM" secondAttribute="trailing" id="pll-cz-uYe"/>
+                                <constraint firstItem="qPW-Er-eDM" firstAttribute="leading" secondItem="We2-18-dSz" secondAttribute="leadingMargin" id="x9E-Nd-E3X"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="qPW-Er-eDM" secondAttribute="bottom" id="zpq-uD-0zM"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="label" destination="qPW-Er-eDM" id="Sf0-c7-8N1"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="Ozf-vf-dGa" id="3mx-dc-aJp"/>
+                            <outlet property="delegate" destination="Ozf-vf-dGa" id="kal-ke-evt"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Book" id="9pT-NN-pZv">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vM4-25-2DT">
+                            <connections>
+                                <segue destination="o8f-GC-51E" kind="unwind" unwindAction="cancelToScriptureViewController:" id="Z3z-jp-Chn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="o8f-GC-51E" kind="unwind" identifier="unwindBook" unwindAction="selectBook:" id="ju5-Kx-gqP"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPS-De-i5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="o8f-GC-51E" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="474" y="71"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mvC-6t-gxM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" toolbarHidden="NO" id="VCD-yX-cj2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lSV-rC-HTO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LPo-X2-yTK">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="MIN-0G-K8i" kind="relationship" relationship="rootViewController" id="8ps-HV-QLR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIm-y7-xGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="-341"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ADi-D9-uG2">
+            <objects>
+                <navigationController storyboardIdentifier="chapterSelectionNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="uDg-ir-gry" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ymQ-uL-F3t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yEC-Zm-3JY" kind="relationship" relationship="rootViewController" id="qbZ-oy-HfT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6Q-hL-lph" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="765"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PzB-i5-cAU">
+            <objects>
+                <navigationController storyboardIdentifier="bookSelectionNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="1g0-8u-krC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f3E-1l-YGM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ozf-vf-dGa" kind="relationship" relationship="rootViewController" id="P6G-iU-ahg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kgr-H6-izB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="71"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J1F-pY-3Pz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="haE-dt-RwR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ynz-I2-wyL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vcR-Pn-BrY" kind="relationship" relationship="rootViewController" id="KfA-Ag-ESp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l8j-oh-EO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="474" y="1492"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hdS-qJ-Pa7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b7v-1i-b2O" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I3a-ua-1mm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="i9B-PW-TPA" kind="relationship" relationship="rootViewController" id="k0B-s6-Ez5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ma-LR-H4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1890" y="97"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J9p-CE-Iw6"/>
+        <segue reference="hkY-ap-PkI"/>
+        <segue reference="kQa-zd-9aV"/>
+    </inferredMetricsTieBreakers>
+</document>

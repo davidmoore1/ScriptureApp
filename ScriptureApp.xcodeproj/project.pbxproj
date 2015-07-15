@@ -124,6 +124,12 @@
 		637FA3A21B16675500082215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 637FA3A11B16675500082215 /* libz.dylib */; };
 		63A04B3E1B45B35800DBA91A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3D1B45B35800DBA91A /* Book.swift */; };
 		63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */; };
+		63B8E2981B55797C002DC672 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */; };
+		63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */; };
+		63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2941B55797C002DC672 /* ScriptureViewController.swift */; };
+		63B8E29B1B55797C002DC672 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2951B55797C002DC672 /* SearchViewController.swift */; };
+		63B8E29D1B55797C002DC672 /* TextSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2971B55797C002DC672 /* TextSizeViewController.swift */; };
+		63B8E29F1B569A78002DC672 /* ScriptureApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */; };
 		63BE1AE41B0E3E390040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1B3D1B0E441B0040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1BAE1B0FC9DF0040F6D7 /* FileUtilsCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1BAD1B0FC9DF0040F6D7 /* FileUtilsCommon.java */; };
@@ -621,6 +627,12 @@
 		637FA3A11B16675500082215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		63A04B3D1B45B35800DBA91A /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
+		63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCollectionViewController.swift; sourceTree = "<group>"; };
+		63B8E2941B55797C002DC672 /* ScriptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureViewController.swift; sourceTree = "<group>"; };
+		63B8E2951B55797C002DC672 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		63B8E2971B55797C002DC672 /* TextSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSizeViewController.swift; sourceTree = "<group>"; };
+		63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScriptureApp.storyboard; sourceTree = "<group>"; };
 		63BE1A701B0E36850040F6D7 /* prefixes.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prefixes.properties; sourceTree = "<group>"; };
 		63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppIOSScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BE1AE31B0E3E390040F6D7 /* AppIOSScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppIOSScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1343,6 +1355,7 @@
 		63DDFF2F1B0575C400B57DF7 /* ScriptureApp */ = {
 			isa = PBXGroup;
 			children = (
+				63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */,
 				63DDFF321B0575C400B57DF7 /* AppDelegate.swift */,
 				630D5DB41B2A5CB5003915FE /* DetailViewController.swift */,
 				63DDFF361B0575C400B57DF7 /* Main.storyboard */,
@@ -1355,6 +1368,11 @@
 				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
 				637286851B4D6D37009316A4 /* Constants.swift */,
 				630D5DB21B29D5DA003915FE /* Scripture.swift */,
+				63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */,
+				63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */,
+				63B8E2941B55797C002DC672 /* ScriptureViewController.swift */,
+				63B8E2951B55797C002DC672 /* SearchViewController.swift */,
+				63B8E2971B55797C002DC672 /* TextSizeViewController.swift */,
 				63A04B3D1B45B35800DBA91A /* Book.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
@@ -2040,6 +2058,7 @@
 			files = (
 				63DDFF381B0575C400B57DF7 /* Main.storyboard in Resources */,
 				633A59C01B3B0827004550A1 /* assets in Resources */,
+				63B8E29F1B569A78002DC672 /* ScriptureApp.storyboard in Resources */,
 				63DDFF3D1B0575C400B57DF7 /* LaunchScreen.xib in Resources */,
 				63DDFF3A1B0575C400B57DF7 /* Images.xcassets in Resources */,
 			);
@@ -2229,14 +2248,19 @@
 			files = (
 				63A04B3E1B45B35800DBA91A /* Book.swift in Sources */,
 				637286861B4D6D37009316A4 /* Constants.swift in Sources */,
+				63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */,
 				633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
+				63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */,
 				633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */,
 				63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
 				637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */,
+				63B8E29B1B55797C002DC672 /* SearchViewController.swift in Sources */,
 				637286841B4D6C28009316A4 /* SearchTableViewController.swift in Sources */,
 				637286881B4D703E009316A4 /* SearchTableViewCell.swift in Sources */,
+				63B8E29D1B55797C002DC672 /* TextSizeViewController.swift in Sources */,
+				63B8E2981B55797C002DC672 /* BookCollectionViewController.swift in Sources */,
 				630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */,
 				630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */,
 			);

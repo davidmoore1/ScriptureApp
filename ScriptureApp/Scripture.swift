@@ -86,6 +86,16 @@ public class Scripture {
     func getCurrentBook() -> Book? {
         return mCurrentBook
     }
+    func getBook(index: Int) -> Book? {
+        for (var i = 0; i < mBookArray!.count; i++){
+            for (var j=0; j < mBookArray![i].count; i++) {
+                if mBookArray![i][j].mIndex == index {
+                    return mBookArray![i][j]
+                }
+            }
+        }
+        return nil
+    }
     func getLibrary() -> (ALSAppLibrary) {
         return mLibrary
     }
