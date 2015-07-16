@@ -18,12 +18,11 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
     var selectedSection = 0
     var selectedBook = 0
     var bookIndex = 0
+    var books = scripture.getBookArray()
     
     override func viewDidLoad() {
         collectionView?.delegate = self
-//        if let cvl = collectionViewLayout as? UICollectionViewFlowLayout {
-//            cvl.estimatedItemSize = CGSize(width: 50, height: 50)
-//        }
+        collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
     }
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -35,7 +34,8 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if sectionHeadings[section].isEmpty {
+        // hide if empty or section titles not shown
+        if !config.hasFeatureWithNSString(ALSScriptureFeatureName_BOOK_GROUP_TITLES_) || sectionHeadings[section].isEmpty {
             return CGSizeZero
         } else {
             return (collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize
@@ -44,17 +44,27 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(bookReuseIdentifier, forIndexPath: indexPath) as! BookCollectionViewCell
+        let book = books[indexPath.section][indexPath.item]
+        var title = book.getAbbrevName()
+        if title.isEmpty {
+            title = book.getName()
+        }
         
         cell.button.section = indexPath.section
         cell.button.book = indexPath.item
-        cell.button.setTitle(sectionBooks[cell.button.section][cell.button.book], forState: .Normal)
+        cell.button.setTitle(title, forState: .Normal)
+        cell.button.backgroundColor = book.getBackgroundColor()
+        cell.button.setTitleColor(book.getColor(), forState: .Normal)
+        cell.button.titleLabel?.font = UIFont(name: "CharisSILCompact", size: 20)
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: bookSectionReuseIdentifier, forIndexPath: indexPath) as! BookSectionCollectionReusableView
-        cell.label.text = sectionHeadings[indexPath.section]
+        let book = books[indexPath.section][indexPath.item]
+        
+        cell.label.text = book.mBookGroupString ?? ""
         
         return cell
     }

@@ -331,5 +331,21 @@ public class Scripture {
         return stringArray
     }
     
-    
+    func getPopupBackgroundColor() -> UIColor {
+        var colorStr = getConfig().getColorDefs().getColorStringFromNameWithNSString("PopupBackgroundColor", withNSString: getConfig().getCurrentColorTheme())
+        if colorStr.hasPrefix("#") {
+            colorStr.removeAtIndex(colorStr.startIndex)
+        }
+        return UIColorFromRGB(strtoul(colorStr, nil, 16))
+    }
+
+
+    private func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
 }

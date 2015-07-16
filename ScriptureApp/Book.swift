@@ -45,6 +45,18 @@ public class Book {
         let backgroundColor = UIColorFromRGB(UInt(strtoul(returnColorString, nil, 16)))
         return backgroundColor
     }
+    func getColor() -> UIColor {
+        var colorStr = mScripture!.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_BOOK_BUTTON_GRID_, withNSString: ALCPropertyName_COLOR_)
+        var color: UIColor
+        if ALCStringUtils_isNotBlankWithNSString_(colorStr) {
+            if colorStr.hasPrefix("#") {
+                colorStr.removeAtIndex(colorStr.startIndex)
+            }
+            return UIColorFromRGB(strtoul(colorStr, nil, 16))
+        } else {
+            return UIColor.blackColor()
+        }
+    }
     func getName() -> String {
         return mBook!.getName()
     }
