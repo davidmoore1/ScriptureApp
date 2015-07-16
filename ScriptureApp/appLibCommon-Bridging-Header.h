@@ -40,6 +40,7 @@
 #import "c.h"
 #import "Chapter.h"
 #import "ColorDefs.h"
+#import "ColorUtils.h"
 #import "CommonFeatureName.h"
 #import "CommonStringId.h"
 #import "Config.h"

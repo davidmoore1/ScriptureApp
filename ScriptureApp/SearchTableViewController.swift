@@ -16,6 +16,7 @@ class SearchTableViewController: UITableViewController {
     var mSearchResults = [ALSSearchResult]()
     var mStopSearch = false
     var mBook: ALSBook?
+    var mScriptureController: ScriptureViewController?
     private var mSelectedIndex: NSIndexPath?
     
     /*        var results = searchHandler.searchForStringWithNSString(searchBar!.text, withBoolean: false , withBoolean: false)
@@ -84,24 +85,19 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSLog("You selected cell number: \(indexPath.row)!")
         mStopSearch = true
         mSelectedIndex = indexPath
-        self.performSegueWithIdentifier(Constants.SearchShowDetailSeque, sender: self)
+        var selectedResult = mSearchResults[mSelectedIndex!.row]
+        mScriptureController!.mVerseNumber = String(selectedResult.getReference().getFromVerse())
+        mScriptureController!.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
+        mScriptureController!.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC) / 4))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        view.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
+//        self.performSegueWithIdentifier(Constants.SearchGoToVerseSeque, sender: self)
     }
     
-    func searchCompleted(i: Int) {
-        
-    }
-    
-    func recordFound(i: Int) {
-        
-    }
-    
-    func search(eachRecordCallback: (Int) -> Void, searchCompleteCallback: (Int) -> Void) {
-        
-    }
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -139,28 +135,32 @@ class SearchTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
-
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if let ivc = segue.destinationViewController.contentViewController as? DetailViewController {
+        if let svc = segue.destinationViewController.contentViewController as? ScriptureViewController {
             if let identifier = segue.identifier {
                 switch identifier {
-                case Constants.SearchShowDetailSeque :
+                case Constants.SearchGoToVerseSeque :
+                    if let nc = segue.destinationViewController as? UINavigationController {
+                        nc.setToolbarHidden(false, animated: false)
+                        nc.setNavigationBarHidden(true, animated: false)
+                    }
                     var selectedResult = mSearchResults[mSelectedIndex!.row]
-                    ivc.mScripture = mScripture
-                    ivc.mSelectedBook = mScripture!.findBookFromResult(selectedResult)
-                    ivc.mSelectedVerse = String(selectedResult.getReference().getFromVerse())
-                    ivc.mSelectedChapter = Int(selectedResult.getReference().getChapterNumber())
-                    
+                    svc.scripture = mScripture
+                    svc.mVerseNumber = String(selectedResult.getReference().getFromVerse())
+                    svc.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
+                    svc.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
+                                       
                 default: break
                 }
             }
         }
     }
 
-    
+*/
     func search() {
         AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, mScripture!.getLibrary(), mScripture!.getDisplayWriter(), mScripture!.getFactory())
         searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: false)

@@ -100,19 +100,13 @@ public class Book {
     }
     func canGetChapter(number: Int) -> Bool {
         var lowThreshold = hasIntroduction() ? -1 : 0
-        if let chapter = getCurrentChapterNumber() {
-            var success = (number <= numberOfChapters()) && (number > lowThreshold)
-            return success
-        } else {
-            return false
-        }
+        var success = (number <= numberOfChapters()) && (number > lowThreshold)
+        return success
     }
     
-/*    func canGetNextChapter() -> Bool {
+    func canGetNextChapter() -> Bool {
         if let chapter = getCurrentChapterNumber() {
-            let success = getNextChapter()
-            getChapter(chapter)
-            return success
+            return canGetChapter(chapter + 1)
         } else {
             return false
         }
@@ -120,13 +114,11 @@ public class Book {
     
     func canGetPreviousChapter() -> Bool {
         if let chapter = getCurrentChapterNumber() {
-            let (success, _) = getPreviousChapter()
-            getChapter(chapter)
-            return success
+            return canGetChapter(chapter - 1)
         } else {
             return false
         }
-    }*/
+    }
     func getFormattedBookChapter() -> String {
         var retString = getName()
         if (getCurrentChapterNumber() == 0) {
@@ -140,7 +132,7 @@ public class Book {
         return mBook!.hasIntroduction()
     }
     func sameBook(book: ALSBook) -> Bool {
-        return book == mBook
+        return book.getBookId() == mBook?.getBookId()
     }
     private func runJavascript(jscript: String, webView: UIWebView) {
         webView.stringByEvaluatingJavaScriptFromString(jscript)

@@ -11,6 +11,8 @@ import UIKit
 class SearchSelectViewController: UIViewController, UISearchBarDelegate {
 
     var mScripture: Scripture?
+    var mScriptureController: ScriptureViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +36,7 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
     
     @IBAction func searchBarSearchButtonClicked(searchBar: UISearchBar) {
          if searchBar.text.isEmpty {
-            let alert:UIAlertController = UIAlertController(title: "Error", message: "Please enter a serch string!", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert:UIAlertController = UIAlertController(title: "Error", message: "Please enter a search string!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -56,9 +58,11 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
             switch identifier {
             case Constants.SearchResultsSeque:
                 if let tvc = segue.destinationViewController.contentViewController as? SearchTableViewController {
+                    searchBar.resignFirstResponder()
                     tvc.mSearchString = searchBar!.text
                     tvc.mMatchWholeWord = matchSwitch!.on
                     tvc.mScripture = mScripture
+                    tvc.mScriptureController = mScriptureController
                 }
                 
             default: break

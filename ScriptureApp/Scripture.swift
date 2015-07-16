@@ -203,7 +203,7 @@ public class Scripture {
     func findBookInArray(book: ALSBook) -> Book? {
         var bookArray: [[Book]] = getBookArray()
         for (var i = 0; i < bookArray.count; i++){
-            for (var j=0; j < bookArray[i].count; i++) {
+            for (var j=0; j < bookArray[i].count; j++) {
                 if bookArray[i][j].sameBook(book) {
                     return bookArray[i][j]
                 }
@@ -303,6 +303,34 @@ public class Scripture {
         return result
     }
     
+    func fadeElement(verseNumber: String, webView: UIWebView) -> String? {
+        var backColor = mLibrary.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_TEXT_HIGHLIGHTING_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
+        var toColor = mLibrary.getConfig().getViewerBackgroundColor()
+        var rgbFrom = ALCColorUtils_hexColorToRgbArrayWithNSString_(backColor)
+        var rgbTo = ALCColorUtils_hexColorToRgbArrayWithNSString_(toColor)
+        var finalColor = ""
+        var javaString = "(function fadeElement(id) { " +
+            "var i = 0; " +
+                
+                // Get first matching element
+                "var el = document.getElementById(id); " +
+                
+                // If not found, try with 'a' after it
+                "if (!el) {" +
+                "  el = document.getElementById(id + 'a'); " +
+                "}"
+                
+                // For each matching element, fade background color.
+       javaString = javaString + "while (el) {" +
+                "  fade(el, " + rgbFrom + ", " + rgbTo + ", '" + finalColor + "', 3000);" +
+                "  i++;" +
+                "  el = document.getElementById(id + '+' + i); " +
+                "}" +
+                
+                " })('" + verseNumber + "')"
+        let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
+        return result
+    }
     func useListView() -> Bool {
         var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
         var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption)

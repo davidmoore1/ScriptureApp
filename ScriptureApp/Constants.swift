@@ -15,7 +15,7 @@ public struct Constants {
     static let DisplayChapterSeque = "DisplayChapter"
     static let SearchResultsSeque = "SearchResults"
     static let SelectBookSeque = "SelectBook"
-    static let SearchShowDetailSeque = "SearchShowDetail"
+    static let SearchGoToVerseSeque = "SearchGoToVerse"
     static let BookReuseIdentifier = "Book"
     static let VerseCellReuseIdentifier = "Verse"
     static let SearchCellReuseIdentifier = "Search"
