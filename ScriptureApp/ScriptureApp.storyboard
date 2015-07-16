@@ -47,17 +47,9 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="dxY-kY-QQj"/>
-                        <barButtonItem systemItem="play" id="I49-xc-a0a"/>
                         <barButtonItem systemItem="search" id="wFt-BN-iIt">
                             <connections>
                                 <segue destination="b7v-1i-b2O" kind="show" identifier="search" id="nbt-RN-EXU"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="αA" id="omh-Ea-pAX">
-                            <connections>
-                                <segue destination="Xbe-i7-TBz" kind="popoverPresentation" identifier="text size" popoverAnchorBarButtonItem="omh-Ea-pAX" id="y5N-XN-Xtb">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" id="Nwg-3r-oUM">
@@ -104,6 +96,14 @@
                         <action selector="handleRightSwipe:" destination="MIN-0G-K8i" id="o1E-wR-FcI"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <barButtonItem title="αA" id="omh-Ea-pAX">
+                    <connections>
+                        <segue destination="Xbe-i7-TBz" kind="popoverPresentation" identifier="text size" popoverAnchorBarButtonItem="omh-Ea-pAX" id="y5N-XN-Xtb">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="play" id="I49-xc-a0a"/>
             </objects>
             <point key="canvasLocation" x="1194" y="435"/>
         </scene>
@@ -119,7 +119,7 @@
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChapterButtonCell" id="2df-BX-dBH" customClass="ChapterCollectionViewCell" customModule="ScriptureApp" customModuleProvider="target">
@@ -130,7 +130,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3u-9G-VIf" customClass="ChapterButton" customModule="ScriptureApp" customModuleProvider="target">
-                                            <rect key="frame" x="-2" y="10" width="55" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <state key="normal" title="Chapter">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -142,8 +142,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="s3u-9G-VIf" firstAttribute="centerY" secondItem="2df-BX-dBH" secondAttribute="centerY" id="5AO-1l-a3N"/>
-                                    <constraint firstItem="s3u-9G-VIf" firstAttribute="centerX" secondItem="2df-BX-dBH" secondAttribute="centerX" id="zOX-Re-ncT"/>
+                                    <constraint firstAttribute="trailing" secondItem="s3u-9G-VIf" secondAttribute="trailing" id="Bdv-Ny-TFy"/>
+                                    <constraint firstItem="s3u-9G-VIf" firstAttribute="top" secondItem="2df-BX-dBH" secondAttribute="top" id="NuM-yR-rdB"/>
+                                    <constraint firstAttribute="bottom" secondItem="s3u-9G-VIf" secondAttribute="bottom" id="bFU-Pk-hkF"/>
+                                    <constraint firstItem="s3u-9G-VIf" firstAttribute="leading" secondItem="2df-BX-dBH" secondAttribute="leading" id="gRk-dw-h5D"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="button" destination="s3u-9G-VIf" id="3uT-fN-H0z"/>
@@ -199,7 +201,7 @@
         <!--About-->
         <scene sceneID="kAu-pR-yfH">
             <objects>
-                <viewController id="vcR-Pn-BrY" sceneMemberID="viewController">
+                <viewController id="vcR-Pn-BrY" customClass="AboutViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8DI-P7-cIh"/>
                         <viewControllerLayoutGuide type="bottom" id="VE7-hf-UcI"/>
@@ -207,7 +209,19 @@
                     <view key="view" contentMode="scaleToFill" id="p5a-VX-tjY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DC-E4-XUB">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3DC-E4-XUB" firstAttribute="leading" secondItem="p5a-VX-tjY" secondAttribute="leading" id="66M-HZ-Tk8"/>
+                            <constraint firstItem="3DC-E4-XUB" firstAttribute="bottom" secondItem="VE7-hf-UcI" secondAttribute="top" id="Qq5-7V-9LU"/>
+                            <constraint firstAttribute="trailing" secondItem="3DC-E4-XUB" secondAttribute="trailing" id="Tc9-cf-Xed"/>
+                            <constraint firstItem="3DC-E4-XUB" firstAttribute="top" secondItem="p5a-VX-tjY" secondAttribute="top" id="Y8Q-E7-XCQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="rEI-Ep-LAc">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Jk5-Eo-aQM">
@@ -216,6 +230,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="3DC-E4-XUB" id="ZOV-iB-l7M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-Mt-o9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7qT-us-CFJ" userLabel="Exit" sceneMemberID="exit"/>
@@ -292,7 +309,7 @@
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookButtonCell" id="w4p-sw-GlP" customClass="BookCollectionViewCell" customModule="ScriptureApp" customModuleProvider="target">
@@ -303,7 +320,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOi-oA-e3f" customClass="BookButton" customModule="ScriptureApp" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <state key="normal" title="Book">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -315,10 +332,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="vOi-oA-e3f" firstAttribute="top" secondItem="w4p-sw-GlP" secondAttribute="topMargin" id="0Zx-Ju-RTj"/>
-                                    <constraint firstItem="vOi-oA-e3f" firstAttribute="leading" secondItem="w4p-sw-GlP" secondAttribute="leadingMargin" id="31p-nJ-v8d"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="vOi-oA-e3f" secondAttribute="bottom" id="MbI-rn-TNV"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="vOi-oA-e3f" secondAttribute="trailing" id="QXR-sh-nPg"/>
+                                    <constraint firstAttribute="bottom" secondItem="vOi-oA-e3f" secondAttribute="bottom" id="6MB-PF-SU7"/>
+                                    <constraint firstItem="vOi-oA-e3f" firstAttribute="top" secondItem="w4p-sw-GlP" secondAttribute="top" id="BQf-Md-9vp"/>
+                                    <constraint firstItem="vOi-oA-e3f" firstAttribute="leading" secondItem="w4p-sw-GlP" secondAttribute="leading" id="kOm-85-BFp"/>
+                                    <constraint firstAttribute="trailing" secondItem="vOi-oA-e3f" secondAttribute="trailing" id="vmP-bd-8zF"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="button" destination="vOi-oA-e3f" id="OFP-Th-7VA"/>
@@ -506,8 +523,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="J9p-CE-Iw6"/>
         <segue reference="hkY-ap-PkI"/>
+        <segue reference="J9p-CE-Iw6"/>
         <segue reference="kQa-zd-9aV"/>
     </inferredMetricsTieBreakers>
 </document>

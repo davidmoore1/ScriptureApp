@@ -21,7 +21,7 @@ public struct Constants {
     static let SearchCellReuseIdentifier = "Search"
     static let AboutSeque = "about"
     static let TextSizeSeque = "text size"
-    static let UP_ARROW = "▴"
-    static let SELECT_BOOK_IDENTIFIER = "selectBook"
-    static let SELECT_CHAPTER_IDENTIFIER = "selectChapter"
+    static let UpArrow = "▴"
+    static let SelectBook = "selectBook"
+    static let SelectChapter = "selectChapter"
 }

@@ -28,7 +28,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     var bookNumber = 0 {
         didSet {
             let book = scripture.getBookArray().flatMap { $0 }[bookNumber]
-            bookButton.title = book.getName() + Constants.UP_ARROW
+            bookButton.title = book.getName() + Constants.UpArrow
             scripture.loadBook(book)
             scripture.updateCurrentBook(book)
             resetScrollOffsets()
@@ -40,14 +40,14 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
         didSet {
             if chapterNumber == 0 {
                 loadIntroduction()
-                chapterButton.title = "Intro" + Constants.UP_ARROW
+                chapterButton.title = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_) + Constants.UpArrow
             } else {
                 let (success, htmlOptional) = scripture.getCurrentBook()!.getChapter(chapterNumber)
                 if success {
                     if let html = htmlOptional {
                         webView.loadHTMLString(html, baseURL: nil)
                     }
-                    chapterButton.title = "\(chapterNumber)" + Constants.UP_ARROW
+                    chapterButton.title = "\(chapterNumber)" + Constants.UpArrow
                 } else {
                     chapterNumber = oldValue
                 }
@@ -62,14 +62,14 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     }
     
     func loadChapter(number: Int) {
-        if scripture.canGetChapter(number) {
+        if scripture.getCurrentBook()!.canGetChapter(number) {
             resetScrollOffsets()
             chapterNumber = number
         }
     }
     
     func loadNextChapter() {
-        if scripture.canGetNextChapter() {
+        if scripture.getCurrentBook()!.canGetChapter(chapterNumber + 1) {
             scrollOffsetPrevious = webView.scrollView.contentOffset
             chapterNumber++
             scrollOffsetLoad = scrollOffsetNext
@@ -78,7 +78,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     }
     
     func loadPreviousChapter() {
-        if scripture.canGetPreviousChapter() {
+        if scripture.getCurrentBook()!.canGetChapter(chapterNumber - 1) {
             scrollOffsetNext = webView.scrollView.contentOffset
             chapterNumber--
             scrollOffsetLoad = scrollOffsetPrevious
@@ -98,6 +98,8 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         webView.delegate = self
         tap.delegate = self
         let singleTapSelector : Selector = "single:"
@@ -140,12 +142,10 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case Constants.SELECT_BOOK_IDENTIFIER:
+            case Constants.SelectBook:
                 let vc = segue.destinationViewController as! BookCollectionViewController
                 vc.popoverPresentationController?.delegate = self
-                vc.sectionBooks = scripture.getBookArray().map { $0.map { self.getBookName($0) } }
-                vc.sectionHeadings = scripture.getBookArray().map { $0.first!.mBookGroupString! }
-            case Constants.SELECT_CHAPTER_IDENTIFIER:
+            case Constants.SelectChapter:
                 let vc = segue.destinationViewController as! ChapterCollectionViewController
                 vc.popoverPresentationController?.delegate = self
                 vc.chapters = scripture.getCurrentBook()?.numberOfChapters() ?? 0
@@ -173,11 +173,6 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             }
        }
         
-    }
-    
-    func getBookName(book: Book) -> String {
-        let name = book.getAbbrevName() ?? ""
-        return name.isEmpty ? book.getName() : name
     }
     
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
@@ -233,34 +228,6 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     @IBAction func selectIntroduction(segue: UIStoryboardSegue) {
         chapterNumber = 0
     }
-}
-
-extension Scripture {
-    
-    func canGetChapter(number: Int) -> Bool {
-        if let book = getCurrentBook(), let chapter = book.getCurrentChapterNumber() {
-            return chapter <= book.numberOfChapters() && chapter >= 0
-        } else {
-            return false
-        }
-    }
-    
-    func canGetNextChapter() -> Bool {
-        if let book = getCurrentBook(), let chapter = book.getCurrentChapterNumber() {
-            return canGetChapter(chapter + 1)
-        } else {
-            return false
-        }
-    }
-    
-    func canGetPreviousChapter() -> Bool {
-        if let book = getCurrentBook(), let chapter = book.getCurrentChapterNumber() {
-            return canGetChapter(chapter - 1)
-        } else {
-            return false
-        }
-    }
-    
 }
 
 extension UIViewController {
