@@ -11,9 +11,9 @@ import UIKit
 class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     
     let scripture = Scripture()
-    var scrollOffsetPrevious = CGPointZero
-    var scrollOffsetNext = CGPointZero
-    var scrollOffsetLoad = CGPointZero
+    var scrollOffsetPrevious: CGFloat = 0
+    var scrollOffsetNext: CGFloat = 0
+    var scrollOffsetLoad: CGFloat = 0
     var point = CGPointZero
     private var mAnnotationHtml: String = ""
     private var annotationWaiting: Bool = false
@@ -56,9 +56,9 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     }
     
     func resetScrollOffsets() {
-        scrollOffsetLoad = CGPointZero
-        scrollOffsetPrevious = CGPointZero
-        scrollOffsetNext = CGPointZero
+        scrollOffsetLoad = 0
+        scrollOffsetPrevious = 0
+        scrollOffsetNext = 0
     }
     
     func loadChapter(number: Int) {
@@ -70,20 +70,41 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     
     func loadNextChapter() {
         if scripture.getCurrentBook()!.canGetChapter(chapterNumber + 1) {
-            scrollOffsetPrevious = webView.scrollView.contentOffset
+            scrollOffsetPrevious = getOffset()
             chapterNumber++
             scrollOffsetLoad = scrollOffsetNext
-            scrollOffsetNext = CGPointZero
+            scrollOffsetNext = 0
         }
     }
     
     func loadPreviousChapter() {
         if scripture.getCurrentBook()!.canGetChapter(chapterNumber - 1) {
-            scrollOffsetNext = webView.scrollView.contentOffset
+            scrollOffsetNext = getOffset()
             chapterNumber--
             scrollOffsetLoad = scrollOffsetPrevious
-            scrollOffsetPrevious = CGPointZero
+            scrollOffsetPrevious = 0
         }
+    }
+    
+    func getOffset() -> CGFloat {
+        let y = webView.stringByEvaluatingJavaScriptFromString("window.pageYOffset")!.toInt()!
+        let height = webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")!.toInt()!
+        let offset = CGFloat(y) / CGFloat(height)
+        return offset
+    }
+    func setOffset(percent: CGFloat) {
+        let height = webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")!.toInt()!
+        let x = webView.scrollView.contentOffset.x
+        let y = percent * CGFloat(height)
+        webView.stringByEvaluatingJavaScriptFromString("window.scrollTo(\(x), \(y))")
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        scrollOffsetLoad = getOffset()
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        setOffset(scrollOffsetLoad)
     }
     
     func loadIntroduction() {
@@ -207,7 +228,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
         super.touchesEnded(touches, withEvent: event)
     }
     func webViewDidFinishLoad(webView: UIWebView) {
-        webView.scrollView.setContentOffset(scrollOffsetLoad, animated: false)
+        setOffset(scrollOffsetLoad)
     }
     
     @IBAction func cancelToScriptureViewController(segue: UIStoryboardSegue) {
