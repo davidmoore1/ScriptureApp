@@ -12,20 +12,26 @@ public class Scripture {
     private var mLibrary: ALSAppLibrary = ALSAppLibrary()
     private var mParser: ALSConfigParser?
     private var mWriter: ALSDisplayWriter?
-    private var mScripture: AISScriptureFactoryIOS = AISScriptureFactoryIOS()
+    private var mScripture: IOSFactory = IOSFactory()
     private var mPopupHandler = AISPopupHandler()
     private var mBookArray: [[Book]]?
     private var mCurrentBook: Book?
+    private var mFileManager: IOSFileManager = IOSFileManager()
     
     init() {
-        mScripture.setLibraryWithALSAppLibrary(mLibrary)
-        mLibrary.getConfig().initConfig()
+        var assetsPath = ""
         var bundle = NSBundle.mainBundle()
         // using paths...
         if let bundlePath = bundle.resourcePath
         {
-            mScripture.setAssetsPathWithNSString(bundlePath + "/assets")
+            assetsPath = bundlePath + "/assets"
         }
+        mScripture.setFileManagerWithAICFileManagerIOS(mFileManager)
+        mFileManager.setAssetsPathWithNSString(assetsPath)
+        mFileManager.setAppDefinitionWithALCAppDefinition(mLibrary)
+        mScripture.setLibraryWithALSAppLibrary(mLibrary)
+        mLibrary.getConfig().initConfig()
+        mScripture.setAssetsPathWithNSString(assetsPath)
     }
     
     func loadLibrary() {
@@ -35,6 +41,7 @@ public class Scripture {
          var success = false
         var glossaryBook: ALSBook? = nil;
         loadConfig()
+        mFileManager.loadAbout()
         var book : ALSBook? = ALSFactoryCommon_getBookToShowFirstWithALSAppLibrary_withNSString_(mLibrary, "")
         (success, book) = loadBook(book)
         
@@ -128,9 +135,8 @@ public class Scripture {
             let (contents, errOpts) = contentsOfDirectoryAtPath(assetsPath)
             let configFile = ALSFactoryCommon_getConfigFilenameWithJavaUtilList_(stringToUtilList(contents!))
             var isEncrypted = ALCFileManagerCommon_isEncryptedFileWithNSString_(configFile)
-            let factory = IOSFactory()
             var fullFilePath = assetsPath + "/" + configFile
-            var sb = factory.loadExternalFileToStringBuilderWithNSString(fullFilePath, withBoolean: isEncrypted)
+            var sb = mScripture.loadExternalFileToStringBuilderWithNSString(fullFilePath, withBoolean: isEncrypted)
             var xmlString = sb.description()
             var ioStream = xmlString.getBytesWithCharsetName("UTF-8")
             var sbInputStream = new_JavaIoByteArrayInputStream_initWithByteArray_(ioStream)
@@ -337,6 +343,11 @@ public class Scripture {
         return isList
     }
     
+    func getAboutHtml() -> String {
+        var aboutText = mLibrary.getAbout().getText()
+        var html = mWriter!.getHtmlForAboutBoxWithNSString(aboutText)
+        return html
+    }
     func getString(id : String) -> String {
         return ALSFactoryCommon_getStringWithNSString_(id)
     }

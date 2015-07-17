@@ -135,6 +135,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             if annotationWaiting {
                 point = sender.locationInView(webView)
                 self.performSegueWithIdentifier(Constants.AnnotationSeque, sender: self)
+                annotationWaiting = false
             }
         }
     }
@@ -215,14 +216,6 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
         } else {
             webView.scrollView.setContentOffset(scrollOffsetLoad, animated: false)
         }
-    }
-
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
-        let touch = touches.first as! UITouch
-        point = touch.locationInView(self.view)
-        let pointY = point.y
-        let pointX = point.x
-        super.touchesEnded(touches, withEvent: event)
     }
 
     @IBAction func cancelToScriptureViewController(segue: UIStoryboardSegue) {

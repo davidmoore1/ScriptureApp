@@ -32,6 +32,7 @@
 #import "JavaObject.h"
 #import "J2ObjC_header.h"
 #import "NSObject+JavaObject.h"
+#import "About.h"
 #import "AppConfig.h"
 #import "AppLibrary.h"
 #import "AudioInfo.h"
@@ -67,6 +68,7 @@
 #import "StyleName.h"
 #import "XMLParser.h"
 #import "IOSFactory.h"
+#import "IOSFileManager.h"
 #import "ScriptureFactoryIOS.h"
 
 #endif

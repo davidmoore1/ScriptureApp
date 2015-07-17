@@ -130,6 +130,7 @@
 		63B8E29B1B55797C002DC672 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2951B55797C002DC672 /* SearchViewController.swift */; };
 		63B8E29D1B55797C002DC672 /* TextSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2971B55797C002DC672 /* TextSizeViewController.swift */; };
 		63B8E29F1B569A78002DC672 /* ScriptureApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */; };
+		63BBE81C1B5945CF00BDDA8D /* IOSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BBE81B1B5945CF00BDDA8D /* IOSFileManager.m */; };
 		63BE1AE41B0E3E390040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1B3D1B0E441B0040F6D7 /* libAppIOSScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */; };
 		63BE1BAE1B0FC9DF0040F6D7 /* FileUtilsCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 63BE1BAD1B0FC9DF0040F6D7 /* FileUtilsCommon.java */; };
@@ -372,6 +373,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 633F41AF1B06264500F25662;
 			remoteInfo = AppLibScripture;
+		};
+		63BBE8181B59450E00BDDA8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6347D5C51B375B250065B075;
+			remoteInfo = AppLibIOSCommon;
+		};
+		63BBE81D1B594C6800BDDA8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63DDFF551B05775D00B57DF7;
+			remoteInfo = AppLibCommon;
+		};
+		63BBE81F1B594CA900BDDA8D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DDFF251B0575C400B57DF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 637431051B446B8000850F32;
+			remoteInfo = AppLibIOSEncryption;
 		};
 		63BE1AE51B0E3E390040F6D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -633,6 +655,8 @@
 		63B8E2951B55797C002DC672 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		63B8E2971B55797C002DC672 /* TextSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSizeViewController.swift; sourceTree = "<group>"; };
 		63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScriptureApp.storyboard; sourceTree = "<group>"; };
+		63BBE81A1B5945CF00BDDA8D /* IOSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSFileManager.h; sourceTree = "<group>"; };
+		63BBE81B1B5945CF00BDDA8D /* IOSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSFileManager.m; sourceTree = "<group>"; };
 		63BE1A701B0E36850040F6D7 /* prefixes.properties */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = prefixes.properties; sourceTree = "<group>"; };
 		63BE1AD91B0E3E390040F6D7 /* libAppIOSScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppIOSScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BE1AE31B0E3E390040F6D7 /* AppIOSScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppIOSScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1104,6 +1128,8 @@
 		633F42891B063CB500F25662 /* AppLibIOS */ = {
 			isa = PBXGroup;
 			children = (
+				63BBE81A1B5945CF00BDDA8D /* IOSFileManager.h */,
+				63BBE81B1B5945CF00BDDA8D /* IOSFileManager.m */,
 				6359B3C51B1E4A9400F3FC2F /* IOSFactory.h */,
 				6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */,
 				633F429F1B063D2A00F25662 /* AppLibIOSConfig.xcconfig */,
@@ -1711,7 +1737,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				63BBE81E1B594C6800BDDA8D /* PBXTargetDependency */,
 				637A562F1B28DA9400239C64 /* PBXTargetDependency */,
+				63BBE8201B594CA900BDDA8D /* PBXTargetDependency */,
+				63BBE8191B59450E00BDDA8D /* PBXTargetDependency */,
 				637A56211B28B5B800239C64 /* PBXTargetDependency */,
 			);
 			name = AppLibIOS;
@@ -2183,6 +2212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6359B3C71B1E4A9400F3FC2F /* IOSFactory.m in Sources */,
+				63BBE81C1B5945CF00BDDA8D /* IOSFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2446,6 +2476,21 @@
 			isa = PBXTargetDependency;
 			target = 633F41AF1B06264500F25662 /* AppLibScripture */;
 			targetProxy = 637A562E1B28DA9400239C64 /* PBXContainerItemProxy */;
+		};
+		63BBE8191B59450E00BDDA8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6347D5C51B375B250065B075 /* AppLibIOSCommon */;
+			targetProxy = 63BBE8181B59450E00BDDA8D /* PBXContainerItemProxy */;
+		};
+		63BBE81E1B594C6800BDDA8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63DDFF551B05775D00B57DF7 /* AppLibCommon */;
+			targetProxy = 63BBE81D1B594C6800BDDA8D /* PBXContainerItemProxy */;
+		};
+		63BBE8201B594CA900BDDA8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 637431051B446B8000850F32 /* AppLibIOSEncryption */;
+			targetProxy = 63BBE81F1B594CA900BDDA8D /* PBXContainerItemProxy */;
 		};
 		63BE1AE61B0E3E390040F6D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
