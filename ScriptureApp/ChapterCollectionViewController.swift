@@ -29,13 +29,16 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(chapterReuseIdentifier, forIndexPath: indexPath) as! ChapterCollectionViewCell
         
         cell.button.chapter = indexPath.item + 1
+        cell.button.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: introReuseIdentifier, forIndexPath: indexPath) as! IntroductionCollectionReusableView
-        view.button.setTitle("Introduction", forState: .Normal)
+        let title = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
+        view.button.setTitle(title, forState: .Normal)
+        view.button.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_INTRO_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)!)
         return view
     }
     

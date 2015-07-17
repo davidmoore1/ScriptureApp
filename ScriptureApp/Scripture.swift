@@ -359,5 +359,15 @@ public class Scripture {
         return stringArray
     }
     
-    
+    func getPopupBackgroundColor() -> UIColor {
+        var colorStr = getConfig().getColorDefs().getColorStringFromNameWithNSString("PopupBackgroundColor", withNSString: getConfig().getCurrentColorTheme())
+        if colorStr.hasPrefix("#") {
+            colorStr.removeAtIndex(colorStr.startIndex)
+        }
+        return UIColorFromRGB(strtoul(colorStr, nil, 16))
+    }
+
+    func getAbout() -> String {
+        return "no about!"
+    }
 }

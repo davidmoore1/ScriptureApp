@@ -45,6 +45,18 @@ public class Book {
         let backgroundColor = UIColorFromRGB(UInt(strtoul(returnColorString, nil, 16)))
         return backgroundColor
     }
+    func getColor() -> UIColor {
+        var colorStr = mScripture!.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_BOOK_BUTTON_GRID_, withNSString: ALCPropertyName_COLOR_)
+        var color: UIColor
+        if ALCStringUtils_isNotBlankWithNSString_(colorStr) {
+            if colorStr.hasPrefix("#") {
+                colorStr.removeAtIndex(colorStr.startIndex)
+            }
+            return UIColorFromRGB(strtoul(colorStr, nil, 16))
+        } else {
+            return UIColor.blackColor()
+        }
+    }
     func getName() -> String {
         return mBook!.getName()
     }
@@ -138,13 +150,5 @@ public class Book {
         webView.stringByEvaluatingJavaScriptFromString(jscript)
     }
     
-    private func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
 
 }

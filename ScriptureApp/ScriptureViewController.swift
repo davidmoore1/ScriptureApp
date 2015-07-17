@@ -10,10 +10,10 @@ import UIKit
 
 class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     
-    var scripture = Scripture()
-    var scrollOffsetPrevious = CGPointZero
-    var scrollOffsetNext = CGPointZero
-    var scrollOffsetLoad = CGPointZero
+    let scripture = Scripture()
+    var scrollOffsetPrevious: CGFloat = 0
+    var scrollOffsetNext: CGFloat = 0
+    var scrollOffsetLoad: CGFloat = 0
     var point = CGPointZero
     var mVerseNumber: String = ""
     private var mAnnotationHtml: String = ""
@@ -30,7 +30,9 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     var bookNumber = 0 {
         didSet {
             book = scripture.getBookArray().flatMap { $0 }[bookNumber]
-            bookButton.title = book!.getName() + Constants.UP_ARROW
+            bookButton.title = book!.getName() + Constants.UpArrow
+            scripture.loadBook(book)
+            scripture.updateCurrentBook(book)
             resetScrollOffsets()
             chapterNumber = 1
         }
@@ -46,16 +48,18 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
         if (webView != nil) {
             scripture.goToReference(book!, chapterNumber: chapterNumber, webView: webView)
             if chapterNumber == 0 {
-                chapterButton.title = "Intro" + Constants.UP_ARROW
+                let introTitle = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
+                chapterButton.title = introTitle + Constants.UpArrow
             } else {
-                chapterButton.title = "\(chapterNumber)" + Constants.UP_ARROW
+                chapterButton.title = "\(chapterNumber)" + Constants.UpArrow
             }
         }
     }
+    
     func resetScrollOffsets() {
-        scrollOffsetLoad = CGPointZero
-        scrollOffsetPrevious = CGPointZero
-        scrollOffsetNext = CGPointZero
+        scrollOffsetLoad = 0
+        scrollOffsetPrevious = 0
+        scrollOffsetNext = 0
     }
     
     func loadChapter(number: Int) {
@@ -67,20 +71,41 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     
     func loadNextChapter() {
         if book!.canGetNextChapter() {
-            scrollOffsetPrevious = webView.scrollView.contentOffset
+            scrollOffsetPrevious = getOffset()
             chapterNumber++
             scrollOffsetLoad = scrollOffsetNext
-            scrollOffsetNext = CGPointZero
+            scrollOffsetNext = 0
         }
     }
     
     func loadPreviousChapter() {
         if book!.canGetPreviousChapter() {
-            scrollOffsetNext = webView.scrollView.contentOffset
+            scrollOffsetNext = getOffset()
             chapterNumber--
             scrollOffsetLoad = scrollOffsetPrevious
-            scrollOffsetPrevious = CGPointZero
+            scrollOffsetPrevious = 0
         }
+    }
+    
+    func getOffset() -> CGFloat {
+        let y = webView.stringByEvaluatingJavaScriptFromString("window.pageYOffset")!.toInt()!
+        let height = webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")!.toInt()!
+        let offset = CGFloat(y) / CGFloat(height)
+        return offset
+    }
+    func setOffset(percent: CGFloat) {
+        let height = webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")!.toInt()!
+        let x = webView.scrollView.contentOffset.x
+        let y = percent * CGFloat(height)
+        webView.stringByEvaluatingJavaScriptFromString("window.scrollTo(\(x), \(y))")
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        scrollOffsetLoad = getOffset()
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        setOffset(scrollOffsetLoad)
     }
     
     func loadIntroduction() {
@@ -95,6 +120,8 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         webView.delegate = self
         tap.delegate = self
         let singleTapSelector : Selector = "single:"
@@ -141,12 +168,10 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case Constants.SELECT_BOOK_IDENTIFIER:
+            case Constants.SelectBook:
                 let vc = segue.destinationViewController as! BookCollectionViewController
                 vc.popoverPresentationController?.delegate = self
-                vc.sectionBooks = scripture.getBookArray().map { $0.map { self.getBookName($0) } }
-                vc.sectionHeadings = scripture.getBookArray().map { $0.first!.mBookGroupString! }
-            case Constants.SELECT_CHAPTER_IDENTIFIER:
+            case Constants.SelectChapter:
                 let vc = segue.destinationViewController as! ChapterCollectionViewController
                 vc.popoverPresentationController?.delegate = self
                 vc.chapters = scripture.getCurrentBook()?.numberOfChapters() ?? 0
@@ -175,11 +200,6 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             }
        }
         
-    }
-    
-    func getBookName(book: Book) -> String {
-        let name = book.getAbbrevName() ?? ""
-        return name.isEmpty ? book.getName() : name
     }
     
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
@@ -213,7 +233,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             result = scripture.fadeElement(mVerseNumber, webView: webView)
             mVerseNumber = ""
         } else {
-            webView.scrollView.setContentOffset(scrollOffsetLoad, animated: false)
+            setOffset(scrollOffsetLoad)
         }
     }
 
