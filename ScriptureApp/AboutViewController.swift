@@ -14,7 +14,7 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        webView.loadHTMLString(scripture.getAbout(), baseURL: nil)
+        webView.loadHTMLString(scripture.getAboutHtml(), baseURL: nil)
     }
 
 }

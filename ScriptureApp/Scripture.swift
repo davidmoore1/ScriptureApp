@@ -378,7 +378,4 @@ public class Scripture {
         return UIColorFromRGB(strtoul(colorStr, nil, 16))
     }
 
-    func getAbout() -> String {
-        return "no about!"
-    }
 }
