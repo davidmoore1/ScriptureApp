@@ -339,7 +339,7 @@ public class Scripture {
     }
     func useListView() -> Bool {
         var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
-        var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption)
+        var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption) ? bookSelectOption.lowercaseString == "list" : true
         return isList
     }
     
