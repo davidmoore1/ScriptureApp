@@ -12,6 +12,7 @@ class SearchViewController: UIViewController {
     var rootNavigationController: UINavigationController?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         rootNavigationController?.setNavigationBarHidden(false, animated: true)
     }
 

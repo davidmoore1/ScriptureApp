@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42A0502F1B57E5180071EA96 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A0502E1B57E5180071EA96 /* Misc.swift */; };
+		42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A050341B5832BD0071EA96 /* AboutViewController.swift */; };
 		630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB21B29D5DA003915FE /* Scripture.swift */; };
 		630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB41B2A5CB5003915FE /* DetailViewController.swift */; };
 		633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A591F1B39F1C9004550A1 /* BookTableViewController.swift */; };
@@ -520,6 +522,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42A0502E1B57E5180071EA96 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		42A050341B5832BD0071EA96 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
 		630D5DB41B2A5CB5003915FE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		633A591F1B39F1C9004550A1 /* BookTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
@@ -1384,10 +1388,14 @@
 				63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */,
 				630D5DB21B29D5DA003915FE /* Scripture.swift */,
 				63A04B3D1B45B35800DBA91A /* Book.swift */,
+				42A0502E1B57E5180071EA96 /* Misc.swift */,
 				637286851B4D6D37009316A4 /* Constants.swift */,
 				63B8E2941B55797C002DC672 /* ScriptureViewController.swift */,
 				63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */,
 				63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */,
+				63B8E2951B55797C002DC672 /* SearchViewController.swift */,
+				63B8E2971B55797C002DC672 /* TextSizeViewController.swift */,
+				42A050341B5832BD0071EA96 /* AboutViewController.swift */,
 				637430FA1B3DE21200850F32 /* AnnotationViewController.swift */,
 				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 				637286831B4D6C28009316A4 /* SearchTableViewController.swift */,
@@ -2279,11 +2287,13 @@
 				63A04B3E1B45B35800DBA91A /* Book.swift in Sources */,
 				637286861B4D6D37009316A4 /* Constants.swift in Sources */,
 				63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */,
+				42A0502F1B57E5180071EA96 /* Misc.swift in Sources */,
 				633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
 				63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */,
 				633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */,
 				63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */,
+				42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
 				637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */,
 				63B8E29B1B55797C002DC672 /* SearchViewController.swift in Sources */,
