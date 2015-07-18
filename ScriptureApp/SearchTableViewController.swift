@@ -166,6 +166,7 @@ class SearchTableViewController: UITableViewController {
         searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: false)
         var books = mScripture!.getLibrary().getMainBookCollection().getBooks()
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
+            autoreleasepool {
             var object: AnyObject! = books.getWithInt(CInt(i))
             mBook = object as? ALSBook
             let bookId = mBook!.getBookId();
@@ -187,6 +188,7 @@ class SearchTableViewController: UITableViewController {
                 }
             }
             searchHandler.unloadBookWithALSBook(mBook)
+            }
         }
         mStopSearch = false
     }
