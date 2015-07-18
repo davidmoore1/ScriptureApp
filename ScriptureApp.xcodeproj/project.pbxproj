@@ -10,10 +10,7 @@
 		42A0502F1B57E5180071EA96 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A0502E1B57E5180071EA96 /* Misc.swift */; };
 		42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A050341B5832BD0071EA96 /* AboutViewController.swift */; };
 		630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB21B29D5DA003915FE /* Scripture.swift */; };
-		630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB41B2A5CB5003915FE /* DetailViewController.swift */; };
-		633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A591F1B39F1C9004550A1 /* BookTableViewController.swift */; };
 		633A59C01B3B0827004550A1 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 633A59BF1B3B0827004550A1 /* assets */; };
-		633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */; };
 		633F41BB1B06264500F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
 		633F41C81B0626FB00F25662 /* AppLibScriptureConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */; };
 		633F422E1B0628A500F25662 /* CallerType.java in Sources */ = {isa = PBXBuildFile; fileRef = 633F41D01B0628A500F25662 /* CallerType.java */; };
@@ -125,11 +122,9 @@
 		6374312D1B446EDD00850F32 /* libAppLibIOSEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */; };
 		637FA3A21B16675500082215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 637FA3A11B16675500082215 /* libz.dylib */; };
 		63A04B3E1B45B35800DBA91A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3D1B45B35800DBA91A /* Book.swift */; };
-		63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */; };
 		63B8E2981B55797C002DC672 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */; };
 		63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */; };
 		63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2941B55797C002DC672 /* ScriptureViewController.swift */; };
-		63B8E29B1B55797C002DC672 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2951B55797C002DC672 /* SearchViewController.swift */; };
 		63B8E29D1B55797C002DC672 /* TextSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2971B55797C002DC672 /* TextSizeViewController.swift */; };
 		63B8E29F1B569A78002DC672 /* ScriptureApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */; };
 		63BBE81C1B5945CF00BDDA8D /* IOSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BBE81B1B5945CF00BDDA8D /* IOSFileManager.m */; };
@@ -168,7 +163,6 @@
 		63DD001E1B057A4400B57DF7 /* XmlParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFCF1B057A4400B57DF7 /* XmlParser.java */; };
 		63DD00221B057BEB00B57DF7 /* libAppLibCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DDFF561B05775D00B57DF7 /* libAppLibCommon.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF321B0575C400B57DF7 /* AppDelegate.swift */; };
-		63DDFF381B0575C400B57DF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF361B0575C400B57DF7 /* Main.storyboard */; };
 		63DDFF3A1B0575C400B57DF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF391B0575C400B57DF7 /* Images.xcassets */; };
 		63DDFF3D1B0575C400B57DF7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */; };
 		63DDFF491B0575C400B57DF7 /* ScriptureAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFF481B0575C400B57DF7 /* ScriptureAppTests.swift */; };
@@ -525,10 +519,7 @@
 		42A0502E1B57E5180071EA96 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		42A050341B5832BD0071EA96 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
-		630D5DB41B2A5CB5003915FE /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		633A591F1B39F1C9004550A1 /* BookTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		633A59BF1B3B0827004550A1 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
-		633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerseTableViewController.swift; sourceTree = "<group>"; };
 		633F41B01B06264500F25662 /* libAppLibScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F41C01B06264500F25662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -652,11 +643,9 @@
 		637431261B446D1D00850F32 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFontManager.a; sourceTree = "<group>"; };
 		637FA3A11B16675500082215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		63A04B3D1B45B35800DBA91A /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
 		63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCollectionViewController.swift; sourceTree = "<group>"; };
 		63B8E2941B55797C002DC672 /* ScriptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureViewController.swift; sourceTree = "<group>"; };
-		63B8E2951B55797C002DC672 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		63B8E2971B55797C002DC672 /* TextSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSizeViewController.swift; sourceTree = "<group>"; };
 		63B8E29E1B569A78002DC672 /* ScriptureApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ScriptureApp.storyboard; sourceTree = "<group>"; };
 		63BBE81A1B5945CF00BDDA8D /* IOSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSFileManager.h; sourceTree = "<group>"; };
@@ -671,7 +660,6 @@
 		63DDFF2D1B0575C400B57DF7 /* ScriptureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScriptureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63DDFF311B0575C400B57DF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63DDFF321B0575C400B57DF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		63DDFF371B0575C400B57DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63DDFF391B0575C400B57DF7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		63DDFF3C1B0575C400B57DF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		63DDFF421B0575C400B57DF7 /* ScriptureAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScriptureAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1393,8 +1381,6 @@
 				63B8E2941B55797C002DC672 /* ScriptureViewController.swift */,
 				63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */,
 				63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */,
-				63B8E2951B55797C002DC672 /* SearchViewController.swift */,
-				63B8E2971B55797C002DC672 /* TextSizeViewController.swift */,
 				42A050341B5832BD0071EA96 /* AboutViewController.swift */,
 				637430FA1B3DE21200850F32 /* AnnotationViewController.swift */,
 				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
@@ -1402,12 +1388,6 @@
 				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
 				63B8E2971B55797C002DC672 /* TextSizeViewController.swift */,
 				63DDFF321B0575C400B57DF7 /* AppDelegate.swift */,
-				63DDFF361B0575C400B57DF7 /* Main.storyboard */,
-				630D5DB41B2A5CB5003915FE /* DetailViewController.swift */,
-				633A591F1B39F1C9004550A1 /* BookTableViewController.swift */,
-				63A04B3F1B45CCAE00DBA91A /* BookTableViewCell.swift */,
-				63B8E2951B55797C002DC672 /* SearchViewController.swift */,
-				633A59C11B3B30C8004550A1 /* VerseTableViewController.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
 				63DDFF301B0575C400B57DF7 /* Supporting Files */,
@@ -2093,7 +2073,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63DDFF381B0575C400B57DF7 /* Main.storyboard in Resources */,
 				633A59C01B3B0827004550A1 /* assets in Resources */,
 				63B8E29F1B569A78002DC672 /* ScriptureApp.storyboard in Resources */,
 				63DDFF3D1B0575C400B57DF7 /* LaunchScreen.xib in Resources */,
@@ -2288,21 +2267,16 @@
 				637286861B4D6D37009316A4 /* Constants.swift in Sources */,
 				63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */,
 				42A0502F1B57E5180071EA96 /* Misc.swift in Sources */,
-				633A59201B39F1C9004550A1 /* BookTableViewController.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
 				63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */,
-				633A59C21B3B30C8004550A1 /* VerseTableViewController.swift in Sources */,
-				63A04B401B45CCAE00DBA91A /* BookTableViewCell.swift in Sources */,
 				42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
 				637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */,
-				63B8E29B1B55797C002DC672 /* SearchViewController.swift in Sources */,
 				637286841B4D6C28009316A4 /* SearchTableViewController.swift in Sources */,
 				637286881B4D703E009316A4 /* SearchTableViewCell.swift in Sources */,
 				63B8E29D1B55797C002DC672 /* TextSizeViewController.swift in Sources */,
 				63B8E2981B55797C002DC672 /* BookCollectionViewController.swift in Sources */,
 				630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */,
-				630D5DB51B2A5CB5003915FE /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2545,14 +2519,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		63DDFF361B0575C400B57DF7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				63DDFF371B0575C400B57DF7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

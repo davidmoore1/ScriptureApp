@@ -496,21 +496,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Match on Whole Words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7D-uM-UPo">
-                                <rect key="frame" x="295" y="113" width="264" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match on Whole Words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7D-uM-UPo">
+                                <rect key="frame" x="348" y="113" width="179" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKm-HT-VN8">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKm-HT-VN8">
                                 <rect key="frame" x="535" y="108" width="51" height="31"/>
                             </switch>
-                            <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" placeholder="Enter Search Text" translatesAutoresizingMaskIntoConstraints="NO" id="GQ0-Ze-F7g">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <searchBar contentMode="redraw" placeholder="Enter Search Text" translatesAutoresizingMaskIntoConstraints="NO" id="GQ0-Ze-F7g">
+                                <rect key="frame" x="16" y="64" width="568" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="viy-94-3aR">
-                                <rect key="frame" x="-5" y="20" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viy-94-3aR">
+                                <rect key="frame" x="16" y="20" width="568" height="44"/>
                                 <items>
                                     <navigationItem title="Search" id="xae-gs-bIk">
                                         <barButtonItem key="leftBarButtonItem" title="⬅︎" id="bSW-K3-KhT">
@@ -533,6 +533,8 @@
                             <constraint firstItem="GQ0-Ze-F7g" firstAttribute="leading" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="hw9-Uk-oIZ"/>
                             <constraint firstItem="wKm-HT-VN8" firstAttribute="centerY" secondItem="t7D-uM-UPo" secondAttribute="centerY" id="kFZ-vy-0CX"/>
                             <constraint firstItem="t7D-uM-UPo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="rPV-bb-vQB"/>
+                            <constraint firstItem="viy-94-3aR" firstAttribute="top" secondItem="uhn-ro-SwL" secondAttribute="bottom" id="z5z-3q-h2x"/>
+                            <constraint firstItem="GQ0-Ze-F7g" firstAttribute="top" secondItem="viy-94-3aR" secondAttribute="bottom" id="zDv-g2-CLU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IA9-w8-L74"/>
