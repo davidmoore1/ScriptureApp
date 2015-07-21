@@ -128,6 +128,7 @@
 		63B8ABD21B5E9566002563FD /* EspeakVoices.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABCF1B5E9566002563FD /* EspeakVoices.java */; };
 		63B8ABD51B5E95D9002563FD /* CrossRef.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABD31B5E95D9002563FD /* CrossRef.java */; };
 		63B8ABD61B5E95D9002563FD /* Note.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABD41B5E95D9002563FD /* Note.java */; };
+		63B8ABD81B5ED5A2002563FD /* ExportType.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABD71B5ED5A2002563FD /* ExportType.java */; };
 		63B8E2981B55797C002DC672 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */; };
 		63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */; };
 		63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2941B55797C002DC672 /* ScriptureViewController.swift */; };
@@ -655,6 +656,7 @@
 		63B8ABCF1B5E9566002563FD /* EspeakVoices.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EspeakVoices.java; sourceTree = "<group>"; };
 		63B8ABD31B5E95D9002563FD /* CrossRef.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CrossRef.java; sourceTree = "<group>"; };
 		63B8ABD41B5E95D9002563FD /* Note.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Note.java; sourceTree = "<group>"; };
+		63B8ABD71B5ED5A2002563FD /* ExportType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ExportType.java; sourceTree = "<group>"; };
 		63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
 		63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCollectionViewController.swift; sourceTree = "<group>"; };
 		63B8E2941B55797C002DC672 /* ScriptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureViewController.swift; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 		633F42291B0628A500F25662 /* writer */ = {
 			isa = PBXGroup;
 			children = (
+				63B8ABD71B5ED5A2002563FD /* ExportType.java */,
 				633F422A1B0628A500F25662 /* BaseWriter.java */,
 				633F422B1B0628A500F25662 /* DisplayWriter.java */,
 				633F422D1B0628A500F25662 /* ScriptureConfigWriter.java */,
@@ -2184,6 +2187,7 @@
 				633F42331B0628A500F25662 /* DefaultStyles.java in Sources */,
 				633F42541B0628A500F25662 /* Timings.java in Sources */,
 				633F42651B0628A500F25662 /* SaXmlHandler.java in Sources */,
+				63B8ABD81B5ED5A2002563FD /* ExportType.java in Sources */,
 				633F42451B0628A500F25662 /* EpubSettings.java in Sources */,
 				633F423D1B0628A500F25662 /* AudioInfo.java in Sources */,
 				633F426F1B0628A500F25662 /* UsxChapter.java in Sources */,

@@ -108,7 +108,7 @@ public class Scripture {
     }
     func getDisplayWriter() -> ALSDisplayWriter {
         if (mWriter == nil) {
-            mWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
+            mWriter = new_ALSDisplayWriter_initWithALSAppLibrary_withALSExportTypeEnum_(mLibrary, ALSExportTypeEnum_valueOfWithNSString_("APP"))
         }
         return mWriter!
     }
