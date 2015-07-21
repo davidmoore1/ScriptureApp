@@ -26,7 +26,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var bookButton: UIBarButtonItem!
     @IBOutlet weak var chapterButton: UIBarButtonItem!
-    
+
     var bookNumber = 0 {
         didSet {
             book = scripture.getBookArray().flatMap { $0 }[bookNumber]

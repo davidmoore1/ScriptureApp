@@ -452,8 +452,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-eg-cqi">
-                                <rect key="frame" x="0.0" y="-71" width="600" height="355"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-eg-cqi">
+                                <rect key="frame" x="16" y="8" width="368" height="184"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -554,7 +554,7 @@
         <scene sceneID="3sj-wL-OBs">
             <objects>
                 <tableViewController id="KbP-gi-vEz" customClass="SearchTableViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="P3T-JR-zVQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="P3T-JR-zVQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -568,29 +568,30 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uqN-1r-u4g" id="QEB-4b-zyk">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <webView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6D-Ek-k5m">
-                                            <rect key="frame" x="8" y="37" width="584" height="89"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </webView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4F-fm-uy6">
                                             <rect key="frame" x="8" y="8" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zh-ZO-exP">
+                                            <rect key="frame" x="8" y="37" width="584" height="37"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="B6D-Ek-k5m" secondAttribute="trailing" id="9M8-WO-Q2Q"/>
-                                        <constraint firstItem="B6D-Ek-k5m" firstAttribute="leading" secondItem="QEB-4b-zyk" secondAttribute="leadingMargin" id="I4j-qp-TAF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="h4F-fm-uy6" secondAttribute="trailing" id="LCC-GQ-hl5"/>
+                                        <constraint firstItem="3zh-ZO-exP" firstAttribute="trailing" secondItem="QEB-4b-zyk" secondAttribute="trailingMargin" id="RAC-Nv-yhS"/>
                                         <constraint firstItem="h4F-fm-uy6" firstAttribute="leading" secondItem="QEB-4b-zyk" secondAttribute="leadingMargin" id="U6T-Lz-C7f"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="B6D-Ek-k5m" secondAttribute="bottom" id="jLr-fO-UhL"/>
+                                        <constraint firstItem="3zh-ZO-exP" firstAttribute="top" secondItem="h4F-fm-uy6" secondAttribute="bottom" constant="8" symbolic="YES" id="fEE-NE-YeR"/>
+                                        <constraint firstItem="3zh-ZO-exP" firstAttribute="leading" secondItem="QEB-4b-zyk" secondAttribute="leadingMargin" id="hiI-xz-y8e"/>
                                         <constraint firstItem="h4F-fm-uy6" firstAttribute="top" secondItem="QEB-4b-zyk" secondAttribute="topMargin" id="qyp-fr-vIO"/>
-                                        <constraint firstItem="B6D-Ek-k5m" firstAttribute="top" secondItem="h4F-fm-uy6" secondAttribute="bottom" constant="8" symbolic="YES" id="z5r-PJ-iQy"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cellWebView" destination="B6D-Ek-k5m" id="cVc-SU-zxR"/>
+                                    <outlet property="htmlTextField" destination="3zh-ZO-exP" id="76a-EH-8E3"/>
                                     <outlet property="referenceLabel" destination="h4F-fm-uy6" id="DUL-Ne-bzX"/>
                                 </connections>
                             </tableViewCell>

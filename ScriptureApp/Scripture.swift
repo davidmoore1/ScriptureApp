@@ -118,13 +118,6 @@ public class Scripture {
     func getFactory() -> AISScriptureFactoryIOS {
         return mScripture
     }
-    func getHtml(text: String) -> String {
-        var retString = ""
-        var htmlLinks = ALSLinks()
-        ALSLinks_init(htmlLinks)
-        retString = mWriter!.getHtmlForFootnoteWithNSString(text, withALSLinks: htmlLinks)
-        return retString
-    }
     func loadConfig() {
         var bundle = NSBundle.mainBundle()
         
