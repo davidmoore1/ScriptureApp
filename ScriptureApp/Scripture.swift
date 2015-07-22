@@ -17,6 +17,7 @@ public class Scripture {
     private var mBookArray: [[Book]]?
     private var mCurrentBook: Book?
     private var mFileManager: IOSFileManager = IOSFileManager()
+    private var mColorThemes: [ALCColorTheme]?
     
     init() {
         var assetsPath = ""
@@ -66,6 +67,7 @@ public class Scripture {
             mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book)
         }
         createBookArray()
+        loadThemeList()
     }
 
     func loadBook(book: Book?) -> (success: Bool, book: Book?) {
@@ -340,6 +342,22 @@ public class Scripture {
         var aboutText = mLibrary.getAbout().getText()
         var html = mWriter!.getHtmlForAboutBoxWithNSString(aboutText)
         return html
+    }
+    func loadThemeList() {
+        mColorThemes = [ALCColorTheme]()
+        var themes = mLibrary.getConfig().getAvailableColorThemes()
+        var iterator = themes.iterator()
+        while (iterator.hasNext()) {
+            var object: AnyObject! = iterator.next()
+            mColorThemes?.append(object as! ALCColorTheme)
+        }
+    }
+    
+    func getThemeList () -> [ALCColorTheme] {
+        if (mColorThemes == nil) {
+            loadThemeList()
+        }
+        return mColorThemes!
     }
     func getString(id : String) -> String {
         return ALSFactoryCommon_getStringWithNSString_(id)
