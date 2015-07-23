@@ -12,13 +12,15 @@ let bookReuseIdentifier = "BookButtonCell"
 let bookSectionReuseIdentifier = "BookSectionHeadingCell"
 
 class BookCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
+
+    let scripture = Scripture.sharedInstance
+    let config = Scripture.sharedInstance.getConfig()
     var bookIndex = 0
-    var books = scripture.getBookArray()
-    
+    var books = Scripture.sharedInstance.getBookArray()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         collectionView?.delegate = self
 //        collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
     }
@@ -26,11 +28,11 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return books.count
     }
-    
+
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books[section].count
     }
-    
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         // hide if empty or section titles not shown
         if !config.hasFeatureWithNSString(ALSScriptureFeatureName_BOOK_GROUP_TITLES_) || books[section].first!.mBookGroupString!.isEmpty {
@@ -70,7 +72,7 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(bookReuseIdentifier, forIndexPath: indexPath) as! BookCollectionViewCell
         let book = books[indexPath.section][indexPath.item]
-        
+
         cell.button.section = indexPath.section
         cell.button.book = indexPath.item
         cell.button.setTitle(getBookButtonTitle(book), forState: .Normal)
@@ -100,11 +102,10 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
             bookIndex += books[section].count
         }
         bookIndex += selectedBook
-        
         performSegueWithIdentifier("unwindBook", sender: self)
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     func getBookButtonTitle(book: Book) -> String {
         if scripture.useListView() {
             return book.getName()
@@ -116,7 +117,7 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
             return title
         }
     }
-    
+
 }
 
 class BookCollectionViewCell: UICollectionViewCell {

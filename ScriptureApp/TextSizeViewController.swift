@@ -10,6 +10,9 @@ import UIKit
 
 class TextSizeViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
+    let scripture = Scripture.sharedInstance
+    let config = Scripture.sharedInstance.getConfig()
+
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
     }

@@ -17,7 +17,14 @@ public class Scripture {
     private var mBookArray: [[Book]]?
     private var mCurrentBook: Book?
     private var mFileManager: IOSFileManager = IOSFileManager()
-    
+
+    static let sharedInstance: Scripture = {
+        let scripture = Scripture()
+        scripture.loadConfig()
+        scripture.loadLibrary()
+        return scripture
+    }()
+
     init() {
         var assetsPath = ""
         var bundle = NSBundle.mainBundle()
@@ -33,7 +40,7 @@ public class Scripture {
         mLibrary.getConfig().initConfig()
         mScripture.setAssetsPathWithNSString(assetsPath)
     }
-    
+
     func loadLibrary() {
         if (mLibrary.getBookCollections().size() > 0) {
             mLibrary.clear()
@@ -44,7 +51,7 @@ public class Scripture {
         mFileManager.loadAbout()
         var book : ALSBook? = ALSFactoryCommon_getBookToShowFirstWithALSAppLibrary_withNSString_(mLibrary, "")
         (success, book) = loadBook(book)
-        
+
         // Load glossary
         if (success) {
             glossaryBook = mLibrary.getMainBookCollection().getGlossaryBook()
@@ -52,7 +59,7 @@ public class Scripture {
                 (success, glossaryBook) = loadBook(glossaryBook)
             }
         }
-        
+
         if (success) {
             mLibrary.getConfig().initFontSize()
         }
@@ -127,7 +134,7 @@ public class Scripture {
     }
     func loadConfig() {
         var bundle = NSBundle.mainBundle()
-        
+
         // using paths...
         if let bundlePath = bundle.resourcePath
         {
@@ -147,7 +154,7 @@ public class Scripture {
             ALSFactoryCommon_setMappingsWithALSAppLibrary_(mLibrary)
         }
     }
-    
+
     // Get contents of directory at specified path, returning (filenames, nil) or (nil, error)
     func contentsOfDirectoryAtPath(path: String) -> (filenames: [String]?, error: NSError?) {
         var error: NSError? = nil
@@ -161,7 +168,7 @@ public class Scripture {
             return (filenames, nil)
         }
     }
-    
+
     func createBookArray() {
         var groupIndex = 0
         var currentGroupString = ""
@@ -192,7 +199,7 @@ public class Scripture {
         if (bookArray.count > 0) {
             mBookArray!.append(bookArray)
         }
-        
+
     }
     func getBookArray() -> [[Book]] {
         if (mBookArray == nil) {
@@ -229,13 +236,13 @@ public class Scripture {
         var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url)
         return html
     }
-    
+
     var numberOfBooks: Int {
         get {
             return Int(mLibrary.getMainBookCollection().getBooks().size())
         }
     }
-    
+
     func getBookGroupString(book: ALSBook, firstBook: Bool) -> (newGroup: Bool, bookGroupString: String) {
         var success = false
         if (firstBook) {
@@ -249,11 +256,11 @@ public class Scripture {
         }
         return (success, retString)
     }
-    
+
     func configHasFeature(feature: String) -> Bool {
         return mLibrary.getConfig().hasFeatureWithNSString(feature)
     }
-    
+
     func goToReference(book: Book?, chapterNumber: Int, webView: UIWebView) -> Bool {
         var success: Bool = false
         if (book != nil) {
@@ -291,24 +298,24 @@ public class Scripture {
         javaString += "var i = 0; "
         // Get first matching element
         javaString += "var el = document.getElementById(id); " +
-            
+
             // If not found, try with 'a' after it
             "if (!el) {" +
             "  el = document.getElementById(id + 'a'); " +
             "}" +
-            
+
             // For each matching element, change background color.
             "while (el) {" +
             "  el.style.backgroundColor = '" + backColor + "';" +
             "  i++;" +
             "  el = document.getElementById(id + '+' + i); " +
             "}" +
-            
+
             " })('" + verseNumber + "')"
         let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
         return result
     }
-    
+
     func fadeElement(verseNumber: String, webView: UIWebView) -> String? {
         var backColor = mLibrary.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_TEXT_HIGHLIGHTING_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
         var toColor = mLibrary.getConfig().getViewerBackgroundColor()
@@ -317,22 +324,22 @@ public class Scripture {
         var finalColor = ""
         var javaString = "(function fadeElement(id) { " +
             "var i = 0; " +
-                
+
                 // Get first matching element
                 "var el = document.getElementById(id); " +
-                
+
                 // If not found, try with 'a' after it
                 "if (!el) {" +
                 "  el = document.getElementById(id + 'a'); " +
                 "}"
-                
+
                 // For each matching element, fade background color.
        javaString = javaString + "while (el) {" +
                 "  fade(el, " + rgbFrom + ", " + rgbTo + ", '" + finalColor + "', 3000);" +
                 "  i++;" +
                 "  el = document.getElementById(id + '+' + i); " +
                 "}" +
-                
+
                 " })('" + verseNumber + "')"
         let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
         return result
@@ -342,7 +349,7 @@ public class Scripture {
         var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption)
         return isList
     }
-    
+
     func getAboutHtml() -> String {
         var aboutText = mLibrary.getAbout().getText()
         var html = mWriter!.getHtmlForAboutBoxWithNSString(aboutText)
@@ -351,7 +358,7 @@ public class Scripture {
     func getString(id : String) -> String {
         return ALSFactoryCommon_getStringWithNSString_(id)
     }
-    
+
     func stringToUtilList(strings: [String]) -> (JavaUtilList) {
         let utilList = new_JavaUtilArrayList_init()
         for entry in strings {
@@ -359,7 +366,7 @@ public class Scripture {
         }
         return utilList
     }
-    
+
     func utilListToStringArray(javaArray: JavaUtilList) -> [String] {
         var stringArray = [String]()
         var iterator = javaArray.iterator()
@@ -369,7 +376,7 @@ public class Scripture {
         }
         return stringArray
     }
-    
+
     func getPopupBackgroundColor() -> UIColor {
         var colorStr = getConfig().getColorDefs().getColorStringFromNameWithNSString("PopupBackgroundColor", withNSString: getConfig().getCurrentColorTheme())
         if colorStr.hasPrefix("#") {

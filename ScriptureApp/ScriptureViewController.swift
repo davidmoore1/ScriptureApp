@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
-    
-    let scripture = Scripture()
+class ScriptureViewController: UIViewController,
+    UIWebViewDelegate,
+    UIGestureRecognizerDelegate,
+    UIPopoverPresentationControllerDelegate
+{
     var scrollOffsetPrevious: CGFloat = 0
     var scrollOffsetNext: CGFloat = 0
     var scrollOffsetLoad: CGFloat = 0
@@ -19,11 +21,14 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     private var mAnnotationHtml: String = ""
     private var annotationWaiting: Bool = false
     private var book: Book?
-    
+    let scripture = Scripture.sharedInstance
+    let config = Scripture.sharedInstance.getConfig()
+
     @IBOutlet var tap: UITapGestureRecognizer!
     @IBOutlet var leftSwipe: UISwipeGestureRecognizer!
     @IBOutlet var rightSwipe: UISwipeGestureRecognizer!
     @IBOutlet weak var webView: UIWebView!
+
     @IBOutlet weak var bookButton: UIBarButtonItem!
     @IBOutlet weak var chapterButton: UIBarButtonItem!
     
@@ -37,13 +42,13 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             chapterNumber = 1
         }
     }
-    
+
     var chapterNumber = 0 {
         didSet {
             updateUI()
         }
     }
-    
+
     func updateUI() {
         if (webView != nil) {
             scripture.goToReference(book!, chapterNumber: chapterNumber, webView: webView)
@@ -55,20 +60,20 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             }
         }
     }
-    
+
     func resetScrollOffsets() {
         scrollOffsetLoad = 0
         scrollOffsetPrevious = 0
         scrollOffsetNext = 0
     }
-    
+
     func loadChapter(number: Int) {
         if book!.canGetChapter(number) {
             resetScrollOffsets()
             chapterNumber = number
         }
     }
-    
+
     func loadNextChapter() {
         if book!.canGetNextChapter() {
             scrollOffsetPrevious = getOffset()
@@ -77,7 +82,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             scrollOffsetNext = 0
         }
     }
-    
+
     func loadPreviousChapter() {
         if book!.canGetPreviousChapter() {
             scrollOffsetNext = getOffset()
@@ -86,7 +91,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             scrollOffsetPrevious = 0
         }
     }
-    
+
     func getOffset() -> CGFloat {
         let y = webView.stringByEvaluatingJavaScriptFromString("window.pageYOffset")!.toInt()!
         let height = webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")!.toInt()!
@@ -99,15 +104,15 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
         let y = percent * CGFloat(height)
         webView.stringByEvaluatingJavaScriptFromString("window.scrollTo(\(x), \(y))")
     }
-    
+
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
         scrollOffsetLoad = getOffset()
     }
-    
+
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         setOffset(scrollOffsetLoad)
     }
-    
+
     func loadIntroduction() {
         let (success, htmlOptional) = scripture.getCurrentBook()!.getIntroduction()
         if success, let html = htmlOptional {
@@ -118,7 +123,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     func toggleFullscreen() {
         navigationController?.setToolbarHidden(!navigationController!.toolbarHidden, animated: true)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,14 +134,11 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
         singleTap.numberOfTapsRequired = 1
         singleTap.requireGestureRecognizerToFail(tap)
         singleTap.delegate = self
-        
+
         webView.addGestureRecognizer(leftSwipe)
         webView.addGestureRecognizer(rightSwipe)
         webView.addGestureRecognizer(tap)
         webView.addGestureRecognizer(singleTap)
-        
-        scripture.loadLibrary()
-        
         if (book == nil) {
             bookNumber = 0
         } else {
@@ -147,7 +149,7 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
-    
+
     @IBAction func handleLeftSwipe(sender: UISwipeGestureRecognizer) {
         loadNextChapter()
     }
@@ -200,9 +202,9 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
             default: break
             }
        }
-        
+
     }
-    
+
     func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
         return UINavigationController(rootViewController: controller.presentedViewController)
     }
@@ -241,18 +243,18 @@ class ScriptureViewController: UIViewController, UIWebViewDelegate, UIGestureRec
     @IBAction func cancelToScriptureViewController(segue: UIStoryboardSegue) {
         // do nothing
     }
-    
+
     @IBAction func selectBook(segue: UIStoryboardSegue) {
         let vc = segue.sourceViewController as! BookCollectionViewController
         resetScrollOffsets()
         bookNumber = vc.bookIndex
     }
-    
+
     @IBAction func selectChapter(segue: UIStoryboardSegue) {
         let vc = segue.sourceViewController as! ChapterCollectionViewController
         loadChapter(vc.selectedChapter)
     }
-    
+
     @IBAction func selectIntroduction(segue: UIStoryboardSegue) {
         chapterNumber = 0
     }

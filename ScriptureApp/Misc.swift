@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-var scripture: Scripture = {
-    let scrip = Scripture()
-    scrip.loadConfig()
-    scrip.loadLibrary()
-    return scrip
-}()
-
-var config: ALSConfig = scripture.getConfig()
 
 func updateGlobalUIFromConfig() {
     //// color strings

@@ -11,6 +11,9 @@ import UIKit
 class AboutViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
 
+    let scripture = Scripture.sharedInstance
+    let config = Scripture.sharedInstance.getConfig()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
