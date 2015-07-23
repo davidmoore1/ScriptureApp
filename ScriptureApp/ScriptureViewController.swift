@@ -279,6 +279,8 @@ class ScriptureViewController: UIViewController,
         return true
     }
     func webViewDidFinishLoad(webView: UIWebView) {
+        updateHtmlSize()
+        updateHtmlColors()
         if mVerseNumber != "" {
             var result = scripture.goToVerse(mVerseNumber, webView: webView)
             result = scripture.highlightVerse(mVerseNumber, webView: webView)
@@ -323,6 +325,29 @@ class ScriptureViewController: UIViewController,
         updateHtmlColors()
     }
 
+    func updateHtmlColors() {
+        var js = ""
+        for style in config.getStyles().map({ $0 as! ALCStyle }) {
+            let styleName = style.getName()
+            if style.hasPropertyWithNSString("color") {
+                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_COLOR_)
+                js += "ss.addRule('\(styleName)', 'color: \(colorStr)');"
+            }
+            if style.hasPropertyWithNSString("background-color") {
+                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
+                js += "ss.addRule('\(styleName)', 'background-color: \(colorStr)');"
+            }
+        }
+        js = "(function changeColors() { ss = document.styleSheets[0]; \(js) })()"
+        webView.stringByEvaluatingJavaScriptFromString(js)
+    }
+
+    func updateHtmlSize() {
+        let fontSize = config.getFontSize()
+        var js = "(function changeFontSize() { var el = document.getElementsByTagName('body')[0].style.fontSize = '\(fontSize)px'; })()"
+        webView.stringByEvaluatingJavaScriptFromString(js)
+    }
+}
 
 extension UIViewController {
     var contentViewController: UIViewController {

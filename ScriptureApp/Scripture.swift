@@ -100,6 +100,12 @@ public class Scripture {
     func getCurrentBook() -> Book? {
         return mCurrentBook
     }
+    func getAvailableColorThemeNames() -> [String] {
+        return getConfig().getAvailableColorThemes().map { ($0 as! ALCColorTheme).getName() }
+    }
+    func getStyleNames() -> [String] {
+        return getConfig().getStyles().map { ($0 as! ALCStyle).getName() }
+    }
     func getBook(index: Int) -> Book? {
         for (var i = 0; i < mBookArray!.count; i++){
             for (var j=0; j < mBookArray![i].count; i++) {
