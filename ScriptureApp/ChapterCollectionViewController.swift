@@ -26,7 +26,19 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return chapters
     }
-    
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        popoverPresentationController?.passthroughViews = nil
+        navbar?.updateNavigationBarColors()
+        navbar?.barStyle = .Black
+    }
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        navbar?.updateNavigationBarColors()
+    }
+
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(chapterReuseIdentifier, forIndexPath: indexPath) as! ChapterCollectionViewCell
 

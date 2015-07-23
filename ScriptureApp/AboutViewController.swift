@@ -20,4 +20,14 @@ class AboutViewController: UIViewController {
         webView.loadHTMLString(scripture.getAboutHtml(), baseURL: nil)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navbar?.updateNavigationBarColors()
+        navbar?.barStyle = .Black
+    }
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        navbar?.updateNavigationBarColors()
+    }
 }

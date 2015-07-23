@@ -21,7 +21,15 @@ public struct Constants {
     static let SearchCellReuseIdentifier = "Search"
     static let AboutSeque = "about"
     static let TextSizeSeque = "text size"
-    static let UpArrow = "▴"
     static let SelectBook = "selectBook"
     static let SelectChapter = "selectChapter"
+
+    static let GradientName = "gradientName"
+
+    static let UpArrow = "▴"
+    static let DownArrow = "▾"
+    static let Arrow = BarOnTop ? DownArrow : UpArrow
+
+    static let BarOnTop = true
+    static let UseGradient = false
 }

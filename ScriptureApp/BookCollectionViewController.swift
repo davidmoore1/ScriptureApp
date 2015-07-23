@@ -24,7 +24,18 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
         collectionView?.delegate = self
 //        collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
     }
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        popoverPresentationController?.passthroughViews = nil
+        navbar?.updateNavigationBarColors()
+        navbar?.barStyle = .Black
+    }
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        navbar?.updateNavigationBarColors()
+    }
+
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return books.count
     }

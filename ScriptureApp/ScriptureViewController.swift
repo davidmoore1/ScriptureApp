@@ -31,11 +31,17 @@ class ScriptureViewController: UIViewController,
 
     @IBOutlet weak var bookButton: UIBarButtonItem!
     @IBOutlet weak var chapterButton: UIBarButtonItem!
-    
+    @IBOutlet weak var space: UIBarButtonItem!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var fixedSpace1: UIBarButtonItem!
+    @IBOutlet weak var textSizeButton: UIBarButtonItem!
+    @IBOutlet weak var fixedSpace2: UIBarButtonItem!
+    @IBOutlet weak var aboutButton: UIBarButtonItem!
+
     var bookNumber = 0 {
         didSet {
             book = scripture.getBookArray().flatMap { $0 }[bookNumber]
-            bookButton.title = book!.getName() + Constants.UpArrow
+            bookButton.title = book!.getName() + Constants.Arrow
             scripture.loadBook(book)
             scripture.updateCurrentBook(book)
             resetScrollOffsets()
@@ -54,9 +60,9 @@ class ScriptureViewController: UIViewController,
             scripture.goToReference(book!, chapterNumber: chapterNumber, webView: webView)
             if chapterNumber == 0 {
                 let introTitle = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
-                chapterButton.title = introTitle + Constants.UpArrow
+                chapterButton.title = introTitle + Constants.Arrow
             } else {
-                chapterButton.title = "\(chapterNumber)" + Constants.UpArrow
+                chapterButton.title = "\(chapterNumber)" + Constants.Arrow
             }
         }
     }
@@ -111,6 +117,8 @@ class ScriptureViewController: UIViewController,
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         setOffset(scrollOffsetLoad)
+        updateToolbarColors()
+        navbar?.updateNavigationBarColors()
     }
 
     func loadIntroduction() {
@@ -119,14 +127,33 @@ class ScriptureViewController: UIViewController,
             webView.loadHTMLString(html, baseURL: nil)
         }
     }
-    
+
+    override func prefersStatusBarHidden() -> Bool {
+        if let navHid = navigationController?.navigationBarHidden, let toolHid = navigationController?.toolbarHidden {
+            return (navHid && toolHid) || super.prefersStatusBarHidden()
+        } else {
+            return super.prefersStatusBarHidden()
+        }
+    }
+
     func toggleFullscreen() {
-        navigationController?.setToolbarHidden(!navigationController!.toolbarHidden, animated: true)
+        if Constants.BarOnTop {
+            navigationController?.setNavigationBarHidden(!navigationController!.navigationBarHidden, animated: true)
+        } else {
+            navigationController?.setToolbarHidden(!navigationController!.toolbarHidden, animated: true)
+        }
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        navigationController?.toolbarHidden = Constants.BarOnTop
+        navigationController?.navigationBarHidden = !Constants.BarOnTop
+        if Constants.BarOnTop {
+            navigationController?.navigationBar.barStyle = UIBarStyle.Black
+            navigationItem.leftBarButtonItems = [bookButton, chapterButton, space, searchButton, fixedSpace1, textSizeButton, fixedSpace2, aboutButton]
+        }
         webView.delegate = self
         tap.delegate = self
         let singleTapSelector : Selector = "single:"
@@ -144,8 +171,29 @@ class ScriptureViewController: UIViewController,
         } else {
             updateUI()
         }
+
+        loadColorTheme(config.getCurrentColorTheme())
     }
-    
+
+    func updateToolbarColors() {
+        let topColor = scripture.getActionBarTopColor()
+        let bottomColor = scripture.getActionBarBottomColor()
+        let midColor = getMidColor(topColor, bottomColor)
+
+        let gradient = CAGradientLayer()
+        let toolbar = navigationController!.toolbar
+
+        gradient.frame = toolbar.bounds
+        gradient.colors = Constants.UseGradient ? [topColor.CGColor, bottomColor.CGColor] : [midColor.CGColor, midColor.CGColor]
+        gradient.name = Constants.GradientName
+
+        toolbar.layer.removeSublayer(name: Constants.GradientName)
+        toolbar.setBackgroundImage(UIImage(), forToolbarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
+        toolbar.backgroundColor = UIColor.clearColor()
+        toolbar.layer.insertSublayer(gradient, atIndex: 0)
+        toolbar.tintColor = UIColor.whiteColor()
+    }
+
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -189,6 +237,7 @@ class ScriptureViewController: UIViewController,
                 }
             case Constants.TextSizeSeque:
                 let vc = segue.destinationViewController as! TextSizeViewController
+                vc.rootViewController = self
                 vc.popoverPresentationController?.delegate = vc
             case Constants.AnnotationSeque:
                 if let tvc = segue.destinationViewController.contentViewController as? AnnotationViewController {
@@ -260,6 +309,20 @@ class ScriptureViewController: UIViewController,
     }
 }
 
+    func loadColorTheme(theme: String) {
+        loadColorTheme(theme, navigationBar: nil)
+    }
+
+    func loadColorTheme(theme: String, navigationBar: UINavigationBar?) {
+        config.setCurrentColorThemeWithNSString(theme)
+        updateToolbarColors()
+        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        webView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        navigationBar?.updateNavigationBarColors()
+        navigationController?.navigationBar.updateNavigationBarColors()
+        updateHtmlColors()
+    }
+
 
 extension UIViewController {
     var contentViewController: UIViewController {
@@ -267,5 +330,55 @@ extension UIViewController {
             return navcon.visibleViewController
         }
         return self
+    }
+
+    var navbar: UINavigationBar? {
+        return navigationController?.navigationBar
+    }
+}
+
+extension UINavigationBar {
+    func updateNavigationBarColors() {
+        let scripture = Scripture.sharedInstance
+        let topColor = scripture.getActionBarTopColor()
+        let bottomColor = scripture.getActionBarBottomColor()
+        let midColor = getMidColor(topColor, bottomColor)
+
+        tintColor = UIColor.whiteColor()
+        setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.DefaultPrompt)
+
+        let gradient = CAGradientLayer()
+        let statusBarFrame = UIApplication.sharedApplication().statusBarFrame
+        gradient.frame = CGRectMake(0, -statusBarFrame.height, bounds.width, statusBarFrame.height + bounds.height)
+        gradient.colors = (Constants.UseGradient ? [topColor, bottomColor] : [midColor, midColor]).map { $0.CGColor }
+        gradient.name = Constants.GradientName
+
+        layer.removeSublayer(name: Constants.GradientName)
+        backgroundColor = UIColor.clearColor()
+        layer.insertSublayer(gradient, atIndex: 0)
+        titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+    }
+}
+
+extension CALayer {
+    func removeSublayer(#name: String) {
+        if sublayers != nil {
+            for layer in sublayers as! [CALayer] {
+                if layer.name != nil && layer.name == name {
+                    layer.removeFromSuperlayer()
+                }
+            }
+        }
+    }
+}
+
+extension Scripture {
+
+    func getActionBarTopColor() -> UIColor {
+        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_TOP_))
+    }
+
+    func getActionBarBottomColor() -> UIColor {
+        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_BOTTOM_))
     }
 }
