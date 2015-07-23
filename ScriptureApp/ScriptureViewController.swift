@@ -21,12 +21,14 @@ class ScriptureViewController: UIViewController,
     private var mAnnotationHtml: String = ""
     private var annotationWaiting: Bool = false
     private var book: Book?
+    var pinchBeginFontSize = CGFloat(0)
     let scripture = Scripture.sharedInstance
     let config = Scripture.sharedInstance.getConfig()
 
     @IBOutlet var tap: UITapGestureRecognizer!
     @IBOutlet var leftSwipe: UISwipeGestureRecognizer!
     @IBOutlet var rightSwipe: UISwipeGestureRecognizer!
+    @IBOutlet var pinch: UIPinchGestureRecognizer!
     @IBOutlet weak var webView: UIWebView!
 
     @IBOutlet weak var bookButton: UIBarButtonItem!
@@ -166,6 +168,8 @@ class ScriptureViewController: UIViewController,
         webView.addGestureRecognizer(rightSwipe)
         webView.addGestureRecognizer(tap)
         webView.addGestureRecognizer(singleTap)
+        webView.addGestureRecognizer(pinch)
+
         if (book == nil) {
             bookNumber = 0
         } else {
@@ -215,6 +219,15 @@ class ScriptureViewController: UIViewController,
                 annotationWaiting = false
             }
         }
+    }
+    @IBAction func handlePinch(sender: UIPinchGestureRecognizer) {
+        if sender.state == .Began {
+            pinchBeginFontSize = CGFloat(config.getFontSize())
+        }
+        let factor: CGFloat = 0.5
+        let scale = sender.scale * factor + (1 - factor)
+        config.setFontSizeWithInt(Int32(pinchBeginFontSize * scale))
+        updateHtmlSize()
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
