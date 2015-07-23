@@ -163,6 +163,7 @@ class ScriptureViewController: UIViewController,
         singleTap.numberOfTapsRequired = 1
         singleTap.requireGestureRecognizerToFail(tap)
         singleTap.delegate = self
+        searchButton.enabled = scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_)
 
         webView.addGestureRecognizer(leftSwipe)
         webView.addGestureRecognizer(rightSwipe)

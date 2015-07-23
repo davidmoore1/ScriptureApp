@@ -24,6 +24,13 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
         matchLabel.text = matchCaption
         navBar.title = btnCaption
         searchBar.placeholder = searchHint
+        
+        matchAccentsSwitch.on = mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_DEFAULT_)
+        matchSwitch.on = mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_DEFAULT_)
+        matchAccentsSwitch.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
+        matchAccentsLabel.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
+        matchSwitch.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
+        matchLabel.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
     }

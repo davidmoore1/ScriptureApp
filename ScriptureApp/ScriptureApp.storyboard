@@ -239,20 +239,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="rEI-Ep-LAc">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Jk5-Eo-aQM">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="Jk5-Eo-aQM">
                             <connections>
                                 <segue destination="7qT-us-CFJ" kind="unwind" unwindAction="cancelToScriptureViewController:" id="og6-4q-G30"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="Jk5-Eo-aQM" id="XNf-UX-hBe"/>
                         <outlet property="webView" destination="3DC-E4-XUB" id="ZOV-iB-l7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-Mt-o9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7qT-us-CFJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="1220"/>
+            <point key="canvasLocation" x="1194" y="1492"/>
         </scene>
         <!--Text Size View Controller-->
         <scene sceneID="zzT-J8-MiC">
@@ -286,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGa-4S-7BO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="436"/>
+            <point key="canvasLocation" x="1869" y="436"/>
         </scene>
         <!--Book-->
         <scene sceneID="sfg-39-VQD">
@@ -492,7 +493,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tB4-CL-szF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="661"/>
+            <point key="canvasLocation" x="1857" y="728"/>
         </scene>
         <!--Search Select View Controller-->
         <scene sceneID="9tJ-Dl-Vej">
@@ -573,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmw-iI-dkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1904" y="-30"/>
+            <point key="canvasLocation" x="1905" y="-34"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="3sj-wL-OBs">
@@ -628,7 +629,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gE0-t3-gZU">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="crD-W2-ouR">
+                        <barButtonItem key="leftBarButtonItem" title="⬅︎" id="crD-W2-ouR">
                             <connections>
                                 <action selector="closeClicked:" destination="KbP-gi-vEz" id="7pC-dx-2Gs"/>
                             </connections>
@@ -643,7 +644,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dnp-KT-aZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306" y="50"/>
+            <point key="canvasLocation" x="3310" y="-34"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3yU-cd-lqD">
@@ -661,12 +662,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izI-ls-eQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2594" y="50"/>
+            <point key="canvasLocation" x="2607" y="-34"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hkY-ap-PkI"/>
         <segue reference="kQa-zd-9aV"/>
-        <segue reference="J9p-CE-Iw6"/>
+        <segue reference="KfA-Ag-ESp"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -69,7 +69,7 @@ public class Scripture {
         AISPopupHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(mPopupHandler, mLibrary, mWriter, mScripture)
         mPopupHandler.initBookPopup()
 
-        if (success && mLibrary.getConfig().hasFeatureWithNSString(ALCCommonFeatureName_SPLASH_SCREEN_)) {
+        if (success && configHasFeature(ALCCommonFeatureName_SPLASH_SCREEN_)) {
             ALSFactoryCommon_parseGlossaryWithALSBook_withALSDisplayWriter_(glossaryBook, mWriter)
             mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book)
         }
@@ -77,6 +77,7 @@ public class Scripture {
         loadThemeList()
     }
 
+    
     func loadBook(book: Book?) -> (success: Bool, book: Book?) {
         var success = false
         var lBook = book;
@@ -261,7 +262,18 @@ public class Scripture {
     func configHasFeature(feature: String) -> Bool {
         return mLibrary.getConfig().hasFeatureWithNSString(feature)
     }
-
+    
+    func configGetFeature(feature: String) -> String {
+        return mLibrary.getConfig().getFeatures().getValueWithNSString(feature)
+    }
+    
+    func configGetBoolFeature(feature: String) -> Bool {
+        var retVal = true
+        if (configGetFeature(feature) == "false") {
+            retVal = false
+        }
+        return retVal
+    }
     func goToReference(book: Book?, chapterNumber: Int, webView: UIWebView) -> Bool {
         var success: Bool = false
         if (book != nil) {
@@ -346,7 +358,7 @@ public class Scripture {
         return result
     }
     func useListView() -> Bool {
-        var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
+        var bookSelectOption = configGetFeature(ALSScriptureFeatureName_BOOK_SELECTION_)
         var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption) ? bookSelectOption.lowercaseString == "list" : true
         return isList
     }

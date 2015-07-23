@@ -50,7 +50,6 @@ class SearchTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
-        mCloseButton.title = mScripture!.getString(ALCCommonStringId_BUTTON_CLOSE_)
         activityIndicator.startAnimating()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 //        mScripture!.clearBookArray()
