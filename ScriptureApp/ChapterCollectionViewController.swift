@@ -39,12 +39,19 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
         navbar?.updateNavigationBarColors()
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
+        popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
+    }
+
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(chapterReuseIdentifier, forIndexPath: indexPath) as! ChapterCollectionViewCell
 
         cell.button.chapter = indexPath.item + 1
         cell.button.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
-        
+        cell.button.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
         return cell
     }
 
@@ -53,6 +60,7 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
         let title = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
         view.button.setTitle(title, forState: .Normal)
         view.button.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_INTRO_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)!)
+        view.button.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
         return view
     }
 

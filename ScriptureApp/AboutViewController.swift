@@ -18,11 +18,15 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         webView.loadHTMLString(scripture.getAboutHtml(), baseURL: nil)
+        let bgColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        webView.backgroundColor = bgColor
+        popoverPresentationController?.backgroundColor = bgColor
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+        popoverPresentationController?.passthroughViews = nil
         navbar?.updateNavigationBarColors()
         navbar?.barStyle = .Black
     }

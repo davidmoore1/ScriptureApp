@@ -390,5 +390,30 @@ public class Scripture {
         }
         return UIColorFromRGB(strtoul(colorStr, nil, 16))
     }
+    func getIntroductionTitle() -> String {
+        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
+    }
 
+    func getIntroductionSymbol() -> String {
+        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
+    }
+
+    func getActionBarTopColor() -> UIColor {
+        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_TOP_))
+    }
+
+    func getActionBarBottomColor() -> UIColor {
+        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_BOTTOM_))
+    }
+}
+
+extension JavaUtilAbstractList {
+    func map<T>(transform: (AnyObject) -> T) -> [T] {
+        var iter = iterator()
+        var result = [AnyObject]()
+        while iter.hasNext() {
+            result.append(iter.next())
+        }
+        return result.map(transform)
+    }
 }

@@ -9,24 +9,6 @@
 import Foundation
 import UIKit
 
-
-func updateGlobalUIFromConfig() {
-    //// color strings
-    // taken from DefaultColors.java
-    let colorNames = [
-        "TextColor", "TitlesColor", "BackgroundColor", "VerseNumberColor", "FootnoteBackgroundColor", "PopupBackgroundColor", "TextHighlightColor",
-        "LinkColor", "FooterBackgroundColor",
-        "ChapterButtonColor", "ChapterButtonTextColor", "ChapterButtonIntroColor",
-        "BookListDefaultColor", "BookButtonDefaultColor", "BookButtonTextColor",
-        "SearchTextColor", "SearchButtonColor", "SearchButtonTextColor", "SearchProgressButtonColor", "SearchProgressButtonTextColor",
-        "ActionBarTopColor", "ActionBarBottomColor",
-        "AudioBarTopColor", "AudioBarBottomColor", "AudioBarTopLine1Color", "AudioBarTopLine2Color",
-        "VerseBlock1Color", "VerseBlock2Color"
-    ]
-    let theme = config.getCurrentColorTheme()
-    var colors = [String: UIColor]()
-    for name in colorNames {
-        colors[name] = UIColorFromRGB(config.getColorDefs().getColorStringFromNameWithNSString(name, withNSString: theme))
 func getMidColor(color1: UIColor, color2: UIColor) -> UIColor {
     func mid(f1: CGFloat, f2: CGFloat) -> CGFloat {
         return (f1 + f2) / 2

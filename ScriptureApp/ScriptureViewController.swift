@@ -61,7 +61,7 @@ class ScriptureViewController: UIViewController,
         if (webView != nil) {
             scripture.goToReference(book!, chapterNumber: chapterNumber, webView: webView)
             if chapterNumber == 0 {
-                let introTitle = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
+                let introTitle = scripture.getIntroductionSymbol()
                 chapterButton.title = introTitle + Constants.Arrow
             } else {
                 chapterButton.title = "\(chapterNumber)" + Constants.Arrow
@@ -322,7 +322,6 @@ class ScriptureViewController: UIViewController,
     @IBAction func selectIntroduction(segue: UIStoryboardSegue) {
         chapterNumber = 0
     }
-}
 
     func loadColorTheme(theme: String) {
         loadColorTheme(theme, navigationBar: nil)
@@ -407,16 +406,5 @@ extension CALayer {
                 }
             }
         }
-    }
-}
-
-extension Scripture {
-
-    func getActionBarTopColor() -> UIColor {
-        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_TOP_))
-    }
-
-    func getActionBarBottomColor() -> UIColor {
-        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_BOTTOM_))
     }
 }
