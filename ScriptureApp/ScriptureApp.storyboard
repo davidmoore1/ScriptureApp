@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VCD-yX-cj2">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -463,8 +462,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-eg-cqi">
-                                <rect key="frame" x="16" y="8" width="368" height="184"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-eg-cqi">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -585,14 +584,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zh-ZO-exP">
-                                            <rect key="frame" x="8" y="37" width="584" height="37"/>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zh-ZO-exP">
+                                            <rect key="frame" x="8" y="37" width="584" height="89"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <attributedString key="attributedText"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="3zh-ZO-exP" secondAttribute="bottom" id="KIG-7t-Ash"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="h4F-fm-uy6" secondAttribute="trailing" id="LCC-GQ-hl5"/>
                                         <constraint firstItem="3zh-ZO-exP" firstAttribute="trailing" secondItem="QEB-4b-zyk" secondAttribute="trailingMargin" id="RAC-Nv-yhS"/>
                                         <constraint firstItem="h4F-fm-uy6" firstAttribute="leading" secondItem="QEB-4b-zyk" secondAttribute="leadingMargin" id="U6T-Lz-C7f"/>
@@ -622,6 +622,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="amn-TN-h7m" id="Uis-sz-mEL"/>
                         <outlet property="mCloseButton" destination="crD-W2-ouR" id="EY3-9I-fTw"/>
+                        <outlet property="navBar" destination="gE0-t3-gZU" id="KVl-ei-K93"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dnp-KT-aZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
