@@ -121,7 +121,7 @@ public class Scripture {
     }
     func getDisplayWriter() -> ALSDisplayWriter {
         if (mWriter == nil) {
-            mWriter = new_ALSDisplayWriter_initWithALSAppLibrary_(mLibrary)
+            mWriter = new_ALSDisplayWriter_initWithALSAppLibrary_withALSExportTypeEnum_(mLibrary, ALSExportTypeEnum_valueOfWithNSString_("APP"))
         }
         return mWriter!
     }
@@ -130,13 +130,6 @@ public class Scripture {
     }
     func getFactory() -> AISScriptureFactoryIOS {
         return mScripture
-    }
-    func getHtml(text: String) -> String {
-        var retString = ""
-        var htmlLinks = ALSLinks()
-        ALSLinks_init(htmlLinks)
-        retString = mWriter!.getHtmlForFootnoteWithNSString(text, withALSLinks: htmlLinks)
-        return retString
     }
     func loadConfig() {
         var bundle = NSBundle.mainBundle()
@@ -352,7 +345,7 @@ public class Scripture {
     }
     func useListView() -> Bool {
         var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
-        var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption)
+        var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption) ? bookSelectOption.lowercaseString == "list" : true
         return isList
     }
 

@@ -52,6 +52,7 @@
 #import "Element.h"
 #import "Elements.h"
 #import "Encryption.h"
+#import "ExportType.h"
 #import "FactoryCommon.h"
 #import "Features.h"
 #import "FileManagerCommon.h"

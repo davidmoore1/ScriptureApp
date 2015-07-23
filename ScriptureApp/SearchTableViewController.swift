@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class SearchTableViewController: UITableViewController {
     var searchHandler = AISSearchHandler()
@@ -30,6 +31,9 @@ class SearchTableViewController: UITableViewController {
         mStopSearch = true
         self.activityIndicator.stopAnimating()
         self.activityIndicator.hidden = true
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        NSURLCache.sharedURLCache().diskCapacity = 0
+        NSURLCache.sharedURLCache().memoryCapacity = 0
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {
@@ -78,12 +82,11 @@ class SearchTableViewController: UITableViewController {
 
         // Configure the cell...
         var result = mSearchResults[indexPath.row]
-        cell.searchResult = result
         cell.reference = searchHandler.getReferenceTitleWithALSReference(result.getReference())
-        cell.html = mScripture!.getHtml(result.getContext())
+//        cell.html = "<html><body>hello world</body></html>"
+        cell.html = result.getContext()
         return cell
     }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         mStopSearch = true
         mSelectedIndex = indexPath
@@ -166,6 +169,7 @@ class SearchTableViewController: UITableViewController {
         searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: false)
         var books = mScripture!.getLibrary().getMainBookCollection().getBooks()
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
+            autoreleasepool {
             var object: AnyObject! = books.getWithInt(CInt(i))
             mBook = object as? ALSBook
             let bookId = mBook!.getBookId();
@@ -187,6 +191,7 @@ class SearchTableViewController: UITableViewController {
                 }
             }
             searchHandler.unloadBookWithALSBook(mBook)
+            }
         }
         mStopSearch = false
     }
