@@ -613,6 +613,7 @@
                         <outlet property="activityIndicator" destination="amn-TN-h7m" id="Uis-sz-mEL"/>
                         <outlet property="mCloseButton" destination="crD-W2-ouR" id="EY3-9I-fTw"/>
                         <outlet property="navBar" destination="gE0-t3-gZU" id="KVl-ei-K93"/>
+                        <outlet property="searchTableView" destination="P3T-JR-zVQ" id="yTP-lf-IOe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dnp-KT-aZe" userLabel="First Responder" sceneMemberID="firstResponder"/>

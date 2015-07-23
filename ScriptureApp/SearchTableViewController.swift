@@ -16,6 +16,7 @@ class SearchTableViewController: UITableViewController {
     var mScripture: Scripture?
     var mSearchResults = [AISSearchResultIOS]()
     var mStopSearch = false
+    var mClosing = false
     var mBook: ALSBook?
     var mScriptureController: ScriptureViewController?
     private var mSelectedIndex: NSIndexPath?
@@ -25,11 +26,13 @@ class SearchTableViewController: UITableViewController {
     
     }*/
     
+    @IBOutlet var searchTableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mCloseButton: UIBarButtonItem!
     @IBAction func closeClicked(sender: AnyObject) {
         mStopSearch = true
+        mClosing = true
         self.activityIndicator.stopAnimating()
         self.activityIndicator.hidden = true
         NSURLCache.sharedURLCache().removeAllCachedResponses()
@@ -39,6 +42,8 @@ class SearchTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTableView.rowHeight = UITableViewAutomaticDimension
+        searchTableView.estimatedRowHeight = 135
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,7 +53,7 @@ class SearchTableViewController: UITableViewController {
         activityIndicator.startAnimating()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 //        mScripture!.clearBookArray()
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.search()
             dispatch_async(dispatch_get_main_queue()) {
                 self.activityIndicator.stopAnimating()
@@ -209,12 +214,8 @@ class SearchTableViewController: UITableViewController {
                             if (resultCount > Constants.MaxResults) {
                                 mStopSearch = true
                             }
-                            dispatch_async(dispatch_get_main_queue()) {
-                                var row = self.mSearchResults.count
-                                var indexPath = NSIndexPath(forRow:row, inSection:0)
-                                self.mSearchResults.append(searchResult)
-                                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
-                            }
+                            throttleSearchOutput(resultCount)
+                            addRowToView(searchResult)
                         }
                     }
                 }
@@ -222,14 +223,39 @@ class SearchTableViewController: UITableViewController {
             }
         }
         if (resultCount == 0) {
-            dispatch_async(dispatch_get_main_queue()) {
-                var searchResult = AISSearchResultIOS()
-                self.mSearchResults.append(searchResult)
-                var indexPath = NSIndexPath(forRow:0, inSection:0)
-                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
-            }
+            var searchResult = AISSearchResultIOS()
+            addRowToView(searchResult)
          }
         mStopSearch = false
+    }
+   
+    func addRowToView(searchResult: AISSearchResultIOS) {
+        dispatch_async(dispatch_get_main_queue()) {
+            if (!self.mClosing) {
+                var row = self.mSearchResults.count
+                var indexPath = NSIndexPath(forRow:row, inSection:0)
+                self.mSearchResults.append(searchResult)
+                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+            }
+        }
+    }
+    /*
+    This method is required because without it, in a search with lots of matches, even if you use background threads,
+    the system freezes because tasks back up onto the dispatch_main_queue.  In a long search, without throttling, the
+    add row section can continue running for 3 minutes after the search has completed with the UI frozen the whole time.
+    This method allows the UI to remain fairly responsive while the search is ongoing
+    */
+    func throttleSearchOutput(resultCount: Int) {
+        if (resultCount % 10 == 0) {
+            var currentCount = 0
+            do {
+                currentCount = self.mSearchResults.count
+                NSThread.sleepForTimeInterval(0.25)
+                if (currentCount == self.mSearchResults.count) {
+                    NSThread.sleepForTimeInterval(0.5)
+                }
+            } while (currentCount < self.mSearchResults.count)
+        }
     }
 
 }
