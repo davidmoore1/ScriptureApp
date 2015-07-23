@@ -24,4 +24,5 @@ public struct Constants {
     static let UpArrow = "▴"
     static let SelectBook = "selectBook"
     static let SelectChapter = "selectChapter"
+    static let MaxResults = 2000
 }

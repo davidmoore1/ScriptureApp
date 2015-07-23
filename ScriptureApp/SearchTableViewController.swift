@@ -14,7 +14,7 @@ class SearchTableViewController: UITableViewController {
     var mSearchString : String?
     var mMatchWholeWord : Bool?
     var mScripture: Scripture?
-    var mSearchResults = [ALSSearchResult]()
+    var mSearchResults = [AISSearchResultIOS]()
     var mStopSearch = false
     var mBook: ALSBook?
     var mScriptureController: ScriptureViewController?
@@ -25,6 +25,7 @@ class SearchTableViewController: UITableViewController {
     
     }*/
     
+    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mCloseButton: UIBarButtonItem!
     @IBAction func closeClicked(sender: AnyObject) {
@@ -42,6 +43,7 @@ class SearchTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
         mCloseButton.title = mScripture!.getString(ALCCommonStringId_BUTTON_CLOSE_)
         activityIndicator.startAnimating()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -82,15 +84,36 @@ class SearchTableViewController: UITableViewController {
 
         // Configure the cell...
         var result = mSearchResults[indexPath.row]
+        if ((indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
+            var emptyString = NSMutableAttributedString(string: "")
+            cell.reference = mScripture!.getString(ALSScriptureStringId_SEARCH_NO_MATCHES_FOUND_)
+            cell.html = emptyString
+            return cell
+        }
         cell.reference = searchHandler.getReferenceTitleWithALSReference(result.getReference())
-//        cell.html = "<html><body>hello world</body></html>"
-        cell.html = result.getContext()
+        var context = result.getContext()
+        var nsContext = context as NSString
+        let font = UIFont.systemFontOfSize(17.0)
+        let boldFont = UIFont.boldSystemFontOfSize(17.0)
+        var attributedString = NSMutableAttributedString(string: result.getContext())
+        attributedString.addAttribute(NSFontAttributeName, value: font, range: NSMakeRange(0, nsContext.length))
+        for (var i = 0; i < Int(result.numberOfMatchesInReference()); i++) {
+            var match = result.getMatchWithInt(Int32(i))
+            var textRange = NSRange(location: Int(match.getStartIndex()), length: Int(match.getEndIndex() - match.getStartIndex()))
+            attributedString.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
+            attributedString.addAttribute(NSFontAttributeName, value: boldFont, range: textRange)
+        }
+        cell.html = attributedString
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         mStopSearch = true
         mSelectedIndex = indexPath
         var selectedResult = mSearchResults[mSelectedIndex!.row]
+        if ((mSelectedIndex!.row == 0) && ( selectedResult.numberOfMatchesInReference() == 0 )) {
+            // User selected "No results found
+            return
+        }
         mScriptureController!.mVerseNumber = String(selectedResult.getReference().getFromVerse())
         mScriptureController!.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
         mScriptureController!.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
@@ -168,31 +191,44 @@ class SearchTableViewController: UITableViewController {
         AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, mScripture!.getLibrary(), mScripture!.getDisplayWriter(), mScripture!.getFactory())
         searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: false)
         var books = mScripture!.getLibrary().getMainBookCollection().getBooks()
+        var resultCount = 0
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
             autoreleasepool {
-            var object: AnyObject! = books.getWithInt(CInt(i))
-            mBook = object as? ALSBook
-            let bookId = mBook!.getBookId();
-            searchHandler.loadBookForSearchWithALSBook(mBook)
-            for (var c = 0; c < Int(mBook!.getChapters().size()) && !mStopSearch; c++) {
-                var chapter = searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
-                var elements = chapter.getElements()
-                for (var e = 0; e < Int(elements.size()) && !mStopSearch; e++) {
-                    var element = elements.getWithInt(CInt(e)) as! ALSElement
-                    var searchResult = searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
-                    if (searchResult != nil) {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            var row = self.mSearchResults.count
-                            var indexPath = NSIndexPath(forRow:row, inSection:0)
-                            self.mSearchResults.append(searchResult)
-                            self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+                var object: AnyObject! = books.getWithInt(CInt(i))
+                mBook = object as? ALSBook
+                let bookId = mBook!.getBookId();
+                searchHandler.loadBookForSearchWithALSBook(mBook)
+                for (var c = 0; c < Int(mBook!.getChapters().size()) && !mStopSearch; c++) {
+                    var chapter = searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
+                    var elements = chapter.getElements()
+                    for (var e = 0; e < Int(elements.size()) && !mStopSearch; e++) {
+                        var element = elements.getWithInt(CInt(e)) as! ALSElement
+                        var searchResult = searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
+                        if (searchResult != nil) {
+                            resultCount++
+                            if (resultCount > Constants.MaxResults) {
+                                mStopSearch = true
+                            }
+                            dispatch_async(dispatch_get_main_queue()) {
+                                var row = self.mSearchResults.count
+                                var indexPath = NSIndexPath(forRow:row, inSection:0)
+                                self.mSearchResults.append(searchResult)
+                                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+                            }
                         }
                     }
                 }
-            }
-            searchHandler.unloadBookWithALSBook(mBook)
+                searchHandler.unloadBookWithALSBook(mBook)
             }
         }
+        if (resultCount == 0) {
+            dispatch_async(dispatch_get_main_queue()) {
+                var searchResult = AISSearchResultIOS()
+                self.mSearchResults.append(searchResult)
+                var indexPath = NSIndexPath(forRow:0, inSection:0)
+                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+            }
+         }
         mStopSearch = false
     }
 

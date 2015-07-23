@@ -129,6 +129,8 @@
 		63B8ABD51B5E95D9002563FD /* CrossRef.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABD31B5E95D9002563FD /* CrossRef.java */; };
 		63B8ABD61B5E95D9002563FD /* Note.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABD41B5E95D9002563FD /* Note.java */; };
 		63B8ABD81B5ED5A2002563FD /* ExportType.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABD71B5ED5A2002563FD /* ExportType.java */; };
+		63B8ABDB1B5FCE43002563FD /* SearchContextMatch.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABD91B5FCE43002563FD /* SearchContextMatch.java */; };
+		63B8ABDC1B5FCE43002563FD /* SearchResultIOS.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABDA1B5FCE43002563FD /* SearchResultIOS.java */; };
 		63B8E2981B55797C002DC672 /* BookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */; };
 		63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */; };
 		63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8E2941B55797C002DC672 /* ScriptureViewController.swift */; };
@@ -657,6 +659,8 @@
 		63B8ABD31B5E95D9002563FD /* CrossRef.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CrossRef.java; sourceTree = "<group>"; };
 		63B8ABD41B5E95D9002563FD /* Note.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Note.java; sourceTree = "<group>"; };
 		63B8ABD71B5ED5A2002563FD /* ExportType.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ExportType.java; sourceTree = "<group>"; };
+		63B8ABD91B5FCE43002563FD /* SearchContextMatch.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SearchContextMatch.java; sourceTree = "<group>"; };
+		63B8ABDA1B5FCE43002563FD /* SearchResultIOS.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SearchResultIOS.java; sourceTree = "<group>"; };
 		63B8E2921B55797C002DC672 /* BookCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCollectionViewController.swift; sourceTree = "<group>"; };
 		63B8E2931B55797C002DC672 /* ChapterCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCollectionViewController.swift; sourceTree = "<group>"; };
 		63B8E2941B55797C002DC672 /* ScriptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptureViewController.swift; sourceTree = "<group>"; };
@@ -1312,6 +1316,8 @@
 		637A56271B28D88600239C64 /* scripture */ = {
 			isa = PBXGroup;
 			children = (
+				63B8ABD91B5FCE43002563FD /* SearchContextMatch.java */,
+				63B8ABDA1B5FCE43002563FD /* SearchResultIOS.java */,
 				637431001B4457B000850F32 /* PopupHandler.java */,
 				637430FC1B42D3EC00850F32 /* SearchHandler.java */,
 				6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */,
@@ -2280,7 +2286,9 @@
 			files = (
 				6347D5C11B37590A0065B075 /* ScriptureFactoryIOS.java in Sources */,
 				637430FD1B42D3EC00850F32 /* SearchHandler.java in Sources */,
+				63B8ABDC1B5FCE43002563FD /* SearchResultIOS.java in Sources */,
 				637431011B4457B000850F32 /* PopupHandler.java in Sources */,
+				63B8ABDB1B5FCE43002563FD /* SearchContextMatch.java in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ import WebKit
 class SearchTableViewCell: UITableViewCell, WKNavigationDelegate {
     var reference: String?
     var webView: WKWebView?
-    var html: String? {
+    var html: NSAttributedString? {
         didSet {
             updateUI()
         }
@@ -42,7 +42,7 @@ class SearchTableViewCell: UITableViewCell, WKNavigationDelegate {
         }
         webView!.loadHTMLString(html!, baseURL: nil)*/
 //        cellWebView.loadHTMLString(html, baseURL: nil)
-        htmlTextField.text = html
+        htmlTextField.attributedText = html
      }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
