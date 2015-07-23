@@ -20,10 +20,12 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
         var btnCaption = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
         var matchCaption = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_MATCH_WHOLE_WORDS_)
         var searchHint = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_TEXT_HINT_)
+        matchAccentsLabel.text = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_MATCH_ACCENTS_)
         matchLabel.text = matchCaption
         navBar.title = btnCaption
         searchBar.placeholder = searchHint
         searchBar.delegate = self
+        searchBar.becomeFirstResponder()
     }
 
     @IBAction func backButtonClicked(sender: AnyObject) {
@@ -47,8 +49,10 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
     }
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var matchLabel: UILabel!
+    @IBOutlet weak var matchAccentsLabel: UILabel!
     @IBOutlet weak var matchSwitch: UISwitch!
     @IBOutlet weak var navBar: UINavigationItem!
+    @IBOutlet weak var matchAccentsSwitch: UISwitch!
     
     // MARK: - Navigation
 
@@ -61,6 +65,7 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
                     searchBar.resignFirstResponder()
                     tvc.mSearchString = searchBar!.text
                     tvc.mMatchWholeWord = matchSwitch!.on
+                    tvc.mMatchAccents = matchAccentsSwitch!.on
                     tvc.mScripture = mScripture
                     tvc.mScriptureController = mScriptureController
                 }

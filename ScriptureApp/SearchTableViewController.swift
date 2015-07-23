@@ -13,6 +13,7 @@ class SearchTableViewController: UITableViewController {
     var searchHandler = AISSearchHandler()
     var mSearchString : String?
     var mMatchWholeWord : Bool?
+    var mMatchAccents : Bool?
     var mScripture: Scripture?
     var mSearchResults = [AISSearchResultIOS]()
     var mStopSearch = false
@@ -194,7 +195,7 @@ class SearchTableViewController: UITableViewController {
 */
     func search() {
         AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, mScripture!.getLibrary(), mScripture!.getDisplayWriter(), mScripture!.getFactory())
-        searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: false)
+        searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: mMatchAccents!)
         var books = mScripture!.getLibrary().getMainBookCollection().getBooks()
         var resultCount = 0
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {

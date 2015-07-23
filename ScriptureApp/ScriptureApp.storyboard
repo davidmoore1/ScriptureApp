@@ -521,15 +521,28 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Accents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUx-W5-pwS">
+                                <rect key="frame" x="411" y="152" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcy-Kh-yAc">
+                                <rect key="frame" x="535" y="147" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="GQ0-Ze-F7g" secondAttribute="trailing" id="7js-a1-RIy"/>
                             <constraint firstItem="viy-94-3aR" firstAttribute="leading" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="8Ri-Y2-qKf"/>
+                            <constraint firstItem="bcy-Kh-yAc" firstAttribute="centerY" secondItem="BUx-W5-pwS" secondAttribute="centerY" id="Blv-hk-ItB"/>
+                            <constraint firstItem="wKm-HT-VN8" firstAttribute="centerX" secondItem="bcy-Kh-yAc" secondAttribute="centerX" id="DjB-of-SA9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="viy-94-3aR" secondAttribute="trailing" id="Jkj-ev-AW0"/>
                             <constraint firstItem="wKm-HT-VN8" firstAttribute="top" secondItem="GQ0-Ze-F7g" secondAttribute="bottom" id="QKc-jv-qmS"/>
+                            <constraint firstItem="bcy-Kh-yAc" firstAttribute="leading" secondItem="BUx-W5-pwS" secondAttribute="trailing" constant="8" symbolic="YES" id="Rpa-xK-Rfe"/>
                             <constraint firstItem="wKm-HT-VN8" firstAttribute="leading" secondItem="t7D-uM-UPo" secondAttribute="trailing" constant="8" symbolic="YES" id="Zp4-6x-cqG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wKm-HT-VN8" secondAttribute="trailing" id="cz7-Wc-hdO"/>
+                            <constraint firstItem="bcy-Kh-yAc" firstAttribute="top" secondItem="wKm-HT-VN8" secondAttribute="bottom" constant="8" symbolic="YES" id="fcp-5T-Q5p"/>
                             <constraint firstItem="GQ0-Ze-F7g" firstAttribute="leading" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="hw9-Uk-oIZ"/>
                             <constraint firstItem="wKm-HT-VN8" firstAttribute="centerY" secondItem="t7D-uM-UPo" secondAttribute="centerY" id="kFZ-vy-0CX"/>
                             <constraint firstItem="t7D-uM-UPo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="rPV-bb-vQB"/>
@@ -539,6 +552,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="IA9-w8-L74"/>
                     <connections>
+                        <outlet property="matchAccentsLabel" destination="BUx-W5-pwS" id="ctC-Je-8oY"/>
+                        <outlet property="matchAccentsSwitch" destination="bcy-Kh-yAc" id="He6-NY-Lqr"/>
                         <outlet property="matchLabel" destination="t7D-uM-UPo" id="yyJ-8t-QGR"/>
                         <outlet property="matchSwitch" destination="wKm-HT-VN8" id="uwC-qH-mz7"/>
                         <outlet property="navBar" destination="xae-gs-bIk" id="hrs-1V-SrW"/>
