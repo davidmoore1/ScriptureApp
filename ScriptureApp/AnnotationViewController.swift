@@ -9,6 +9,8 @@
 import UIKit
 
 class AnnotationViewController: UIViewController {
+    let scripture = Scripture.sharedInstance
+    let config = Scripture.sharedInstance.getConfig()
     var html: String = "" {
         didSet{
             if (mAnnotationWebView != nil) {
@@ -25,6 +27,9 @@ class AnnotationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let bgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString("body.footnote", withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        mAnnotationWebView.backgroundColor = bgColor
+        popoverPresentationController?.backgroundColor = bgColor
         mAnnotationWebView.loadHTMLString(html, baseURL: nil)
     }
 
