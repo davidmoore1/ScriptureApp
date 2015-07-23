@@ -9,34 +9,15 @@
 import Foundation
 import UIKit
 
-var scripture: Scripture = {
-    let scrip = Scripture()
-    scrip.loadConfig()
-    scrip.loadLibrary()
-    return scrip
-}()
-
-var config: ALSConfig = scripture.getConfig()
-
-func updateGlobalUIFromConfig() {
-    //// color strings
-    // taken from DefaultColors.java
-    let colorNames = [
-        "TextColor", "TitlesColor", "BackgroundColor", "VerseNumberColor", "FootnoteBackgroundColor", "PopupBackgroundColor", "TextHighlightColor",
-        "LinkColor", "FooterBackgroundColor",
-        "ChapterButtonColor", "ChapterButtonTextColor", "ChapterButtonIntroColor",
-        "BookListDefaultColor", "BookButtonDefaultColor", "BookButtonTextColor",
-        "SearchTextColor", "SearchButtonColor", "SearchButtonTextColor", "SearchProgressButtonColor", "SearchProgressButtonTextColor",
-        "ActionBarTopColor", "ActionBarBottomColor",
-        "AudioBarTopColor", "AudioBarBottomColor", "AudioBarTopLine1Color", "AudioBarTopLine2Color",
-        "VerseBlock1Color", "VerseBlock2Color"
-    ]
-    let theme = config.getCurrentColorTheme()
-    var colors = [String: UIColor]()
-    for name in colorNames {
-        colors[name] = UIColorFromRGB(config.getColorDefs().getColorStringFromNameWithNSString(name, withNSString: theme))
+func getMidColor(color1: UIColor, color2: UIColor) -> UIColor {
+    func mid(f1: CGFloat, f2: CGFloat) -> CGFloat {
+        return (f1 + f2) / 2
     }
-    
+    var r1: CGFloat = 0.0, g1: CGFloat = 0.0, b1: CGFloat = 0.0, a1: CGFloat = 0.0
+    var r2: CGFloat = 0.0, g2: CGFloat = 0.0, b2: CGFloat = 0.0, a2: CGFloat = 0.0
+    color1.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+    color2.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+    return UIColor(red: mid(r1, r2), green: mid(g1, g2), blue: mid(b1, b2), alpha: mid(a1, a2))
 }
 
 func UIColorFromRGB(rgbValue: UInt) -> UIColor {
