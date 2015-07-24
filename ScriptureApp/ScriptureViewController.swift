@@ -172,7 +172,7 @@ class ScriptureViewController: UIViewController,
         webView.addGestureRecognizer(pinch)
 
         if (book == nil) {
-            bookNumber = 0
+            bookNumber = scripture.firstBookIndex
         } else {
             updateUI()
         }

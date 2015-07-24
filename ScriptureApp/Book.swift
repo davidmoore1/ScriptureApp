@@ -115,7 +115,9 @@ public class Book {
         var success = (number <= numberOfChapters()) && (number > lowThreshold)
         return success
     }
-    
+    func getBookGroup() -> String {
+        return mBook!.getGroup()
+    }
     func canGetNextChapter() -> Bool {
         if let chapter = getCurrentChapterNumber() {
             return canGetChapter(chapter + 1)

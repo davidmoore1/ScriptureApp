@@ -8,10 +8,19 @@
 
 import UIKit
 
-class SearchSelectViewController: UIViewController, UISearchBarDelegate {
+class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIPopoverPresentationControllerDelegate
+ {
 
     var mScripture: Scripture?
     var mScriptureController: ScriptureViewController?
+    var mRangeButtonText: String = "" {
+        didSet{
+            if searchRangeButton != nil {
+                searchRangeButton!.setTitle(mRangeButtonText, forState: UIControlState.Normal)
+            }
+            mScripture!.searchRange = mRangeButtonText
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +33,10 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
         matchLabel.text = matchCaption
         navBar.title = btnCaption
         searchBar.placeholder = searchHint
-        
+        searchRangeLabel.text = mScripture!.getString(ALSScriptureStringId_SEARCH_RANGE_)
+        if mScripture!.searchRange != nil {
+            mRangeButtonText = mScripture!.searchRange!
+        }
         matchAccentsSwitch.on = mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_DEFAULT_)
         matchSwitch.on = mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_DEFAULT_)
         matchAccentsSwitch.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
@@ -54,12 +66,25 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
         }
         
     }
+    @IBOutlet weak var searchRangeLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var matchLabel: UILabel!
     @IBOutlet weak var matchAccentsLabel: UILabel!
     @IBOutlet weak var matchSwitch: UISwitch!
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var matchAccentsSwitch: UISwitch!
+    @IBOutlet weak var searchRangeButton: UIButton!
+
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+/*    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        if (annotationWaiting) {
+            annotationWaiting = false
+            return UIModalPresentationStyle.None
+        }
+        return UIModalPresentationStyle.CurrentContext
+    }*/
     
     // MARK: - Navigation
 
@@ -75,6 +100,13 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate {
                     tvc.mMatchAccents = matchAccentsSwitch!.on
                     tvc.mScripture = mScripture
                     tvc.mScriptureController = mScriptureController
+                }
+            case Constants.SearchRangeSeque:
+                if let tvc = segue.destinationViewController.contentViewController as? SearchRangeViewController {
+                    if let ppc = tvc.popoverPresentationController {
+                        ppc.delegate = self
+                        tvc.modalPresentationStyle = UIModalPresentationStyle.Popover
+                    }
                 }
                 
             default: break

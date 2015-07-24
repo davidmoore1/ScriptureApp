@@ -201,21 +201,24 @@ class SearchTableViewController: UITableViewController {
             autoreleasepool {
                 var object: AnyObject! = books.getWithInt(CInt(i))
                 mBook = object as? ALSBook
-                let bookId = mBook!.getBookId();
-                searchHandler.loadBookForSearchWithALSBook(mBook)
-                for (var c = 0; c < Int(mBook!.getChapters().size()) && !mStopSearch; c++) {
-                    var chapter = searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
-                    var elements = chapter.getElements()
-                    for (var e = 0; e < Int(elements.size()) && !mStopSearch; e++) {
-                        var element = elements.getWithInt(CInt(e)) as! ALSElement
-                        var searchResult = searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
-                        if (searchResult != nil) {
-                            resultCount++
-                            if (resultCount > Constants.MaxResults) {
-                                mStopSearch = true
+                var group = mBook?.getGroup()
+                if (mScripture!.searchGroup.isEmpty || (group == mScripture!.searchGroup)) {
+                    let bookId = mBook!.getBookId();
+                    searchHandler.loadBookForSearchWithALSBook(mBook)
+                    for (var c = 0; c < Int(mBook!.getChapters().size()) && !mStopSearch; c++) {
+                        var chapter = searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
+                        var elements = chapter.getElements()
+                        for (var e = 0; e < Int(elements.size()) && !mStopSearch; e++) {
+                            var element = elements.getWithInt(CInt(e)) as! ALSElement
+                            var searchResult = searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
+                            if (searchResult != nil) {
+                                resultCount++
+                                if (resultCount > Constants.MaxResults) {
+                                    mStopSearch = true
+                                }
+                                throttleSearchOutput(resultCount)
+                                addRowToView(searchResult)
                             }
-                            throttleSearchOutput(resultCount)
-                            addRowToView(searchResult)
                         }
                     }
                 }

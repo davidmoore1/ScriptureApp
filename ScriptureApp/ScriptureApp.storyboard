@@ -541,17 +541,35 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcy-Kh-yAc">
                                 <rect key="frame" x="535" y="147" width="51" height="31"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ew-cG-itd">
+                                <rect key="frame" x="427" y="186" width="157" height="30"/>
+                                <state key="normal" title="Whole Bible"/>
+                                <connections>
+                                    <segue destination="41N-oj-dQ3" kind="popoverPresentation" identifier="SearchRange" popoverAnchorView="0ew-cG-itd" id="oXw-l9-trY">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Search Range:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-AC-Frk">
+                                <rect key="frame" x="299" y="190" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0ew-cG-itd" firstAttribute="leading" secondItem="aNT-AC-Frk" secondAttribute="trailing" constant="8" symbolic="YES" id="1zR-Fk-y0h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GQ0-Ze-F7g" secondAttribute="trailing" id="7js-a1-RIy"/>
                             <constraint firstItem="viy-94-3aR" firstAttribute="leading" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="8Ri-Y2-qKf"/>
                             <constraint firstItem="bcy-Kh-yAc" firstAttribute="centerY" secondItem="BUx-W5-pwS" secondAttribute="centerY" id="Blv-hk-ItB"/>
                             <constraint firstItem="wKm-HT-VN8" firstAttribute="centerX" secondItem="bcy-Kh-yAc" secondAttribute="centerX" id="DjB-of-SA9"/>
+                            <constraint firstItem="0ew-cG-itd" firstAttribute="top" secondItem="bcy-Kh-yAc" secondAttribute="bottom" constant="8" symbolic="YES" id="DtC-gu-yeh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="viy-94-3aR" secondAttribute="trailing" id="Jkj-ev-AW0"/>
                             <constraint firstItem="wKm-HT-VN8" firstAttribute="top" secondItem="GQ0-Ze-F7g" secondAttribute="bottom" id="QKc-jv-qmS"/>
                             <constraint firstItem="bcy-Kh-yAc" firstAttribute="leading" secondItem="BUx-W5-pwS" secondAttribute="trailing" constant="8" symbolic="YES" id="Rpa-xK-Rfe"/>
                             <constraint firstItem="wKm-HT-VN8" firstAttribute="leading" secondItem="t7D-uM-UPo" secondAttribute="trailing" constant="8" symbolic="YES" id="Zp4-6x-cqG"/>
+                            <constraint firstItem="0ew-cG-itd" firstAttribute="trailing" secondItem="LBF-AU-R9V" secondAttribute="trailingMargin" id="bgt-8h-r80"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wKm-HT-VN8" secondAttribute="trailing" id="cz7-Wc-hdO"/>
                             <constraint firstItem="bcy-Kh-yAc" firstAttribute="top" secondItem="wKm-HT-VN8" secondAttribute="bottom" constant="8" symbolic="YES" id="fcp-5T-Q5p"/>
                             <constraint firstItem="GQ0-Ze-F7g" firstAttribute="leading" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="hw9-Uk-oIZ"/>
@@ -559,6 +577,7 @@
                             <constraint firstItem="t7D-uM-UPo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LBF-AU-R9V" secondAttribute="leadingMargin" id="rPV-bb-vQB"/>
                             <constraint firstItem="viy-94-3aR" firstAttribute="top" secondItem="uhn-ro-SwL" secondAttribute="bottom" id="z5z-3q-h2x"/>
                             <constraint firstItem="GQ0-Ze-F7g" firstAttribute="top" secondItem="viy-94-3aR" secondAttribute="bottom" id="zDv-g2-CLU"/>
+                            <constraint firstItem="aNT-AC-Frk" firstAttribute="centerY" secondItem="0ew-cG-itd" secondAttribute="centerY" id="ze7-Mf-60m"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IA9-w8-L74"/>
@@ -569,6 +588,8 @@
                         <outlet property="matchSwitch" destination="wKm-HT-VN8" id="uwC-qH-mz7"/>
                         <outlet property="navBar" destination="xae-gs-bIk" id="hrs-1V-SrW"/>
                         <outlet property="searchBar" destination="GQ0-Ze-F7g" id="Cpo-XW-M18"/>
+                        <outlet property="searchRangeButton" destination="0ew-cG-itd" id="es8-Hp-Rka"/>
+                        <outlet property="searchRangeLabel" destination="aNT-AC-Frk" id="9ll-HX-vNX"/>
                         <segue destination="EMD-mH-BvW" kind="presentation" identifier="SearchResults" id="hpx-fX-0BU"/>
                     </connections>
                 </viewController>
@@ -664,10 +685,67 @@
             </objects>
             <point key="canvasLocation" x="2607" y="-34"/>
         </scene>
+        <!--Search Range View Controller-->
+        <scene sceneID="FCZ-qv-Qkc">
+            <objects>
+                <viewController id="41N-oj-dQ3" customClass="SearchRangeViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5HC-Gd-uip"/>
+                        <viewControllerLayoutGuide type="bottom" id="TdJ-fX-yEt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZPm-0P-l7R">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rou-RQ-1mN">
+                                <rect key="frame" x="16" y="8" width="268" height="154"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchRangeID" textLabel="Yyh-nX-wcp" style="IBUITableViewCellStyleDefault" id="Vpp-Un-fK2">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vpp-Un-fK2" id="eqH-lh-iDY">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yyh-nX-wcp">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="41N-oj-dQ3" id="RnK-4j-U9n"/>
+                                    <outlet property="delegate" destination="41N-oj-dQ3" id="jk6-B8-s3o"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TdJ-fX-yEt" firstAttribute="top" secondItem="rou-RQ-1mN" secondAttribute="bottom" constant="8" symbolic="YES" id="Cim-TJ-90A"/>
+                            <constraint firstItem="rou-RQ-1mN" firstAttribute="leading" secondItem="ZPm-0P-l7R" secondAttribute="leadingMargin" id="ew8-CD-aKB"/>
+                            <constraint firstItem="rou-RQ-1mN" firstAttribute="top" secondItem="5HC-Gd-uip" secondAttribute="bottom" constant="8" symbolic="YES" id="geD-oj-riR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rou-RQ-1mN" secondAttribute="trailing" id="iJi-lR-OLU"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="170"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="170"/>
+                    <connections>
+                        <outlet property="tableView" destination="rou-RQ-1mN" id="d12-8U-c3O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9dt-Kn-twK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2457" y="499"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hkY-ap-PkI"/>
         <segue reference="kQa-zd-9aV"/>
-        <segue reference="KfA-Ag-ESp"/>
+        <segue reference="J9p-CE-Iw6"/>
     </inferredMetricsTieBreakers>
 </document>

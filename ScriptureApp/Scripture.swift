@@ -18,6 +18,11 @@ public class Scripture {
     private var mCurrentBook: Book?
     private var mFileManager: IOSFileManager = IOSFileManager()
     private var mColorThemes: [ALCColorTheme]?
+    var searchRange : String?
+    var searchGroup : String
+    var OTName : String = "Old Testament"
+    var NTName : String = "New Testament"
+    var firstBookIndex : Int = 0
 
     static let sharedInstance: Scripture = {
         let scripture = Scripture()
@@ -28,6 +33,7 @@ public class Scripture {
 
     private init() {
         var assetsPath = ""
+        searchGroup = ""
         var bundle = NSBundle.mainBundle()
         // using paths...
         if let bundlePath = bundle.resourcePath
@@ -75,6 +81,7 @@ public class Scripture {
         }
         createBookArray()
         loadThemeList()
+        searchRange = getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
     }
 
     
@@ -175,6 +182,7 @@ public class Scripture {
         var groupIndex = 0
         var currentGroupString = ""
         var groupNumber = 0
+        var startBookID = getConfig().getStartBookId()
         if (mBookArray == nil) {
             mBookArray = [[Book]]()
         }
@@ -193,8 +201,16 @@ public class Scripture {
                     bookArray.removeAll()
                 }
                 currentGroupString = bookGroupString.bookGroupString
+                if (book!.getGroup() == "OT") {
+                    OTName = currentGroupString
+                } else if (book!.getGroup() == "NT") {
+                    NTName = currentGroupString
+                }
             }
             let bookForArray = Book(scripture: self, book: book, index: i, group: groupNumber, groupIndex: groupIndex, groupString: currentGroupString)
+            if (!startBookID.isEmpty && (book?.getBookId() == startBookID)) {
+                firstBookIndex = i
+            }
             groupIndex++
             bookArray.append(bookForArray)
         }

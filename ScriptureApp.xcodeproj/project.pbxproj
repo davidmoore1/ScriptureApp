@@ -10,6 +10,7 @@
 		42A0502F1B57E5180071EA96 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A0502E1B57E5180071EA96 /* Misc.swift */; };
 		42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A050341B5832BD0071EA96 /* AboutViewController.swift */; };
 		630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB21B29D5DA003915FE /* Scripture.swift */; };
+		6313C6411B6288F10091BE86 /* SearchRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */; };
 		633A59C01B3B0827004550A1 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 633A59BF1B3B0827004550A1 /* assets */; };
 		633F41BB1B06264500F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
 		633F41C81B0626FB00F25662 /* AppLibScriptureConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */; };
@@ -527,6 +528,7 @@
 		42A0502E1B57E5180071EA96 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		42A050341B5832BD0071EA96 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
+		6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRangeViewController.swift; sourceTree = "<group>"; };
 		633A59BF1B3B0827004550A1 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		633F41B01B06264500F25662 /* libAppLibScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1418,6 +1420,7 @@
 				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 				637286831B4D6C28009316A4 /* SearchTableViewController.swift */,
 				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
+				6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */,
 				63DDFF321B0575C400B57DF7 /* AppDelegate.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
@@ -2305,6 +2308,7 @@
 				63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */,
 				42A0502F1B57E5180071EA96 /* Misc.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
+				6313C6411B6288F10091BE86 /* SearchRangeViewController.swift in Sources */,
 				63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */,
 				42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
