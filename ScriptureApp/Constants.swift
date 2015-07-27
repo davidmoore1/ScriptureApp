@@ -35,5 +35,5 @@ public struct Constants {
     static let UseGradient = false
     static let GradientName = "gradientName"
     
-    static let MaxResults = 2000
+    static let MaxResults = 5000
 }

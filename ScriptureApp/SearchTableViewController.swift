@@ -19,6 +19,7 @@ class SearchTableViewController: UITableViewController {
     var mStopSearch = false
     var mClosing = false
     var mBook: ALSBook?
+    var mRowsAdded: Int = 0
     var mScriptureController: ScriptureViewController?
     private var mSelectedIndex: NSIndexPath?
     
@@ -80,7 +81,7 @@ class SearchTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return mSearchResults.count
+        return mRowsAdded
     }
 
     
@@ -199,6 +200,7 @@ class SearchTableViewController: UITableViewController {
         var resultCount = 0
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
             autoreleasepool {
+                var indexPaths = [NSIndexPath]()
                 var object: AnyObject! = books.getWithInt(CInt(i))
                 mBook = object as? ALSBook
                 var group = mBook?.getGroup()
@@ -209,6 +211,9 @@ class SearchTableViewController: UITableViewController {
                         var chapter = searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
                         var elements = chapter.getElements()
                         for (var e = 0; e < Int(elements.size()) && !mStopSearch; e++) {
+                            if (e == 75) {
+                                var a = mSearchResults.count
+                            }
                             var element = elements.getWithInt(CInt(e)) as! ALSElement
                             var searchResult = searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
                             if (searchResult != nil) {
@@ -216,49 +221,39 @@ class SearchTableViewController: UITableViewController {
                                 if (resultCount > Constants.MaxResults) {
                                     mStopSearch = true
                                 }
-                                throttleSearchOutput(resultCount)
-                                addRowToView(searchResult)
+//                                throttleSearchOutput(resultCount)
+                                var indexPath = NSIndexPath(forRow: mSearchResults.count, inSection: 0)
+                                indexPaths.append(indexPath)
+                                self.mSearchResults.append(searchResult)
                             }
                         }
                     }
                 }
+                if mBook?.getBookId() == "REV" {
+                    var a = self.mSearchResults.count + 1
+                }
                 searchHandler.unloadBookWithALSBook(mBook)
+                if (indexPaths.count > 0) {
+                    addRowToView(indexPaths, rowNumber: self.mSearchResults.count)
+                }
             }
         }
         if (resultCount == 0) {
             var searchResult = AISSearchResultIOS()
-            addRowToView(searchResult)
+            self.mSearchResults.append(searchResult)
+            var indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            addRowToView([indexPath], rowNumber: self.mSearchResults.count)
          }
         mStopSearch = false
     }
    
-    func addRowToView(searchResult: AISSearchResultIOS) {
+    func addRowToView(indexPaths: [NSIndexPath], rowNumber: Int) {
         dispatch_async(dispatch_get_main_queue()) {
             if (!self.mClosing) {
-                var row = self.mSearchResults.count
-                var indexPath = NSIndexPath(forRow:row, inSection:0)
-                self.mSearchResults.append(searchResult)
-                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+                self.mRowsAdded = rowNumber
+
+                self.tableView?.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
             }
         }
     }
-    /*
-    This method is required because without it, in a search with lots of matches, even if you use background threads,
-    the system freezes because tasks back up onto the dispatch_main_queue.  In a long search, without throttling, the
-    add row section can continue running for 3 minutes after the search has completed with the UI frozen the whole time.
-    This method allows the UI to remain fairly responsive while the search is ongoing
-    */
-    func throttleSearchOutput(resultCount: Int) {
-        if (resultCount % 10 == 0) {
-            var currentCount = 0
-            do {
-                currentCount = self.mSearchResults.count
-                NSThread.sleepForTimeInterval(0.25)
-                if (currentCount == self.mSearchResults.count) {
-                    NSThread.sleepForTimeInterval(0.5)
-                }
-            } while (currentCount < self.mSearchResults.count)
-        }
-    }
-
 }
