@@ -21,6 +21,8 @@ class AboutViewController: UIViewController {
         let bgColor = UIColorFromRGB(config.getViewerBackgroundColor())
         webView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
+        navigationItem.title = scripture.getString(ALSScriptureStringId_MENU_ABOUT_)
+        navigationItem.leftBarButtonItem?.title = scripture.getString(ALCCommonStringId_BUTTON_CLOSE_)
     }
 
     override func viewWillAppear(animated: Bool) {

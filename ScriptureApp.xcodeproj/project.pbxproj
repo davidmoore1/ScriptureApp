@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4252BB101B6689BD0072032A /* SpecialCharactersFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252BB0F1B6689BD0072032A /* SpecialCharactersFlowLayout.swift */; };
 		42A0502F1B57E5180071EA96 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A0502E1B57E5180071EA96 /* Misc.swift */; };
 		42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A050341B5832BD0071EA96 /* AboutViewController.swift */; };
 		630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB21B29D5DA003915FE /* Scripture.swift */; };
@@ -525,6 +526,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4252BB0F1B6689BD0072032A /* SpecialCharactersFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialCharactersFlowLayout.swift; sourceTree = "<group>"; };
 		42A0502E1B57E5180071EA96 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		42A050341B5832BD0071EA96 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
@@ -1420,6 +1422,7 @@
 				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 				637286831B4D6C28009316A4 /* SearchTableViewController.swift */,
 				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
+				4252BB0F1B6689BD0072032A /* SpecialCharactersFlowLayout.swift */,
 				63DDFF321B0575C400B57DF7 /* AppDelegate.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
@@ -2312,6 +2315,7 @@
 				42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */,
 				637430FB1B3DE21200850F32 /* AnnotationViewController.swift in Sources */,
 				637430FF1B43324C00850F32 /* SearchSelectViewController.swift in Sources */,
+				4252BB101B6689BD0072032A /* SpecialCharactersFlowLayout.swift in Sources */,
 				637286841B4D6C28009316A4 /* SearchTableViewController.swift in Sources */,
 				637286881B4D703E009316A4 /* SearchTableViewCell.swift in Sources */,
 				63B8E29D1B55797C002DC672 /* TextSizeViewController.swift in Sources */,

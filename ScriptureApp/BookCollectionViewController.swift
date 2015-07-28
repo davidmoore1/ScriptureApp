@@ -24,6 +24,7 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
         collectionView?.delegate = self
         collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
         popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
+        navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
     }
 
     override func viewWillAppear(animated: Bool) {
