@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 
 class SearchTableViewCell: UITableViewCell, WKNavigationDelegate {
+    let config = Scripture.sharedInstance.getConfig()
     var reference: String?
     var webView: WKWebView?
     var html: NSAttributedString? {
@@ -33,6 +34,9 @@ class SearchTableViewCell: UITableViewCell, WKNavigationDelegate {
 
     func updateUI() {
         referenceLabel.text = reference!
+        referenceLabel.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
+        backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        htmlTextField.backgroundColor = backgroundColor
 /*        if (webView == nil) {
             var width = contentView.frame.width
             let frame = CGRectMake(8, 29, width - 20, 100)

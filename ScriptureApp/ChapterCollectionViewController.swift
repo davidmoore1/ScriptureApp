@@ -19,10 +19,6 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
     var selectedChapter = 0
     var introduction = false
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return chapters
     }
@@ -44,6 +40,7 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
 
         collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
         popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
+        navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

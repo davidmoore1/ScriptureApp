@@ -26,6 +26,8 @@ public struct Constants {
     static let SelectBook = "selectBook"
     static let SelectChapter = "selectChapter"
 
+    static let SelectSearchResult = "SelectSearchResult"
+    static let SpecialCharacterCell = "SpecialCharacterCell"
 
     static let UpArrow = "▴"
     static let DownArrow = "▾"

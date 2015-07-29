@@ -30,6 +30,7 @@ class ScriptureViewController: UIViewController,
     @IBOutlet var rightSwipe: UISwipeGestureRecognizer!
     @IBOutlet var pinch: UIPinchGestureRecognizer!
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet var closeButton: UIBarButtonItem!
 
     @IBOutlet weak var bookButton: UIBarButtonItem!
     @IBOutlet weak var chapterButton: UIBarButtonItem!
@@ -112,16 +113,28 @@ class ScriptureViewController: UIViewController,
         let y = percent * CGFloat(height)
         webView.stringByEvaluatingJavaScriptFromString("window.scrollTo(\(x), \(y))")
     }
-
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        scrollOffsetLoad = getOffset()
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ _ -> Void in
+            self.updateToolbarColors()
+            self.navbar?.updateNavigationBarColors()
+        }, completion: { _ -> Void in
+            self.updateToolbarColors()
+            self.navbar?.updateNavigationBarColors()
+                
+        })
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
-
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        setOffset(scrollOffsetLoad)
-        updateToolbarColors()
-        navbar?.updateNavigationBarColors()
-    }
+    
+//    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+//        scrollOffsetLoad = getOffset()
+//    }
+//    
+//    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+//        setOffset(scrollOffsetLoad)
+//        updateToolbarColors()
+//        navbar?.updateNavigationBarColors()
+//    }
 
     func loadIntroduction() {
         let (success, htmlOptional) = scripture.getCurrentBook()!.getIntroduction()
@@ -152,9 +165,12 @@ class ScriptureViewController: UIViewController,
 
         navigationController?.toolbarHidden = Constants.BarOnTop
         navigationController?.navigationBarHidden = !Constants.BarOnTop
+        let items = [bookButton, chapterButton, space, searchButton, fixedSpace1, textSizeButton, fixedSpace2, aboutButton]
         if Constants.BarOnTop {
             navigationController?.navigationBar.barStyle = UIBarStyle.Black
-            navigationItem.leftBarButtonItems = [bookButton, chapterButton, space, searchButton, fixedSpace1, textSizeButton, fixedSpace2, aboutButton]
+            navigationItem.leftBarButtonItems = items
+        } else {
+            toolbarItems = items
         }
         webView.delegate = self
         tap.delegate = self
@@ -177,6 +193,8 @@ class ScriptureViewController: UIViewController,
             updateUI()
         }
 
+        closeButton.title = ""
+        navigationItem.backBarButtonItem = closeButton
         loadColorTheme(config.getCurrentColorTheme())
     }
 
@@ -386,8 +404,12 @@ extension UINavigationBar {
         setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.DefaultPrompt)
 
         let gradient = CAGradientLayer()
-        let statusBarFrame = UIApplication.sharedApplication().statusBarFrame
-        gradient.frame = CGRectMake(0, -statusBarFrame.height, bounds.width, statusBarFrame.height + bounds.height)
+        // gradient.frame = CGRectMake(0, -statusBarFrame.height, 1000, statusBarFrame.height + bounds.height)
+        let aboveHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
+        let width = UIApplication.sharedApplication().statusBarOrientation == .Portrait
+                  ? UIScreen.mainScreen().bounds.height
+                  : UIScreen.mainScreen().bounds.width
+        gradient.frame = CGRectMake(0, -aboveHeight, width, aboveHeight + bounds.height)
         gradient.colors = (Constants.UseGradient ? [topColor, bottomColor] : [midColor, midColor]).map { $0.CGColor }
         gradient.name = Constants.GradientName
 
