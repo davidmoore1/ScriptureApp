@@ -18,6 +18,11 @@ public class Scripture {
     private var mCurrentBook: Book?
     private var mFileManager: IOSFileManager = IOSFileManager()
     private var mColorThemes: [ALCColorTheme]?
+    var searchRange : String?
+    var searchGroup : String
+    var OTName : String = "Old Testament"
+    var NTName : String = "New Testament"
+    var firstBookIndex : Int = 0
 
     static let sharedInstance: Scripture = {
         let scripture = Scripture()
@@ -28,6 +33,7 @@ public class Scripture {
 
     private init() {
         var assetsPath = ""
+        searchGroup = ""
         var bundle = NSBundle.mainBundle()
         // using paths...
         if let bundlePath = bundle.resourcePath
@@ -69,14 +75,16 @@ public class Scripture {
         AISPopupHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(mPopupHandler, mLibrary, mWriter, mScripture)
         mPopupHandler.initBookPopup()
 
-        if (success && mLibrary.getConfig().hasFeatureWithNSString(ALCCommonFeatureName_SPLASH_SCREEN_)) {
+        if (success && configHasFeature(ALCCommonFeatureName_SPLASH_SCREEN_)) {
             ALSFactoryCommon_parseGlossaryWithALSBook_withALSDisplayWriter_(glossaryBook, mWriter)
             mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book)
         }
         createBookArray()
         loadThemeList()
+        searchRange = getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
     }
 
+    
     func loadBook(book: Book?) -> (success: Bool, book: Book?) {
         var success = false
         var lBook = book;
@@ -174,6 +182,7 @@ public class Scripture {
         var groupIndex = 0
         var currentGroupString = ""
         var groupNumber = 0
+        var startBookID = getConfig().getStartBookId() ?? ""
         if (mBookArray == nil) {
             mBookArray = [[Book]]()
         }
@@ -192,8 +201,16 @@ public class Scripture {
                     bookArray.removeAll()
                 }
                 currentGroupString = bookGroupString.bookGroupString
+                if (book!.getGroup() == "OT") {
+                    OTName = currentGroupString
+                } else if (book!.getGroup() == "NT") {
+                    NTName = currentGroupString
+                }
             }
             let bookForArray = Book(scripture: self, book: book, index: i, group: groupNumber, groupIndex: groupIndex, groupString: currentGroupString)
+            if (!startBookID.isEmpty && (book?.getBookId() == startBookID)) {
+                firstBookIndex = i
+            }
             groupIndex++
             bookArray.append(bookForArray)
         }
@@ -261,7 +278,18 @@ public class Scripture {
     func configHasFeature(feature: String) -> Bool {
         return mLibrary.getConfig().hasFeatureWithNSString(feature)
     }
-
+    
+    func configGetFeature(feature: String) -> String {
+        return mLibrary.getConfig().getFeatures().getValueWithNSString(feature)
+    }
+    
+    func configGetBoolFeature(feature: String) -> Bool {
+        var retVal = true
+        if (configGetFeature(feature) == "false") {
+            retVal = false
+        }
+        return retVal
+    }
     func goToReference(book: Book?, chapterNumber: Int, webView: UIWebView) -> Bool {
         var success: Bool = false
         if (book != nil) {
@@ -346,7 +374,7 @@ public class Scripture {
         return result
     }
     func useListView() -> Bool {
-        var bookSelectOption = mLibrary.getConfig().getFeatures().getValueWithNSString(ALSScriptureFeatureName_BOOK_SELECTION_)
+        var bookSelectOption = configGetFeature(ALSScriptureFeatureName_BOOK_SELECTION_)
         var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption) ? bookSelectOption.lowercaseString == "list" : true
         return isList
     }

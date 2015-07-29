@@ -144,7 +144,6 @@ class ScriptureViewController: UIViewController,
     }
 
     override func prefersStatusBarHidden() -> Bool {
-        // return false
         if let navHid = navigationController?.navigationBarHidden, let toolHid = navigationController?.toolbarHidden {
             return (navHid && toolHid) || super.prefersStatusBarHidden()
         } else {
@@ -180,6 +179,7 @@ class ScriptureViewController: UIViewController,
         singleTap.numberOfTapsRequired = 1
         singleTap.requireGestureRecognizerToFail(tap)
         singleTap.delegate = self
+        searchButton.enabled = scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_)
 
         webView.addGestureRecognizer(leftSwipe)
         webView.addGestureRecognizer(rightSwipe)
@@ -188,7 +188,7 @@ class ScriptureViewController: UIViewController,
         webView.addGestureRecognizer(pinch)
 
         if (book == nil) {
-            bookNumber = 0
+            bookNumber = scripture.firstBookIndex
         } else {
             updateUI()
         }

@@ -16,13 +16,16 @@ public struct Constants {
     static let SearchResultsSeque = "SearchResults"
     static let SelectBookSeque = "SelectBook"
     static let SearchGoToVerseSeque = "SearchGoToVerse"
+    static let SearchRangeSeque = "SearchRange"
     static let BookReuseIdentifier = "Book"
     static let VerseCellReuseIdentifier = "Verse"
     static let SearchCellReuseIdentifier = "Search"
+    static let SearchRangeCellReuseIdentifier = "SearchRangeID"
     static let AboutSeque = "about"
     static let TextSizeSeque = "text size"
     static let SelectBook = "selectBook"
     static let SelectChapter = "selectChapter"
+
     static let SelectSearchResult = "SelectSearchResult"
     static let SpecialCharacterCell = "SpecialCharacterCell"
 
@@ -34,5 +37,5 @@ public struct Constants {
     static let UseGradient = false
     static let GradientName = "gradientName"
     
-    static let MaxResults = 2000
+    static let MaxResults = 5000
 }
