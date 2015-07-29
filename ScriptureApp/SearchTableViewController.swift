@@ -55,10 +55,8 @@ class SearchTableViewController: UITableViewController {
         navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
         activityIndicator.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            [unowned self] in
             self.search()
             dispatch_async(dispatch_get_main_queue()) {
-                [unowned self] in
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.hidden = true
             }

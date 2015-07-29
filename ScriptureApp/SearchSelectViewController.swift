@@ -38,6 +38,12 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         var searchHint = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_TEXT_HINT_)
         matchAccentsLabel.text = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_MATCH_ACCENTS_)
         matchLabel.text = matchCaption
+        matchAccentsSwitch.on = mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_DEFAULT_)
+        matchSwitch.on = mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_DEFAULT_)
+        matchAccentsSwitch.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
+        matchAccentsLabel.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
+        matchSwitch.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
+        matchLabel.hidden = !mScripture!.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
         searchBar.placeholder = searchHint
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
@@ -49,6 +55,10 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         searchButton.setTitle(btnCaption, forState: .Normal)
         searchButton.layer.borderColor = UIColor.grayColor().CGColor
         searchButton.layer.borderWidth = 1
+        searchRangeLabel.text = mScripture!.getString(ALSScriptureStringId_SEARCH_RANGE_)
+        if mScripture!.searchRange != nil {
+            mRangeButtonText = mScripture!.searchRange!
+        }
         
         // color theme
         view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
@@ -207,15 +217,3 @@ class SpecialCharacterCell: UICollectionViewCell {
     }
 }
 
-extension Scripture {
-    func getSpecialCharacters() -> [[String]] {
-        // return [["a", "b", "c"], ["d", "e", "f", "g"], ["hello"], ["world"], ["this", "is", "a", "test"], map("abcdefghijklmnop") { "\($0)" }, ["c"] ] // + map("1234567890") { ["\($0)"] }
-        return getConfig().getInputButtonLines().map {
-            let row = $0 as! ALCInputButtonRow
-            let buttons = (row.getButtons() as! JavaUtilAbstractList).map { $0 as! ALCInputButton }
-            let forms = buttons.map { $0.getDisplayForm() }
-            let strings = forms.map { ALCStringUtils_convertCharCodesToStringWithNSString_($0)! }
-            return strings
-        }
-    }
-}
