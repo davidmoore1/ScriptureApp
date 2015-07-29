@@ -13,10 +13,13 @@ class SearchTableViewController: UITableViewController {
     var searchHandler = AISSearchHandler()
     var mSearchString : String?
     var mMatchWholeWord : Bool?
+    var mMatchAccents : Bool?
     var mScripture: Scripture?
     var mSearchResults = [AISSearchResultIOS]()
     var mStopSearch = false
+    var mClosing = false
     var mBook: ALSBook?
+    var mRowsAdded: Int = 0
     var mScriptureController: ScriptureViewController?
     private var mSelectedIndex: NSIndexPath?
     let config = Scripture.sharedInstance.getConfig()
@@ -26,20 +29,26 @@ class SearchTableViewController: UITableViewController {
     
     }*/
     
+    @IBOutlet var searchTableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var mCloseButton: UIBarButtonItem!
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
         mStopSearch = true
+        mClosing = true
         self.activityIndicator.stopAnimating()
         self.activityIndicator.hidden = true
         NSURLCache.sharedURLCache().removeAllCachedResponses()
         NSURLCache.sharedURLCache().diskCapacity = 0
         NSURLCache.sharedURLCache().memoryCapacity = 0
+        // presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTableView.rowHeight = UITableViewAutomaticDimension
+        searchTableView.estimatedRowHeight = 135
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,7 +57,7 @@ class SearchTableViewController: UITableViewController {
         activityIndicator.startAnimating()
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 //        mScripture!.clearBookArray()
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.search()
             dispatch_async(dispatch_get_main_queue()) {
                 self.activityIndicator.stopAnimating()
@@ -75,7 +84,7 @@ class SearchTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return mSearchResults.count
+        return mRowsAdded
     }
 
     
@@ -192,51 +201,69 @@ class SearchTableViewController: UITableViewController {
 */
     func search() {
         AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, mScripture!.getLibrary(), mScripture!.getDisplayWriter(), mScripture!.getFactory())
-        searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: false)
+        searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: mMatchAccents!)
         var books = mScripture!.getLibrary().getMainBookCollection().getBooks()
         var resultCount = 0
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
             autoreleasepool {
+                var indexPaths = [NSIndexPath]()
                 var object: AnyObject! = books.getWithInt(CInt(i))
                 mBook = object as? ALSBook
-                let bookId = mBook!.getBookId();
-                searchHandler.loadBookForSearchWithALSBook(mBook)
-                for (var c = 0; c < Int(mBook!.getChapters().size()) && !mStopSearch; c++) {
-                    var chapter = searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
-                    var elements = chapter.getElements()
-                    for (var e = 0; e < Int(elements.size()) && !mStopSearch; e++) {
-                        var element = elements.getWithInt(CInt(e)) as! ALSElement
-                        var searchResult = searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
-                        if (searchResult != nil) {
-                            resultCount++
-                            if (resultCount > Constants.MaxResults) {
-                                mStopSearch = true
+                var group = mBook?.getGroup()
+                if (mScripture!.searchGroup.isEmpty || (group == mScripture!.searchGroup)) {
+                    let bookId = mBook!.getBookId();
+                    searchHandler.loadBookForSearchWithALSBook(mBook)
+                    for (var c = 0; c < Int(mBook!.getChapters().size()) && !mStopSearch; c++) {
+                        var chapter = searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
+                        var elements = chapter.getElements()
+                        for (var e = 0; e < Int(elements.size()) && !mStopSearch; e++) {
+                            if (e == 75) {
+                                var a = mSearchResults.count
                             }
-                            dispatch_async(dispatch_get_main_queue()) {
-                                var row = self.mSearchResults.count
-                                var indexPath = NSIndexPath(forRow:row, inSection:0)
+                            var element = elements.getWithInt(CInt(e)) as! ALSElement
+                            var searchResult = searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
+                            if (searchResult != nil) {
+                                resultCount++
+                                if (resultCount > Constants.MaxResults) {
+                                    mStopSearch = true
+                                }
+//                                throttleSearchOutput(resultCount)
+                                var indexPath = NSIndexPath(forRow: mSearchResults.count, inSection: 0)
+                                indexPaths.append(indexPath)
                                 self.mSearchResults.append(searchResult)
-                                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
                             }
                         }
                     }
                 }
+                if mBook?.getBookId() == "REV" {
+                    var a = self.mSearchResults.count + 1
+                }
                 searchHandler.unloadBookWithALSBook(mBook)
+                if (indexPaths.count > 0) {
+                    addRowToView(indexPaths, rowNumber: self.mSearchResults.count)
+                }
             }
         }
         if (resultCount == 0) {
-            dispatch_async(dispatch_get_main_queue()) {
-                var searchResult = AISSearchResultIOS()
-                self.mSearchResults.append(searchResult)
-                var indexPath = NSIndexPath(forRow:0, inSection:0)
-                self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
-            }
+            var searchResult = AISSearchResultIOS()
+            self.mSearchResults.append(searchResult)
+            var indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            addRowToView([indexPath], rowNumber: self.mSearchResults.count)
          }
         mStopSearch = false
     }
-    
+
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
         mScriptureController?.navbar?.updateNavigationBarColors()
     }
 
+    func addRowToView(indexPaths: [NSIndexPath], rowNumber: Int) {
+        dispatch_async(dispatch_get_main_queue()) {
+            if (!self.mClosing) {
+                self.mRowsAdded = rowNumber
+
+                self.tableView?.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
+            }
+        }
+    }
 }

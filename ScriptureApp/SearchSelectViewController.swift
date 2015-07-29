@@ -8,7 +8,8 @@
 
 import UIKit
 
-class SearchSelectViewController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource {
+class SearchSelectViewController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UIPopoverPresentationControllerDelegate
+{
 
     var mScripture: Scripture?
     let config = Scripture.sharedInstance.getConfig()
@@ -19,6 +20,14 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
     @IBOutlet weak var specialCharactersCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var hideKeyboardButton: UIBarButtonItem!
     @IBOutlet weak var searchButton: UIButton!
+    var mRangeButtonText: String = "" {
+        didSet{
+            if searchRangeButton != nil {
+                searchRangeButton!.setTitle(mRangeButtonText, forState: UIControlState.Normal)
+            }
+            mScripture!.searchRange = mRangeButtonText
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +36,11 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         var btnCaption = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
         var matchCaption = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_MATCH_WHOLE_WORDS_)
         var searchHint = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_TEXT_HINT_)
+        matchAccentsLabel.text = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_MATCH_ACCENTS_)
         matchLabel.text = matchCaption
         searchBar.placeholder = searchHint
         searchBar.delegate = self
+        searchBar.becomeFirstResponder()
         navigationItem.title = btnCaption
         navigationItem.backBarButtonItem = mScriptureController?.closeButton
         specialCharactersCollectionView.dataSource = self
@@ -41,13 +52,20 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         
         // color theme
         view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        matchLabel.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_CHECKBOX_, withNSString: ALCPropertyName_COLOR_))
+        let checkboxLabelColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_CHECKBOX_, withNSString: ALCPropertyName_COLOR_))
+        matchLabel.textColor = checkboxLabelColor
+        matchAccentsLabel.textColor = checkboxLabelColor
+        searchRangeLabel.textColor = checkboxLabelColor
         specialCharactersCollectionView.backgroundColor = view.backgroundColor
         searchTextField = searchBar.valueForKey("searchField") as? UITextField
         searchTextField.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_ENTRY_TEXT_, withNSString: ALCPropertyName_COLOR_))
         searchBar.tintColor = searchTextField.textColor
         searchButton.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
         searchButton.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        searchRangeButton.tintColor = searchButton.tintColor
+        searchRangeButton.backgroundColor = searchButton.backgroundColor
+        searchRangeButton.layer.borderWidth = 1
+        searchRangeButton.layer.borderColor = UIColor.grayColor().CGColor
         
         hideKeyboardButton.tintColor = UIColor.clearColor()
     }
@@ -131,9 +149,24 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         }
         
     }
+    @IBOutlet weak var searchRangeLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var matchLabel: UILabel!
+    @IBOutlet weak var matchAccentsLabel: UILabel!
     @IBOutlet weak var matchSwitch: UISwitch!
+    @IBOutlet weak var matchAccentsSwitch: UISwitch!
+    @IBOutlet weak var searchRangeButton: UIButton!
+
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+/*    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        if (annotationWaiting) {
+            annotationWaiting = false
+            return UIModalPresentationStyle.None
+        }
+        return UIModalPresentationStyle.CurrentContext
+    }*/
     
     // MARK: - Navigation
 
@@ -146,8 +179,17 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
                     searchBar.resignFirstResponder()
                     tvc.mSearchString = searchBar!.text
                     tvc.mMatchWholeWord = matchSwitch!.on
+                    tvc.mMatchAccents = matchAccentsSwitch!.on
                     tvc.mScripture = mScripture
                     tvc.mScriptureController = mScriptureController
+                }
+            case Constants.SearchRangeSeque:
+                if let tvc = segue.destinationViewController.contentViewController as? SearchRangeViewController {
+                    if let ppc = tvc.popoverPresentationController {
+                        ppc.delegate = self
+                        tvc.modalPresentationStyle = UIModalPresentationStyle.Popover
+                        tvc.searchSelectController = self
+                    }
                 }
                 
             default: break

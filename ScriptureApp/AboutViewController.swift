@@ -22,7 +22,7 @@ class AboutViewController: UIViewController {
         webView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
         navigationItem.title = scripture.getString(ALSScriptureStringId_MENU_ABOUT_)
-        navigationItem.leftBarButtonItem?.title = scripture.getString(ALCCommonStringId_BUTTON_CLOSE_)
+        navigationItem.rightBarButtonItem?.title = scripture.getString(ALCCommonStringId_BUTTON_CLOSE_)
     }
 
     override func viewWillAppear(animated: Bool) {
