@@ -182,7 +182,7 @@ public class Scripture {
         var groupIndex = 0
         var currentGroupString = ""
         var groupNumber = 0
-        var startBookID = getConfig().getStartBookId()
+        var startBookID = getConfig().getStartBookId() ?? ""
         if (mBookArray == nil) {
             mBookArray = [[Book]]()
         }
