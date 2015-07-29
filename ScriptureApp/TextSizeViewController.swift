@@ -35,8 +35,8 @@ class TextSizeViewController: UIViewController, UIPopoverPresentationControllerD
 
     func getSize() -> CGSize {
         let width = CGFloat(300)
-        let buttonHeight = CGFloat(scripture.getAvailableColorThemeNames().count > 1 ? 30 : 0)
-        let height = slider.frame.origin.y + slider.frame.height + buttonHeight + 5
+        let buttonAndPaddingHeight = CGFloat(scripture.getAvailableColorThemeNames().count > 1 ? 40 : 0)
+        let height = slider.frame.origin.y + slider.frame.height + buttonAndPaddingHeight
         return CGSizeMake(width, height)
     }
 
@@ -67,20 +67,20 @@ class TextSizeViewController: UIViewController, UIPopoverPresentationControllerD
     }
 
     func createThemeButtons() {
-        let padding = CGFloat(5)
-        let startX = CGFloat(5)
+        let padding = CGFloat(10)
+        let startX = padding
         let startY = slider.frame.origin.y + slider.frame.height
         let themes = scripture.getAvailableColorThemeNames()
         if themes.count < 2 {
             return
         }
-        let totalPadding = themes.isEmpty ? 5 : 5 * CGFloat(themes.count + 1)
+        let totalPadding = themes.isEmpty ? padding : padding * CGFloat(themes.count + 1)
         let buttonWidth = (getSize().width - totalPadding) / CGFloat(themes.count)
         let buttonHeight = CGFloat(30)
 
         for (index, theme) in enumerate(themes) {
             let button = UIButton()
-            button.frame = CGRectMake(startX + CGFloat(index) * buttonWidth + CGFloat(index) * 5, startY, buttonWidth, buttonHeight)
+            button.frame = CGRectMake(startX + CGFloat(index) * buttonWidth + CGFloat(index) * padding, startY, buttonWidth, buttonHeight)
             button.setTitle(theme, forState: .Normal)
             button.setTitleColor(UIColor.clearColor(), forState: .Normal)
             let colorString = config.getStylePropertyColorValueWithNSString("ui.background", withNSString: ALCPropertyName_BACKGROUND_COLOR_, withNSString: theme)

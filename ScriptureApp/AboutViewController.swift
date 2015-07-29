@@ -10,7 +10,6 @@ import UIKit
 
 class AboutViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
 
     let scripture = Scripture.sharedInstance
     let config = Scripture.sharedInstance.getConfig()
@@ -22,8 +21,8 @@ class AboutViewController: UIViewController {
         let bgColor = UIColorFromRGB(config.getViewerBackgroundColor())
         webView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
-        title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_MENU_ABOUT_)
-        doneButton.title = ALSFactoryCommon_getStringWithNSString_(ALCCommonStringId_BUTTON_CLOSE_)
+        navigationItem.title = scripture.getString(ALSScriptureStringId_MENU_ABOUT_)
+        navigationItem.rightBarButtonItem?.title = scripture.getString(ALCCommonStringId_BUTTON_CLOSE_)
     }
 
     override func viewWillAppear(animated: Bool) {

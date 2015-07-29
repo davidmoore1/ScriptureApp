@@ -11,7 +11,9 @@ import UIKit
 class SearchRangeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let scripture = Scripture.sharedInstance
+    let config = Scripture.sharedInstance.getConfig()
     var searchGroups: NSMutableArray! = NSMutableArray()
+    var searchSelectController: SearchSelectViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,10 @@ class SearchRangeViewController: UIViewController, UITableViewDataSource, UITabl
         var backgroundView = UIView(frame: CGRectZero)
         self.tableView.tableFooterView = backgroundView
         self.tableView.backgroundColor = UIColor.clearColor()
+        
+        let bgColor = scripture.getPopupBackgroundColor()
+        popoverPresentationController?.backgroundColor = bgColor
+        view.backgroundColor = bgColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,15 +51,15 @@ class SearchRangeViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.SearchRangeCellReuseIdentifier) as! UITableViewCell
         cell.textLabel?.text = self.tableData.objectAtIndex(indexPath.row) as? String
+        cell.textLabel?.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_CHECKBOX_, withNSString: ALCPropertyName_COLOR_))
+        cell.backgroundColor = scripture.getPopupBackgroundColor()
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let tvc = presentingViewController as? SearchSelectViewController {
-            tvc.mRangeButtonText = self.tableData.objectAtIndex(indexPath.row) as! String
-            scripture.searchGroup = searchGroups.objectAtIndex(indexPath.row) as! String
-            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        }
+        searchSelectController.mRangeButtonText = self.tableData.objectAtIndex(indexPath.row) as! String
+        scripture.searchGroup = searchGroups.objectAtIndex(indexPath.row) as! String
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     /*
     // MARK: - Navigation

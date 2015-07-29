@@ -22,6 +22,7 @@ class SearchTableViewController: UITableViewController {
     var mRowsAdded: Int = 0
     var mScriptureController: ScriptureViewController?
     private var mSelectedIndex: NSIndexPath?
+    let config = Scripture.sharedInstance.getConfig()
     
     /*        var results = searchHandler.searchForStringWithNSString(searchBar!.text, withBoolean: false , withBoolean: false)
     for result in results {
@@ -32,7 +33,9 @@ class SearchTableViewController: UITableViewController {
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mCloseButton: UIBarButtonItem!
-    @IBAction func closeClicked(sender: AnyObject) {
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
         mStopSearch = true
         mClosing = true
         self.activityIndicator.stopAnimating()
@@ -40,7 +43,7 @@ class SearchTableViewController: UITableViewController {
         NSURLCache.sharedURLCache().removeAllCachedResponses()
         NSURLCache.sharedURLCache().diskCapacity = 0
         NSURLCache.sharedURLCache().memoryCapacity = 0
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        // presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +64,7 @@ class SearchTableViewController: UITableViewController {
                 self.activityIndicator.hidden = true
             }
         }
-
+        tableView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,6 +112,8 @@ class SearchTableViewController: UITableViewController {
             attributedString.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
             attributedString.addAttribute(NSFontAttributeName, value: boldFont, range: textRange)
         }
+        let fgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
+        attributedString.addAttribute(NSForegroundColorAttributeName, value: fgColor, range: NSMakeRange(0, nsContext.length))
         cell.html = attributedString
         return cell
     }
@@ -124,9 +129,10 @@ class SearchTableViewController: UITableViewController {
         mScriptureController!.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
         mScriptureController!.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC) / 4))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-        view.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
-        }
+//        dispatch_after(delayTime, dispatch_get_main_queue()) {
+//            view.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+//        }
+        performSegueWithIdentifier(Constants.SelectSearchResult, sender: self)
 //        self.performSegueWithIdentifier(Constants.SearchGoToVerseSeque, sender: self)
     }
     
@@ -246,7 +252,11 @@ class SearchTableViewController: UITableViewController {
          }
         mStopSearch = false
     }
-   
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        mScriptureController?.navbar?.updateNavigationBarColors()
+    }
+
     func addRowToView(indexPaths: [NSIndexPath], rowNumber: Int) {
         dispatch_async(dispatch_get_main_queue()) {
             if (!self.mClosing) {
