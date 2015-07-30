@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import WebKit
 
-class SearchTableViewCell: UITableViewCell, WKNavigationDelegate {
+class SearchTableViewCell: UITableViewCell, UITextViewDelegate {
     let config = Scripture.sharedInstance.getConfig()
     var reference: String?
-    var webView: WKWebView?
     var html: NSAttributedString? {
         didSet {
             updateUI()
@@ -21,32 +19,24 @@ class SearchTableViewCell: UITableViewCell, WKNavigationDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.htmlTextField.delegate = self;
     }
 
     @IBOutlet weak var htmlTextField: UITextView!
     @IBOutlet weak var referenceLabel: UILabel!
-    @IBOutlet weak var cellWebView: UIWebView!
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-
     func updateUI() {
         referenceLabel.text = reference!
         referenceLabel.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
         backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
         htmlTextField.backgroundColor = backgroundColor
-/*        if (webView == nil) {
-            var width = contentView.frame.width
-            let frame = CGRectMake(8, 29, width - 20, 100)
-            webView = WKWebView(frame: frame)
-            webView!.userInteractionEnabled = false
-            self.contentView.addSubview(webView!)
-        }
-        webView!.loadHTMLString(html!, baseURL: nil)*/
-//        cellWebView.loadHTMLString(html, baseURL: nil)
         htmlTextField.attributedText = html
+        htmlTextField.sizeToFit()
+        htmlTextField.layoutIfNeeded()
      }
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

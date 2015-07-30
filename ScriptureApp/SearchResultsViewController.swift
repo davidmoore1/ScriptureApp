@@ -1,34 +1,37 @@
 //
-//  SearchTableViewController.swift
+//  SearchResultsViewController.swift
 //  ScriptureApp
 //
-//  Created by David Moore on 7/8/15.
+//  Created by David Moore on 7/29/15.
 //  Copyright (c) 2015 David Moore. All rights reserved.
 //
 
 import UIKit
-import WebKit
 
-class SearchTableViewController: UITableViewController {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var searchHandler = AISSearchHandler()
     var mSearchString : String?
     var mMatchWholeWord : Bool?
     var mMatchAccents : Bool?
-    var mScripture: Scripture?
     var mSearchResults = [[AISSearchResultIOS]]()
+    var mStrings = Dictionary<NSIndexPath, NSAttributedString>()
+    var mTitles = [NSString]()
     var mStopSearch = false
     var mClosing = false
     var mBook: ALSBook?
-    var mRowsAdded: Int = 0
+    var mBooksAdded: Int = 0
     var mScriptureController: ScriptureViewController?
     var mNumberOfBooks = 0
     private var mSelectedIndex: NSIndexPath?
+    let mScripture = Scripture.sharedInstance
     let config = Scripture.sharedInstance.getConfig()
+    var mBackGroundColorForHeader: UIColor?
+    var mTextColorForHeader: UIColor?
     
-    @IBOutlet var searchTableView: UITableView!
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var mCloseButton: UIBarButtonItem!
+    @IBOutlet weak var searchTableView: UITableView!
+    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -41,19 +44,45 @@ class SearchTableViewController: UITableViewController {
         NSURLCache.sharedURLCache().memoryCapacity = 0
         // presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchTableView.rowHeight = UITableViewAutomaticDimension
-        searchTableView.estimatedRowHeight = 135
         
-        mNumberOfBooks = Int(mScripture!.getLibrary().getMainBookCollection().getBooks().size())
+        mNumberOfBooks = Int(mScripture.getLibrary().getMainBookCollection().getBooks().size())
+        for (var i = 0; i < mNumberOfBooks; i++) {
+            var book = mScripture.getBookArray().flatMap { $0 }[i]
+            var abbrev = book.getAbbrevName()
+            if ((i == 0) && (count(abbrev) < 4)) {
+                // The first title sets the width of the index bar
+                for (var j = count(abbrev); j < 4 ; j++) {
+                    abbrev = abbrev + "  "
+                }
+            }
+            mTitles.append(abbrev)
+        }
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
         activityIndicator.startAnimating()
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+        searchTableView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
+            self.searchTableView.estimatedRowHeight = 135
+            self.searchTableView.rowHeight = UITableViewAutomaticDimension
+        }
+        var textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
+        var backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        self.searchTableView.sectionIndexColor = textColor
+        self.searchTableView.sectionIndexBackgroundColor = backgroundColor
+        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        mTextColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
+        mBackGroundColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        self.activityIndicator.color = mTextColorForHeader
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.search()
             dispatch_async(dispatch_get_main_queue()) {
@@ -61,7 +90,6 @@ class SearchTableViewController: UITableViewController {
                 self.activityIndicator.hidden = true
             }
         }
-        tableView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,25 +97,34 @@ class SearchTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
         mStopSearch = true
     }
-
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return mNumberOfBooks
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
+    
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]  {
+        return mTitles
+    }
+    
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String,  atIndex index: Int) -> Int {
+        var retValue = index
+        if (index > mBooksAdded - 1) && (index > 0) {
+            retValue = mBooksAdded - 1
+        }
+        return retValue
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         if (section > mSearchResults.count - 1) {
             return 0
         }
         return mSearchResults[section].count
     }
-
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var headerString = ""
         if section <= mSearchResults.count - 1 {
             if mSearchResults[section].count > 0 {
@@ -96,40 +133,27 @@ class SearchTableViewController: UITableViewController {
         }
         return headerString
     }
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColorFromRGB(mScripture!.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        header.contentView.backgroundColor = mBackGroundColorForHeader
+        header.textLabel.textColor = mTextColorForHeader
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.SearchCellReuseIdentifier, forIndexPath: indexPath) as! SearchTableViewCell
-
+        
         // Configure the cell...
         var result = mSearchResults[indexPath.section][indexPath.row]
         if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
             var emptyString = NSMutableAttributedString(string: "")
-            cell.reference = mScripture!.getString(ALSScriptureStringId_SEARCH_NO_MATCHES_FOUND_)
+            cell.reference = mScripture.getString(ALSScriptureStringId_SEARCH_NO_MATCHES_FOUND_)
             cell.html = emptyString
             return cell
         }
         cell.reference = searchHandler.getReferenceTitleWithALSReference(result.getReference())
-        var context = result.getContext()
-        var nsContext = context as NSString
-        let font = UIFont.systemFontOfSize(17.0)
-        let boldFont = UIFont.boldSystemFontOfSize(17.0)
-        var attributedString = NSMutableAttributedString(string: result.getContext())
-        attributedString.addAttribute(NSFontAttributeName, value: font, range: NSMakeRange(0, nsContext.length))
-        for (var i = 0; i < Int(result.numberOfMatchesInReference()); i++) {
-            var match = result.getMatchWithInt(Int32(i))
-            var textRange = NSRange(location: Int(match.getStartIndex()), length: Int(match.getEndIndex() - match.getStartIndex()))
-            attributedString.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
-            attributedString.addAttribute(NSFontAttributeName, value: boldFont, range: textRange)
-        }
-        let fgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
-        attributedString.addAttribute(NSForegroundColorAttributeName, value: fgColor, range: NSMakeRange(0, nsContext.length))
-        cell.html = attributedString
+        cell.html = getAttributedTextString(indexPath)
         return cell
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         mStopSearch = true
         mSelectedIndex = indexPath
         var selectedResult = mSearchResults[indexPath.section][indexPath.row]
@@ -138,54 +162,51 @@ class SearchTableViewController: UITableViewController {
             return
         }
         mScriptureController!.mVerseNumber = String(selectedResult.getReference().getFromVerse())
-        mScriptureController!.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
+        mScriptureController!.bookNumber = mScripture.findBookFromResult(selectedResult)!.mIndex!
         mScriptureController!.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC) / 4))
-//        dispatch_after(delayTime, dispatch_get_main_queue()) {
-//            view.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
-//        }
         performSegueWithIdentifier(Constants.SelectSearchResult, sender: self)
-//        self.performSegueWithIdentifier(Constants.SearchGoToVerseSeque, sender: self)
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
+            return UITableViewAutomaticDimension
+        } else {
+            var calculationView = UITextView()
+            calculationView.attributedText = getAttributedTextString(indexPath)
+            var size = calculationView.sizeThatFits(CGSizeMake(searchTableView.frame.width - 30, CGFloat(FLT_MAX)))
+            var height = size.height + 21 + 24
+            return height
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
+    func getAttributedTextString(indexPath: NSIndexPath) -> NSAttributedString {
+        var returnString = NSAttributedString(string: "")
+        if let returnString = mStrings[indexPath] {
+            return returnString
+        } else {
+            var attributedString = NSMutableAttributedString(string: "")
+            var result = mSearchResults[indexPath.section][indexPath.row]
+            if let context = result.getContext() {
+                var nsContext = context as NSString
+                let font = UIFont.systemFontOfSize(17.0)
+                let boldFont = UIFont.boldSystemFontOfSize(17.0)
+                attributedString = NSMutableAttributedString(string: result.getContext())
+                attributedString.addAttribute(NSFontAttributeName, value: font, range: NSMakeRange(0, nsContext.length))
+                for (var i = 0; i < Int(result.numberOfMatchesInReference()); i++) {
+                    var match = result.getMatchWithInt(Int32(i))
+                    var textRange = NSRange(location: Int(match.getStartIndex()), length: Int(match.getEndIndex() - match.getStartIndex()))
+                    attributedString.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
+                    attributedString.addAttribute(NSFontAttributeName, value: boldFont, range: textRange)
+                }
+                let fgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
+                attributedString.addAttribute(NSForegroundColorAttributeName, value: fgColor, range: NSMakeRange(0, nsContext.length))
+                mStrings.updateValue(attributedString, forKey: indexPath)
+            }
+            return attributedString
+        }
+    }
     // MARK: - Navigation
-/*
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
@@ -203,27 +224,28 @@ class SearchTableViewController: UITableViewController {
                     svc.mVerseNumber = String(selectedResult.getReference().getFromVerse())
                     svc.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
                     svc.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
-                                       
+                    
                 default: break
                 }
             }
         }
     }
-
-*/
+    */
+    // MARK: - Search
     func search() {
-        AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, mScripture!.getLibrary(), mScripture!.getDisplayWriter(), mScripture!.getFactory())
+        AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, mScripture.getLibrary(), mScripture.getDisplayWriter(), mScripture.getFactory())
         self.searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: mMatchAccents!)
-        var books = self.mScripture!.getLibrary().getMainBookCollection().getBooks()
+        var books = self.mScripture.getLibrary().getMainBookCollection().getBooks()
         var resultCount = 0
+        var indexPathArray = [[NSIndexPath]]()
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
+            var indexPaths = [NSIndexPath]()
             autoreleasepool {
                 var bookResults = [AISSearchResultIOS]()
-                var indexPaths = [NSIndexPath]()
                 var object: AnyObject! = books.getWithInt(CInt(i))
                 self.mBook = object as? ALSBook
                 var group = self.mBook?.getGroup()
-                if (self.mScripture!.searchGroup.isEmpty || (group == self.mScripture!.searchGroup)) {
+                if (self.mScripture.searchGroup.isEmpty || (group == self.mScripture.searchGroup)) {
                     let bookId = self.mBook!.getBookId();
                     if (bookId == "COL") {
                         var a = 3
@@ -248,31 +270,29 @@ class SearchTableViewController: UITableViewController {
                         }
                     }
                 }
+                self.mTitles.append(mBook!.getAbbrevName())
                 self.searchHandler.unloadBookWithALSBook(mBook)
                 self.mSearchResults.append(bookResults)
-                addRowToView(indexPaths)
+                indexPathArray.append(indexPaths)
             }
+            addRowToView(indexPathArray[i])
         }
         if (resultCount == 0) {
             var searchResult = AISSearchResultIOS()
             self.mSearchResults.append([searchResult])
             var indexPath = NSIndexPath(forRow: 0, inSection: 0)
             addRowToView([indexPath])
-         }
+        }
         self.mStopSearch = false
     }
-
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        mScriptureController?.navbar?.updateNavigationBarColors()
-    }
-
     func addRowToView(indexPaths: [NSIndexPath]) {
         dispatch_async(dispatch_get_main_queue()) {
             [unowned self] in
             if (!self.mClosing) {
                 if (indexPaths.count > 0) {
-                    self.tableView?.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
+                    self.searchTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
                 }
+                self.mBooksAdded++
             }
         }
     }

@@ -185,12 +185,11 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         if let identifier = segue.identifier {
             switch identifier {
             case Constants.SearchResultsSeque:
-                if let tvc = segue.destinationViewController.contentViewController as? SearchTableViewController {
+                if let tvc = segue.destinationViewController.contentViewController as? SearchResultsViewController {
                     searchBar.resignFirstResponder()
                     tvc.mSearchString = searchBar!.text
                     tvc.mMatchWholeWord = matchSwitch!.on
                     tvc.mMatchAccents = matchAccentsSwitch!.on
-                    tvc.mScripture = mScripture
                     tvc.mScriptureController = mScriptureController
                 }
             case Constants.SearchRangeSeque:
