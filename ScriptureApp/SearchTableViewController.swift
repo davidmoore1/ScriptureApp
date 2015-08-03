@@ -253,10 +253,6 @@ class SearchTableViewController: UITableViewController {
         mStopSearch = false
     }
 
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        mScriptureController?.navbar?.updateNavigationBarColors()
-    }
-
     func addRowToView(indexPaths: [NSIndexPath], rowNumber: Int) {
         dispatch_async(dispatch_get_main_queue()) {
             if (!self.mClosing) {

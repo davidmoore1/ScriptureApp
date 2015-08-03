@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScriptureViewController: UIViewController,
+class ScriptureViewController: CommonViewController,
     UIWebViewDelegate,
     UIGestureRecognizerDelegate,
     UIPopoverPresentationControllerDelegate
@@ -22,8 +22,6 @@ class ScriptureViewController: UIViewController,
     private var annotationWaiting: Bool = false
     private var book: Book?
     var pinchBeginFontSize = CGFloat(0)
-    let scripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
 
     @IBOutlet var tap: UITapGestureRecognizer!
     @IBOutlet var leftSwipe: UISwipeGestureRecognizer!
@@ -45,8 +43,6 @@ class ScriptureViewController: UIViewController,
         didSet {
             book = scripture.getBookArray().flatMap { $0 }[bookNumber]
             bookButton.title = book!.getName() + Constants.Arrow
-            scripture.loadBook(book)
-            scripture.updateCurrentBook(book)
             resetScrollOffsets()
             chapterNumber = 1
         }
@@ -115,27 +111,11 @@ class ScriptureViewController: UIViewController,
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animateAlongsideTransition({ _ -> Void in
-            self.updateToolbarColors()
-            self.navbar?.updateNavigationBarColors()
-        }, completion: { _ -> Void in
-            self.updateToolbarColors()
-            self.navbar?.updateNavigationBarColors()
-                
-        })
+        coordinator.animateAlongsideTransition( { _ -> Void in self.scrollOffsetLoad = self.getOffset() },
+                                    completion: { _ -> Void in self.setOffset(self.scrollOffsetLoad) })
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
-//    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-//        scrollOffsetLoad = getOffset()
-//    }
-//    
-//    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-//        setOffset(scrollOffsetLoad)
-//        updateToolbarColors()
-//        navbar?.updateNavigationBarColors()
-//    }
-
     func loadIntroduction() {
         let (success, htmlOptional) = scripture.getCurrentBook()!.getIntroduction()
         if success, let html = htmlOptional {
@@ -163,15 +143,8 @@ class ScriptureViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.toolbarHidden = Constants.BarOnTop
-        navigationController?.navigationBarHidden = !Constants.BarOnTop
         let items = [bookButton, chapterButton, space, searchButton, fixedSpace1, textSizeButton, fixedSpace2, aboutButton]
-        if Constants.BarOnTop {
-            navigationController?.navigationBar.barStyle = UIBarStyle.Black
-            navigationItem.leftBarButtonItems = items
-        } else {
-            toolbarItems = items
-        }
+        navigationItem.leftBarButtonItems = items
         webView.delegate = self
         tap.delegate = self
         let singleTapSelector : Selector = "single:"
@@ -196,25 +169,6 @@ class ScriptureViewController: UIViewController,
         closeButton.title = ""
         navigationItem.backBarButtonItem = closeButton
         loadColorTheme(config.getCurrentColorTheme())
-    }
-
-    func updateToolbarColors() {
-        let topColor = scripture.getActionBarTopColor()
-        let bottomColor = scripture.getActionBarBottomColor()
-        let midColor = getMidColor(topColor, bottomColor)
-
-        let gradient = CAGradientLayer()
-        let toolbar = navigationController!.toolbar
-
-        gradient.frame = toolbar.bounds
-        gradient.colors = Constants.UseGradient ? [topColor.CGColor, bottomColor.CGColor] : [midColor.CGColor, midColor.CGColor]
-        gradient.name = Constants.GradientName
-
-        toolbar.layer.removeSublayer(name: Constants.GradientName)
-        toolbar.setBackgroundImage(UIImage(), forToolbarPosition: UIBarPosition.Any, barMetrics: UIBarMetrics.Default)
-        toolbar.backgroundColor = UIColor.clearColor()
-        toolbar.layer.insertSublayer(gradient, atIndex: 0)
-        toolbar.tintColor = UIColor.whiteColor()
     }
 
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -348,11 +302,9 @@ class ScriptureViewController: UIViewController,
 
     func loadColorTheme(theme: String, navigationBar: UINavigationBar?) {
         config.setCurrentColorThemeWithNSString(theme)
-        updateToolbarColors()
+        updateBarTheme()
         view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
         webView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        navigationBar?.updateNavigationBarColors()
-        navigationController?.navigationBar.updateNavigationBarColors()
         updateHtmlColors()
     }
 
@@ -390,44 +342,5 @@ extension UIViewController {
 
     var navbar: UINavigationBar? {
         return navigationController?.navigationBar
-    }
-}
-
-extension UINavigationBar {
-    func updateNavigationBarColors() {
-        let scripture = Scripture.sharedInstance
-        let topColor = scripture.getActionBarTopColor()
-        let bottomColor = scripture.getActionBarBottomColor()
-        let midColor = getMidColor(topColor, bottomColor)
-
-        tintColor = UIColor.whiteColor()
-        setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.DefaultPrompt)
-
-        let gradient = CAGradientLayer()
-        // gradient.frame = CGRectMake(0, -statusBarFrame.height, 1000, statusBarFrame.height + bounds.height)
-        let aboveHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.height
-        let width = UIApplication.sharedApplication().statusBarOrientation == .Portrait
-                  ? UIScreen.mainScreen().bounds.height
-                  : UIScreen.mainScreen().bounds.width
-        gradient.frame = CGRectMake(0, -aboveHeight, width, aboveHeight + bounds.height)
-        gradient.colors = (Constants.UseGradient ? [topColor, bottomColor] : [midColor, midColor]).map { $0.CGColor }
-        gradient.name = Constants.GradientName
-
-        layer.removeSublayer(name: Constants.GradientName)
-        backgroundColor = UIColor.clearColor()
-        layer.insertSublayer(gradient, atIndex: 0)
-        titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-    }
-}
-
-extension CALayer {
-    func removeSublayer(#name: String) {
-        if sublayers != nil {
-            for layer in sublayers as! [CALayer] {
-                if layer.name != nil && layer.name == name {
-                    layer.removeFromSuperlayer()
-                }
-            }
-        }
     }
 }

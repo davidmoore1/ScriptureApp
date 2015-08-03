@@ -14,8 +14,17 @@ class SpecialCharactersFlowLayout: UICollectionViewFlowLayout {
     let cellHeight = CGFloat(50)
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
-        let attrArray = super.layoutAttributesForElementsInRect(rect) as! [UICollectionViewLayoutAttributes]
-        return attrArray.map(setCellPosition)
+        var indexPaths = [NSIndexPath]()
+        for section in 0..<specialCharacters.count {
+            for item in 0..<specialCharacters[section].count {
+                indexPaths.append(NSIndexPath(forItem: item, inSection: section))
+            }
+        }
+        return indexPaths.map { self.layoutAttributesForItemAtIndexPath($0) }
+    }
+    
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+        return setCellPosition(super.layoutAttributesForItemAtIndexPath(indexPath))
     }
     
     override func collectionViewContentSize() -> CGSize {

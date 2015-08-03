@@ -8,11 +8,9 @@
 
 import UIKit
 
-class TextSizeViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class TextSizeViewController: CommonViewController, UIPopoverPresentationControllerDelegate {
     @IBOutlet weak var slider: UISlider!
 
-    let scripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
     var rootViewController: ScriptureViewController!
 
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {

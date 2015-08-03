@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VCD-yX-cj2">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -205,6 +207,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="Pnc-Bt-YTh" id="AOj-XT-HrQ"/>
                         <segue destination="kR5-Dk-NHg" kind="unwind" identifier="unwindChapter" unwindAction="selectChapter:" id="iQ0-jK-9s5"/>
                         <segue destination="kR5-Dk-NHg" kind="unwind" identifier="unwindIntroduction" unwindAction="selectIntroduction:" id="dK6-UA-9Bk"/>
                     </connections>
@@ -370,6 +373,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionView" destination="hN7-mR-Mer" id="ojR-9e-mnE"/>
                         <segue destination="o8f-GC-51E" kind="unwind" identifier="unwindBook" unwindAction="selectBook:" id="ju5-Kx-gqP"/>
                     </connections>
                 </collectionViewController>
@@ -512,7 +516,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9W1-Ol-sHA">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9W1-Ol-sHA">
                                 <rect key="frame" x="536" y="562" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="jsS-zs-WLe"/>
@@ -534,24 +538,40 @@
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ew-cG-itd">
                                 <rect key="frame" x="502" y="200" width="82" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="wOS-om-XbQ"/>
+                                </constraints>
                                 <state key="normal" title="Whole Bible"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="wOS-om-XbQ"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="41N-oj-dQ3" kind="popoverPresentation" identifier="SearchRange" popoverAnchorView="0ew-cG-itd" id="LTo-DO-hW3">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Search Range:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-AC-Frk">
-                                <rect key="frame" x="16" y="204" width="478" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Accents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUx-W5-pwS">
                                 <rect key="frame" x="16" y="166" width="511" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Search Range:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNT-AC-Frk">
+                                <rect key="frame" x="16" y="205" width="478" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="j3q-uE-her"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="j3q-uE-her"/>
+                                    </mask>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -582,6 +602,10 @@
                             <constraint firstItem="9W1-Ol-sHA" firstAttribute="trailing" secondItem="wKm-HT-VN8" secondAttribute="trailing" id="zfG-tL-QCJ"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0ew-cG-itd"/>
+                                <exclude reference="aNT-AC-Frk"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="18f-gk-GcB"/>
                             </mask>

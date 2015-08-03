@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import WebKit
+//import WebKit
 
-class SearchTableViewCell: UITableViewCell, WKNavigationDelegate {
+class SearchTableViewCell: UITableViewCell {
     let config = Scripture.sharedInstance.getConfig()
     var reference: String?
-    var webView: WKWebView?
     var html: NSAttributedString? {
         didSet {
             updateUI()

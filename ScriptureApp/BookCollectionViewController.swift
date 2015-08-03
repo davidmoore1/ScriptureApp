@@ -11,10 +11,9 @@ import UIKit
 let bookReuseIdentifier = "BookButtonCell"
 let bookSectionReuseIdentifier = "BookSectionHeadingCell"
 
-class BookCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class BookCollectionViewController: CommonViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    let scripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
+    @IBOutlet var collectionView: UICollectionView!
     var bookIndex = 0
     var books = Scripture.sharedInstance.getBookArray()
 
@@ -22,6 +21,7 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
 
         collectionView?.delegate = self
+        collectionView?.dataSource = self
         collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
         popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
         navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
@@ -31,19 +31,13 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
         super.viewWillAppear(animated)
 
         popoverPresentationController?.passthroughViews = nil
-        navbar?.updateNavigationBarColors()
-        navbar?.barStyle = .Black
     }
 
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        navbar?.updateNavigationBarColors()
-    }
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return books.count
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return books[section].count
     }
 
@@ -67,7 +61,7 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(bookReuseIdentifier, forIndexPath: indexPath) as! BookCollectionViewCell
         let book = books[indexPath.section][indexPath.item]
 
@@ -84,7 +78,7 @@ class BookCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
 
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: bookSectionReuseIdentifier, forIndexPath: indexPath) as! BookSectionCollectionReusableView
         let book = books[indexPath.section][indexPath.item]
 

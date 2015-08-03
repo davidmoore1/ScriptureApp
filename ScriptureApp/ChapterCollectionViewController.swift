@@ -11,15 +11,14 @@ import UIKit
 let chapterReuseIdentifier = "ChapterButtonCell"
 let introReuseIdentifier = "IntroductionCell"
 
-class ChapterCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ChapterCollectionViewController: CommonViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    let scripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
+    @IBOutlet var collectionView: UICollectionView!
     var chapters = 0
     var selectedChapter = 0
     var introduction = false
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return chapters
     }
 
@@ -27,12 +26,6 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
         super.viewWillAppear(animated)
 
         popoverPresentationController?.passthroughViews = nil
-        navbar?.updateNavigationBarColors()
-        navbar?.barStyle = .Black
-    }
-
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        navbar?.updateNavigationBarColors()
     }
 
     override func viewDidLoad() {
@@ -43,7 +36,7 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
         navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(chapterReuseIdentifier, forIndexPath: indexPath) as! ChapterCollectionViewCell
 
         cell.button.chapter = indexPath.item + 1
@@ -52,7 +45,7 @@ class ChapterCollectionViewController: UICollectionViewController, UICollectionV
         return cell
     }
 
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: introReuseIdentifier, forIndexPath: indexPath) as! IntroductionCollectionReusableView
         let title = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
         view.button.setTitle(title, forState: .Normal)

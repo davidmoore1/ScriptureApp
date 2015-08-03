@@ -38,7 +38,7 @@ public class Scripture {
         // using paths...
         if let bundlePath = bundle.resourcePath
         {
-            assetsPath = bundlePath + "/assets"
+            assetsPath = bundlePath.stringByAppendingPathComponent("assets")
         }
         mScripture.setFileManagerWithAICFileManagerIOS(mFileManager)
         mFileManager.setAssetsPathWithNSString(assetsPath)
