@@ -27,6 +27,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     let config = Scripture.sharedInstance.getConfig()
     var mBackGroundColorForHeader: UIColor?
     var mTextColorForHeader: UIColor?
+    var mAddInProgress = false
     
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -67,7 +68,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
-        activityIndicator.startAnimating()
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchTableView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
@@ -83,6 +83,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         mTextColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
         mBackGroundColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
         self.activityIndicator.color = mTextColorForHeader
+        activityIndicator.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.search()
             dispatch_async(dispatch_get_main_queue()) {
@@ -237,19 +238,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         self.searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: mMatchAccents!)
         var books = self.mScripture.getLibrary().getMainBookCollection().getBooks()
         var resultCount = 0
-        var indexPathArray = [[NSIndexPath]]()
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
-            var indexPaths = [NSIndexPath]()
             autoreleasepool {
+                var indexPaths = [NSIndexPath]()
                 var bookResults = [AISSearchResultIOS]()
                 var object: AnyObject! = books.getWithInt(CInt(i))
                 self.mBook = object as? ALSBook
                 var group = self.mBook?.getGroup()
                 if (self.mScripture.searchGroup.isEmpty || (group == self.mScripture.searchGroup)) {
                     let bookId = self.mBook!.getBookId();
-                    if (bookId == "COL") {
-                        var a = 3
-                    }
                     self.searchHandler.loadBookForSearchWithALSBook(mBook)
                     for (var c = 0; c < Int(self.mBook!.getChapters().size()) && !self.mStopSearch; c++) {
                         var chapter = self.searchHandler.initChapterWithALSBook(mBook, withInt: CInt(c))
@@ -263,7 +260,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                                 if (resultCount > Constants.MaxResults) {
                                     self.mStopSearch = true
                                 }
-                                var indexPath = NSIndexPath(forRow: bookResults.count, inSection: self.mSearchResults.count)
+                                var indexPath = NSIndexPath(forRow: bookResults.count, inSection: i)
                                 indexPaths.append(indexPath)
                                 bookResults.append(searchResult)
                             }
@@ -272,28 +269,28 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 }
                 self.mTitles.append(mBook!.getAbbrevName())
                 self.searchHandler.unloadBookWithALSBook(mBook)
-                self.mSearchResults.append(bookResults)
-                indexPathArray.append(indexPaths)
+                addRowToView(indexPaths, newResults: bookResults)
             }
-            addRowToView(indexPathArray[i])
         }
         if (resultCount == 0) {
             var searchResult = AISSearchResultIOS()
-            self.mSearchResults.append([searchResult])
             var indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            addRowToView([indexPath])
+            addRowToView([indexPath], newResults: [searchResult])
         }
         self.mStopSearch = false
     }
-    func addRowToView(indexPaths: [NSIndexPath]) {
+    func addRowToView(indexPaths: [NSIndexPath], newResults: [AISSearchResultIOS]) {
+        self.mAddInProgress = true
         dispatch_async(dispatch_get_main_queue()) {
-            [unowned self] in
             if (!self.mClosing) {
+                self.mSearchResults.append(newResults)
                 if (indexPaths.count > 0) {
                     self.searchTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
                 }
                 self.mBooksAdded++
             }
+            self.mAddInProgress = false
         }
+
     }
 }
