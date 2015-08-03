@@ -13,32 +13,20 @@ class ScriptureViewController: CommonViewController,
     UIGestureRecognizerDelegate,
     UIPopoverPresentationControllerDelegate
 {
-    var scrollOffsetPrevious: CGFloat = 0
-    var scrollOffsetNext: CGFloat = 0
-    var scrollOffsetLoad: CGFloat = 0
-    var point = CGPointZero
-    var mVerseNumber: String = ""
+    // MARK: - Properties
+
+    // private properties
+    private var scrollOffsetPrevious: CGFloat = 0
+    private var scrollOffsetNext: CGFloat = 0
+    private var scrollOffsetLoad: CGFloat = 0
+    private var point = CGPointZero
     private var mAnnotationHtml: String = ""
     private var annotationWaiting: Bool = false
     private var book: Book?
-    var pinchBeginFontSize = CGFloat(0)
+    private var pinchBeginFontSize = CGFloat(0)
 
-    @IBOutlet var tap: UITapGestureRecognizer!
-    @IBOutlet var leftSwipe: UISwipeGestureRecognizer!
-    @IBOutlet var rightSwipe: UISwipeGestureRecognizer!
-    @IBOutlet var pinch: UIPinchGestureRecognizer!
-    @IBOutlet weak var webView: UIWebView!
-    @IBOutlet var closeButton: UIBarButtonItem!
-
-    @IBOutlet weak var bookButton: UIBarButtonItem!
-    @IBOutlet weak var chapterButton: UIBarButtonItem!
-    @IBOutlet weak var space: UIBarButtonItem!
-    @IBOutlet weak var searchButton: UIBarButtonItem!
-    @IBOutlet weak var fixedSpace1: UIBarButtonItem!
-    @IBOutlet weak var textSizeButton: UIBarButtonItem!
-    @IBOutlet weak var fixedSpace2: UIBarButtonItem!
-    @IBOutlet weak var aboutButton: UIBarButtonItem!
-
+    // public properties
+    var mVerseNumber: String = ""
     var bookNumber = 0 {
         didSet {
             book = scripture.getBookArray().flatMap { $0 }[bookNumber]
@@ -54,22 +42,84 @@ class ScriptureViewController: CommonViewController,
         }
     }
 
-    func updateUI() {
-        if (webView != nil) {
-            scripture.goToReference(book!, chapterNumber: chapterNumber, webView: webView)
-            if chapterNumber == 0 {
-                let introTitle = scripture.getIntroductionSymbol()
-                chapterButton.title = introTitle + Constants.Arrow
-            } else {
-                chapterButton.title = "\(chapterNumber)" + Constants.Arrow
+    // MARK: - IB Outlets
+
+    @IBOutlet private var tap: UITapGestureRecognizer!
+    @IBOutlet private var leftSwipe: UISwipeGestureRecognizer!
+    @IBOutlet private var rightSwipe: UISwipeGestureRecognizer!
+    @IBOutlet private var pinch: UIPinchGestureRecognizer!
+    @IBOutlet private weak var webView: UIWebView!
+    @IBOutlet var closeButton: UIBarButtonItem!
+
+    @IBOutlet private weak var bookButton: UIBarButtonItem!
+    @IBOutlet private weak var chapterButton: UIBarButtonItem!
+    @IBOutlet private weak var space: UIBarButtonItem!
+    @IBOutlet private weak var searchButton: UIBarButtonItem!
+    @IBOutlet private weak var fixedSpace1: UIBarButtonItem!
+    @IBOutlet private weak var textSizeButton: UIBarButtonItem!
+    @IBOutlet private weak var fixedSpace2: UIBarButtonItem!
+    @IBOutlet private weak var aboutButton: UIBarButtonItem!
+
+    // MARK: - IB Actions
+
+    @IBAction func cancelToScriptureViewController(segue: UIStoryboardSegue) {
+        // do nothing
+    }
+
+    @IBAction func selectBook(segue: UIStoryboardSegue) {
+        let vc = segue.sourceViewController as! BookCollectionViewController
+        resetScrollOffsets()
+        bookNumber = vc.bookIndex
+    }
+
+    @IBAction func selectChapter(segue: UIStoryboardSegue) {
+        let vc = segue.sourceViewController as! ChapterCollectionViewController
+        loadChapter(vc.selectedChapter)
+    }
+
+    @IBAction func selectIntroduction(segue: UIStoryboardSegue) {
+        chapterNumber = 0
+    }
+
+    @IBAction func handleLeftSwipe(sender: UISwipeGestureRecognizer) {
+        loadNextChapter()
+    }
+
+    @IBAction func handleRightSwipe(sender: UISwipeGestureRecognizer) {
+        loadPreviousChapter()
+    }
+
+    @IBAction func handleTap(sender: UITapGestureRecognizer) {
+        toggleFullscreen()
+    }
+
+    @IBAction func single(sender:UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            if annotationWaiting {
+                point = sender.locationInView(webView)
+                self.performSegueWithIdentifier(Constants.AnnotationSeque, sender: self)
+                annotationWaiting = false
             }
         }
     }
 
-    func resetScrollOffsets() {
-        scrollOffsetLoad = 0
-        scrollOffsetPrevious = 0
-        scrollOffsetNext = 0
+    @IBAction func handlePinch(sender: UIPinchGestureRecognizer) {
+        if sender.state == .Began {
+            pinchBeginFontSize = CGFloat(config.getFontSize())
+        }
+        let factor: CGFloat = 0.5
+        let scale = sender.scale * factor + (1 - factor)
+        config.setFontSizeWithInt(Int32(pinchBeginFontSize * scale))
+        updateHtmlSize()
+    }
+
+    // MARK: - Scripture Navigation
+
+    func loadIntroduction() {
+        let (success, htmlOptional) = scripture.getCurrentBook()!.getIntroduction()
+        if success, let html = htmlOptional {
+            webView.loadHTMLString(html, baseURL: nil)
+        }
     }
 
     func loadChapter(number: Int) {
@@ -97,6 +147,26 @@ class ScriptureViewController: CommonViewController,
         }
     }
 
+    // MARK: - UI Changes
+
+    func updateUI() {
+        if (webView != nil) {
+            scripture.goToReference(book!, chapterNumber: chapterNumber, webView: webView)
+            if chapterNumber == 0 {
+                let introTitle = scripture.getIntroductionSymbol()
+                chapterButton.title = introTitle + Constants.Arrow
+            } else {
+                chapterButton.title = "\(chapterNumber)" + Constants.Arrow
+            }
+        }
+    }
+
+    func resetScrollOffsets() {
+        scrollOffsetLoad = 0
+        scrollOffsetPrevious = 0
+        scrollOffsetNext = 0
+    }
+
     func getOffset() -> CGFloat {
         let y = webView.stringByEvaluatingJavaScriptFromString("window.pageYOffset")!.toInt()!
         let height = webView.stringByEvaluatingJavaScriptFromString("document.body.scrollHeight")!.toInt()!
@@ -110,27 +180,6 @@ class ScriptureViewController: CommonViewController,
         webView.stringByEvaluatingJavaScriptFromString("window.scrollTo(\(x), \(y))")
     }
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animateAlongsideTransition( { _ -> Void in self.scrollOffsetLoad = self.getOffset() },
-                                    completion: { _ -> Void in self.setOffset(self.scrollOffsetLoad) })
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-    }
-
-    func loadIntroduction() {
-        let (success, htmlOptional) = scripture.getCurrentBook()!.getIntroduction()
-        if success, let html = htmlOptional {
-            webView.loadHTMLString(html, baseURL: nil)
-        }
-    }
-
-    override func prefersStatusBarHidden() -> Bool {
-        if let navHid = navigationController?.navigationBarHidden, let toolHid = navigationController?.toolbarHidden {
-            return (navHid && toolHid) || super.prefersStatusBarHidden()
-        } else {
-            return super.prefersStatusBarHidden()
-        }
-    }
-
     func toggleFullscreen() {
         if Constants.BarOnTop {
             navigationController?.setNavigationBarHidden(!navigationController!.navigationBarHidden, animated: true)
@@ -139,6 +188,45 @@ class ScriptureViewController: CommonViewController,
         }
         setNeedsStatusBarAppearanceUpdate()
     }
+
+    // MARK: - Color Theme and Font Size
+
+    func loadColorTheme(theme: String) {
+        loadColorTheme(theme, navigationBar: nil)
+    }
+
+    func loadColorTheme(theme: String, navigationBar: UINavigationBar?) {
+        config.setCurrentColorThemeWithNSString(theme)
+        updateBarTheme()
+        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        webView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        updateHtmlColors()
+    }
+
+    func updateHtmlColors() {
+        var js = ""
+        for style in config.getStyles().map({ $0 as! ALCStyle }) {
+            let styleName = style.getName()
+            if style.hasPropertyWithNSString("color") {
+                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_COLOR_)
+                js += "ss.addRule('\(styleName)', 'color: \(colorStr)');"
+            }
+            if style.hasPropertyWithNSString("background-color") {
+                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
+                js += "ss.addRule('\(styleName)', 'background-color: \(colorStr)');"
+            }
+        }
+        js = "(function changeColors() { ss = document.styleSheets[0]; \(js) })()"
+        webView.stringByEvaluatingJavaScriptFromString(js)
+    }
+
+    func updateHtmlSize() {
+        let fontSize = config.getFontSize()
+        var js = "(function changeFontSize() { var el = document.getElementsByTagName('body')[0].style.fontSize = '\(fontSize)px'; })()"
+        webView.stringByEvaluatingJavaScriptFromString(js)
+    }
+
+    // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -171,37 +259,20 @@ class ScriptureViewController: CommonViewController,
         loadColorTheme(config.getCurrentColorTheme())
     }
 
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition( { _ -> Void in self.scrollOffsetLoad = self.getOffset() },
+                                    completion: { _ -> Void in self.setOffset(self.scrollOffsetLoad) })
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
 
-    @IBAction func handleLeftSwipe(sender: UISwipeGestureRecognizer) {
-        loadNextChapter()
-    }
-    @IBAction func handleRightSwipe(sender: UISwipeGestureRecognizer) {
-        loadPreviousChapter()
-    }
-    @IBAction func handleTap(sender: UITapGestureRecognizer) {
-        toggleFullscreen()
-    }
-    @IBAction func single(sender:UITapGestureRecognizer) {
-        if sender.state == .Ended {
-            if annotationWaiting {
-                point = sender.locationInView(webView)
-                self.performSegueWithIdentifier(Constants.AnnotationSeque, sender: self)
-                annotationWaiting = false
-            }
+    override func prefersStatusBarHidden() -> Bool {
+        if let navHid = navigationController?.navigationBarHidden {
+            return navHid || super.prefersStatusBarHidden()
+        } else {
+            return super.prefersStatusBarHidden()
         }
     }
-    @IBAction func handlePinch(sender: UIPinchGestureRecognizer) {
-        if sender.state == .Began {
-            pinchBeginFontSize = CGFloat(config.getFontSize())
-        }
-        let factor: CGFloat = 0.5
-        let scale = sender.scale * factor + (1 - factor)
-        config.setFontSizeWithInt(Int32(pinchBeginFontSize * scale))
-        updateHtmlSize()
-    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
@@ -240,19 +311,14 @@ class ScriptureViewController: CommonViewController,
 
     }
 
-    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-        return UINavigationController(rootViewController: controller.presentedViewController)
+    // MARK: - UIGestureRecognizerDelegate
+
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        if (annotationWaiting) {
-            annotationWaiting = false
-            return UIModalPresentationStyle.None
-        }
-        return UIModalPresentationStyle.CurrentContext
-    }
-    func dismiss() {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+
+    // MARK: - UIWebViewDelegate
+
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if navigationType == UIWebViewNavigationType.LinkClicked {
             let url = request.URL!.absoluteString
@@ -264,6 +330,7 @@ class ScriptureViewController: CommonViewController,
         }
         return true
     }
+
     func webViewDidFinishLoad(webView: UIWebView) {
         updateHtmlSize()
         updateHtmlColors()
@@ -277,70 +344,28 @@ class ScriptureViewController: CommonViewController,
         }
     }
 
-    @IBAction func cancelToScriptureViewController(segue: UIStoryboardSegue) {
-        // do nothing
+    // MARK: - UIPopoverPresentationControllerDelegate
+
+    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        return UINavigationController(rootViewController: controller.presentedViewController)
     }
 
-    @IBAction func selectBook(segue: UIStoryboardSegue) {
-        let vc = segue.sourceViewController as! BookCollectionViewController
-        resetScrollOffsets()
-        bookNumber = vc.bookIndex
-    }
-
-    @IBAction func selectChapter(segue: UIStoryboardSegue) {
-        let vc = segue.sourceViewController as! ChapterCollectionViewController
-        loadChapter(vc.selectedChapter)
-    }
-
-    @IBAction func selectIntroduction(segue: UIStoryboardSegue) {
-        chapterNumber = 0
-    }
-
-    func loadColorTheme(theme: String) {
-        loadColorTheme(theme, navigationBar: nil)
-    }
-
-    func loadColorTheme(theme: String, navigationBar: UINavigationBar?) {
-        config.setCurrentColorThemeWithNSString(theme)
-        updateBarTheme()
-        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        webView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        updateHtmlColors()
-    }
-
-    func updateHtmlColors() {
-        var js = ""
-        for style in config.getStyles().map({ $0 as! ALCStyle }) {
-            let styleName = style.getName()
-            if style.hasPropertyWithNSString("color") {
-                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_COLOR_)
-                js += "ss.addRule('\(styleName)', 'color: \(colorStr)');"
-            }
-            if style.hasPropertyWithNSString("background-color") {
-                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
-                js += "ss.addRule('\(styleName)', 'background-color: \(colorStr)');"
-            }
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        if (annotationWaiting) {
+            annotationWaiting = false
+            return UIModalPresentationStyle.None
         }
-        js = "(function changeColors() { ss = document.styleSheets[0]; \(js) })()"
-        webView.stringByEvaluatingJavaScriptFromString(js)
+        return UIModalPresentationStyle.CurrentContext
     }
 
-    func updateHtmlSize() {
-        let fontSize = config.getFontSize()
-        var js = "(function changeFontSize() { var el = document.getElementsByTagName('body')[0].style.fontSize = '\(fontSize)px'; })()"
-        webView.stringByEvaluatingJavaScriptFromString(js)
-    }
 }
 
+// MARK: - UIViewController
 extension UIViewController {
     var contentViewController: UIViewController {
         if let navcon = self as? UINavigationController {
             return navcon.visibleViewController
         }
         return self
-    }
-
-    var navbar: UINavigationBar? {
-        return navigationController?.navigationBar
     }
 }
