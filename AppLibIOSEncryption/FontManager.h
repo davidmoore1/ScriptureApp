@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 SIL International. All rights reserved.
 //
 
-#import "IOSArray.h"
+#import "IOSPrimitiveArray.h"
 
 @interface FontManager : NSObject
-+(void)initWithArray:(IOSArray*)array withLength:(jint)length;
-+(void)initMobileWithArray:(IOSArray*)array withLength:(jint)length;
++(void)initWithArray:(IOSByteArray*)array withLength:(jint)length;
++(void)initMobileWithArray:(IOSByteArray*)array withLength:(jint)length;
 @end
