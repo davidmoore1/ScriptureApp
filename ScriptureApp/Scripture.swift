@@ -444,6 +444,16 @@ public class Scripture {
     func getActionBarBottomColor() -> UIColor {
         return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_BOTTOM_))
     }
+    
+    func getSpecialCharacters() -> [[String]] {
+        return getConfig().getInputButtonLines().map {
+            let row = $0 as! ALCInputButtonRow
+            let buttons = (row.getButtons() as! JavaUtilAbstractList).map { $0 as! ALCInputButton }
+            let forms = buttons.map { $0.getDisplayForm() }
+            let strings = forms.map { ALCStringUtils_convertCharCodesToStringWithNSString_($0)! }
+            return strings
+        }
+    }
 }
 
 extension JavaUtilAbstractList {

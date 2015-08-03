@@ -631,77 +631,89 @@
                         <outlet property="searchRangeLabel" destination="aNT-AC-Frk" id="9ll-HX-vNX"/>
                         <outlet property="specialCharactersCollectionHeight" destination="Jyz-Ro-VQd" id="I5a-bJ-FxU"/>
                         <outlet property="specialCharactersCollectionView" destination="3yB-hi-Vt4" id="cg6-q5-8Sj"/>
-                        <segue destination="KbP-gi-vEz" kind="show" identifier="SearchResults" id="feI-oX-0m0"/>
+                        <segue destination="BbR-kP-hj3" kind="show" identifier="SearchResults" id="SxG-vL-Qdf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmw-iI-dkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1907" y="-34"/>
         </scene>
-        <!--Search Table View Controller-->
-        <scene sceneID="3sj-wL-OBs">
+        <!--Search Results View Controller-->
+        <scene sceneID="U94-vn-ebL">
             <objects>
-                <tableViewController id="KbP-gi-vEz" customClass="SearchTableViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" id="P3T-JR-zVQ">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BbR-kP-hj3" customClass="SearchResultsViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UTd-Qj-AXp"/>
+                        <viewControllerLayoutGuide type="bottom" id="2hO-aA-OSq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TXT-51-HRc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NHb-JV-WTY">
+                                <rect key="frame" x="16" y="28" width="568" height="564"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="mmM-HR-rhs">
+                                    <rect key="frame" x="0.0" y="157" width="568" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Search" rowHeight="135" id="Gyx-cQ-Qjz" customClass="SearchTableViewCell" customModule="ScriptureApp" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gyx-cQ-Qjz" id="Ohr-eo-7Um">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoE-OY-8aM">
+                                                    <rect key="frame" x="8" y="8" width="552" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDG-fy-2lG">
+                                                    <rect key="frame" x="8" y="37" width="552" height="89"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <attributedString key="attributedText"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BoE-OY-8aM" firstAttribute="trailing" secondItem="Ohr-eo-7Um" secondAttribute="trailingMargin" id="1MJ-wj-vxU"/>
+                                                <constraint firstItem="BoE-OY-8aM" firstAttribute="top" secondItem="Ohr-eo-7Um" secondAttribute="topMargin" id="3ZK-ne-hNO"/>
+                                                <constraint firstItem="BoE-OY-8aM" firstAttribute="leading" secondItem="Ohr-eo-7Um" secondAttribute="leadingMargin" id="K9C-yS-2J5"/>
+                                                <constraint firstItem="SDG-fy-2lG" firstAttribute="leading" secondItem="Ohr-eo-7Um" secondAttribute="leadingMargin" id="L9H-Gk-WeD"/>
+                                                <constraint firstItem="SDG-fy-2lG" firstAttribute="bottom" secondItem="Ohr-eo-7Um" secondAttribute="bottomMargin" id="OOa-Og-g9S"/>
+                                                <constraint firstItem="SDG-fy-2lG" firstAttribute="top" secondItem="BoE-OY-8aM" secondAttribute="bottom" constant="8" symbolic="YES" id="VYF-Pv-WCX"/>
+                                                <constraint firstItem="SDG-fy-2lG" firstAttribute="trailing" secondItem="Ohr-eo-7Um" secondAttribute="trailingMargin" id="iXX-oY-xVi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="htmlTextField" destination="SDG-fy-2lG" id="FFt-5O-AHF"/>
+                                            <outlet property="referenceLabel" destination="BoE-OY-8aM" id="KQc-pi-TTp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="amn-TN-h7m">
-                            <rect key="frame" x="0.0" y="221" width="600" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Search" rowHeight="135" id="uqN-1r-u4g" customClass="SearchTableViewCell" customModule="ScriptureApp" customModuleProvider="target">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uqN-1r-u4g" id="QEB-4b-zyk">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4F-fm-uy6">
-                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3zh-ZO-exP">
-                                            <rect key="frame" x="8" y="37" width="584" height="89"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <attributedString key="attributedText"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="3zh-ZO-exP" secondAttribute="bottom" id="KIG-7t-Ash"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="h4F-fm-uy6" secondAttribute="trailing" id="LCC-GQ-hl5"/>
-                                        <constraint firstItem="3zh-ZO-exP" firstAttribute="trailing" secondItem="QEB-4b-zyk" secondAttribute="trailingMargin" id="RAC-Nv-yhS"/>
-                                        <constraint firstItem="h4F-fm-uy6" firstAttribute="leading" secondItem="QEB-4b-zyk" secondAttribute="leadingMargin" id="U6T-Lz-C7f"/>
-                                        <constraint firstItem="3zh-ZO-exP" firstAttribute="top" secondItem="h4F-fm-uy6" secondAttribute="bottom" constant="8" symbolic="YES" id="fEE-NE-YeR"/>
-                                        <constraint firstItem="3zh-ZO-exP" firstAttribute="leading" secondItem="QEB-4b-zyk" secondAttribute="leadingMargin" id="hiI-xz-y8e"/>
-                                        <constraint firstItem="h4F-fm-uy6" firstAttribute="top" secondItem="QEB-4b-zyk" secondAttribute="topMargin" id="qyp-fr-vIO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="htmlTextField" destination="3zh-ZO-exP" id="76a-EH-8E3"/>
-                                    <outlet property="referenceLabel" destination="h4F-fm-uy6" id="DUL-Ne-bzX"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="KbP-gi-vEz" id="voh-rf-p5h"/>
-                            <outlet property="delegate" destination="KbP-gi-vEz" id="Feg-Cb-zmv"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="gE0-t3-gZU"/>
+                        <constraints>
+                            <constraint firstItem="2hO-aA-OSq" firstAttribute="top" secondItem="NHb-JV-WTY" secondAttribute="bottom" constant="8" symbolic="YES" id="0FW-7g-KFX"/>
+                            <constraint firstItem="NHb-JV-WTY" firstAttribute="leading" secondItem="TXT-51-HRc" secondAttribute="leadingMargin" id="31N-Hp-rZl"/>
+                            <constraint firstItem="NHb-JV-WTY" firstAttribute="top" secondItem="UTd-Qj-AXp" secondAttribute="bottom" constant="8" symbolic="YES" id="Djc-Rj-cxN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NHb-JV-WTY" secondAttribute="trailing" id="isb-RD-Jie"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="IBp-gg-xqY"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="amn-TN-h7m" id="Uis-sz-mEL"/>
-                        <outlet property="navBar" destination="gE0-t3-gZU" id="KVl-ei-K93"/>
-                        <outlet property="searchTableView" destination="P3T-JR-zVQ" id="yTP-lf-IOe"/>
-                        <segue destination="Ldq-6g-g3z" kind="unwind" identifier="SelectSearchResult" unwindAction="cancelToScriptureViewController:" id="ARQ-qC-abB"/>
+                        <outlet property="activityIndicator" destination="mmM-HR-rhs" id="2dN-d5-Y95"/>
+                        <outlet property="navBar" destination="IBp-gg-xqY" id="LWZ-bz-Tlh"/>
+                        <outlet property="searchTableView" destination="NHb-JV-WTY" id="NFD-FR-Znb"/>
+                        <segue destination="SOk-sA-1Fv" kind="unwind" identifier="SelectSearchResult" unwindAction="cancelToScriptureViewController:" id="xhl-cd-e5Y"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dnp-KT-aZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Ldq-6g-g3z" userLabel="Exit" sceneMemberID="exit"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bW1-rK-1uS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SOk-sA-1Fv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2593" y="-34"/>
+            <point key="canvasLocation" x="2673" y="-34"/>
         </scene>
         <!--Search Range View Controller-->
         <scene sceneID="FCZ-qv-Qkc">
