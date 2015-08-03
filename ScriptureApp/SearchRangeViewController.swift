@@ -19,15 +19,15 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
         self.tableData.addObject(scripture.getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_))
         self.tableData.addObject(scripture.OTName)
         self.tableData.addObject(scripture.NTName)
-        
+
         searchGroups.addObject("")
         searchGroups.addObject("OT")
         searchGroups.addObject("NT")
-        
+
         var backgroundView = UIView(frame: CGRectZero)
         self.tableView.tableFooterView = backgroundView
         self.tableView.backgroundColor = UIColor.clearColor()
-        
+
         let bgColor = scripture.getPopupBackgroundColor()
         popoverPresentationController?.backgroundColor = bgColor
         view.backgroundColor = bgColor
@@ -45,7 +45,7 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableData.count
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.SearchRangeCellReuseIdentifier) as! UITableViewCell
         cell.textLabel?.text = self.tableData.objectAtIndex(indexPath.row) as? String
@@ -53,7 +53,7 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
         cell.backgroundColor = scripture.getPopupBackgroundColor()
         return cell
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchSelectController.mRangeButtonText = self.tableData.objectAtIndex(indexPath.row) as! String
         scripture.searchGroup = searchGroups.objectAtIndex(indexPath.row) as! String

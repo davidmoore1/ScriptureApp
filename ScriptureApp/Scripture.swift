@@ -84,7 +84,7 @@ public class Scripture {
         searchRange = getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
     }
 
-    
+
     func loadBook(book: Book?) -> (success: Bool, book: Book?) {
         var success = false
         var lBook = book;
@@ -106,7 +106,7 @@ public class Scripture {
         let jintIndex = Int32(bookIndex)
         let retBook  = mLibrary.getMainBookCollection().getBooks().getWithInt(jintIndex) as! ALSBook
         return retBook
-    }  
+    }
     func getCurrentBook() -> Book? {
         return mCurrentBook
     }
@@ -278,11 +278,11 @@ public class Scripture {
     func configHasFeature(feature: String) -> Bool {
         return mLibrary.getConfig().hasFeatureWithNSString(feature)
     }
-    
+
     func configGetFeature(feature: String) -> String {
         return mLibrary.getConfig().getFeatures().getValueWithNSString(feature)
     }
-    
+
     func configGetBoolFeature(feature: String) -> Bool {
         var retVal = true
         if (configGetFeature(feature) == "false") {
@@ -393,7 +393,7 @@ public class Scripture {
             mColorThemes?.append(object as! ALCColorTheme)
         }
     }
-    
+
     func getThemeList () -> [ALCColorTheme] {
         if (mColorThemes == nil) {
             loadThemeList()
@@ -444,7 +444,7 @@ public class Scripture {
     func getActionBarBottomColor() -> UIColor {
         return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_BOTTOM_))
     }
-    
+
     func getSpecialCharacters() -> [[String]] {
         return getConfig().getInputButtonLines().map {
             let row = $0 as! ALCInputButtonRow

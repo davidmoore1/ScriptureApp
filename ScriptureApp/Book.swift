@@ -16,7 +16,7 @@ public class Book {
     var mBookGroupString: String?
     var mScripture: Scripture?
     private var mLastChapterRequested: Int
-    
+
     public init (scripture: Scripture?, book: ALSBook?, index: Int?, group: Int?, groupIndex: Int?, groupString: String?) {
         mScripture = scripture
         mBook = book
@@ -74,7 +74,7 @@ public class Book {
         }
         return retVal
     }
-    
+
     func getChapter(chapterNumber: Int) -> (success: Bool, chapter: String?) {
         var success = false
         var chapterString : String? = nil
@@ -125,7 +125,7 @@ public class Book {
             return false
         }
     }
-    
+
     func canGetPreviousChapter() -> Bool {
         if let chapter = getCurrentChapterNumber() {
             return canGetChapter(chapter - 1)
@@ -151,6 +151,6 @@ public class Book {
     private func runJavascript(jscript: String, webView: UIWebView) {
         webView.stringByEvaluatingJavaScriptFromString(jscript)
     }
-    
+
 
 }

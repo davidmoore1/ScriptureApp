@@ -28,7 +28,7 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
             mScripture!.searchRange = mRangeButtonText
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,7 +59,7 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
 //        if mScripture!.searchRange != nil {
 //            mRangeButtonText = mScripture!.searchRange!
 //        }
-        
+
         // color theme
         view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
         let checkboxLabelColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_CHECKBOX_, withNSString: ALCPropertyName_COLOR_))
@@ -76,28 +76,28 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         searchRangeButton.backgroundColor = searchButton.backgroundColor
         searchRangeButton.layer.borderWidth = 1
         searchRangeButton.layer.borderColor = UIColor.grayColor().CGColor
-        
+
         hideKeyboardButton.tintColor = UIColor.clearColor()
         searchTextField.addTarget(self, action: "textChanged:", forControlEvents: .EditingChanged)
     }
-    
+
     func textChanged(textField: UITextField) {
         searchButton.enabled = !textField.text.isEmpty
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
     }
-    
+
     override func viewDidDisappear(animated: Bool) {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     @IBAction func searchButtonPress(sender: UIButton) {
         searchBarSearchButtonClicked(searchBar)
     }
-    
+
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return specialCharacters.count
     }
@@ -105,14 +105,14 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
     @IBAction func hideKeyboard(sender: UIBarButtonItem) {
         searchTextField.resignFirstResponder()
     }
-    
+
     func keyboardWillShow() {
         // navigationItem.setRightBarButtonItems([hideKeyboardButton], animated: true)
         // navigationItem.rightBarButtonItem = hideKeyboardButton
         hideKeyboardButton.tintColor = UIColor.whiteColor()
         hideKeyboardButton.enabled = true
     }
-    
+
     func keyboardWillHide() {
         // navigationItem.setRightBarButtonItems(nil, animated: true)
         // navigationItem.rightBarButtonItem = nil
@@ -120,34 +120,34 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         hideKeyboardButton.enabled = false
         searchTextField.resignFirstResponder()
     }
-    
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return specialCharacters[section].count
     }
-    
+
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.SpecialCharacterCell, forIndexPath: indexPath) as! SpecialCharacterCell
         let title = specialCharacters[indexPath.section][indexPath.item]
         let bgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
         let fgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
-        
+
         cell.button.setTitle(title, forState: .Normal)
         cell.button.backgroundColor = bgColor
         cell.button.setTitleColor(fgColor, forState: .Normal)
-        
+
         cell.button.layer.borderColor = UIColor.grayColor().CGColor
         cell.button.layer.borderWidth = 1
-        
+
         cell.textField = searchTextField
-        
+
         return cell
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func searchBarSearchButtonClicked(searchBar: UISearchBar) {
          if searchBar.text.isEmpty {
             let alert:UIAlertController = UIAlertController(title: "Error", message: "Please enter a search string!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -157,7 +157,7 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         else {
             self.performSegueWithIdentifier(Constants.SearchResultsSeque, sender: self)
         }
-        
+
     }
     @IBOutlet weak var searchRangeLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -177,7 +177,7 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         }
         return UIModalPresentationStyle.CurrentContext
     }*/
-    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -200,7 +200,7 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
                         tvc.searchSelectController = self
                     }
                 }
-                
+
             default: break
             }
         }

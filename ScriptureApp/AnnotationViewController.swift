@@ -36,7 +36,7 @@ class AnnotationViewController: CommonViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override var preferredContentSize: CGSize {
         get {
             if mAnnotationWebView != nil && presentingViewController != nil {

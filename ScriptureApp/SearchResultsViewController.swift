@@ -28,14 +28,14 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var mBackGroundColorForHeader: UIColor?
     var mTextColorForHeader: UIColor?
     var mAddInProgress = false
-    
+
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchTableView: UITableView!
-    
+
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
+
         mStopSearch = true
         mClosing = true
         self.activityIndicator.stopAnimating()
@@ -45,10 +45,10 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         NSURLCache.sharedURLCache().memoryCapacity = 0
         // presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         mNumberOfBooks = Int(mScripture.getLibrary().getMainBookCollection().getBooks().size())
         for (var i = 0; i < mNumberOfBooks; i++) {
             var book = mScripture.getBookArray().flatMap { $0 }[i]
@@ -64,7 +64,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
@@ -99,17 +99,17 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         mStopSearch = true
     }
     // MARK: - Table view data source
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return mNumberOfBooks
     }
-    
+
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]  {
         return mTitles
     }
-    
+
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String,  atIndex index: Int) -> Int {
         var retValue = index
         if (index > mBooksAdded - 1) && (index > 0) {
@@ -124,7 +124,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
         return mSearchResults[section].count
     }
-    
+
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var headerString = ""
         if section <= mSearchResults.count - 1 {
@@ -141,7 +141,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.SearchCellReuseIdentifier, forIndexPath: indexPath) as! SearchTableViewCell
-        
+
         // Configure the cell...
         var result = mSearchResults[indexPath.section][indexPath.row]
         if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
@@ -167,7 +167,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         mScriptureController!.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
         performSegueWithIdentifier(Constants.SelectSearchResult, sender: self)
     }
-    
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
             return UITableViewAutomaticDimension
@@ -179,7 +179,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             return height
         }
     }
-    
+
     func getAttributedTextString(indexPath: NSIndexPath) -> NSAttributedString {
         var returnString = NSAttributedString(string: "")
         if let returnString = mStrings[indexPath] {
@@ -225,7 +225,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                     svc.mVerseNumber = String(selectedResult.getReference().getFromVerse())
                     svc.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
                     svc.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
-                    
+
                 default: break
                 }
             }

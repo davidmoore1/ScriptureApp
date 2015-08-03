@@ -12,13 +12,13 @@ class CommonViewController: UIViewController {
 
     let scripture = Scripture.sharedInstance
     let config = Scripture.sharedInstance.getConfig()
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         updateBarTheme()
     }
-    
+
     func updateBarTheme() {
         if let navbar = navigationController?.navigationBar {
             navbar.translucent = false

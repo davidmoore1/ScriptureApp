@@ -109,13 +109,13 @@ class ScriptureViewController: CommonViewController,
         let y = percent * CGFloat(height)
         webView.stringByEvaluatingJavaScriptFromString("window.scrollTo(\(x), \(y))")
     }
-    
+
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition( { _ -> Void in self.scrollOffsetLoad = self.getOffset() },
                                     completion: { _ -> Void in self.setOffset(self.scrollOffsetLoad) })
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
-    
+
     func loadIntroduction() {
         let (success, htmlOptional) = scripture.getCurrentBook()!.getIntroduction()
         if success, let html = htmlOptional {
