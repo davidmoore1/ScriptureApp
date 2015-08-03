@@ -27,12 +27,6 @@ class BookCollectionViewController: CommonViewController, UICollectionViewDataSo
         navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        popoverPresentationController?.passthroughViews = nil
-    }
-
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return books.count
     }

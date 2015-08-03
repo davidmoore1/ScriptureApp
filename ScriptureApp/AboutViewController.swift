@@ -22,10 +22,4 @@ class AboutViewController: CommonViewController {
         navigationItem.rightBarButtonItem?.title = scripture.getString(ALCCommonStringId_BUTTON_CLOSE_)
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        popoverPresentationController?.passthroughViews = nil
-    }
-
 }

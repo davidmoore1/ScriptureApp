@@ -22,12 +22,6 @@ class ChapterCollectionViewController: CommonViewController, UICollectionViewDel
         return chapters
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        popoverPresentationController?.passthroughViews = nil
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

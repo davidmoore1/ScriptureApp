@@ -38,12 +38,6 @@ class TextSizeViewController: CommonViewController, UIPopoverPresentationControl
         return CGSizeMake(width, height)
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-
-        popoverPresentationController?.passthroughViews = nil
-    }
-
     func getViewHeight() -> CGFloat {
         var lowestPoint: CGFloat = 0
         for v in view.subviews as! [UIView] {

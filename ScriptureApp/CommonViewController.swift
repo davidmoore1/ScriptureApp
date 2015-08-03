@@ -17,6 +17,7 @@ class CommonViewController: UIViewController {
         super.viewWillAppear(animated)
 
         updateBarTheme()
+        popoverPresentationController?.passthroughViews = nil
     }
 
     func updateBarTheme() {
