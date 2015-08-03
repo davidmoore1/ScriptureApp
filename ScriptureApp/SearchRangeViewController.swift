@@ -8,10 +8,8 @@
 
 import UIKit
 
-class SearchRangeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchRangeViewController: CommonViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let scripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
     var searchGroups: NSMutableArray! = NSMutableArray()
     var searchSelectController: SearchSelectViewController!
     override func viewDidLoad() {

@@ -53,12 +53,12 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         specialCharacters = mScripture!.getSpecialCharacters()
         specialCharactersCollectionHeight.constant *= CGFloat(specialCharacters.count)
         searchButton.setTitle(btnCaption, forState: .Normal)
-        searchButton.layer.borderColor = UIColor.grayColor().CGColor
-        searchButton.layer.borderWidth = 1
-        searchRangeLabel.text = mScripture!.getString(ALSScriptureStringId_SEARCH_RANGE_)
-        if mScripture!.searchRange != nil {
-            mRangeButtonText = mScripture!.searchRange!
-        }
+//        searchButton.layer.borderColor = UIColor.grayColor().CGColor
+//        searchButton.layer.borderWidth = 1
+//        searchRangeLabel.text = mScripture!.getString(ALSScriptureStringId_SEARCH_RANGE_)
+//        if mScripture!.searchRange != nil {
+//            mRangeButtonText = mScripture!.searchRange!
+//        }
         
         // color theme
         view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
@@ -70,16 +70,20 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         searchTextField = searchBar.valueForKey("searchField") as? UITextField
         searchTextField.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_ENTRY_TEXT_, withNSString: ALCPropertyName_COLOR_))
         searchBar.tintColor = searchTextField.textColor
-        searchButton.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
-        searchButton.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+//        searchButton.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
+//        searchButton.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
         searchRangeButton.tintColor = searchButton.tintColor
         searchRangeButton.backgroundColor = searchButton.backgroundColor
         searchRangeButton.layer.borderWidth = 1
         searchRangeButton.layer.borderColor = UIColor.grayColor().CGColor
         
         hideKeyboardButton.tintColor = UIColor.clearColor()
+        searchTextField.addTarget(self, action: "textChanged:", forControlEvents: .EditingChanged)
     }
     
+    func textChanged(textField: UITextField) {
+        searchButton.enabled = !textField.text.isEmpty
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -139,10 +143,6 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
         return cell
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        mScriptureController?.navbar?.updateNavigationBarColors()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -213,6 +213,7 @@ class SpecialCharacterCell: UICollectionViewCell {
     @IBOutlet weak var button: UIButton!
     @IBAction func selectCharacter(sender: UIButton) {
         textField.text = textField.text + sender.currentTitle!
+        textField.sendActionsForControlEvents(.EditingChanged)
     }
 }
 

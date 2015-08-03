@@ -8,11 +8,8 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class AboutViewController: CommonViewController {
     @IBOutlet weak var webView: UIWebView!
-
-    let scripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +26,6 @@ class AboutViewController: UIViewController {
         super.viewWillAppear(animated)
 
         popoverPresentationController?.passthroughViews = nil
-        navbar?.updateNavigationBarColors()
-        navbar?.barStyle = .Black
     }
 
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        navbar?.updateNavigationBarColors()
-    }
 }

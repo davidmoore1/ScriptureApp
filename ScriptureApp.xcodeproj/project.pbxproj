@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4252BB101B6689BD0072032A /* SpecialCharactersFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4252BB0F1B6689BD0072032A /* SpecialCharactersFlowLayout.swift */; };
+		426064071B69777300757B42 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426064061B69777300757B42 /* CommonViewController.swift */; };
 		42A0502F1B57E5180071EA96 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A0502E1B57E5180071EA96 /* Misc.swift */; };
 		42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A050341B5832BD0071EA96 /* AboutViewController.swift */; };
+		42BACAB91B6FE8D200447AB6 /* libFontManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 42BACAB81B6FE8D200447AB6 /* libFontManager.a */; };
 		630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB21B29D5DA003915FE /* Scripture.swift */; };
 		6313C6411B6288F10091BE86 /* SearchRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */; };
 		6313C6431B6919150091BE86 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313C6421B6919150091BE86 /* SearchResultsViewController.swift */; };
@@ -120,7 +122,6 @@
 		637431271B446D1D00850F32 /* BaseEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431201B446D1D00850F32 /* BaseEncryption.m */; };
 		637431281B446D1D00850F32 /* c.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431221B446D1D00850F32 /* c.m */; };
 		637431291B446D1D00850F32 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431241B446D1D00850F32 /* Encryption.m */; };
-		6374312A1B446D1D00850F32 /* libFontManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431261B446D1D00850F32 /* libFontManager.a */; };
 		6374312D1B446EDD00850F32 /* libAppLibIOSEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */; };
 		637FA3A21B16675500082215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 637FA3A11B16675500082215 /* libz.dylib */; };
 		63A04B3E1B45B35800DBA91A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3D1B45B35800DBA91A /* Book.swift */; };
@@ -527,8 +528,11 @@
 
 /* Begin PBXFileReference section */
 		4252BB0F1B6689BD0072032A /* SpecialCharactersFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialCharactersFlowLayout.swift; sourceTree = "<group>"; };
+		426064061B69777300757B42 /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 		42A0502E1B57E5180071EA96 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		42A050341B5832BD0071EA96 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		42BACAB71B6FE8C200447AB6 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontManager.h; path = "ScriptureApp.xcodeproj/../../app-builders/source/libraries/fontmanager/ios/FontManager.h"; sourceTree = SOURCE_ROOT; };
+		42BACAB81B6FE8D200447AB6 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFontManager.a; path = "ScriptureApp.xcodeproj/../../app-builders/source/libraries/fontmanager/ios/libFontManager.a"; sourceTree = SOURCE_ROOT; };
 		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
 		6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRangeViewController.swift; sourceTree = "<group>"; };
 		6313C6421B6919150091BE86 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -651,8 +655,6 @@
 		637431221B446D1D00850F32 /* c.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = c.m; sourceTree = "<group>"; };
 		637431231B446D1D00850F32 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
 		637431241B446D1D00850F32 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
-		637431251B446D1D00850F32 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontManager.h; sourceTree = "<group>"; };
-		637431261B446D1D00850F32 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFontManager.a; sourceTree = "<group>"; };
 		637FA3A11B16675500082215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		63A04B3D1B45B35800DBA91A /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		63B8ABCD1B5E9566002563FD /* EspeakParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EspeakParser.java; sourceTree = "<group>"; };
@@ -819,7 +821,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6374312A1B446D1D00850F32 /* libFontManager.a in Frameworks */,
+				42BACAB91B6FE8D200447AB6 /* libFontManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1251,8 +1253,8 @@
 				637431221B446D1D00850F32 /* c.m */,
 				637431231B446D1D00850F32 /* Encryption.h */,
 				637431241B446D1D00850F32 /* Encryption.m */,
-				637431251B446D1D00850F32 /* FontManager.h */,
-				637431261B446D1D00850F32 /* libFontManager.a */,
+				42BACAB71B6FE8C200447AB6 /* FontManager.h */,
+				42BACAB81B6FE8D200447AB6 /* libFontManager.a */,
 				6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */,
 			);
 			path = AppLibIOSEncryption;
@@ -1424,6 +1426,7 @@
 				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
 				4252BB0F1B6689BD0072032A /* SpecialCharactersFlowLayout.swift */,
 				6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */,
+				426064061B69777300757B42 /* CommonViewController.swift */,
 				63DDFF321B0575C400B57DF7 /* AppDelegate.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
 				63DDFF3B1B0575C400B57DF7 /* LaunchScreen.xib */,
@@ -2312,6 +2315,7 @@
 				63B8E29A1B55797C002DC672 /* ScriptureViewController.swift in Sources */,
 				42A0502F1B57E5180071EA96 /* Misc.swift in Sources */,
 				63DDFF331B0575C400B57DF7 /* AppDelegate.swift in Sources */,
+				426064071B69777300757B42 /* CommonViewController.swift in Sources */,
 				6313C6411B6288F10091BE86 /* SearchRangeViewController.swift in Sources */,
 				63B8E2991B55797C002DC672 /* ChapterCollectionViewController.swift in Sources */,
 				42A050351B5832BD0071EA96 /* AboutViewController.swift in Sources */,
@@ -2765,6 +2769,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppLibIOSEncryption",
+					"$(PROJECT_DIR)/../app-builders/source/libraries/fontmanager/ios",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2779,6 +2784,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppLibIOSEncryption",
+					"$(PROJECT_DIR)/../app-builders/source/libraries/fontmanager/ios",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2911,7 +2917,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2950,7 +2956,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2964,6 +2970,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScriptureApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -2984,6 +2991,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ScriptureApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

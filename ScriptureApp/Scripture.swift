@@ -38,7 +38,7 @@ public class Scripture {
         // using paths...
         if let bundlePath = bundle.resourcePath
         {
-            assetsPath = bundlePath + "/assets"
+            assetsPath = bundlePath.stringByAppendingPathComponent("assets")
         }
         mScripture.setFileManagerWithAICFileManagerIOS(mFileManager)
         mFileManager.setAssetsPathWithNSString(assetsPath)
@@ -446,7 +446,6 @@ public class Scripture {
     }
     
     func getSpecialCharacters() -> [[String]] {
-        // return [["a", "b", "c"], ["d", "e", "f", "g"], ["hello"], ["world"], ["this", "is", "a", "test"], map("abcdefghijklmnop") { "\($0)" }, ["c"] ] // + map("1234567890") { ["\($0)"] }
         return getConfig().getInputButtonLines().map {
             let row = $0 as! ALCInputButtonRow
             let buttons = (row.getButtons() as! JavaUtilAbstractList).map { $0 as! ALCInputButton }

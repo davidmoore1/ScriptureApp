@@ -8,9 +8,7 @@
 
 import UIKit
 
-class AnnotationViewController: UIViewController {
-    let scripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
+class AnnotationViewController: CommonViewController {
     var html: String = "" {
         didSet{
             if (mAnnotationWebView != nil) {
