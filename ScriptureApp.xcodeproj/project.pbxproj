@@ -2842,7 +2842,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 63BE1AF01B0E3E870040F6D7 /* AppIOSScriptureConfig.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
