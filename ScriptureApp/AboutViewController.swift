@@ -9,6 +9,7 @@
 import UIKit
 
 class AboutViewController: CommonViewController {
+
     @IBOutlet weak var webView: UIWebView!
 
     override func viewDidLoad() {

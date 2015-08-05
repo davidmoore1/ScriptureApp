@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell, UITextViewDelegate {
+
     let config = Scripture.sharedInstance.getConfig()
     var reference: String?
     var html: NSAttributedString? {
@@ -16,19 +17,30 @@ class SearchTableViewCell: UITableViewCell, UITextViewDelegate {
             updateUI()
         }
     }
+
+    @IBOutlet weak var htmlTextField: UITextView!
+    @IBOutlet weak var referenceLabel: UILabel!
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.htmlTextField.delegate = self;
     }
 
-    @IBOutlet weak var htmlTextField: UITextView!
-    @IBOutlet weak var referenceLabel: UILabel!
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+
     func updateUI() {
         referenceLabel.text = reference!
         referenceLabel.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
@@ -38,12 +50,5 @@ class SearchTableViewCell: UITableViewCell, UITextViewDelegate {
         htmlTextField.sizeToFit()
         htmlTextField.layoutIfNeeded()
      }
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
 
 }

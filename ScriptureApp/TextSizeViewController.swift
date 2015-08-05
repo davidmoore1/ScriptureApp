@@ -9,13 +9,29 @@
 import UIKit
 
 class TextSizeViewController: CommonViewController, UIPopoverPresentationControllerDelegate {
-    @IBOutlet weak var slider: UISlider!
+
+    // MARK: - Properties
 
     var rootViewController: ScriptureViewController!
 
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    // MARK: - IB Outlets
+
+    @IBOutlet weak var slider: UISlider!
+
+    // MARK: - Actions
+
+    @IBAction func changeTextSize(sender: UISlider) {
+        config.setFontSizeWithInt(Int32(sender.value))
+        slider.value = Float(config.getFontSize())
+        rootViewController.updateHtmlSize()
     }
+
+    func selectTheme(sender: UIButton) {
+        rootViewController.loadColorTheme(sender.currentTitle!)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    // MARK: Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,32 +47,13 @@ class TextSizeViewController: CommonViewController, UIPopoverPresentationControl
         popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
     }
 
-    func getSize() -> CGSize {
-        let width = CGFloat(300)
-        let buttonAndPaddingHeight = CGFloat(scripture.getAvailableColorThemeNames().count > 1 ? 40 : 0)
-        let height = slider.frame.origin.y + slider.frame.height + buttonAndPaddingHeight
-        return CGSizeMake(width, height)
+    // MARK: - UIPopoverPresentationControllerDelgate
+
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
 
-    func getViewHeight() -> CGFloat {
-        var lowestPoint: CGFloat = 0
-        for v in view.subviews as! [UIView] {
-            let low = v.frame.origin.y + v.frame.height
-            lowestPoint = max(lowestPoint, low)
-        }
-        return lowestPoint
-    }
-
-    func selectTheme(sender: UIButton) {
-        rootViewController.loadColorTheme(sender.currentTitle!)
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    @IBAction func changeTextSize(sender: UISlider) {
-        config.setFontSizeWithInt(Int32(sender.value))
-        slider.value = Float(config.getFontSize())
-        rootViewController.updateHtmlSize()
-    }
+   // MARK: - Misc
 
     func createThemeButtons() {
         let padding = CGFloat(10)
@@ -82,6 +79,22 @@ class TextSizeViewController: CommonViewController, UIPopoverPresentationControl
             button.layer.borderColor = UIColor.grayColor().CGColor
             view.addSubview(button)
         }
+    }
+
+    func getSize() -> CGSize {
+        let width = CGFloat(300)
+        let buttonAndPaddingHeight = CGFloat(scripture.getAvailableColorThemeNames().count > 1 ? 40 : 0)
+        let height = slider.frame.origin.y + slider.frame.height + buttonAndPaddingHeight
+        return CGSizeMake(width, height)
+    }
+
+    func getViewHeight() -> CGFloat {
+        var lowestPoint: CGFloat = 0
+        for v in view.subviews as! [UIView] {
+            let low = v.frame.origin.y + v.frame.height
+            lowestPoint = max(lowestPoint, low)
+        }
+        return lowestPoint
     }
 
 }

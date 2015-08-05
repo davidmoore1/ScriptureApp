@@ -9,6 +9,7 @@
 import UIKit
 
 class SpecialCharactersFlowLayout: UICollectionViewFlowLayout {
+
     let specialCharacters = Scripture.sharedInstance.getSpecialCharacters()
     let cellWidth = CGFloat(50)
     let cellHeight = CGFloat(50)

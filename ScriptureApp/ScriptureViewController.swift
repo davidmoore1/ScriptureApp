@@ -289,7 +289,6 @@ class ScriptureViewController: CommonViewController,
                 vc.popoverPresentationController?.delegate = self
             case Constants.SearchRequest:
                 if let tvc = segue.destinationViewController.contentViewController as? SearchSelectViewController {
-                    tvc.mScripture = scripture
                     tvc.mScriptureController = self
                 }
             case Constants.TextSizeSeque:

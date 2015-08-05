@@ -12,6 +12,10 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
 
     var searchGroups: NSMutableArray! = NSMutableArray()
     var searchSelectController: SearchSelectViewController!
+    var tableData: NSMutableArray! = NSMutableArray()
+
+    @IBOutlet weak var tableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,14 +37,7 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
         view.backgroundColor = bgColor
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - TableView
-    var tableData: NSMutableArray! = NSMutableArray()
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - UITableViewDataSource
 
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tableData.count
@@ -54,19 +51,12 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
         return cell
     }
 
+    // MARK: - UITableViewDelegate
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchSelectController.mRangeButtonText = self.tableData.objectAtIndex(indexPath.row) as! String
         scripture.searchGroup = searchGroups.objectAtIndex(indexPath.row) as! String
         presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
