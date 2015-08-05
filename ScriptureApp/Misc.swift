@@ -43,3 +43,46 @@ func UIColorFromRGB(var colorCode: String, alpha: Float = 1.0) -> UIColor {
 
     return UIColor(red: r, green: g, blue: b, alpha: CGFloat(alpha))
 }
+
+// Get contents of directory at specified path, returning (filenames, nil) or (nil, error)
+func contentsOfDirectoryAtPath(path: String) -> (filenames: [String]?, error: NSError?) {
+    var error: NSError? = nil
+    let fileManager = NSFileManager.defaultManager()
+    let contents = fileManager.contentsOfDirectoryAtPath(path, error: &error)
+    if contents == nil {
+        return (nil, error)
+    }
+    else {
+        let filenames = contents as! [String]
+        return (filenames, nil)
+    }
+}
+
+extension JavaUtilAbstractList {
+    func map<T>(transform: (AnyObject) -> T) -> [T] {
+        var iter = iterator()
+        var result = [AnyObject]()
+        while iter.hasNext() {
+            result.append(iter.next())
+        }
+        return result.map(transform)
+    }
+}
+
+func stringToUtilList(strings: [String]) -> (JavaUtilList) {
+    let utilList = new_JavaUtilArrayList_init()
+    for entry in strings {
+        utilList.addWithId(entry)
+    }
+    return utilList
+}
+
+func utilListToStringArray(javaArray: JavaUtilList) -> [String] {
+    var stringArray = [String]()
+    var iterator = javaArray.iterator()
+    while (iterator.hasNext()) {
+        var object: AnyObject! = iterator.next()
+        stringArray.append(object as! String)
+    }
+    return stringArray
+}
