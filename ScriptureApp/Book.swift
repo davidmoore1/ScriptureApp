@@ -9,6 +9,9 @@
 import UIKit
 
 public class Book {
+
+    // MARK: - Properties and initialization
+
     private var mBook: ALSBook?
     var mIndex: Int?
     var mGroup: Int?
@@ -26,6 +29,13 @@ public class Book {
         mBookGroupString = groupString
         mLastChapterRequested = 0
     }
+
+    func getALSBook() -> ALSBook? {
+        return mBook
+    }
+
+    // MARK: - Color theme
+
     func getBackgroundColor() -> UIColor {
         var style = mScripture!.useListView() ? ALSStyleName_UI_BOOK_BUTTON_LIST_ : ALSStyleName_UI_BOOK_BUTTON_GRID_
         var currentBookSubGroup = mBook!.getSubGroup()
@@ -45,6 +55,7 @@ public class Book {
         let backgroundColor = UIColorFromRGB(UInt(strtoul(returnColorString, nil, 16)))
         return backgroundColor
     }
+
     func getColor() -> UIColor {
         var colorStr = mScripture!.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_BOOK_BUTTON_GRID_, withNSString: ALCPropertyName_COLOR_)
         var color: UIColor
@@ -57,15 +68,43 @@ public class Book {
             return UIColor.blackColor()
         }
     }
+
+    // MARK: - Title and introduction
+
+    func getButtonTitle() -> String {
+        if mScripture!.useListView() {
+            return getName()
+        } else {
+            let abbrev = getAbbrevName()
+            return abbrev.isEmpty ? getName() : abbrev
+        }
+    }
+
     func getName() -> String {
         return mBook!.getName()
     }
+
     func getAbbrevName() -> String {
         return mBook!.getAbbrevName()
     }
-    func getALSBook() -> ALSBook? {
-        return mBook
+
+    func hasIntroduction() -> Bool {
+        return mBook!.hasIntroduction()
     }
+
+    func getIntroduction() -> (success: Bool, chapter: String?) {
+        var success = false
+        var chapterString : String? = nil
+        if (hasIntroduction()) {
+            mLastChapterRequested = 0
+            chapterString = mScripture!.getFactory().getIntroductionWithALSDisplayWriter(mScripture!.getDisplayWriter(), withALSBook: mBook)
+            success = true
+        }
+        return (success, chapterString)
+    }
+
+    // MARK: - Chapters
+
     func numberOfChapters() -> Int {
         // if config has feature hide empty chapters
         var retVal = -1
@@ -86,38 +125,35 @@ public class Book {
         }
         return (success, chapterString)
     }
-    func getIntroduction() -> (success: Bool, chapter: String?) {
-        var success = false
-        var chapterString : String? = nil
-        if (hasIntroduction()) {
-            mLastChapterRequested = 0
-            chapterString = mScripture!.getFactory().getIntroductionWithALSDisplayWriter(mScripture!.getDisplayWriter(), withALSBook: mBook)
-            success = true
-        }
-        return (success, chapterString)
-    }
+
     func getCurrentChapterNumber() -> Int? {
         return mLastChapterRequested
     }
+
     func getNextChapter(webView: UIWebView) -> Bool {
         var nextChapterNumber = mLastChapterRequested + 1
         return mScripture!.goToReference(self, chapterNumber: nextChapterNumber, webView: webView)
     }
+
     func getPreviousChapter(webView: UIWebView) -> Bool {
         var previousChapterNumber = mLastChapterRequested - 1
         return mScripture!.goToReference(self, chapterNumber: previousChapterNumber, webView: webView)
     }
+
     func setLastChapter(chapterNumber: Int) {
         mLastChapterRequested = chapterNumber
     }
+
     func canGetChapter(number: Int) -> Bool {
         var lowThreshold = hasIntroduction() ? -1 : 0
         var success = (number <= numberOfChapters()) && (number > lowThreshold)
         return success
     }
+
     func getBookGroup() -> String {
         return mBook!.getGroup()
     }
+
     func canGetNextChapter() -> Bool {
         if let chapter = getCurrentChapterNumber() {
             return canGetChapter(chapter + 1)
@@ -142,23 +178,15 @@ public class Book {
         }
         return retString
     }
-    func hasIntroduction() -> Bool {
-        return mBook!.hasIntroduction()
-    }
+
+    // MARK: - Misc
+
     func sameBook(book: ALSBook) -> Bool {
         return book.getBookId() == mBook?.getBookId()
     }
+
     private func runJavascript(jscript: String, webView: UIWebView) {
         webView.stringByEvaluatingJavaScriptFromString(jscript)
-    }
-
-    func getButtonTitle() -> String {
-        if mScripture!.useListView() {
-            return getName()
-        } else {
-            let abbrev = getAbbrevName()
-            return abbrev.isEmpty ? getName() : abbrev
-        }
     }
 
 }
