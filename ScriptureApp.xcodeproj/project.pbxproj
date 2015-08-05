@@ -123,6 +123,7 @@
 		637431281B446D1D00850F32 /* c.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431221B446D1D00850F32 /* c.m */; };
 		637431291B446D1D00850F32 /* Encryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 637431241B446D1D00850F32 /* Encryption.m */; };
 		6374312D1B446EDD00850F32 /* libAppLibIOSEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 637431061B446B8000850F32 /* libAppLibIOSEncryption.a */; };
+		637D78681B723C750025C829 /* CssRuleStyle.java in Sources */ = {isa = PBXBuildFile; fileRef = 637D78671B723C750025C829 /* CssRuleStyle.java */; };
 		637FA3A21B16675500082215 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 637FA3A11B16675500082215 /* libz.dylib */; };
 		63A04B3E1B45B35800DBA91A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3D1B45B35800DBA91A /* Book.swift */; };
 		63B8ABD01B5E9566002563FD /* EspeakParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABCD1B5E9566002563FD /* EspeakParser.java */; };
@@ -655,6 +656,7 @@
 		637431221B446D1D00850F32 /* c.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = c.m; sourceTree = "<group>"; };
 		637431231B446D1D00850F32 /* Encryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Encryption.h; sourceTree = "<group>"; };
 		637431241B446D1D00850F32 /* Encryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Encryption.m; sourceTree = "<group>"; };
+		637D78671B723C750025C829 /* CssRuleStyle.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CssRuleStyle.java; sourceTree = "<group>"; };
 		637FA3A11B16675500082215 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		63A04B3D1B45B35800DBA91A /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		63B8ABCD1B5E9566002563FD /* EspeakParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EspeakParser.java; sourceTree = "<group>"; };
@@ -1623,6 +1625,7 @@
 		63DDFF9E1B057A4400B57DF7 /* style */ = {
 			isa = PBXGroup;
 			children = (
+				637D78671B723C750025C829 /* CssRuleStyle.java */,
 				63DDFF9F1B057A4400B57DF7 /* BaseStyle.java */,
 				63DDFFA01B057A4400B57DF7 /* Style.java */,
 				63DDFFA11B057A4400B57DF7 /* StyleDeclaration.java */,
@@ -2421,6 +2424,7 @@
 				63DD00161B057A4400B57DF7 /* EpubContentItem.java in Sources */,
 				63DDFFD91B057A4400B57DF7 /* CharacterInfo.java in Sources */,
 				63B8ABD21B5E9566002563FD /* EspeakVoices.java in Sources */,
+				637D78681B723C750025C829 /* CssRuleStyle.java in Sources */,
 				63DDFFF21B057A4400B57DF7 /* PropertyName.java in Sources */,
 				63DDFFF31B057A4400B57DF7 /* SearchParameters.java in Sources */,
 				63DDFFFD1B057A4400B57DF7 /* Translations.java in Sources */,
