@@ -152,5 +152,13 @@ public class Book {
         webView.stringByEvaluatingJavaScriptFromString(jscript)
     }
 
+    func getButtonTitle() -> String {
+        if mScripture!.useListView() {
+            return getName()
+        } else {
+            let abbrev = getAbbrevName()
+            return abbrev.isEmpty ? getName() : abbrev
+        }
+    }
 
 }

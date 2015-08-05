@@ -30,11 +30,3 @@ class CommonViewController: UIViewController {
     }
 
 }
-
-extension Scripture {
-    func getBarBackgroundColor() -> UIColor {
-        let topColor = getActionBarTopColor()
-        let bottomColor = getActionBarBottomColor()
-        return getMidColor(topColor, bottomColor)
-    }
-}

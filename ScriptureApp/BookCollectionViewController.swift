@@ -121,14 +121,3 @@ class BookCollectionViewCell: UICollectionViewCell {
 class BookSectionCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var label: UILabel!
 }
-
-extension Book {
-    func getButtonTitle() -> String {
-        if mScripture!.useListView() {
-            return getName()
-        } else {
-            let abbrev = getAbbrevName()
-            return abbrev.isEmpty ? getName() : abbrev
-        }
-    }
-}
