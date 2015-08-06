@@ -9,23 +9,18 @@
 import UIKit
 
 class AboutViewController: CommonViewController {
+
     @IBOutlet weak var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         webView.loadHTMLString(scripture.getAboutHtml(), baseURL: nil)
-        let bgColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        let bgColor = scripture.getViewerBackgroundColor()
         webView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
-        navigationItem.title = scripture.getString(ALSScriptureStringId_MENU_ABOUT_)
-        navigationItem.rightBarButtonItem?.title = scripture.getString(ALCCommonStringId_BUTTON_CLOSE_)
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        popoverPresentationController?.passthroughViews = nil
+        navigationItem.title = scripture.getAboutTitle()
+        navigationItem.rightBarButtonItem?.title = scripture.getCloseButtonTitle()
     }
 
 }

@@ -9,10 +9,11 @@
 import UIKit
 
 class SpecialCharactersFlowLayout: UICollectionViewFlowLayout {
+
     let specialCharacters = Scripture.sharedInstance.getSpecialCharacters()
     let cellWidth = CGFloat(50)
     let cellHeight = CGFloat(50)
-    
+
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
         var indexPaths = [NSIndexPath]()
         for section in 0..<specialCharacters.count {
@@ -22,17 +23,17 @@ class SpecialCharactersFlowLayout: UICollectionViewFlowLayout {
         }
         return indexPaths.map { self.layoutAttributesForItemAtIndexPath($0) }
     }
-    
+
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
         return setCellPosition(super.layoutAttributesForItemAtIndexPath(indexPath))
     }
-    
+
     override func collectionViewContentSize() -> CGSize {
         let width = specialCharacters.isEmpty ? CGFloat(0) : maxElement(specialCharacters.map { CGFloat($0.count) * self.cellWidth })
         let height = CGFloat(specialCharacters.count) * cellHeight
         return CGSizeMake(width, height)
     }
-    
+
     func setCellPosition(attrs: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         let indexPath = attrs.indexPath
         let x = self.cellWidth * CGFloat(indexPath.item)
@@ -40,5 +41,5 @@ class SpecialCharactersFlowLayout: UICollectionViewFlowLayout {
         attrs.frame = CGRectMake(x, y, self.cellWidth, self.cellHeight)
         return attrs
     }
-    
+
 }

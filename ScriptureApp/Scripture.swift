@@ -9,6 +9,10 @@
 import UIKit
 
 public class Scripture {
+
+    // MARK: - Properties and initialization
+
+    private lazy var config = { sharedInstance.getConfig() }()
     private var mLibrary: ALSAppLibrary = ALSAppLibrary()
     private var mParser: ALSConfigParser?
     private var mWriter: ALSDisplayWriter?
@@ -80,67 +84,30 @@ public class Scripture {
             mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book)
         }
         createBookArray()
-        loadThemeList()
         searchRange = getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
     }
 
-    
-    func loadBook(book: Book?) -> (success: Bool, book: Book?) {
-        var success = false
-        var lBook = book;
-        if (lBook != nil) {
-            var results = loadBook(lBook!.getALSBook())
-            success = results.success
-        }
-        return (success, lBook)
-    }
-    func loadBook(book: ALSBook?) -> (success: Bool, book: ALSBook?) {
-        var success = mScripture.loadBookWithALSBook(book)
-        return (success, book)
-    }
-    func updateCurrentBook(book: Book?) {
-        mCurrentBook = book
-        mScripture.updateCurrentBookWithALSBook(book!.getALSBook())
-    }
-    private func getALSBookFromCollection(bookIndex: Int) -> ALSBook? {
-        let jintIndex = Int32(bookIndex)
-        let retBook  = mLibrary.getMainBookCollection().getBooks().getWithInt(jintIndex) as! ALSBook
-        return retBook
-    }  
-    func getCurrentBook() -> Book? {
-        return mCurrentBook
-    }
-    func getAvailableColorThemeNames() -> [String] {
-        return getConfig().getAvailableColorThemes().map { ($0 as! ALCColorTheme).getName() }
-    }
-    func getStyleNames() -> [String] {
-        return getConfig().getStyles().map { ($0 as! ALCStyle).getName() }
-    }
-    func getBook(index: Int) -> Book? {
-        for (var i = 0; i < mBookArray!.count; i++){
-            for (var j=0; j < mBookArray![i].count; i++) {
-                if mBookArray![i][j].mIndex == index {
-                    return mBookArray![i][j]
-                }
-            }
-        }
-        return nil
-    }
     func getLibrary() -> (ALSAppLibrary) {
         return mLibrary
     }
+
     func getDisplayWriter() -> ALSDisplayWriter {
         if (mWriter == nil) {
             mWriter = new_ALSDisplayWriter_initWithALSAppLibrary_withALSExportTypeEnum_(mLibrary, ALSExportTypeEnum_valueOfWithNSString_("APP"))
         }
         return mWriter!
     }
-    func getConfig() -> ALSConfig {
-        return mLibrary.getConfig()
-    }
+
     func getFactory() -> AISScriptureFactoryIOS {
         return mScripture
     }
+
+    // MARK: - Config
+
+    func getConfig() -> ALSConfig {
+        return mLibrary.getConfig()
+    }
+
     func loadConfig() {
         var bundle = NSBundle.mainBundle()
 
@@ -164,18 +131,63 @@ public class Scripture {
         }
     }
 
-    // Get contents of directory at specified path, returning (filenames, nil) or (nil, error)
-    func contentsOfDirectoryAtPath(path: String) -> (filenames: [String]?, error: NSError?) {
-        var error: NSError? = nil
-        let fileManager = NSFileManager.defaultManager()
-        let contents = fileManager.contentsOfDirectoryAtPath(path, error: &error)
-        if contents == nil {
-            return (nil, error)
+    func configHasFeature(feature: String) -> Bool {
+        return mLibrary.getConfig().hasFeatureWithNSString(feature)
+    }
+
+    func configGetFeature(feature: String) -> String {
+        return mLibrary.getConfig().getFeatures().getValueWithNSString(feature)
+    }
+
+    func configGetBoolFeature(feature: String) -> Bool {
+        var retVal = true
+        if (configGetFeature(feature) == "false") {
+            retVal = false
         }
-        else {
-            let filenames = contents as! [String]
-            return (filenames, nil)
+        return retVal
+    }
+
+    // MARK: - Book
+
+    func loadBook(book: Book?) -> (success: Bool, book: Book?) {
+        var success = false
+        var lBook = book;
+        if (lBook != nil) {
+            var results = loadBook(lBook!.getALSBook())
+            success = results.success
         }
+        return (success, lBook)
+    }
+
+    func loadBook(book: ALSBook?) -> (success: Bool, book: ALSBook?) {
+        var success = mScripture.loadBookWithALSBook(book)
+        return (success, book)
+    }
+
+    func updateCurrentBook(book: Book?) {
+        mCurrentBook = book
+        mScripture.updateCurrentBookWithALSBook(book!.getALSBook())
+    }
+
+    private func getALSBookFromCollection(bookIndex: Int) -> ALSBook? {
+        let jintIndex = Int32(bookIndex)
+        let retBook  = mLibrary.getMainBookCollection().getBooks().getWithInt(jintIndex) as! ALSBook
+        return retBook
+    }
+
+    func getCurrentBook() -> Book? {
+        return mCurrentBook
+    }
+
+    func getBook(index: Int) -> Book? {
+        for (var i = 0; i < mBookArray!.count; i++){
+            for (var j=0; j < mBookArray![i].count; i++) {
+                if mBookArray![i][j].mIndex == index {
+                    return mBookArray![i][j]
+                }
+            }
+        }
+        return nil
     }
 
     func createBookArray() {
@@ -219,18 +231,21 @@ public class Scripture {
         }
 
     }
+
     func getBookArray() -> [[Book]] {
         if (mBookArray == nil) {
             createBookArray()
         }
         return mBookArray!
     }
+
     func clearBookArray() {
         if (mBookArray != nil) {
             mBookArray!.removeAll()
         }
         mBookArray = nil
     }
+
     func findBookInArray(book: ALSBook) -> Book? {
         var bookArray: [[Book]] = getBookArray()
         for (var i = 0; i < bookArray.count; i++){
@@ -242,6 +257,7 @@ public class Scripture {
         }
         return nil
     }
+
     func findBookFromResult(result: ALSSearchResult) -> Book? {
         var reference = result.getReference()
         var retBook: Book? = nil
@@ -249,10 +265,6 @@ public class Scripture {
             retBook = findBookInArray(alsBook)
         }
         return retBook
-    }
-    func getHtmlForAnnotation(url: String) -> String {
-        var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url)
-        return html
     }
 
     var numberOfBooks: Int {
@@ -275,21 +287,112 @@ public class Scripture {
         return (success, retString)
     }
 
-    func configHasFeature(feature: String) -> Bool {
-        return mLibrary.getConfig().hasFeatureWithNSString(feature)
+    func getIntroductionTitle() -> String {
+        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
+    }
+
+    func getIntroductionSymbol() -> String {
+        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
+    }
+
+    // MARK: - Color theme and font size
+
+    func getAvailableColorThemeNames() -> [String] {
+        return getConfig().getAvailableColorThemes().map { ($0 as! ALCColorTheme).getName() }
+    }
+
+    func getStyleNames() -> [String] {
+        return getConfig().getStyles().map { ($0 as! ALCStyle).getName() }
     }
     
-    func configGetFeature(feature: String) -> String {
-        return mLibrary.getConfig().getFeatures().getValueWithNSString(feature)
+    func getBarBackgroundColor() -> UIColor {
+        let topColor = getActionBarTopColor()
+        let bottomColor = getActionBarBottomColor()
+        return getMidColor(topColor, bottomColor)
     }
-    
-    func configGetBoolFeature(feature: String) -> Bool {
-        var retVal = true
-        if (configGetFeature(feature) == "false") {
-            retVal = false
+
+    func getActionBarTopColor() -> UIColor {
+        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_TOP_))
+    }
+
+    func getActionBarBottomColor() -> UIColor {
+        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_BOTTOM_))
+    }
+
+    func getPopupBackgroundColor() -> UIColor {
+        var colorStr = getConfig().getColorDefs().getColorStringFromNameWithNSString("PopupBackgroundColor", withNSString: getConfig().getCurrentColorTheme())
+        if colorStr.hasPrefix("#") {
+            colorStr.removeAtIndex(colorStr.startIndex)
         }
-        return retVal
+        return UIColorFromRGB(strtoul(colorStr, nil, 16))
     }
+
+    func getViewerBackgroundColor() -> UIColor {
+        return UIColorFromRGB(config.getViewerBackgroundColor())
+    }
+
+    func getColorStringFromStyle(styleName: String) -> String {
+        return config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_COLOR_)
+    }
+
+    func getColorFromStyle(styleName: String) -> UIColor {
+        return UIColorFromRGB(getColorStringFromStyle(styleName))
+    }
+
+    func getBackgroundColorStringFromStyle(styleName: String) -> String {
+        return config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
+    }
+
+    func getBackgroundColorFromStyle(styleName: String) -> UIColor {
+        return UIColorFromRGB(getBackgroundColorStringFromStyle(styleName))
+    }
+
+    func getBookGroupTitleColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_UI_BOOK_GROUP_TITLE_)
+    }
+
+    func getChapterButtonColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_UI_CHAPTER_BUTTON_)
+    }
+
+    func getChapterButtonBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle(ALSStyleName_UI_CHAPTER_BUTTON_)
+    }
+
+    func getIntroductionButtonBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle(ALSStyleName_UI_CHAPTER_INTRO_BUTTON_)
+    }
+
+    func getThemeSelectorButtonBackgroundColorForTheme(theme: String) -> UIColor {
+        return UIColorFromRGB(config.getStylePropertyColorValueWithNSString("ui.background", withNSString: ALCPropertyName_BACKGROUND_COLOR_, withNSString: theme))
+    }
+
+    func getFootnoteBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle("body.footnote")
+    }
+
+    func getSearchInfoPanelColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_INFO_PANEL_)
+    }
+
+    func getSearchCheckboxLabelColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_CHECKBOX_)
+    }
+
+    func getSearchEntryTextColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_ENTRY_TEXT_)
+    }
+
+    func getSearchButtonBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle(ALSStyleName_SEARCH_BUTTON_)
+    }
+
+    func getSearchButtonColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_BUTTON_)
+    }
+
+    // MARK: - Navigation and annotations
+
     func goToReference(book: Book?, chapterNumber: Int, webView: UIWebView) -> Bool {
         var success: Bool = false
         if (book != nil) {
@@ -311,16 +414,24 @@ public class Scripture {
         }
         return success
     }
+
     func goToVerse(verseNumber: String, webView: UIWebView) -> String? {
         var javaString = "document.getElementById('" + verseNumber + "').scrollIntoView(true);"
         let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
         return result
     }
+
+    func getHtmlForAnnotation(url: String) -> String {
+        var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url)
+        return html
+    }
+
     func popup(webView: UIWebView) -> String? {
         var javaString = "window.alert('Hello there');"
         let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
         return result
     }
+
     func highlightVerse(verseNumber: String, webView: UIWebView) -> String? {
         var backColor = mLibrary.getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_TEXT_HIGHLIGHTING_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
         var javaString = "(function colorElement(id) { "
@@ -373,10 +484,82 @@ public class Scripture {
         let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
         return result
     }
+
+    // MARK: - Strings
+
+    func getSearchCancelButtonTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
+    }
+
+    func getAboutTitle() -> String {
+        return getString(ALSScriptureStringId_MENU_ABOUT_)
+    }
+
+    func getCloseButtonTitle() -> String {
+        return getString(ALCCommonStringId_BUTTON_CLOSE_)
+    }
+
+    func getSearchWholeBibleTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
+    }
+
+    func getSearchButtonTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_BUTTON_)
+    }
+
+    func getMatchWholeWordsTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_MATCH_WHOLE_WORDS_)
+    }
+
+    func getSearchHint() -> String {
+        return getString(ALSScriptureStringId_SEARCH_TEXT_HINT_)
+    }
+
+    func getMatchAccentsTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_MATCH_ACCENTS_)
+    }
+
+    func getNoMatchesFoundString() -> String {
+        return getString(ALSScriptureStringId_SEARCH_NO_MATCHES_FOUND_)
+    }
+
+    // MARK: - Feature flags
+
     func useListView() -> Bool {
         var bookSelectOption = configGetFeature(ALSScriptureFeatureName_BOOK_SELECTION_)
         var isList = ALCStringUtils_isNotBlankWithNSString_(bookSelectOption) ? bookSelectOption.lowercaseString == "list" : true
         return isList
+    }
+
+    func hasFeatureSearch() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_)
+    }
+
+    func hasFeatureSectionTitles() -> Bool {
+        return config.hasFeatureWithNSString(ALSScriptureFeatureName_BOOK_GROUP_TITLES_)
+    }
+
+    func hasMatchAccentsDefault() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_DEFAULT_)
+    }
+
+    func hasMatchWholeWordsDefault() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_DEFAULT_)
+    }
+
+    func hasMatchAccents() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
+    }
+
+    func hasMatchWholeWords() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
+    }
+
+
+    // MARK: - Misc
+
+    func getString(id : String) -> String {
+        return ALSFactoryCommon_getStringWithNSString_(id)
     }
 
     func getAboutHtml() -> String {
@@ -384,67 +567,7 @@ public class Scripture {
         var html = mWriter!.getHtmlForAboutBoxWithNSString(aboutText)
         return html
     }
-    func loadThemeList() {
-        mColorThemes = [ALCColorTheme]()
-        var themes = mLibrary.getConfig().getAvailableColorThemes()
-        var iterator = themes.iterator()
-        while (iterator.hasNext()) {
-            var object: AnyObject! = iterator.next()
-            mColorThemes?.append(object as! ALCColorTheme)
-        }
-    }
-    
-    func getThemeList () -> [ALCColorTheme] {
-        if (mColorThemes == nil) {
-            loadThemeList()
-        }
-        return mColorThemes!
-    }
-    func getString(id : String) -> String {
-        return ALSFactoryCommon_getStringWithNSString_(id)
-    }
 
-    func stringToUtilList(strings: [String]) -> (JavaUtilList) {
-        let utilList = new_JavaUtilArrayList_init()
-        for entry in strings {
-            utilList.addWithId(entry)
-        }
-        return utilList
-    }
-
-    func utilListToStringArray(javaArray: JavaUtilList) -> [String] {
-        var stringArray = [String]()
-        var iterator = javaArray.iterator()
-        while (iterator.hasNext()) {
-            var object: AnyObject! = iterator.next()
-            stringArray.append(object as! String)
-        }
-        return stringArray
-    }
-
-    func getPopupBackgroundColor() -> UIColor {
-        var colorStr = getConfig().getColorDefs().getColorStringFromNameWithNSString("PopupBackgroundColor", withNSString: getConfig().getCurrentColorTheme())
-        if colorStr.hasPrefix("#") {
-            colorStr.removeAtIndex(colorStr.startIndex)
-        }
-        return UIColorFromRGB(strtoul(colorStr, nil, 16))
-    }
-    func getIntroductionTitle() -> String {
-        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
-    }
-
-    func getIntroductionSymbol() -> String {
-        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
-    }
-
-    func getActionBarTopColor() -> UIColor {
-        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_TOP_))
-    }
-
-    func getActionBarBottomColor() -> UIColor {
-        return UIColorFromRGB(getConfig().getStylePropertyColorValueWithNSString(ALSStyleName_UI_ACTION_BAR_, withNSString: ALCPropertyName_COLOR_BOTTOM_))
-    }
-    
     func getSpecialCharacters() -> [[String]] {
         return getConfig().getInputButtonLines().map {
             let row = $0 as! ALCInputButtonRow
@@ -454,16 +577,5 @@ public class Scripture {
             return strings
         }
     }
-}
 
-extension JavaUtilAbstractList {
-    func map<T>(transform: (AnyObject) -> T) -> [T] {
-        var iter = iterator()
-        var result = [AnyObject]()
-        while iter.hasNext() {
-            result.append(iter.next())
-        }
-        return result.map(transform)
-    }
 }
-

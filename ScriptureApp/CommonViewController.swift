@@ -12,13 +12,14 @@ class CommonViewController: UIViewController {
 
     let scripture = Scripture.sharedInstance
     let config = Scripture.sharedInstance.getConfig()
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         updateBarTheme()
+        popoverPresentationController?.passthroughViews = nil
     }
-    
+
     func updateBarTheme() {
         if let navbar = navigationController?.navigationBar {
             navbar.translucent = false
@@ -28,12 +29,4 @@ class CommonViewController: UIViewController {
         }
     }
 
-}
-
-extension Scripture {
-    func getBarBackgroundColor() -> UIColor {
-        let topColor = getActionBarTopColor()
-        let bottomColor = getActionBarBottomColor()
-        return getMidColor(topColor, bottomColor)
-    }
 }

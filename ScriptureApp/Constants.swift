@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 public struct Constants {
     static let SearchRequest = "SearchRequest"
@@ -37,6 +36,6 @@ public struct Constants {
     static let BarOnTop = true
     static let UseGradient = false
     static let GradientName = "gradientName"
-    
+
     static let MaxResults = 5000
 }

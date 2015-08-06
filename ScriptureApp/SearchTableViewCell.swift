@@ -9,41 +9,40 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell, UITextViewDelegate {
-    let config = Scripture.sharedInstance.getConfig()
+
+    let scripture = Scripture.sharedInstance
     var reference: String?
     var html: NSAttributedString? {
         didSet {
             updateUI()
         }
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        self.htmlTextField.delegate = self;
-    }
 
     @IBOutlet weak var htmlTextField: UITextView!
     @IBOutlet weak var referenceLabel: UILabel!
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        self.htmlTextField.delegate = self
+    }
+
     func updateUI() {
         referenceLabel.text = reference!
-        referenceLabel.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
-        backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        referenceLabel.textColor = scripture.getSearchInfoPanelColor()
+        backgroundColor = scripture.getViewerBackgroundColor()
         htmlTextField.backgroundColor = backgroundColor
         htmlTextField.attributedText = html
         htmlTextField.sizeToFit()
         htmlTextField.layoutIfNeeded()
      }
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
+
 }

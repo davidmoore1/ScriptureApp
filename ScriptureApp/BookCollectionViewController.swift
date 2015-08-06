@@ -8,30 +8,48 @@
 
 import UIKit
 
-let bookReuseIdentifier = "BookButtonCell"
-let bookSectionReuseIdentifier = "BookSectionHeadingCell"
+private let reuseIdentifier = "BookButtonCell"
+private let sectionReuseIdentifier = "BookSectionHeadingCell"
 
-class BookCollectionViewController: CommonViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class BookCollectionViewController: CommonViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet var collectionView: UICollectionView!
+    // MARK: - Properties
+
     var bookIndex = 0
     var books = Scripture.sharedInstance.getBookArray()
+
+    // MARK: - IB Outlets
+
+    @IBOutlet var collectionView: UICollectionView!
+
+    // MARK: - IB Actions
+
+    @IBAction func selectBook(sender: UIButton) {
+        let cell = sender.superview?.superview as! BookCollectionViewCell
+        let selectedSection = cell.section
+        let selectedBook = cell.book
+        for section in 0..<selectedSection {
+            bookIndex += books[section].count
+        }
+        bookIndex += selectedBook
+        performSegueWithIdentifier("unwindBook", sender: self)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    // MARK: - Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
+        collectionView.backgroundColor = scripture.getPopupBackgroundColor()
         popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
-        navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
+        navigationItem.leftBarButtonItem?.title = scripture.getSearchCancelButtonTitle()
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
-        popoverPresentationController?.passthroughViews = nil
-    }
+    // MARK: - UICollectionViewDataSource
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return books.count
@@ -41,14 +59,34 @@ class BookCollectionViewController: CommonViewController, UICollectionViewDataSo
         return books[section].count
     }
 
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        // hide if empty or section titles not shown
-        if !config.hasFeatureWithNSString(ALSScriptureFeatureName_BOOK_GROUP_TITLES_) || books[section].first!.mBookGroupString!.isEmpty {
-            return CGSizeZero
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BookCollectionViewCell
+        let book = books[indexPath.section][indexPath.item]
+
+        cell.section = indexPath.section
+        cell.book = indexPath.item
+        cell.button.setTitle(book.getButtonTitle(), forState: .Normal)
+        if !scripture.useListView() {
+            cell.button.backgroundColor = book.getBackgroundColor()
         } else {
-            return (collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize
+            cell.button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         }
+        cell.button.setTitleColor(book.getColor(), forState: .Normal)
+
+        return cell
     }
+
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: sectionReuseIdentifier, forIndexPath: indexPath) as! BookSectionCollectionReusableView
+        let book = books[indexPath.section][indexPath.item]
+
+        cell.label.text = book.mBookGroupString!
+        cell.label.textColor = scripture.getBookGroupTitleColor()
+
+        return cell
+    }
+
+    // MARK: - UICollectionViewDelegateFlowLayout
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let flow = collectionViewLayout as! UICollectionViewFlowLayout
@@ -61,67 +99,25 @@ class BookCollectionViewController: CommonViewController, UICollectionViewDataSo
         }
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(bookReuseIdentifier, forIndexPath: indexPath) as! BookCollectionViewCell
-        let book = books[indexPath.section][indexPath.item]
-
-        cell.button.section = indexPath.section
-        cell.button.book = indexPath.item
-        cell.button.setTitle(getBookButtonTitle(book), forState: .Normal)
-        if !scripture.useListView() {
-            cell.button.backgroundColor = book.getBackgroundColor()
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // hide if empty or section titles not shown
+        if !scripture.hasFeatureSectionTitles() || books[section].first!.mBookGroupString!.isEmpty {
+            return CGSizeZero
         } else {
-            cell.button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        }
-        cell.button.setTitleColor(book.getColor(), forState: .Normal)
-
-        return cell
-    }
-
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: bookSectionReuseIdentifier, forIndexPath: indexPath) as! BookSectionCollectionReusableView
-        let book = books[indexPath.section][indexPath.item]
-
-        cell.label.text = book.mBookGroupString!
-        cell.label.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_BOOK_GROUP_TITLE_, withNSString: ALCPropertyName_COLOR_))
-
-        return cell
-    }
-
-    @IBAction func selectBook(sender: BookButton) {
-        let selectedSection = sender.section
-        let selectedBook = sender.book
-        for section in 0..<selectedSection {
-            bookIndex += books[section].count
-        }
-        bookIndex += selectedBook
-        performSegueWithIdentifier("unwindBook", sender: self)
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    func getBookButtonTitle(book: Book) -> String {
-        if scripture.useListView() {
-            return book.getName()
-        } else {
-            var title = book.getAbbrevName()
-            if title.isEmpty {
-                title = book.getName()
-            }
-            return title
+            return (collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize
         }
     }
 
 }
 
+// MARK: - BookCollectionViewCell
 class BookCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var button: BookButton!
-}
-
-class BookButton: UIButton {
+    @IBOutlet weak var button: UIButton!
     var section = 0
     var book = 0
 }
 
+// MARK: - BookSectionCollectionReuseableView
 class BookSectionCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var label: UILabel!
 }

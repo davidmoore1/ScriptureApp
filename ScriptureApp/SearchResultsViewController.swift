@@ -8,7 +8,10 @@
 
 import UIKit
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchResultsViewController: CommonViewController, UITableViewDataSource, UITableViewDelegate {
+
+    // MARK: - Properties
+    
     var searchHandler = AISSearchHandler()
     var mSearchString : String?
     var mMatchWholeWord : Bool?
@@ -23,35 +26,24 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     var mScriptureController: ScriptureViewController?
     var mNumberOfBooks = 0
     private var mSelectedIndex: NSIndexPath?
-    let mScripture = Scripture.sharedInstance
-    let config = Scripture.sharedInstance.getConfig()
     var mBackGroundColorForHeader: UIColor?
     var mTextColorForHeader: UIColor?
     var mAddInProgress = false
-    
+
+    // MARK: - IB Outlets
+
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchTableView: UITableView!
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        mStopSearch = true
-        mClosing = true
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.hidden = true
-        NSURLCache.sharedURLCache().removeAllCachedResponses()
-        NSURLCache.sharedURLCache().diskCapacity = 0
-        NSURLCache.sharedURLCache().memoryCapacity = 0
-        // presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
+
+    // MARK: - Overrides
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mNumberOfBooks = Int(mScripture.getLibrary().getMainBookCollection().getBooks().size())
+
+        mNumberOfBooks = Int(scripture.getLibrary().getMainBookCollection().getBooks().size())
         for (var i = 0; i < mNumberOfBooks; i++) {
-            var book = mScripture.getBookArray().flatMap { $0 }[i]
+            var book = scripture.getBookArray().flatMap { $0 }[i]
             var abbrev = book.getAbbrevName()
             if ((i == 0) && (count(abbrev) < 4)) {
                 // The first title sets the width of the index bar
@@ -64,24 +56,24 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
+        navBar.title = scripture.getSearchButtonTitle()
         searchTableView.delegate = self
         searchTableView.dataSource = self
-        searchTableView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        searchTableView.backgroundColor = scripture.getViewerBackgroundColor()
         if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
             self.searchTableView.estimatedRowHeight = 135
             self.searchTableView.rowHeight = UITableViewAutomaticDimension
         }
-        var textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
-        var backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        var textColor = scripture.getSearchButtonColor()
+        var backgroundColor = scripture.getSearchButtonBackgroundColor()
         self.searchTableView.sectionIndexColor = textColor
         self.searchTableView.sectionIndexBackgroundColor = backgroundColor
-        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        mTextColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
-        mBackGroundColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        view.backgroundColor = scripture.getViewerBackgroundColor()
+        mTextColorForHeader = scripture.getChapterButtonColor()
+        mBackGroundColorForHeader = scripture.getChapterButtonBackgroundColor()
         self.activityIndicator.color = mTextColorForHeader
         activityIndicator.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
@@ -93,23 +85,37 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        mStopSearch = true
+        mClosing = true
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.hidden = true
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
+        NSURLCache.sharedURLCache().diskCapacity = 0
+        NSURLCache.sharedURLCache().memoryCapacity = 0
+        // presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         mStopSearch = true
     }
-    // MARK: - Table view data source
-    
+
+    // MARK: - TableViewDataSource
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return mNumberOfBooks
     }
-    
+
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]  {
         return mTitles
     }
-    
+
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String,  atIndex index: Int) -> Int {
         var retValue = index
         if (index > mBooksAdded - 1) && (index > 0) {
@@ -124,7 +130,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
         return mSearchResults[section].count
     }
-    
+
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var headerString = ""
         if section <= mSearchResults.count - 1 {
@@ -134,20 +140,16 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
         return headerString
     }
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = mBackGroundColorForHeader
-        header.textLabel.textColor = mTextColorForHeader
-    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.SearchCellReuseIdentifier, forIndexPath: indexPath) as! SearchTableViewCell
-        
+
         // Configure the cell...
         var result = mSearchResults[indexPath.section][indexPath.row]
         // If no matches were found
         if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
             var emptyString = NSMutableAttributedString(string: "")
-            cell.reference = mScripture.getString(ALSScriptureStringId_SEARCH_NO_MATCHES_FOUND_)
+            cell.reference = scripture.getNoMatchesFoundString()
             cell.html = emptyString
             return cell
         }
@@ -155,6 +157,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         cell.html = getAttributedTextString(indexPath)
         return cell
     }
+
+    // MARK: - UITableViewDelegate
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         mStopSearch = true
         mSelectedIndex = indexPath
@@ -164,11 +169,11 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             return
         }
         mScriptureController!.mVerseNumber = String(selectedResult.getReference().getFromVerse())
-        mScriptureController!.bookNumber = mScripture.findBookFromResult(selectedResult)!.mIndex!
+        mScriptureController!.bookNumber = scripture.findBookFromResult(selectedResult)!.mIndex!
         mScriptureController!.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
         performSegueWithIdentifier(Constants.SelectSearchResult, sender: self)
     }
-    
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
             return UITableViewAutomaticDimension
@@ -180,7 +185,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             return height
         }
     }
-    
+
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = mBackGroundColorForHeader
+        header.textLabel.textColor = mTextColorForHeader
+    }
+
+    // MARK: - Misc
+
     func getAttributedTextString(indexPath: NSIndexPath) -> NSAttributedString {
         var returnString = NSAttributedString(string: "")
         if let returnString = mStrings[indexPath] {
@@ -200,44 +213,18 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                     attributedString.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
                     attributedString.addAttribute(NSFontAttributeName, value: boldFont, range: textRange)
                 }
-                let fgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
+                let fgColor = scripture.getSearchInfoPanelColor()
                 attributedString.addAttribute(NSForegroundColorAttributeName, value: fgColor, range: NSMakeRange(0, nsContext.length))
                 mStrings.updateValue(attributedString, forKey: indexPath)
             }
             return attributedString
         }
     }
-    // MARK: - Navigation
-    /*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        if let svc = segue.destinationViewController.contentViewController as? ScriptureViewController {
-            if let identifier = segue.identifier {
-                switch identifier {
-                case Constants.SearchGoToVerseSeque :
-                    if let nc = segue.destinationViewController as? UINavigationController {
-                        nc.setToolbarHidden(false, animated: false)
-                        nc.setNavigationBarHidden(true, animated: false)
-                    }
-                    var selectedResult = mSearchResults[mSelectedIndex!.row]
-                    svc.scripture = mScripture
-                    svc.mVerseNumber = String(selectedResult.getReference().getFromVerse())
-                    svc.bookNumber = mScripture!.findBookFromResult(selectedResult)!.mIndex!
-                    svc.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
-                    
-                default: break
-                }
-            }
-        }
-    }
-    */
-    // MARK: - Search
+
     func search() {
-        AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, mScripture.getLibrary(), mScripture.getDisplayWriter(), mScripture.getFactory())
+        AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, scripture.getLibrary(), scripture.getDisplayWriter(), scripture.getFactory())
         self.searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: mMatchAccents!)
-        var books = self.mScripture.getLibrary().getMainBookCollection().getBooks()
+        var books = self.scripture.getLibrary().getMainBookCollection().getBooks()
         var resultCount = 0
         for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
             autoreleasepool {
@@ -246,7 +233,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 var object: AnyObject! = books.getWithInt(CInt(i))
                 self.mBook = object as? ALSBook
                 var group = self.mBook?.getGroup()
-                if (self.mScripture.searchGroup.isEmpty || (group == self.mScripture.searchGroup)) {
+                if (self.scripture.searchGroup.isEmpty || (group == self.scripture.searchGroup)) {
                     let bookId = self.mBook!.getBookId();
                     self.searchHandler.loadBookForSearchWithALSBook(mBook)
                     for (var c = 0; c < Int(self.mBook!.getChapters().size()) && !self.mStopSearch; c++) {
@@ -281,6 +268,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
         self.mStopSearch = false
     }
+
     func addRowToView(indexPaths: [NSIndexPath], newResults: [AISSearchResultIOS], replaceAtZero: Bool) {
         self.mAddInProgress = true
         dispatch_async(dispatch_get_main_queue()) {
@@ -299,4 +287,5 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         }
 
     }
+
 }
