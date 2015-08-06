@@ -227,6 +227,12 @@
 		63DDFFFE1B057A4400B57DF7 /* Values.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFA81B057A4400B57DF7 /* Values.java */; };
 		63DDFFFF1B057A4400B57DF7 /* LangCodeInfo.java in Sources */ = {isa = PBXBuildFile; fileRef = 63DDFFAA1B057A4400B57DF7 /* LangCodeInfo.java */; };
 		63F539081B0B7B8A005EE653 /* libAppLibIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F42881B063CB500F25662 /* libAppLibIOS.a */; };
+		63F69FD91B73A2FB0016211F /* Contents.java in Sources */ = {isa = PBXBuildFile; fileRef = 63F69FD51B73A2FB0016211F /* Contents.java */; };
+		63F69FDA1B73A2FB0016211F /* ContentsHandler.java in Sources */ = {isa = PBXBuildFile; fileRef = 63F69FD61B73A2FB0016211F /* ContentsHandler.java */; };
+		63F69FDB1B73A2FB0016211F /* ContentsParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63F69FD71B73A2FB0016211F /* ContentsParser.java */; };
+		63F69FDC1B73A2FB0016211F /* ContentsWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 63F69FD81B73A2FB0016211F /* ContentsWriter.java */; };
+		63F69FDE1B73A3BD0016211F /* ContentsDisplayWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 63F69FDD1B73A3BD0016211F /* ContentsDisplayWriter.java */; };
+		63F69FE01B73A4D50016211F /* TextWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 63F69FDF1B73A4D50016211F /* TextWriter.java */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -771,6 +777,12 @@
 		63DDFFCC1B057A4400B57DF7 /* XmlWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XmlWriter.java; sourceTree = "<group>"; };
 		63DDFFCE1B057A4400B57DF7 /* XmlHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XmlHandler.java; sourceTree = "<group>"; };
 		63DDFFCF1B057A4400B57DF7 /* XmlParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XmlParser.java; sourceTree = "<group>"; };
+		63F69FD51B73A2FB0016211F /* Contents.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Contents.java; sourceTree = "<group>"; };
+		63F69FD61B73A2FB0016211F /* ContentsHandler.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsHandler.java; sourceTree = "<group>"; };
+		63F69FD71B73A2FB0016211F /* ContentsParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsParser.java; sourceTree = "<group>"; };
+		63F69FD81B73A2FB0016211F /* ContentsWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsWriter.java; sourceTree = "<group>"; };
+		63F69FDD1B73A3BD0016211F /* ContentsDisplayWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ContentsDisplayWriter.java; sourceTree = "<group>"; };
+		63F69FDF1B73A4D50016211F /* TextWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TextWriter.java; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -990,6 +1002,10 @@
 		633F41DA1B0628A500F25662 /* contents */ = {
 			isa = PBXGroup;
 			children = (
+				63F69FD51B73A2FB0016211F /* Contents.java */,
+				63F69FD61B73A2FB0016211F /* ContentsHandler.java */,
+				63F69FD71B73A2FB0016211F /* ContentsParser.java */,
+				63F69FD81B73A2FB0016211F /* ContentsWriter.java */,
 				633F41DB1B0628A500F25662 /* ContentsItem.java */,
 				633F41DC1B0628A500F25662 /* ContentsItems.java */,
 				633F41DD1B0628A500F25662 /* ContentsScreen.java */,
@@ -1136,6 +1152,8 @@
 		633F42291B0628A500F25662 /* writer */ = {
 			isa = PBXGroup;
 			children = (
+				63F69FDF1B73A4D50016211F /* TextWriter.java */,
+				63F69FDD1B73A3BD0016211F /* ContentsDisplayWriter.java */,
 				63B8ABD71B5ED5A2002563FD /* ExportType.java */,
 				633F422A1B0628A500F25662 /* BaseWriter.java */,
 				633F422B1B0628A500F25662 /* DisplayWriter.java */,
@@ -2166,6 +2184,7 @@
 				633F423A1B0628A500F25662 /* ContentsScreens.java in Sources */,
 				633F42371B0628A500F25662 /* ContentsItem.java in Sources */,
 				633F426D1B0628A500F25662 /* StyleType.java in Sources */,
+				63F69FE01B73A4D50016211F /* TextWriter.java in Sources */,
 				633F42511B0628A500F25662 /* Sections.java in Sources */,
 				633F42321B0628A500F25662 /* DefaultStrings.java in Sources */,
 				633F42351B0628A500F25662 /* ScriptureStringId.java in Sources */,
@@ -2180,10 +2199,13 @@
 				63B8ABD51B5E95D9002563FD /* CrossRef.java in Sources */,
 				633F42361B0628A500F25662 /* StyleName.java in Sources */,
 				633F42641B0628A500F25662 /* SaAudioDocument.java in Sources */,
+				63F69FD91B73A2FB0016211F /* Contents.java in Sources */,
+				63F69FDE1B73A3BD0016211F /* ContentsDisplayWriter.java in Sources */,
 				633F42661B0628A500F25662 /* SaXmlParser.java in Sources */,
 				633F423B1B0628A500F25662 /* LinkType.java in Sources */,
 				633F42401B0628A500F25662 /* BookCollection.java in Sources */,
 				6347D5F61B384CDA0065B075 /* SyncTaskWriter.java in Sources */,
+				63F69FDA1B73A2FB0016211F /* ContentsHandler.java in Sources */,
 				633F42741B0628A500F25662 /* UsxToUsfmConverter.java in Sources */,
 				633F424F1B0628A500F25662 /* SearchResult.java in Sources */,
 				633F42761B0628A500F25662 /* LabeledPhrases.java in Sources */,
@@ -2225,12 +2247,14 @@
 				633F42471B0628A500F25662 /* Glossary.java in Sources */,
 				633F423F1B0628A500F25662 /* BookCodes.java in Sources */,
 				633F424C1B0628A500F25662 /* ReadingPlan.java in Sources */,
+				63F69FDC1B73A2FB0016211F /* ContentsWriter.java in Sources */,
 				6347D5F21B384CB40065B075 /* FactoryCommon.java in Sources */,
 				633F423E1B0628A500F25662 /* Book.java in Sources */,
 				633F42461B0628A500F25662 /* Footnote.java in Sources */,
 				633F422F1B0628A500F25662 /* Config.java in Sources */,
 				633F426B1B0628A500F25662 /* SfmMarkerType.java in Sources */,
 				633F42491B0628A500F25662 /* Introduction.java in Sources */,
+				63F69FDB1B73A2FB0016211F /* ContentsParser.java in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
