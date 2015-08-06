@@ -146,6 +146,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
 
         // Configure the cell...
         var result = mSearchResults[indexPath.section][indexPath.row]
+        // If no matches were found
         if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
             var emptyString = NSMutableAttributedString(string: "")
             cell.reference = scripture.getNoMatchesFoundString()
@@ -256,22 +257,27 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
                 }
                 self.mTitles.append(mBook!.getAbbrevName())
                 self.searchHandler.unloadBookWithALSBook(mBook)
-                addRowToView(indexPaths, newResults: bookResults)
+                addRowToView(indexPaths, newResults: bookResults, replaceAtZero: false)
             }
         }
         if (resultCount == 0) {
             var searchResult = AISSearchResultIOS()
+            searchResult.setBookNameWithNSString(" ")
             var indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            addRowToView([indexPath], newResults: [searchResult])
+            addRowToView([indexPath], newResults: [searchResult], replaceAtZero: true)
         }
         self.mStopSearch = false
     }
 
-    func addRowToView(indexPaths: [NSIndexPath], newResults: [AISSearchResultIOS]) {
+    func addRowToView(indexPaths: [NSIndexPath], newResults: [AISSearchResultIOS], replaceAtZero: Bool) {
         self.mAddInProgress = true
         dispatch_async(dispatch_get_main_queue()) {
             if (!self.mClosing) {
-                self.mSearchResults.append(newResults)
+                if (replaceAtZero) {
+                    self.mSearchResults[0] = newResults
+                } else {
+                    self.mSearchResults.append(newResults)
+                }
                 if (indexPaths.count > 0) {
                     self.searchTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
                 }
