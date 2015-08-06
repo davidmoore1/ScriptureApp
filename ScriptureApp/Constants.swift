@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 public struct Constants {
     static let SearchRequest = "SearchRequest"
