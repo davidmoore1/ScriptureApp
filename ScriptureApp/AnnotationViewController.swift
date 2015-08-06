@@ -40,7 +40,7 @@ class AnnotationViewController: CommonViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let bgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString("body.footnote", withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        let bgColor = scripture.getFootnoteBackgroundColor()
         mAnnotationWebView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
         mAnnotationWebView.loadHTMLString(html, baseURL: nil)

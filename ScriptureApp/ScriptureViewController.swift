@@ -198,8 +198,8 @@ class ScriptureViewController: CommonViewController,
     func loadColorTheme(theme: String, navigationBar: UINavigationBar?) {
         config.setCurrentColorThemeWithNSString(theme)
         updateBarTheme()
-        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        webView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        view.backgroundColor = scripture.getViewerBackgroundColor()
+        webView.backgroundColor = scripture.getViewerBackgroundColor()
         updateHtmlColors()
     }
 
@@ -208,11 +208,11 @@ class ScriptureViewController: CommonViewController,
         for style in config.getStyles().map({ $0 as! ALCStyle }) {
             let styleName = style.getName()
             if style.hasPropertyWithNSString("color") {
-                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_COLOR_)
+                let colorStr = scripture.getColorStringFromStyle(styleName)
                 js += "ss.addRule('\(styleName)', 'color: \(colorStr)');"
             }
             if style.hasPropertyWithNSString("background-color") {
-                let colorStr = config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
+                let colorStr = scripture.getBackgroundColorStringFromStyle(styleName)
                 js += "ss.addRule('\(styleName)', 'background-color: \(colorStr)');"
             }
         }
@@ -240,7 +240,7 @@ class ScriptureViewController: CommonViewController,
         singleTap.numberOfTapsRequired = 1
         singleTap.requireGestureRecognizerToFail(tap)
         singleTap.delegate = self
-        searchButton.enabled = scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_)
+        searchButton.enabled = scripture.hasFeatureSearch()
 
         webView.addGestureRecognizer(leftSwipe)
         webView.addGestureRecognizer(rightSwipe)

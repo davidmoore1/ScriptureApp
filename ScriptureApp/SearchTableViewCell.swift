@@ -10,7 +10,7 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell, UITextViewDelegate {
 
-    let config = Scripture.sharedInstance.getConfig()
+    let scripture = Scripture.sharedInstance
     var reference: String?
     var html: NSAttributedString? {
         didSet {
@@ -32,19 +32,13 @@ class SearchTableViewCell: UITableViewCell, UITextViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.htmlTextField.delegate = self;
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        self.htmlTextField.delegate = self
     }
 
     func updateUI() {
         referenceLabel.text = reference!
-        referenceLabel.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
-        backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        referenceLabel.textColor = scripture.getSearchInfoPanelColor()
+        backgroundColor = scripture.getViewerBackgroundColor()
         htmlTextField.backgroundColor = backgroundColor
         htmlTextField.attributedText = html
         htmlTextField.sizeToFit()

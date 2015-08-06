@@ -46,7 +46,7 @@ class BookCollectionViewController: CommonViewController, UICollectionViewDataSo
 
         collectionView.backgroundColor = scripture.getPopupBackgroundColor()
         popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
-        navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
+        navigationItem.leftBarButtonItem?.title = scripture.getSearchCancelButtonTitle()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -81,7 +81,7 @@ class BookCollectionViewController: CommonViewController, UICollectionViewDataSo
         let book = books[indexPath.section][indexPath.item]
 
         cell.label.text = book.mBookGroupString!
-        cell.label.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_BOOK_GROUP_TITLE_, withNSString: ALCPropertyName_COLOR_))
+        cell.label.textColor = scripture.getBookGroupTitleColor()
 
         return cell
     }
@@ -101,7 +101,7 @@ class BookCollectionViewController: CommonViewController, UICollectionViewDataSo
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         // hide if empty or section titles not shown
-        if !config.hasFeatureWithNSString(ALSScriptureFeatureName_BOOK_GROUP_TITLES_) || books[section].first!.mBookGroupString!.isEmpty {
+        if !scripture.hasFeatureSectionTitles() || books[section].first!.mBookGroupString!.isEmpty {
             return CGSizeZero
         } else {
             return (collectionViewLayout as! UICollectionViewFlowLayout).headerReferenceSize

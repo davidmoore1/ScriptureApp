@@ -14,6 +14,7 @@ private let sectionReuseIdentifier = "IntroductionCell"
 class ChapterCollectionViewController: CommonViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Properties
+
     var chapters = 0
     var selectedChapter = 0
     var introduction = false
@@ -43,7 +44,7 @@ class ChapterCollectionViewController: CommonViewController, UICollectionViewDat
 
         collectionView?.backgroundColor = scripture.getPopupBackgroundColor()
         popoverPresentationController?.backgroundColor = scripture.getPopupBackgroundColor()
-        navigationItem.leftBarButtonItem?.title = scripture.getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
+        navigationItem.leftBarButtonItem?.title = scripture.getSearchCancelButtonTitle()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -57,17 +58,17 @@ class ChapterCollectionViewController: CommonViewController, UICollectionViewDat
 
         cell.chapter = indexPath.item + 1
         cell.button.setTitle("\(cell.chapter)", forState: .Normal)
-        cell.button.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
-        cell.button.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
+        cell.button.backgroundColor = scripture.getChapterButtonBackgroundColor()
+        cell.button.tintColor = scripture.getChapterButtonColor()
         return cell
     }
 
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: sectionReuseIdentifier, forIndexPath: indexPath) as! IntroductionCollectionReusableView
-        let title = scripture.getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
+        let title = scripture.getIntroductionTitle()
         view.button.setTitle(title, forState: .Normal)
-        view.button.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_INTRO_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_)!)
-        view.button.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
+        view.button.backgroundColor = scripture.getIntroductionButtonBackgroundColor()
+        view.button.tintColor = scripture.getChapterButtonColor()
         return view
     }
 

@@ -59,21 +59,21 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        navBar.title = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
+        navBar.title = scripture.getSearchButtonTitle()
         searchTableView.delegate = self
         searchTableView.dataSource = self
-        searchTableView.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        searchTableView.backgroundColor = scripture.getViewerBackgroundColor()
         if NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1 {
             self.searchTableView.estimatedRowHeight = 135
             self.searchTableView.rowHeight = UITableViewAutomaticDimension
         }
-        var textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
-        var backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        var textColor = scripture.getSearchButtonColor()
+        var backgroundColor = scripture.getSearchButtonBackgroundColor()
         self.searchTableView.sectionIndexColor = textColor
         self.searchTableView.sectionIndexBackgroundColor = backgroundColor
-        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        mTextColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_COLOR_))
-        mBackGroundColorForHeader = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_UI_CHAPTER_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
+        view.backgroundColor = scripture.getViewerBackgroundColor()
+        mTextColorForHeader = scripture.getChapterButtonColor()
+        mBackGroundColorForHeader = scripture.getChapterButtonBackgroundColor()
         self.activityIndicator.color = mTextColorForHeader
         activityIndicator.startAnimating()
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
@@ -148,7 +148,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
         var result = mSearchResults[indexPath.section][indexPath.row]
         if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
             var emptyString = NSMutableAttributedString(string: "")
-            cell.reference = scripture.getString(ALSScriptureStringId_SEARCH_NO_MATCHES_FOUND_)
+            cell.reference = scripture.getNoMatchesFoundString()
             cell.html = emptyString
             return cell
         }
@@ -212,7 +212,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
                     attributedString.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
                     attributedString.addAttribute(NSFontAttributeName, value: boldFont, range: textRange)
                 }
-                let fgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_INFO_PANEL_, withNSString: ALCPropertyName_COLOR_))
+                let fgColor = scripture.getSearchInfoPanelColor()
                 attributedString.addAttribute(NSForegroundColorAttributeName, value: fgColor, range: NSMakeRange(0, nsContext.length))
                 mStrings.updateValue(attributedString, forKey: indexPath)
             }

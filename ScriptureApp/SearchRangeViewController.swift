@@ -20,7 +20,7 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tableData.addObject(scripture.getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_))
+        self.tableData.addObject(scripture.getSearchWholeBibleTitle())
         self.tableData.addObject(scripture.OTName)
         self.tableData.addObject(scripture.NTName)
 
@@ -46,7 +46,7 @@ class SearchRangeViewController: CommonViewController, UITableViewDataSource, UI
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier(Constants.SearchRangeCellReuseIdentifier) as! UITableViewCell
         cell.textLabel?.text = self.tableData.objectAtIndex(indexPath.row) as? String
-        cell.textLabel?.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_CHECKBOX_, withNSString: ALCPropertyName_COLOR_))
+        cell.textLabel?.textColor = scripture.getSearchCheckboxLabelColor()
         cell.backgroundColor = scripture.getPopupBackgroundColor()
         return cell
     }

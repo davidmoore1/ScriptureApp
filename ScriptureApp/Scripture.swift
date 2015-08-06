@@ -12,6 +12,7 @@ public class Scripture {
 
     // MARK: - Properties and initialization
 
+    private lazy var config = { sharedInstance.getConfig() }()
     private var mLibrary: ALSAppLibrary = ALSAppLibrary()
     private var mParser: ALSConfigParser?
     private var mWriter: ALSDisplayWriter?
@@ -286,6 +287,13 @@ public class Scripture {
         return (success, retString)
     }
 
+    func getIntroductionTitle() -> String {
+        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
+    }
+
+    func getIntroductionSymbol() -> String {
+        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
+    }
 
     // MARK: - Color theme and font size
 
@@ -317,6 +325,70 @@ public class Scripture {
             colorStr.removeAtIndex(colorStr.startIndex)
         }
         return UIColorFromRGB(strtoul(colorStr, nil, 16))
+    }
+
+    func getViewerBackgroundColor() -> UIColor {
+        return UIColorFromRGB(config.getViewerBackgroundColor())
+    }
+
+    func getColorStringFromStyle(styleName: String) -> String {
+        return config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_COLOR_)
+    }
+
+    func getColorFromStyle(styleName: String) -> UIColor {
+        return UIColorFromRGB(getColorStringFromStyle(styleName))
+    }
+
+    func getBackgroundColorStringFromStyle(styleName: String) -> String {
+        return config.getStylePropertyColorValueWithNSString(styleName, withNSString: ALCPropertyName_BACKGROUND_COLOR_)
+    }
+
+    func getBackgroundColorFromStyle(styleName: String) -> UIColor {
+        return UIColorFromRGB(getBackgroundColorStringFromStyle(styleName))
+    }
+
+    func getBookGroupTitleColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_UI_BOOK_GROUP_TITLE_)
+    }
+
+    func getChapterButtonColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_UI_CHAPTER_BUTTON_)
+    }
+
+    func getChapterButtonBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle(ALSStyleName_UI_CHAPTER_BUTTON_)
+    }
+
+    func getIntroductionButtonBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle(ALSStyleName_UI_CHAPTER_INTRO_BUTTON_)
+    }
+
+    func getThemeSelectorButtonBackgroundColorForTheme(theme: String) -> UIColor {
+        return UIColorFromRGB(config.getStylePropertyColorValueWithNSString("ui.background", withNSString: ALCPropertyName_BACKGROUND_COLOR_, withNSString: theme))
+    }
+
+    func getFootnoteBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle("body.footnote")
+    }
+
+    func getSearchInfoPanelColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_INFO_PANEL_)
+    }
+
+    func getSearchCheckboxLabelColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_CHECKBOX_)
+    }
+
+    func getSearchEntryTextColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_ENTRY_TEXT_)
+    }
+
+    func getSearchButtonBackgroundColor() -> UIColor {
+        return getBackgroundColorFromStyle(ALSStyleName_SEARCH_BUTTON_)
+    }
+
+    func getSearchButtonColor() -> UIColor {
+        return getColorFromStyle(ALSStyleName_SEARCH_BUTTON_)
     }
 
     // MARK: - Navigation and annotations
@@ -413,11 +485,45 @@ public class Scripture {
         return result
     }
 
-    // MARK: - Misc
+    // MARK: - Strings
 
-    func getString(id : String) -> String {
-        return ALSFactoryCommon_getStringWithNSString_(id)
+    func getSearchCancelButtonTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_CANCEL_BUTTON_)
     }
+
+    func getAboutTitle() -> String {
+        return getString(ALSScriptureStringId_MENU_ABOUT_)
+    }
+
+    func getCloseButtonTitle() -> String {
+        return getString(ALCCommonStringId_BUTTON_CLOSE_)
+    }
+
+    func getSearchWholeBibleTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
+    }
+
+    func getSearchButtonTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_BUTTON_)
+    }
+
+    func getMatchWholeWordsTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_MATCH_WHOLE_WORDS_)
+    }
+
+    func getSearchHint() -> String {
+        return getString(ALSScriptureStringId_SEARCH_TEXT_HINT_)
+    }
+
+    func getMatchAccentsTitle() -> String {
+        return getString(ALSScriptureStringId_SEARCH_MATCH_ACCENTS_)
+    }
+
+    func getNoMatchesFoundString() -> String {
+        return getString(ALSScriptureStringId_SEARCH_NO_MATCHES_FOUND_)
+    }
+
+    // MARK: - Feature flags
 
     func useListView() -> Bool {
         var bookSelectOption = configGetFeature(ALSScriptureFeatureName_BOOK_SELECTION_)
@@ -425,12 +531,35 @@ public class Scripture {
         return isList
     }
 
-    func getIntroductionTitle() -> String {
-        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
+    func hasFeatureSearch() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_)
     }
 
-    func getIntroductionSymbol() -> String {
-        return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_SYMBOL_)
+    func hasFeatureSectionTitles() -> Bool {
+        return config.hasFeatureWithNSString(ALSScriptureFeatureName_BOOK_GROUP_TITLES_)
+    }
+
+    func hasMatchAccentsDefault() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_DEFAULT_)
+    }
+
+    func hasMatchWholeWordsDefault() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_DEFAULT_)
+    }
+
+    func hasMatchAccents() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
+    }
+
+    func hasMatchWholeWords() -> Bool {
+        return configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
+    }
+
+
+    // MARK: - Misc
+
+    func getString(id : String) -> String {
+        return ALSFactoryCommon_getStringWithNSString_(id)
     }
 
     func getAboutHtml() -> String {

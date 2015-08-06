@@ -86,17 +86,17 @@ class SearchSelectViewController: CommonViewController, UISearchBarDelegate, UIC
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        var btnCaption = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_BUTTON_)
-        var matchCaption = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_MATCH_WHOLE_WORDS_)
-        var searchHint = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_TEXT_HINT_)
-        matchAccentsLabel.text = ALSFactoryCommon_getStringWithNSString_(ALSScriptureStringId_SEARCH_MATCH_ACCENTS_)
+        var btnCaption = scripture.getSearchButtonTitle()
+        var matchCaption = scripture.getMatchWholeWordsTitle()
+        var searchHint = scripture.getSearchHint()
+        matchAccentsLabel.text = scripture.getMatchAccentsTitle()
         matchLabel.text = matchCaption
-        matchAccentsSwitch.on = scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_DEFAULT_)
-        matchSwitch.on = scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_DEFAULT_)
-        matchAccentsSwitch.hidden = !scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
-        matchAccentsLabel.hidden = !scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_ACCENTS_SHOW_)
-        matchSwitch.hidden = !scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
-        matchLabel.hidden = !scripture.configGetBoolFeature(ALCCommonFeatureName_SEARCH_WHOLE_WORDS_SHOW_)
+        matchAccentsSwitch.on = scripture.hasMatchAccentsDefault()
+        matchSwitch.on = scripture.hasMatchWholeWordsDefault()
+        matchAccentsSwitch.hidden = !scripture.hasMatchAccents()
+        matchAccentsLabel.hidden = !scripture.hasMatchAccents()
+        matchSwitch.hidden = !scripture.hasMatchWholeWords()
+        matchLabel.hidden = !scripture.hasMatchWholeWords()
         searchBar.delegate = self
         searchBar.placeholder = searchHint
         searchBar.becomeFirstResponder()
@@ -114,14 +114,14 @@ class SearchSelectViewController: CommonViewController, UISearchBarDelegate, UIC
 //        }
 
         // color theme
-        view.backgroundColor = UIColorFromRGB(config.getViewerBackgroundColor())
-        let checkboxLabelColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_CHECKBOX_, withNSString: ALCPropertyName_COLOR_))
+        view.backgroundColor = scripture.getViewerBackgroundColor()
+        let checkboxLabelColor = scripture.getSearchCheckboxLabelColor()
         matchLabel.textColor = checkboxLabelColor
         matchAccentsLabel.textColor = checkboxLabelColor
         searchRangeLabel.textColor = checkboxLabelColor
         specialCharactersCollectionView.backgroundColor = view.backgroundColor
         searchTextField = searchBar.valueForKey("searchField") as? UITextField
-        searchTextField.textColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_ENTRY_TEXT_, withNSString: ALCPropertyName_COLOR_))
+        searchTextField.textColor = scripture.getSearchEntryTextColor()
         searchBar.tintColor = searchTextField.textColor
 //        searchButton.tintColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
 //        searchButton.backgroundColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
@@ -185,8 +185,8 @@ class SearchSelectViewController: CommonViewController, UISearchBarDelegate, UIC
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.SpecialCharacterCell, forIndexPath: indexPath) as! SpecialCharacterCell
         let title = specialCharacters[indexPath.section][indexPath.item]
-        let bgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_BACKGROUND_COLOR_))
-        let fgColor = UIColorFromRGB(config.getStylePropertyColorValueWithNSString(ALSStyleName_SEARCH_BUTTON_, withNSString: ALCPropertyName_COLOR_))
+        let bgColor = scripture.getSearchButtonBackgroundColor()
+        let fgColor = scripture.getSearchButtonColor()
 
         cell.button.setTitle(title, forState: .Normal)
         cell.button.backgroundColor = bgColor

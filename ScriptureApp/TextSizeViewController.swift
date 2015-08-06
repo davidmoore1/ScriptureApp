@@ -72,8 +72,7 @@ class TextSizeViewController: CommonViewController, UIPopoverPresentationControl
             button.frame = CGRectMake(startX + CGFloat(index) * buttonWidth + CGFloat(index) * padding, startY, buttonWidth, buttonHeight)
             button.setTitle(theme, forState: .Normal)
             button.setTitleColor(UIColor.clearColor(), forState: .Normal)
-            let colorString = config.getStylePropertyColorValueWithNSString("ui.background", withNSString: ALCPropertyName_BACKGROUND_COLOR_, withNSString: theme)
-            button.backgroundColor = UIColorFromRGB(colorString)
+            button.backgroundColor = scripture.getThemeSelectorButtonBackgroundColorForTheme(theme)
             button.addTarget(self, action: "selectTheme:", forControlEvents: .TouchUpInside)
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.grayColor().CGColor

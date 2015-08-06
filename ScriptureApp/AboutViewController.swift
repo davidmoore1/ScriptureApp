@@ -16,11 +16,11 @@ class AboutViewController: CommonViewController {
         super.viewDidLoad()
 
         webView.loadHTMLString(scripture.getAboutHtml(), baseURL: nil)
-        let bgColor = UIColorFromRGB(config.getViewerBackgroundColor())
+        let bgColor = scripture.getViewerBackgroundColor()
         webView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
-        navigationItem.title = scripture.getString(ALSScriptureStringId_MENU_ABOUT_)
-        navigationItem.rightBarButtonItem?.title = scripture.getString(ALCCommonStringId_BUTTON_CLOSE_)
+        navigationItem.title = scripture.getAboutTitle()
+        navigationItem.rightBarButtonItem?.title = scripture.getCloseButtonTitle()
     }
 
 }
