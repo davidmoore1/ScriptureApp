@@ -149,15 +149,16 @@ class SearchSelectViewController: UIViewController, UISearchBarDelegate, UIColle
     }
     
     @IBAction func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-         if searchBar.text.isEmpty {
+        if ALCStringUtils_isNotBlankWithNSString_(searchBar.text) {
+            self.performSegueWithIdentifier(Constants.SearchResultsSeque, sender: self)
+        }
+        /* Remove comment to issue alert on empty or blank string.  Commenting out matches current android functionality
+        else {
             let alert:UIAlertController = UIAlertController(title: "Error", message: "Please enter a search string!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        else {
-            self.performSegueWithIdentifier(Constants.SearchResultsSeque, sender: self)
-        }
-        
+        */      
     }
     @IBOutlet weak var searchRangeLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
