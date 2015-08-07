@@ -24,7 +24,8 @@ class ScriptureViewController: CommonViewController,
     private var annotationWaiting: Bool = false
     private var book: Book?
     private var pinchBeginFontSize = CGFloat(0)
-    private var popupLinks: ALSLinks?
+    private var firstAppearance = true
+    private let prefs = NSUserDefaults.standardUserDefaults()
 
     // public properties
     var mVerseNumber: String = ""
@@ -34,12 +35,14 @@ class ScriptureViewController: CommonViewController,
             bookButton.title = book!.getName() + Constants.Arrow
             resetScrollOffsets()
             chapterNumber = 1
+            prefs.setInteger(bookNumber, forKey: Constants.BookNumberKey)
         }
     }
 
     var chapterNumber = 0 {
         didSet {
             updateUI()
+            prefs.setInteger(chapterNumber, forKey: Constants.ChapterNumberKey)
         }
     }
 
@@ -251,15 +254,25 @@ class ScriptureViewController: CommonViewController,
         webView.addGestureRecognizer(singleTap)
         webView.addGestureRecognizer(pinch)
 
-        if (book == nil) {
-            bookNumber = scripture.firstBookIndex
-        } else {
-            updateUI()
-        }
-
         closeButton.title = ""
         navigationItem.backBarButtonItem = closeButton
         loadColorTheme(config.getCurrentColorTheme())
+        if !restoreReference() {
+            if (book == nil) {
+                bookNumber = scripture.firstBookIndex
+            } else {
+                updateUI()
+            }
+        }
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if firstAppearance {
+            checkExpiry()
+            firstAppearance = false
+        }
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -367,6 +380,35 @@ class ScriptureViewController: CommonViewController,
         annotationDisplaying = false
     }
 
+    // MARK: - Misc
+
+    func checkExpiry() {
+        let expiry = config.getExpiry()
+        func handler(sender: UIAlertAction!) {
+            if expiry.isStopOnExpiry() {
+                exit(0)
+            }
+        }
+        if scripture.hasExpired() {
+            scripture.loadExpiryMessage()
+            let message = expiry.getMessage()
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let close = UIAlertAction(title: scripture.getCloseButtonTitle(), style: UIAlertActionStyle.Cancel, handler: handler)
+            alert.addAction(close)
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+
+    func restoreReference() -> Bool {
+        if let bookNum = prefs.objectForKey(Constants.BookNumberKey) as? Int {
+            if let chapterNum = prefs.objectForKey(Constants.ChapterNumberKey) as? Int {
+                bookNumber = bookNum
+                chapterNumber = chapterNum
+                return true
+            }
+        }
+        return false
+    }
 }
 
 // MARK: - UIViewController

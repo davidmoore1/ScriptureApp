@@ -578,4 +578,32 @@ public class Scripture {
         }
     }
 
+    func loadExpiryMessage() {
+        mFileManager.loadExpiryMessage()
+    }
+
+    func hasExpired() -> Bool {
+        let expiry = config.getExpiry()
+
+        if expiry.canExpire() {
+            let prefs = NSUserDefaults.standardUserDefaults()
+            let sdf = JavaTextSimpleDateFormat(NSString: "yyyy-MM-dd")
+            let startDate = JavaUtilCalendar.getInstance()
+            startDate.setWithInt(JavaUtilCalendar_HOUR, withInt: 0)
+            if let savedStartDate = prefs.stringForKey(Constants.StartDateKey) {
+                startDate.setTimeWithJavaUtilDate(sdf.parseWithNSString(savedStartDate))
+            } else {
+                let savedStartDate = sdf.formatWithJavaUtilDate(startDate.getTime())
+                prefs.setObject(savedStartDate, forKey: Constants.StartDateKey)
+            }
+
+            let todayDate = JavaUtilCalendar.getInstance()
+            todayDate.setWithInt(JavaUtilCalendar_HOUR, withInt: 0)
+
+            return expiry.hasExpiredWithJavaUtilCalendar(startDate, withJavaUtilCalendar: todayDate)
+        } else {
+            return false
+        }
+    }
+
 }
