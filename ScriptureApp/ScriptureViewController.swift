@@ -24,6 +24,7 @@ class ScriptureViewController: CommonViewController,
     private var annotationWaiting: Bool = false
     private var book: Book?
     private var pinchBeginFontSize = CGFloat(0)
+    private var firstAppearance = true
     private let prefs = NSUserDefaults.standardUserDefaults()
 
     // public properties
@@ -263,6 +264,15 @@ class ScriptureViewController: CommonViewController,
         }
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if firstAppearance {
+            checkExpiry()
+            firstAppearance = false
+        }
+    }
+
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition( { _ -> Void in self.scrollOffsetLoad = self.getOffset() },
                                     completion: { _ -> Void in self.setOffset(self.scrollOffsetLoad) })
@@ -362,6 +372,20 @@ class ScriptureViewController: CommonViewController,
     }
 
     // MARK: - Misc
+
+    func checkExpiry() {
+        let expiry = config.getExpiry()
+        if scripture.hasExpired() {
+            scripture.loadExpiryMessage()
+            let message = expiry.getMessage()
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            if !expiry.isStopOnExpiry() {
+                let close = UIAlertAction(title: scripture.getCloseButtonTitle(), style: UIAlertActionStyle.Cancel, handler: nil)
+                alert.addAction(close)
+            }
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
 
     func restoreReference() -> Bool {
         if let bookNum = prefs.objectForKey(Constants.BookNumberKey) as? Int {
