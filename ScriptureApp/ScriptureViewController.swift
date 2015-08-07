@@ -26,6 +26,7 @@ class ScriptureViewController: CommonViewController,
     private var pinchBeginFontSize = CGFloat(0)
     private var firstAppearance = true
     private let prefs = NSUserDefaults.standardUserDefaults()
+    private var popupLinks: ALSLinks?
 
     // public properties
     var mVerseNumber: String = ""
