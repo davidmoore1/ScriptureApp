@@ -24,6 +24,7 @@ class ScriptureViewController: CommonViewController,
     private var annotationWaiting: Bool = false
     private var book: Book?
     private var pinchBeginFontSize = CGFloat(0)
+    private let prefs = NSUserDefaults.standardUserDefaults()
 
     // public properties
     var mVerseNumber: String = ""
@@ -33,12 +34,14 @@ class ScriptureViewController: CommonViewController,
             bookButton.title = book!.getName() + Constants.Arrow
             resetScrollOffsets()
             chapterNumber = 1
+            prefs.setInteger(bookNumber, forKey: Constants.BookNumberKey)
         }
     }
 
     var chapterNumber = 0 {
         didSet {
             updateUI()
+            prefs.setInteger(chapterNumber, forKey: Constants.ChapterNumberKey)
         }
     }
 
@@ -248,15 +251,16 @@ class ScriptureViewController: CommonViewController,
         webView.addGestureRecognizer(singleTap)
         webView.addGestureRecognizer(pinch)
 
-        if (book == nil) {
-            bookNumber = scripture.firstBookIndex
-        } else {
-            updateUI()
-        }
-
         closeButton.title = ""
         navigationItem.backBarButtonItem = closeButton
         loadColorTheme(config.getCurrentColorTheme())
+        if !restoreReference() {
+            if (book == nil) {
+                bookNumber = scripture.firstBookIndex
+            } else {
+                updateUI()
+            }
+        }
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -357,6 +361,18 @@ class ScriptureViewController: CommonViewController,
         return UIModalPresentationStyle.CurrentContext
     }
 
+    // MARK: - Misc
+
+    func restoreReference() -> Bool {
+        if let bookNum = prefs.objectForKey(Constants.BookNumberKey) as? Int {
+            if let chapterNum = prefs.objectForKey(Constants.ChapterNumberKey) as? Int {
+                bookNumber = bookNum
+                chapterNumber = chapterNum
+                return true
+            }
+        }
+        return false
+    }
 }
 
 // MARK: - UIViewController
