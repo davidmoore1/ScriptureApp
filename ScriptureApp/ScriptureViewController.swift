@@ -375,14 +375,17 @@ class ScriptureViewController: CommonViewController,
 
     func checkExpiry() {
         let expiry = config.getExpiry()
+        func handler(sender: UIAlertAction!) {
+            if expiry.isStopOnExpiry() {
+                exit(0)
+            }
+        }
         if scripture.hasExpired() {
             scripture.loadExpiryMessage()
             let message = expiry.getMessage()
             let alert = UIAlertController(title: nil, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-            if !expiry.isStopOnExpiry() {
-                let close = UIAlertAction(title: scripture.getCloseButtonTitle(), style: UIAlertActionStyle.Cancel, handler: nil)
-                alert.addAction(close)
-            }
+            let close = UIAlertAction(title: scripture.getCloseButtonTitle(), style: UIAlertActionStyle.Cancel, handler: handler)
+            alert.addAction(close)
             presentViewController(alert, animated: true, completion: nil)
         }
     }
