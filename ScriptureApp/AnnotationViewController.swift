@@ -8,7 +8,12 @@
 
 import UIKit
 
-class AnnotationViewController: CommonViewController {
+class AnnotationViewController: CommonViewController,
+    UIWebViewDelegate
+{
+    private var popupHtml: String = ""
+    private var popupLinks: ALSLinks?
+    var links: ALSLinks?
 
     @IBOutlet weak var mAnnotationWebView: UIWebView!
 
@@ -40,10 +45,26 @@ class AnnotationViewController: CommonViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        mAnnotationWebView.delegate = self
         let bgColor = scripture.getFootnoteBackgroundColor()
         mAnnotationWebView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
         mAnnotationWebView.loadHTMLString(html, baseURL: nil)
     }
+
+    // MARK: - UIWebViewDelegate
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if navigationType == UIWebViewNavigationType.LinkClicked {
+            let url = request.URL!.absoluteString
+            let results = scripture.getHtmlForAnnotation(url!, links: links!)
+            if !results.html.isEmpty {
+                links = results.popupLinks
+                html = results.html
+            }
+        }
+        return true
+    }
+    
 
 }

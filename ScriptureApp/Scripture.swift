@@ -63,24 +63,24 @@ public class Scripture {
         var book : ALSBook? = ALSFactoryCommon_getBookToShowFirstWithALSAppLibrary_withNSString_(mLibrary, "")
         (success, book) = loadBook(book)
 
-        // Load glossary
-        if (success) {
-            glossaryBook = mLibrary.getMainBookCollection().getGlossaryBook()
-            if (glossaryBook != nil) {
-                (success, glossaryBook) = loadBook(glossaryBook)
-            }
-        }
 
         if (success) {
             mLibrary.getConfig().initFontSize()
         }
 
         mWriter = getDisplayWriter()
+        // Load glossary
+        if (success) {
+            glossaryBook = mLibrary.getMainBookCollection().getGlossaryBook()
+            if (glossaryBook != nil) {
+                (success, glossaryBook) = loadBook(glossaryBook)
+                ALSFactoryCommon_parseGlossaryWithALSBook_withALSDisplayWriter_(glossaryBook, mWriter)
+            }
+        }
         AISPopupHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(mPopupHandler, mLibrary, mWriter, mScripture)
         mPopupHandler.initBookPopup()
 
         if (success && configHasFeature(ALCCommonFeatureName_SPLASH_SCREEN_)) {
-            ALSFactoryCommon_parseGlossaryWithALSBook_withALSDisplayWriter_(glossaryBook, mWriter)
             mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book)
         }
         createBookArray()
@@ -286,6 +286,10 @@ public class Scripture {
         }
         return (success, retString)
     }
+    
+    func getCurrentChapter() -> ALSChapter {
+        return mLibrary.getCurrentChapter()
+    }
 
     func getIntroductionTitle() -> String {
         return getString(ALSScriptureStringId_CHAPTER_INTRODUCTION_TITLE_)
@@ -407,6 +411,7 @@ public class Scripture {
             } else if (chapterNumber > 0) {
                 var result = book!.getChapter(chapterNumber)
                 success = result.success
+                var test = result.chapter
                 if (result.success) {
                     webView.loadHTMLString(result.chapter, baseURL: nil)
                 }
@@ -421,15 +426,10 @@ public class Scripture {
         return result
     }
 
-    func getHtmlForAnnotation(url: String) -> String {
-        var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url)
-        return html
-    }
-
-    func popup(webView: UIWebView) -> String? {
-        var javaString = "window.alert('Hello there');"
-        let result = webView.stringByEvaluatingJavaScriptFromString(javaString)
-        return result
+    func getHtmlForAnnotation(url: String, links: ALSLinks) -> (html: String, popupLinks: ALSLinks?) {
+        var retLinks = ALSLinks()
+        var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url, withALSLinks: links, withALSLinks: retLinks)
+        return (html, retLinks)
     }
 
     func highlightVerse(verseNumber: String, webView: UIWebView) -> String? {

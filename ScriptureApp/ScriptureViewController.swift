@@ -24,6 +24,7 @@ class ScriptureViewController: CommonViewController,
     private var annotationWaiting: Bool = false
     private var book: Book?
     private var pinchBeginFontSize = CGFloat(0)
+    private var popupLinks: ALSLinks?
 
     // public properties
     var mVerseNumber: String = ""
@@ -42,6 +43,8 @@ class ScriptureViewController: CommonViewController,
         }
     }
 
+    var annotationDisplaying: Bool = false
+    
     // MARK: - IB Outlets
 
     @IBOutlet private var tap: UITapGestureRecognizer!
@@ -302,6 +305,7 @@ class ScriptureViewController: CommonViewController,
                         tvc.modalPresentationStyle = UIModalPresentationStyle.Popover
                         ppc.sourceRect = CGRect(x: point.x, y: point.y, width: 3, height: 3)
                     }
+                    tvc.links = popupLinks
                     tvc.html = mAnnotationHtml
                 }
             default: break
@@ -321,9 +325,12 @@ class ScriptureViewController: CommonViewController,
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if navigationType == UIWebViewNavigationType.LinkClicked {
             let url = request.URL!.absoluteString
-            mAnnotationHtml = scripture.getHtmlForAnnotation(url!)
+            let results = scripture.getHtmlForAnnotation(url!, links: scripture.getCurrentChapter().getLinks())
+            mAnnotationHtml = results.html
+            popupLinks = results.popupLinks
             if !mAnnotationHtml.isEmpty {
                 annotationWaiting = true
+                annotationDisplaying = true
                 return false
             }
         }
@@ -350,11 +357,14 @@ class ScriptureViewController: CommonViewController,
     }
 
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        if (annotationWaiting) {
-            annotationWaiting = false
+        if (annotationDisplaying) {
             return UIModalPresentationStyle.None
         }
         return UIModalPresentationStyle.CurrentContext
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+        annotationDisplaying = false
     }
 
 }
