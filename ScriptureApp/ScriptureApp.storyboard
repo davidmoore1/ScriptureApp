@@ -216,7 +216,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5a-6w-m9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kR5-Dk-NHg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="474" y="765"/>
+            <point key="canvasLocation" x="474" y="840"/>
         </scene>
         <!--About-->
         <scene sceneID="kAu-pR-yfH">
@@ -257,7 +257,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-Mt-o9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7qT-us-CFJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="1226"/>
+            <point key="canvasLocation" x="1194" y="1466"/>
         </scene>
         <!--Text Size View Controller-->
         <scene sceneID="zzT-J8-MiC">
@@ -413,11 +413,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jhS-CC-Wmz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fkm-NF-Kfp">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-eg-cqi">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -436,17 +436,17 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="400" height="200"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="200"/>
+                    <size key="freeformSize" width="400" height="400"/>
                     <connections>
                         <outlet property="mAnnotationWebView" destination="LIk-eg-cqi" id="KYN-4f-muA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tB4-CL-szF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1807" y="663"/>
+            <point key="canvasLocation" x="1807" y="851"/>
         </scene>
         <!--Image Annotation View Controller-->
         <scene sceneID="G4j-kN-fVT">
@@ -486,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEe-vP-YQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3531" y="1226"/>
+            <point key="canvasLocation" x="2673" y="1466"/>
         </scene>
         <!--Search-->
         <scene sceneID="9tJ-Dl-Vej">
@@ -811,7 +811,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dt-Kn-twK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2457" y="499"/>
+            <point key="canvasLocation" x="2259" y="501"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jL5-9o-Zae">
@@ -829,7 +829,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVs-df-nJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2719" y="1226"/>
+            <point key="canvasLocation" x="1887" y="1466"/>
         </scene>
     </scenes>
     <resources>
