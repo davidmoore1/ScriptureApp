@@ -21,7 +21,8 @@ class AnnotationViewController: CommonViewController,
         didSet{
             if (mAnnotationWebView != nil) {
                 // Load HTML from chapter into web view
-                mAnnotationWebView.loadHTMLString(html, baseURL: nil)
+                var url: NSURL = NSURL(string: scripture.mAssetsPath)!
+                mAnnotationWebView.loadHTMLString(html, baseURL: url)
             }
         }
     }
@@ -49,7 +50,8 @@ class AnnotationViewController: CommonViewController,
         let bgColor = scripture.getFootnoteBackgroundColor()
         mAnnotationWebView.backgroundColor = bgColor
         popoverPresentationController?.backgroundColor = bgColor
-        mAnnotationWebView.loadHTMLString(html, baseURL: nil)
+        var url: NSURL = NSURL(string: scripture.mAssetsPath)!
+        mAnnotationWebView.loadHTMLString(html, baseURL: url)
     }
 
     // MARK: - UIWebViewDelegate
@@ -58,9 +60,9 @@ class AnnotationViewController: CommonViewController,
         if navigationType == UIWebViewNavigationType.LinkClicked {
             let url = request.URL!.absoluteString
             let results = scripture.getHtmlForAnnotation(url!, links: links!)
-            if !results.html.isEmpty {
+            if !results.results.getHtml().isEmpty {
                 links = results.popupLinks
-                html = results.html
+                html = results.results.getHtml()
             }
         }
         return true

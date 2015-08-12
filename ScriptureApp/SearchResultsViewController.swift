@@ -44,13 +44,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
         mNumberOfBooks = Int(scripture.getLibrary().getMainBookCollection().getBooks().size())
         for (var i = 0; i < mNumberOfBooks; i++) {
             var book = scripture.getBookArray().flatMap { $0 }[i]
-            var abbrev = book.getAbbrevName()
-            if ((i == 0) && (count(abbrev) < 4)) {
-                // The first title sets the width of the index bar
-                for (var j = count(abbrev); j < 4 ; j++) {
-                    abbrev = abbrev + "  "
-                }
-            }
+            var abbrev = book.getButtonAbbrev()
             mTitles.append(abbrev)
         }
 

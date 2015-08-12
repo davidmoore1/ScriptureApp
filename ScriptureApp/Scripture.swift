@@ -22,6 +22,7 @@ public class Scripture {
     private var mCurrentBook: Book?
     private var mFileManager: IOSFileManager = IOSFileManager()
     private var mColorThemes: [ALCColorTheme]?
+    var mAssetsPath: String = ""
     var searchRange : String?
     var searchGroup : String
     var OTName : String = "Old Testament"
@@ -50,6 +51,7 @@ public class Scripture {
         mScripture.setLibraryWithALSAppLibrary(mLibrary)
         mLibrary.getConfig().initConfig()
         mScripture.setAssetsPathWithNSString(assetsPath)
+        mAssetsPath = assetsPath + "/"
     }
 
     func loadLibrary() {
@@ -69,6 +71,7 @@ public class Scripture {
         }
 
         mWriter = getDisplayWriter()
+        mWriter!.setIllustrationFilenamesWithJavaUtilList(getFactory().getIllustrationFilenamesFromAssets())
         // Load glossary
         if (success) {
             glossaryBook = mLibrary.getMainBookCollection().getGlossaryBook()
@@ -402,18 +405,19 @@ public class Scripture {
         if (book != nil) {
             mScripture.loadBookIfNotAlreadyWithALSBook(book!.getALSBook())
             updateCurrentBook(book)
+            var url: NSURL = NSURL(string: mAssetsPath)!
             if (book!.hasIntroduction() && chapterNumber == 0) {
                 var result = book!.getIntroduction()
                 success = result.success
                 if (result.success) {
-                    webView.loadHTMLString(result.chapter, baseURL: nil)
+                    webView.loadHTMLString(result.chapter, baseURL: url)
                 }
             } else if (chapterNumber > 0) {
                 var result = book!.getChapter(chapterNumber)
                 success = result.success
                 var test = result.chapter
                 if (result.success) {
-                    webView.loadHTMLString(result.chapter, baseURL: nil)
+                    webView.loadHTMLString(result.chapter, baseURL: url)
                 }
             }
         }
@@ -426,10 +430,10 @@ public class Scripture {
         return result
     }
 
-    func getHtmlForAnnotation(url: String, links: ALSLinks) -> (html: String, popupLinks: ALSLinks?) {
+    func getHtmlForAnnotation(url: String, links: ALSLinks) -> (results: AISPopupHandlerResult, popupLinks: ALSLinks?) {
         var retLinks = ALSLinks()
-        var html = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url, withALSLinks: links, withALSLinks: retLinks)
-        return (html, retLinks)
+        var results = mPopupHandler.shouldOverrideUrlLoadingWithNSString(url, withALSLinks: links, withALSLinks: retLinks)
+        return (results, retLinks)
     }
 
     func highlightVerse(verseNumber: String, webView: UIWebView) -> String? {

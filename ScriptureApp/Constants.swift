@@ -11,6 +11,7 @@ import Foundation
 public struct Constants {
     static let SearchRequest = "SearchRequest"
     static let AnnotationSeque = "Annotation"
+    static let ImageAnnotationSegue = "ImageAnnotationSegue"
     static let ShowChaptersSeque = "ShowChapters"
     static let DisplayChapterSeque = "DisplayChapter"
     static let SearchResultsSeque = "SearchResults"

@@ -322,6 +322,10 @@ class ScriptureViewController: CommonViewController,
                     tvc.links = popupLinks
                     tvc.html = mAnnotationHtml
                 }
+            case Constants.ImageAnnotationSegue:
+                if let tvc = segue.destinationViewController.contentViewController as? ImageAnnotationViewController {
+                    tvc.html = mAnnotationHtml
+                }
             default: break
             }
        }
@@ -339,13 +343,17 @@ class ScriptureViewController: CommonViewController,
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if navigationType == UIWebViewNavigationType.LinkClicked {
             let url = request.URL!.absoluteString
-            let results = scripture.getHtmlForAnnotation(url!, links: scripture.getCurrentChapter().getLinks())
-            mAnnotationHtml = results.html
-            popupLinks = results.popupLinks
+            let annotation = scripture.getHtmlForAnnotation(url!, links: scripture.getCurrentChapter().getLinks())
+            mAnnotationHtml = annotation.results.getHtml()
+            popupLinks = annotation.popupLinks
             if !mAnnotationHtml.isEmpty {
-                annotationWaiting = true
-                annotationDisplaying = true
-                return false
+                if annotation.results.getAnnotationType() == "illustration" {
+                    self.performSegueWithIdentifier(Constants.ImageAnnotationSegue, sender: self)
+                } else {
+                    annotationWaiting = true
+                    annotationDisplaying = true
+                    return false
+                }
             }
         }
         return true
@@ -402,6 +410,9 @@ class ScriptureViewController: CommonViewController,
 
     func restoreReference() -> Bool {
         if let bookNum = prefs.objectForKey(Constants.BookNumberKey) as? Int {
+            if (bookNum >= scripture.numberOfBooks) {
+                return false;
+            }
             if let chapterNum = prefs.objectForKey(Constants.ChapterNumberKey) as? Int {
                 bookNumber = bookNum
                 chapterNumber = chapterNum

@@ -54,6 +54,7 @@
                         <segue destination="Ccb-qX-h2p" kind="popoverPresentation" identifier="Annotation" popoverAnchorView="c6h-EM-VRZ" id="p7M-EI-Una">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="f9k-Mh-TS1" kind="presentation" identifier="ImageAnnotationSegue" id="IEh-5U-8Ej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Joq-ux-RDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -447,6 +448,46 @@
             </objects>
             <point key="canvasLocation" x="1807" y="663"/>
         </scene>
+        <!--Image Annotation View Controller-->
+        <scene sceneID="G4j-kN-fVT">
+            <objects>
+                <viewController id="qVh-Ci-nH8" customClass="ImageAnnotationViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SLM-5u-mUz"/>
+                        <viewControllerLayoutGuide type="bottom" id="iE7-P0-1Y6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0Kb-Wo-E7K">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4v-a4-fkj">
+                                <rect key="frame" x="16" y="28" width="568" height="564"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="t4v-a4-fkj" secondAttribute="trailing" id="2Wb-dN-R39"/>
+                            <constraint firstItem="t4v-a4-fkj" firstAttribute="leading" secondItem="0Kb-Wo-E7K" secondAttribute="leadingMargin" id="lP4-DI-wmr"/>
+                            <constraint firstItem="iE7-P0-1Y6" firstAttribute="top" secondItem="t4v-a4-fkj" secondAttribute="bottom" constant="8" symbolic="YES" id="s34-oI-NlO"/>
+                            <constraint firstItem="t4v-a4-fkj" firstAttribute="top" secondItem="SLM-5u-mUz" secondAttribute="bottom" constant="8" symbolic="YES" id="sof-Ss-S0s"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="p71-px-I3J">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Gv9-cJ-Q70">
+                            <connections>
+                                <segue destination="7qT-us-CFJ" kind="unwind" unwindAction="cancelToScriptureViewController:" id="QPU-7S-AH8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="t4v-a4-fkj" id="hqq-Qh-dh8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vEe-vP-YQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3531" y="1226"/>
+        </scene>
         <!--Search-->
         <scene sceneID="9tJ-Dl-Vej">
             <objects>
@@ -565,7 +606,7 @@
                                     <constraint firstAttribute="height" id="j3q-uE-her"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -666,7 +707,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoE-OY-8aM">
                                                     <rect key="frame" x="8" y="8" width="552" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDG-fy-2lG">
@@ -739,7 +780,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yyh-nX-wcp">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -771,6 +812,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dt-Kn-twK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2457" y="499"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jL5-9o-Zae">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f9k-Mh-TS1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a80-dy-JWL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qVh-Ci-nH8" kind="relationship" relationship="rootViewController" id="1xw-0b-NJv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BVs-df-nJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2719" y="1226"/>
         </scene>
     </scenes>
     <resources>

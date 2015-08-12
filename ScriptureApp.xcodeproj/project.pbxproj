@@ -15,6 +15,8 @@
 		630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630D5DB21B29D5DA003915FE /* Scripture.swift */; };
 		6313C6411B6288F10091BE86 /* SearchRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */; };
 		6313C6431B6919150091BE86 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6313C6421B6919150091BE86 /* SearchResultsViewController.swift */; };
+		6327F19A1B7A84A600F52348 /* PopupHandlerResult.java in Sources */ = {isa = PBXBuildFile; fileRef = 6327F1991B7A84A600F52348 /* PopupHandlerResult.java */; };
+		6327F19C1B7A873A00F52348 /* ImageAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6327F19B1B7A873A00F52348 /* ImageAnnotationViewController.swift */; };
 		633A59C01B3B0827004550A1 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 633A59BF1B3B0827004550A1 /* assets */; };
 		633F41BB1B06264500F25662 /* libAppLibScripture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F41B01B06264500F25662 /* libAppLibScripture.a */; };
 		633F41C81B0626FB00F25662 /* AppLibScriptureConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 633F41C71B0626FB00F25662 /* AppLibScriptureConfig.xcconfig */; };
@@ -543,6 +545,8 @@
 		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
 		6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRangeViewController.swift; sourceTree = "<group>"; };
 		6313C6421B6919150091BE86 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		6327F1991B7A84A600F52348 /* PopupHandlerResult.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = PopupHandlerResult.java; sourceTree = "<group>"; };
+		6327F19B1B7A873A00F52348 /* ImageAnnotationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAnnotationViewController.swift; sourceTree = "<group>"; };
 		633A59BF1B3B0827004550A1 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		633F41B01B06264500F25662 /* libAppLibScripture.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAppLibScripture.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		633F41BA1B06264500F25662 /* AppLibScriptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppLibScriptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1340,6 +1344,7 @@
 		637A56271B28D88600239C64 /* scripture */ = {
 			isa = PBXGroup;
 			children = (
+				6327F1991B7A84A600F52348 /* PopupHandlerResult.java */,
 				63B8ABD91B5FCE43002563FD /* SearchContextMatch.java */,
 				63B8ABDA1B5FCE43002563FD /* SearchResultIOS.java */,
 				637431001B4457B000850F32 /* PopupHandler.java */,
@@ -1441,6 +1446,7 @@
 				63B8E2971B55797C002DC672 /* TextSizeViewController.swift */,
 				42A050341B5832BD0071EA96 /* AboutViewController.swift */,
 				637430FA1B3DE21200850F32 /* AnnotationViewController.swift */,
+				6327F19B1B7A873A00F52348 /* ImageAnnotationViewController.swift */,
 				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 				6313C6421B6919150091BE86 /* SearchResultsViewController.swift */,
 				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
@@ -2321,6 +2327,7 @@
 				637430FD1B42D3EC00850F32 /* SearchHandler.java in Sources */,
 				63B8ABDC1B5FCE43002563FD /* SearchResultIOS.java in Sources */,
 				637431011B4457B000850F32 /* PopupHandler.java in Sources */,
+				6327F19A1B7A84A600F52348 /* PopupHandlerResult.java in Sources */,
 				63B8ABDB1B5FCE43002563FD /* SearchContextMatch.java in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2353,6 +2360,7 @@
 				63B8E29D1B55797C002DC672 /* TextSizeViewController.swift in Sources */,
 				63B8E2981B55797C002DC672 /* BookCollectionViewController.swift in Sources */,
 				630D5DB31B29D5DA003915FE /* Scripture.swift in Sources */,
+				6327F19C1B7A873A00F52348 /* ImageAnnotationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

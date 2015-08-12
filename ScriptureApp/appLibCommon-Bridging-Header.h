@@ -69,6 +69,7 @@
 #import "InputButtonRows.h"
 #import "Links.h"
 #import "PopupHandler.h"
+#import "PopupHandlerResult.h"
 #import "PropertyName.h"
 #import "Reference.h"
 #import "ScriptureConfigHandler.h"
