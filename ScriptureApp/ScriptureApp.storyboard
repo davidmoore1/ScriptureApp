@@ -51,7 +51,7 @@
                         <outlet property="tap" destination="SvN-Yc-Btf" id="d7y-n9-RlB"/>
                         <outlet property="textSizeButton" destination="omh-Ea-pAX" id="Qmr-ue-Q2r"/>
                         <outlet property="webView" destination="JkE-JE-rV8" id="zn1-cA-BzE"/>
-                        <segue destination="Ccb-qX-h2p" kind="popoverPresentation" identifier="Annotation" popoverAnchorView="c6h-EM-VRZ" id="p7M-EI-Una">
+                        <segue destination="fgL-rX-XFD" kind="popoverPresentation" identifier="Annotation" popoverAnchorView="JkE-JE-rV8" id="p7M-EI-Una">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                         <segue destination="f9k-Mh-TS1" kind="presentation" identifier="ImageAnnotationSegue" id="IEh-5U-8Ej"/>
@@ -95,7 +95,7 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <segue destination="vcR-Pn-BrY" kind="popoverPresentation" identifier="about" popoverAnchorView="agK-LM-5mC" id="eSU-un-Arm">
+                            <segue destination="Tqx-ih-JlG" kind="popoverPresentation" identifier="about" popoverAnchorView="agK-LM-5mC" id="eSU-un-Arm">
                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                             </segue>
                         </connections>
@@ -257,7 +257,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-Mt-o9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7qT-us-CFJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1194" y="1466"/>
+            <point key="canvasLocation" x="2007" y="1718"/>
         </scene>
         <!--Text Size View Controller-->
         <scene sceneID="zzT-J8-MiC">
@@ -407,17 +407,17 @@
         <!--Annotation View Controller-->
         <scene sceneID="atY-Mm-ytf">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="Ccb-qX-h2p" customClass="AnnotationViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ccb-qX-h2p" customClass="AnnotationViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="acl-ee-MCW"/>
                         <viewControllerLayoutGuide type="bottom" id="jhS-CC-Wmz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Fkm-NF-Kfp">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-eg-cqi">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -436,17 +436,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="400" height="400"/>
                     <connections>
                         <outlet property="mAnnotationWebView" destination="LIk-eg-cqi" id="KYN-4f-muA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tB4-CL-szF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1807" y="851"/>
+            <point key="canvasLocation" x="3431" y="951"/>
         </scene>
         <!--Image Annotation View Controller-->
         <scene sceneID="G4j-kN-fVT">
@@ -461,7 +457,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t4v-a4-fkj">
-                                <rect key="frame" x="16" y="28" width="568" height="564"/>
+                                <rect key="frame" x="16" y="72" width="568" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
@@ -486,7 +482,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEe-vP-YQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2673" y="1466"/>
+            <point key="canvasLocation" x="3431" y="1718"/>
         </scene>
         <!--Search-->
         <scene sceneID="9tJ-Dl-Vej">
@@ -811,7 +807,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dt-Kn-twK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="501"/>
+            <point key="canvasLocation" x="3071" y="501"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jL5-9o-Zae">
@@ -829,7 +825,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVs-df-nJW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1887" y="1466"/>
+            <point key="canvasLocation" x="2725" y="1718"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GkX-G2-atw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fgL-rX-XFD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ME-42-J0I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ccb-qX-h2p" kind="relationship" relationship="rootViewController" id="01x-NJ-Z2J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdr-1B-dln" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2725" y="951"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2cc-I1-Wj6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tqx-ih-JlG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PZF-rL-tfX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vcR-Pn-BrY" kind="relationship" relationship="rootViewController" id="Ivf-Tb-z4Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wt5-a7-aPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1194" y="1718"/>
         </scene>
     </scenes>
     <resources>

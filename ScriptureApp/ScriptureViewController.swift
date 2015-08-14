@@ -21,12 +21,13 @@ class ScriptureViewController: CommonViewController,
     private var scrollOffsetLoad: CGFloat = 0
     private var point = CGPointZero
     private var mAnnotationHtml: String = ""
-    private var annotationWaiting: Bool = false
     private var book: Book?
     private var pinchBeginFontSize = CGFloat(0)
     private var firstAppearance = true
     private let prefs = NSUserDefaults.standardUserDefaults()
     private var popupLinks: ALSLinks?
+    private var webLinkOutstanding = false
+    private var pointOutstanding = false
 
     // public properties
     var mVerseNumber: String = ""
@@ -47,8 +48,6 @@ class ScriptureViewController: CommonViewController,
         }
     }
 
-    var annotationDisplaying: Bool = false
-    
     // MARK: - IB Outlets
 
     @IBOutlet private var tap: UITapGestureRecognizer!
@@ -102,11 +101,13 @@ class ScriptureViewController: CommonViewController,
 
     @IBAction func single(sender:UITapGestureRecognizer) {
         if sender.state == .Ended {
-            if annotationWaiting {
-                point = sender.locationInView(webView)
-                self.performSegueWithIdentifier(Constants.AnnotationSeque, sender: self)
-                annotationWaiting = false
+            point = sender.locationInView(webView)
+            pointOutstanding = true
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.pointOutstanding = false
             }
+            annotationSegueWhenReady()
         }
     }
 
@@ -314,10 +315,8 @@ class ScriptureViewController: CommonViewController,
                 vc.popoverPresentationController?.delegate = vc
             case Constants.AnnotationSeque:
                 if let tvc = segue.destinationViewController.contentViewController as? AnnotationViewController {
-                    if let ppc = tvc.popoverPresentationController {
-                        ppc.delegate = self
-                        tvc.modalPresentationStyle = UIModalPresentationStyle.Popover
-                        ppc.sourceRect = CGRect(x: point.x, y: point.y, width: 3, height: 3)
+                    if let ppc = segue.destinationViewController.popoverPresentationController {
+                        ppc!.sourceRect = CGRect(x: point.x, y: point.y, width: 3, height: 3)
                     }
                     tvc.links = popupLinks
                     tvc.html = mAnnotationHtml
@@ -349,9 +348,10 @@ class ScriptureViewController: CommonViewController,
             if !mAnnotationHtml.isEmpty {
                 if annotation.results.getAnnotationType() == "illustration" {
                     self.performSegueWithIdentifier(Constants.ImageAnnotationSegue, sender: self)
+                    return false
                 } else {
-                    annotationWaiting = true
-                    annotationDisplaying = true
+                    webLinkOutstanding = true;
+                    annotationSegueWhenReady()
                     return false
                 }
             }
@@ -359,6 +359,13 @@ class ScriptureViewController: CommonViewController,
         return true
     }
 
+    func annotationSegueWhenReady() {
+        if (webLinkOutstanding && pointOutstanding) {
+            webLinkOutstanding = false
+            pointOutstanding = false
+            self.performSegueWithIdentifier(Constants.AnnotationSeque, sender: self)
+        }
+    }
     func webViewDidFinishLoad(webView: UIWebView) {
         updateHtmlSize()
         updateHtmlColors()
@@ -379,16 +386,8 @@ class ScriptureViewController: CommonViewController,
     }
 
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        if (annotationDisplaying) {
-            return UIModalPresentationStyle.None
-        }
         return UIModalPresentationStyle.CurrentContext
     }
-    
-    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
-        annotationDisplaying = false
-    }
-
     // MARK: - Misc
 
     func checkExpiry() {
