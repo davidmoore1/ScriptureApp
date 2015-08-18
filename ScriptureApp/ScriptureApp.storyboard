@@ -34,7 +34,9 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="LBa-yB-2hF"/>
+                    <navigationItem key="navigationItem" id="LBa-yB-2hF">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xQe-OE-9Xw"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="aboutButton" destination="Nwg-3r-oUM" id="pb2-7X-ziG"/>
@@ -55,6 +57,7 @@
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                         <segue destination="f9k-Mh-TS1" kind="presentation" identifier="ImageAnnotationSegue" id="IEh-5U-8Ej"/>
+                        <segue destination="H6h-u3-PlW" kind="show" identifier="SearchRequest" id="lJc-Ej-aSd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Joq-ux-RDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -75,7 +78,7 @@
                 <barButtonItem style="plain" systemItem="flexibleSpace" id="dxY-kY-QQj"/>
                 <barButtonItem systemItem="search" id="wFt-BN-iIt">
                     <connections>
-                        <segue destination="H6h-u3-PlW" kind="show" identifier="SearchRequest" id="MD6-Ci-QdR"/>
+                        <action selector="searchButtonPressed:" destination="MIN-0G-K8i" id="7vw-dB-MkX"/>
                     </connections>
                 </barButtonItem>
                 <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="KGP-Vp-jRx"/>
@@ -95,7 +98,7 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <segue destination="Tqx-ih-JlG" kind="popoverPresentation" identifier="about" popoverAnchorView="agK-LM-5mC" id="eSU-un-Arm">
+                            <segue destination="vcR-Pn-BrY" kind="popoverPresentation" identifier="about" popoverAnchorView="agK-LM-5mC" id="UAR-Pg-9UV">
                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                             </segue>
                         </connections>
@@ -257,7 +260,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mke-Mt-o9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7qT-us-CFJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2007" y="1718"/>
+            <point key="canvasLocation" x="1194" y="1718"/>
         </scene>
         <!--Text Size View Controller-->
         <scene sceneID="zzT-J8-MiC">
@@ -484,10 +487,10 @@
             </objects>
             <point key="canvasLocation" x="3431" y="1718"/>
         </scene>
-        <!--Search-->
+        <!-- -->
         <scene sceneID="9tJ-Dl-Vej">
             <objects>
-                <viewController id="H6h-u3-PlW" customClass="SearchSelectViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchSelectViewController" id="H6h-u3-PlW" customClass="SearchSelectViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uhn-ro-SwL"/>
                         <viewControllerLayoutGuide type="bottom" id="BwK-by-Ulj"/>
@@ -496,20 +499,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match on Whole Words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7D-uM-UPo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Match on Whole Words" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7D-uM-UPo">
                                 <rect key="frame" x="16" y="127" width="511" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKm-HT-VN8">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKm-HT-VN8">
                                 <rect key="frame" x="535" y="122" width="51" height="31"/>
                             </switch>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Enter Search Text" translatesAutoresizingMaskIntoConstraints="NO" id="GQ0-Ze-F7g">
+                            <searchBar contentMode="redraw" misplaced="YES" searchBarStyle="minimal" placeholder="Enter Search Text" translatesAutoresizingMaskIntoConstraints="NO" id="GQ0-Ze-F7g">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3yB-hi-Vt4">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3yB-hi-Vt4">
                                 <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
@@ -553,7 +556,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9W1-Ol-sHA">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9W1-Ol-sHA">
                                 <rect key="frame" x="536" y="562" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="jsS-zs-WLe"/>
@@ -570,7 +573,7 @@
                                     <action selector="searchButtonPress:" destination="H6h-u3-PlW" eventType="touchUpInside" id="7t5-nS-DUW"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcy-Kh-yAc">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcy-Kh-yAc">
                                 <rect key="frame" x="535" y="161" width="51" height="31"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ew-cG-itd">
@@ -590,7 +593,7 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Accents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUx-W5-pwS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Match Accents" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUx-W5-pwS">
                                 <rect key="frame" x="16" y="166" width="511" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -649,7 +652,8 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Search" id="IA9-w8-L74">
+                    <navigationItem key="navigationItem" title=" " id="IA9-w8-L74">
+                        <barButtonItem key="backBarButtonItem" title=" " id="rHb-o5-fxK"/>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" image="1438049785_ic_keyboard_hide_48px" id="02A-JI-PdO">
                             <connections>
                                 <action selector="hideKeyboard:" destination="H6h-u3-PlW" id="Kaz-OZ-AM6"/>
@@ -678,7 +682,7 @@
         <!--Search Results View Controller-->
         <scene sceneID="U94-vn-ebL">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BbR-kP-hj3" customClass="SearchResultsViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultsViewController" automaticallyAdjustsScrollViewInsets="NO" id="BbR-kP-hj3" customClass="SearchResultsViewController" customModule="ScriptureApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UTd-Qj-AXp"/>
                         <viewControllerLayoutGuide type="bottom" id="2hO-aA-OSq"/>
@@ -688,7 +692,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NHb-JV-WTY">
-                                <rect key="frame" x="16" y="28" width="568" height="564"/>
+                                <rect key="frame" x="16" y="72" width="568" height="476"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="mmM-HR-rhs">
                                     <rect key="frame" x="0.0" y="157" width="568" height="20"/>
@@ -739,7 +743,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="NHb-JV-WTY" secondAttribute="trailing" id="isb-RD-Jie"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IBp-gg-xqY"/>
+                    <navigationItem key="navigationItem" id="IBp-gg-xqY">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wlf-vK-9V9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="mmM-HR-rhs" id="2dN-d5-Y95"/>
                         <outlet property="navBar" destination="IBp-gg-xqY" id="LWZ-bz-Tlh"/>
@@ -844,24 +850,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdr-1B-dln" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2725" y="951"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="2cc-I1-Wj6">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tqx-ih-JlG" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PZF-rL-tfX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vcR-Pn-BrY" kind="relationship" relationship="rootViewController" id="Ivf-Tb-z4Q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wt5-a7-aPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1194" y="1718"/>
         </scene>
     </scenes>
     <resources>

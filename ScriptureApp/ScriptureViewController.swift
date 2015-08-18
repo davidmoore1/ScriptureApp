@@ -72,6 +72,22 @@ class ScriptureViewController: CommonViewController,
         // do nothing
     }
 
+    @IBAction func searchButtonPressed(sender: UIBarButtonItem) {
+        if (SearchInfo.sharedInstance.booksAdded > 0) {
+            var searchSelect = self.storyboard?.instantiateViewControllerWithIdentifier("SearchSelectViewController") as! SearchSelectViewController
+            searchSelect.mScriptureController = self
+            var searchResultsVC = self.storyboard?.instantiateViewControllerWithIdentifier("SearchResultsViewController") as! SearchResultsViewController
+            searchResultsVC.mScriptureController = self
+            var controllers = [UIViewController]()
+            controllers.append(self)
+            controllers.append(searchSelect)
+            controllers.append(searchResultsVC)
+            //self.navigationController?.viewControllers = controllers
+            self.navigationController?.setViewControllers(controllers, animated: true)
+        } else {
+            self.performSegueWithIdentifier(Constants.SearchRequest, sender: self)
+        }
+    }
     @IBAction func selectBook(segue: UIStoryboardSegue) {
         let vc = segue.sourceViewController as! BookCollectionViewController
         resetScrollOffsets()

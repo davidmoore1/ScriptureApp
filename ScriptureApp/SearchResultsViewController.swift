@@ -13,22 +13,19 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
     // MARK: - Properties
     
     var searchHandler = AISSearchHandler()
-    var mSearchString : String?
-    var mMatchWholeWord : Bool?
-    var mMatchAccents : Bool?
-    var mSearchResults = [[AISSearchResultIOS]]()
     var mStrings = Dictionary<NSIndexPath, NSAttributedString>()
     var mTitles = [NSString]()
     var mStopSearch = false
     var mClosing = false
     var mBook: ALSBook?
-    var mBooksAdded: Int = 0
     var mScriptureController: ScriptureViewController?
     var mNumberOfBooks = 0
     private var mSelectedIndex: NSIndexPath?
     var mBackGroundColorForHeader: UIColor?
     var mTextColorForHeader: UIColor?
     var mAddInProgress = false
+    var entrySelected = false
+    let searchInfo = SearchInfo.sharedInstance
 
     // MARK: - IB Outlets
 
@@ -78,18 +75,25 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
             }
         }
     }
+    override func viewWillAppear(animated: Bool) {
+        if searchInfo.booksAdded > 0 && searchInfo.selectedIndexPath != nil {
+            self.searchTableView.scrollToRowAtIndexPath(searchInfo.selectedIndexPath!, atScrollPosition: .Middle, animated: false)
+        }
+    }
 
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
         mStopSearch = true
         mClosing = true
+        if (!entrySelected) {
+            searchInfo.reset()
+        }
         self.activityIndicator.stopAnimating()
         self.activityIndicator.hidden = true
         NSURLCache.sharedURLCache().removeAllCachedResponses()
         NSURLCache.sharedURLCache().diskCapacity = 0
         NSURLCache.sharedURLCache().memoryCapacity = 0
-        // presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,24 +116,24 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
 
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String,  atIndex index: Int) -> Int {
         var retValue = index
-        if (index > mBooksAdded - 1) && (index > 0) {
-            retValue = mBooksAdded - 1
+        if (index > searchInfo.booksAdded - 1) && (index > 0) {
+            retValue = searchInfo.booksAdded - 1
         }
         return retValue
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        if (section > mSearchResults.count - 1) {
+        if (section > searchInfo.mSearchResults.count - 1) {
             return 0
         }
-        return mSearchResults[section].count
+        return searchInfo.mSearchResults[section].count
     }
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var headerString = ""
-        if section <= mSearchResults.count - 1 {
-            if mSearchResults[section].count > 0 {
-                headerString = mSearchResults[section][0].getBookName()
+        if section <= searchInfo.mSearchResults.count - 1 {
+            if searchInfo.mSearchResults[section].count > 0 {
+                headerString = searchInfo.mSearchResults[section][0].getBookName()
             }
         }
         return headerString
@@ -139,7 +143,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.SearchCellReuseIdentifier, forIndexPath: indexPath) as! SearchTableViewCell
 
         // Configure the cell...
-        var result = mSearchResults[indexPath.section][indexPath.row]
+        var result = searchInfo.mSearchResults[indexPath.section][indexPath.row]
         // If no matches were found
         if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
             var emptyString = NSMutableAttributedString(string: "")
@@ -157,11 +161,15 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         mStopSearch = true
         mSelectedIndex = indexPath
-        var selectedResult = mSearchResults[indexPath.section][indexPath.row]
+        var a = indexPath.section
+        var b = indexPath.row
+        searchInfo.selectedIndexPath = mSelectedIndex
+        var selectedResult = searchInfo.mSearchResults[indexPath.section][indexPath.row]
         if ((indexPath.section == 0) && (indexPath.row == 0) && ( selectedResult.numberOfMatchesInReference() == 0 )) {
             // User selected "No results found
             return
         }
+        entrySelected = true
         mScriptureController!.mVerseNumber = String(selectedResult.getReference().getFromVerse())
         mScriptureController!.bookNumber = scripture.findBookFromResult(selectedResult)!.mIndex!
         mScriptureController!.chapterNumber = Int(selectedResult.getReference().getChapterNumber())
@@ -194,7 +202,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
             return returnString
         } else {
             var attributedString = NSMutableAttributedString(string: "")
-            var result = mSearchResults[indexPath.section][indexPath.row]
+            var result = searchInfo.mSearchResults[indexPath.section][indexPath.row]
             if let context = result.getContext() {
                 var nsContext = context as NSString
                 let font = UIFont.systemFontOfSize(17.0)
@@ -217,10 +225,9 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
 
     func search() {
         AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, scripture.getLibrary(), scripture.getDisplayWriter(), scripture.getFactory())
-        self.searchHandler.initSearchWithNSString(mSearchString, withBoolean: mMatchWholeWord!, withBoolean: mMatchAccents!)
+        self.searchHandler.initSearchWithNSString(searchInfo.searchString, withBoolean: searchInfo.matchWholeWords, withBoolean: searchInfo.matchAccents)
         var books = self.scripture.getLibrary().getMainBookCollection().getBooks()
-        var resultCount = 0
-        for (var i = 0; i < Int(books.size()) && !mStopSearch; i++) {
+        for (var i = searchInfo.booksAdded; i < Int(books.size()) && !mStopSearch; i++) {
             autoreleasepool {
                 var indexPaths = [NSIndexPath]()
                 var bookResults = [AISSearchResultIOS]()
@@ -238,8 +245,8 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
                             var searchResult = self.searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
                             if (searchResult != nil) {
                                 searchResult.setBookNameWithNSString(self.mBook!.getName())
-                                resultCount++
-                                if (resultCount > Constants.MaxResults) {
+                                searchInfo.resultCount++
+                                if (searchInfo.resultCount > Constants.MaxResults) {
                                     self.mStopSearch = true
                                 }
                                 var indexPath = NSIndexPath(forRow: bookResults.count, inSection: i)
@@ -254,7 +261,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
                 addRowToView(indexPaths, newResults: bookResults, replaceAtZero: false)
             }
         }
-        if (resultCount == 0) {
+        if (searchInfo.resultCount == 0) {
             var searchResult = AISSearchResultIOS()
             searchResult.setBookNameWithNSString(" ")
             var indexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -268,14 +275,14 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
         dispatch_async(dispatch_get_main_queue()) {
             if (!self.mClosing) {
                 if (replaceAtZero) {
-                    self.mSearchResults[0] = newResults
+                    SearchInfo.sharedInstance.mSearchResults[0] = newResults
                 } else {
-                    self.mSearchResults.append(newResults)
+                    SearchInfo.sharedInstance.mSearchResults.append(newResults)
                 }
                 if (indexPaths.count > 0) {
                     self.searchTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
                 }
-                self.mBooksAdded++
+                SearchInfo.sharedInstance.booksAdded++
             }
             self.mAddInProgress = false
         }

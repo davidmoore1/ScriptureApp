@@ -15,6 +15,7 @@ class SearchSelectViewController: CommonViewController, UISearchBarDelegate, UIC
     var mScriptureController: ScriptureViewController?
     var specialCharacters: [[String]]!
     var searchTextField: UITextField!
+    let searchInfo = SearchInfo.sharedInstance
 
     var mRangeButtonText: String = "" {
         didSet{
@@ -25,6 +26,7 @@ class SearchSelectViewController: CommonViewController, UISearchBarDelegate, UIC
         }
     }
 
+    
     // MARK: - IB Outlets
 
     @IBOutlet weak var specialCharactersCollectionView: UICollectionView!
@@ -153,9 +155,11 @@ class SearchSelectViewController: CommonViewController, UISearchBarDelegate, UIC
             case Constants.SearchResultsSeque:
                 if let tvc = segue.destinationViewController.contentViewController as? SearchResultsViewController {
                     searchBar.resignFirstResponder()
-                    tvc.mSearchString = searchBar!.text
-                    tvc.mMatchWholeWord = matchSwitch!.on
-                    tvc.mMatchAccents = matchAccentsSwitch!.on
+                    if (searchInfo.booksAdded == 0) {
+                        searchInfo.searchString = searchBar!.text
+                        searchInfo.matchWholeWords = matchSwitch!.on
+                        searchInfo.matchAccents = matchAccentsSwitch!.on
+                    }
                     tvc.mScriptureController = mScriptureController
                 }
             case Constants.SearchRangeSeque:

@@ -81,11 +81,11 @@ public class Book {
     }
     
     func getButtonAbbrev() -> String {
-        let abbrev = getAbbrevName()
+        var abbrev = getAbbrevName()
         if abbrev.isEmpty  {
             var name = getName()
             var index = advance(name.startIndex, 3)
-            var nameStart = name.substringToIndex(index)
+            abbrev = name.substringToIndex(index)
         }
         return abbrev.isEmpty ? getName() : abbrev
     }
