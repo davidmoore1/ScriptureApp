@@ -159,6 +159,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
     // MARK: - UITableViewDelegate
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        mClosing = true
         mStopSearch = true
         mSelectedIndex = indexPath
         var a = indexPath.section
@@ -227,6 +228,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
         AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, scripture.getLibrary(), scripture.getDisplayWriter(), scripture.getFactory())
         self.searchHandler.initSearchWithNSString(searchInfo.searchString, withBoolean: searchInfo.matchWholeWords, withBoolean: searchInfo.matchAccents)
         var books = self.scripture.getLibrary().getMainBookCollection().getBooks()
+        var resultCount = SearchInfo.sharedInstance.resultCount
         for (var i = searchInfo.booksAdded; i < Int(books.size()) && !mStopSearch; i++) {
             autoreleasepool {
                 var indexPaths = [NSIndexPath]()
@@ -245,8 +247,8 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
                             var searchResult = self.searchHandler.searchOneElementWithNSString(bookId, withALSChapter: chapter, withALSElement: element)
                             if (searchResult != nil) {
                                 searchResult.setBookNameWithNSString(self.mBook!.getName())
-                                searchInfo.resultCount++
-                                if (searchInfo.resultCount > Constants.MaxResults) {
+                                resultCount++
+                                if (resultCount > Constants.MaxResults) {
                                     self.mStopSearch = true
                                 }
                                 var indexPath = NSIndexPath(forRow: bookResults.count, inSection: i)
@@ -261,7 +263,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
                 addRowToView(indexPaths, newResults: bookResults, replaceAtZero: false)
             }
         }
-        if (searchInfo.resultCount == 0) {
+        if (resultCount == 0  && !self.mStopSearch) {
             var searchResult = AISSearchResultIOS()
             searchResult.setBookNameWithNSString(" ")
             var indexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -281,6 +283,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
                 }
                 if (indexPaths.count > 0) {
                     self.searchTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Left)
+                    SearchInfo.sharedInstance.resultCount += indexPaths.count
                 }
                 SearchInfo.sharedInstance.booksAdded++
             }

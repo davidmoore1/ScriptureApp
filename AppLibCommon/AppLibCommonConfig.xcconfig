@@ -14,9 +14,9 @@
 J2OBJC_HOME = ${HOME}/Develop/j2objc;
 
 GENERATED_FILES_DIR = ${SRCROOT}/ALCGenerated;
-GENERATED_SCRIPTURELIB_FILES_DIR = ${SRCROOT}/ALSGenerated;
+//GENERATED_SCRIPTURELIB_FILES_DIR = ${SRCROOT}/ALSGenerated;
 
-HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_DIR}" "{GENERATED_SCRIPTURELIB_FILES_DIR}";
+HEADER_SEARCH_PATHS = $(inherited) "${J2OBJC_HOME}/include" "${GENERATED_FILES_DIR}";
 
 // In your own project, change this to your actual path that contains java code.
 JAVA_SOURCE_PATH = ${SRCROOT}/../app-builders/source/common/app-lib-common/src;
