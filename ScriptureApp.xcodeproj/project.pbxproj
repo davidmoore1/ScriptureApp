@@ -112,6 +112,7 @@
 		6347D5F61B384CDA0065B075 /* SyncTaskWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F41B384CDA0065B075 /* SyncTaskWriter.java */; };
 		6347D5F81B3850120065B075 /* FileManagerCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F71B3850120065B075 /* FileManagerCommon.java */; };
 		6347D5FB1B38538D0065B075 /* libAppLibIOSCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */; };
+		634D86571B8773BF0049181E /* SyncTaskAdjustBoundaryAlgorithm.java in Sources */ = {isa = PBXBuildFile; fileRef = 634D86561B8773BF0049181E /* SyncTaskAdjustBoundaryAlgorithm.java */; };
 		635186D61B820AA000149034 /* SearchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635186D51B820AA000149034 /* SearchInfo.swift */; };
 		6359B3C71B1E4A9400F3FC2F /* IOSFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */; };
 		637286861B4D6D37009316A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637286851B4D6D37009316A4 /* Constants.swift */; };
@@ -250,7 +251,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" --no-class-methods -use-arc -g ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -use-arc -g --no-class-methods ${INPUT_FILE_PATH};\n";
 		};
 		6347D5DE1B375F050065B075 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -651,6 +652,7 @@
 		6347D5F31B384CDA0065B075 /* SyncTask.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = SyncTask.java; path = phrases/SyncTask.java; sourceTree = "<group>"; };
 		6347D5F41B384CDA0065B075 /* SyncTaskWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = SyncTaskWriter.java; path = phrases/SyncTaskWriter.java; sourceTree = "<group>"; };
 		6347D5F71B3850120065B075 /* FileManagerCommon.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FileManagerCommon.java; sourceTree = "<group>"; };
+		634D86561B8773BF0049181E /* SyncTaskAdjustBoundaryAlgorithm.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SyncTaskAdjustBoundaryAlgorithm.java; sourceTree = "<group>"; };
 		635186D51B820AA000149034 /* SearchInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInfo.swift; sourceTree = "<group>"; };
 		6359B3C51B1E4A9400F3FC2F /* IOSFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSFactory.h; sourceTree = "<group>"; };
 		6359B3C61B1E4A9400F3FC2F /* IOSFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSFactory.m; sourceTree = "<group>"; };
@@ -1149,6 +1151,7 @@
 		633F42221B0628A500F25662 /* phrases */ = {
 			isa = PBXGroup;
 			children = (
+				634D86561B8773BF0049181E /* SyncTaskAdjustBoundaryAlgorithm.java */,
 				633F42231B0628A500F25662 /* LabeledPhrase.java */,
 				633F42241B0628A500F25662 /* LabeledPhrases.java */,
 				633F42251B0628A500F25662 /* PhraseListWriter.java */,
@@ -1458,9 +1461,9 @@
 				637430FE1B43324C00850F32 /* SearchSelectViewController.swift */,
 				6313C6421B6919150091BE86 /* SearchResultsViewController.swift */,
 				637286871B4D703E009316A4 /* SearchTableViewCell.swift */,
+				6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */,
 				635186D51B820AA000149034 /* SearchInfo.swift */,
 				4252BB0F1B6689BD0072032A /* SpecialCharactersFlowLayout.swift */,
-				6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */,
 				426064061B69777300757B42 /* CommonViewController.swift */,
 				63DDFF321B0575C400B57DF7 /* AppDelegate.swift */,
 				63DDFF391B0575C400B57DF7 /* Images.xcassets */,
@@ -2180,6 +2183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				633F425E1B0628A500F25662 /* DocxHandler.java in Sources */,
+				634D86571B8773BF0049181E /* SyncTaskAdjustBoundaryAlgorithm.java in Sources */,
 				633F42691B0628A500F25662 /* Marker.java in Sources */,
 				633F42441B0628A500F25662 /* Elements.java in Sources */,
 				633F42311B0628A500F25662 /* DefaultFeatures.java in Sources */,

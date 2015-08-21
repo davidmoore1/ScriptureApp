@@ -87,7 +87,8 @@ public class Scripture {
             mScripture.prepareChaptersWithALSDisplayWriter(mWriter, withALSBook: book)
         }
         createBookArray()
-        searchRange = getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
+        //searchRange = getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
+        searchRange = "Whole Bible"
     }
 
     func getLibrary() -> (ALSAppLibrary) {
@@ -504,7 +505,8 @@ public class Scripture {
     }
 
     func getSearchWholeBibleTitle() -> String {
-        return getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
+//        return getString(ALSScriptureStringId_SEARCH_WHOLE_BIBLE_)
+        return "Whole Bible"
     }
 
     func getSearchButtonTitle() -> String {
