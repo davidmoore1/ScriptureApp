@@ -105,8 +105,6 @@
 		6347D5C11B37590A0065B075 /* ScriptureFactoryIOS.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5C01B37590A0065B075 /* ScriptureFactoryIOS.java */; };
 		6347D5D11B375B250065B075 /* libAppLibIOSCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6347D5C61B375B250065B075 /* libAppLibIOSCommon.a */; };
 		6347D5E61B375FBD0065B075 /* FileManagerIOS.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5E51B375FBD0065B075 /* FileManagerIOS.java */; };
-		6347D5EF1B3760DD0065B075 /* AudioSettings.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5ED1B3760DD0065B075 /* AudioSettings.java */; };
-		6347D5F01B3760DD0065B075 /* CommonDefaultColors.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5EE1B3760DD0065B075 /* CommonDefaultColors.java */; };
 		6347D5F21B384CB40065B075 /* FactoryCommon.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F11B384CB40065B075 /* FactoryCommon.java */; };
 		6347D5F51B384CDA0065B075 /* SyncTask.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F31B384CDA0065B075 /* SyncTask.java */; };
 		6347D5F61B384CDA0065B075 /* SyncTaskWriter.java in Sources */ = {isa = PBXBuildFile; fileRef = 6347D5F41B384CDA0065B075 /* SyncTaskWriter.java */; };
@@ -132,6 +130,8 @@
 		6392690D1B7E21210066F0ED /* AnnotationViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392690B1B7E21210066F0ED /* AnnotationViewController2.swift */; };
 		6392690E1B7E21210066F0ED /* AnnotationViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6392690C1B7E21210066F0ED /* AnnotationViewController2.xib */; };
 		63A04B3E1B45B35800DBA91A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A04B3D1B45B35800DBA91A /* Book.swift */; };
+		63A3F4611B8B97EA008EC313 /* AudioSettings.java in Sources */ = {isa = PBXBuildFile; fileRef = 63A3F45F1B8B97EA008EC313 /* AudioSettings.java */; };
+		63A3F4621B8B97EA008EC313 /* CommonDefaultColors.java in Sources */ = {isa = PBXBuildFile; fileRef = 63A3F4601B8B97EA008EC313 /* CommonDefaultColors.java */; };
 		63B8ABD01B5E9566002563FD /* EspeakParser.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABCD1B5E9566002563FD /* EspeakParser.java */; };
 		63B8ABD11B5E9566002563FD /* EspeakVoice.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABCE1B5E9566002563FD /* EspeakVoice.java */; };
 		63B8ABD21B5E9566002563FD /* EspeakVoices.java in Sources */ = {isa = PBXBuildFile; fileRef = 63B8ABCF1B5E9566002563FD /* EspeakVoices.java */; };
@@ -544,8 +544,7 @@
 		426064061B69777300757B42 /* CommonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 		42A0502E1B57E5180071EA96 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		42A050341B5832BD0071EA96 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		42BACAB71B6FE8C200447AB6 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontManager.h; path = "ScriptureApp.xcodeproj/../../app-builders/source/libraries/fontmanager/ios/FontManager.h"; sourceTree = SOURCE_ROOT; };
-		42BACAB81B6FE8D200447AB6 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFontManager.a; path = "ScriptureApp.xcodeproj/../../app-builders/source/libraries/fontmanager/ios/libFontManager.a"; sourceTree = SOURCE_ROOT; };
+		42BACAB81B6FE8D200447AB6 /* libFontManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFontManager.a; path = ../../source/libraries/fontmanager/ios/libFontManager.a; sourceTree = SOURCE_ROOT; };
 		630D5DB21B29D5DA003915FE /* Scripture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scripture.swift; sourceTree = "<group>"; };
 		6313C6401B6288F10091BE86 /* SearchRangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRangeViewController.swift; sourceTree = "<group>"; };
 		6313C6421B6919150091BE86 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -646,8 +645,6 @@
 		6347D5D61B375B250065B075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6347D5DD1B375CF70065B075 /* AppIOSCommonConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppIOSCommonConfig.xcconfig; sourceTree = "<group>"; };
 		6347D5E51B375FBD0065B075 /* FileManagerIOS.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FileManagerIOS.java; sourceTree = "<group>"; };
-		6347D5ED1B3760DD0065B075 /* AudioSettings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = AudioSettings.java; path = "../../app-builders/source/common/app-lib-common/src/org/sil/app/lib/common/config/AudioSettings.java"; sourceTree = "<group>"; };
-		6347D5EE1B3760DD0065B075 /* CommonDefaultColors.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = CommonDefaultColors.java; path = "../../app-builders/source/common/app-lib-common/src/org/sil/app/lib/common/config/CommonDefaultColors.java"; sourceTree = "<group>"; };
 		6347D5F11B384CB40065B075 /* FactoryCommon.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FactoryCommon.java; sourceTree = "<group>"; };
 		6347D5F31B384CDA0065B075 /* SyncTask.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = SyncTask.java; path = phrases/SyncTask.java; sourceTree = "<group>"; };
 		6347D5F41B384CDA0065B075 /* SyncTaskWriter.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; name = SyncTaskWriter.java; path = phrases/SyncTaskWriter.java; sourceTree = "<group>"; };
@@ -677,6 +674,9 @@
 		6392690B1B7E21210066F0ED /* AnnotationViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationViewController2.swift; sourceTree = "<group>"; };
 		6392690C1B7E21210066F0ED /* AnnotationViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnotationViewController2.xib; sourceTree = "<group>"; };
 		63A04B3D1B45B35800DBA91A /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		63A3F45E1B8B9718008EC313 /* FontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FontManager.h; path = ../../../source/libraries/fontmanager/ios/FontManager.h; sourceTree = "<group>"; };
+		63A3F45F1B8B97EA008EC313 /* AudioSettings.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AudioSettings.java; sourceTree = "<group>"; };
+		63A3F4601B8B97EA008EC313 /* CommonDefaultColors.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CommonDefaultColors.java; sourceTree = "<group>"; };
 		63B8ABCD1B5E9566002563FD /* EspeakParser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EspeakParser.java; sourceTree = "<group>"; };
 		63B8ABCE1B5E9566002563FD /* EspeakVoice.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EspeakVoice.java; sourceTree = "<group>"; };
 		63B8ABCF1B5E9566002563FD /* EspeakVoices.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EspeakVoices.java; sourceTree = "<group>"; };
@@ -921,6 +921,7 @@
 			);
 			path = AppLibScripture;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		633F41BE1B06264500F25662 /* AppLibScriptureTests */ = {
 			isa = PBXGroup;
@@ -944,7 +945,7 @@
 				633F41CA1B0628A500F25662 /* org */,
 			);
 			name = src;
-			path = "../../app-builders/source/scripture/app-lib-scripture/src";
+			path = "../../../source/scripture/app-lib-scripture/src";
 			sourceTree = "<group>";
 		};
 		633F41CA1B0628A500F25662 /* org */ = {
@@ -1186,6 +1187,7 @@
 			);
 			path = AppLibIOS;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		633F42961B063CB500F25662 /* AppLibIOSTests */ = {
 			isa = PBXGroup;
@@ -1211,6 +1213,7 @@
 			);
 			path = AppLibIOSCommon;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		6347D5D41B375B250065B075 /* AppLibIOSCommonTests */ = {
 			isa = PBXGroup;
@@ -1234,7 +1237,7 @@
 				6347D5E01B375FBD0065B075 /* org */,
 			);
 			name = src;
-			path = "../../app-builders/source/common/app-ios-common/src";
+			path = "../../../source/common/app-ios-common/src";
 			sourceTree = "<group>";
 		};
 		6347D5E01B375FBD0065B075 /* org */ = {
@@ -1286,7 +1289,7 @@
 				637431221B446D1D00850F32 /* c.m */,
 				637431231B446D1D00850F32 /* Encryption.h */,
 				637431241B446D1D00850F32 /* Encryption.m */,
-				42BACAB71B6FE8C200447AB6 /* FontManager.h */,
+				63A3F45E1B8B9718008EC313 /* FontManager.h */,
 				42BACAB81B6FE8D200447AB6 /* libFontManager.a */,
 				6374311D1B446C7400850F32 /* AppLibIOSEnc.xcconfig */,
 			);
@@ -1315,7 +1318,7 @@
 				637A56231B28D88600239C64 /* org */,
 			);
 			name = src;
-			path = "../../app-builders/source/scripture/app-ios-scripture/src";
+			path = "../../../source/scripture/app-ios-scripture/src";
 			sourceTree = "<group>";
 		};
 		637A56231B28D88600239C64 /* org */ = {
@@ -1381,6 +1384,7 @@
 			);
 			path = AppIOSScripture;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		63BE1AE71B0E3E390040F6D7 /* AppIOSScriptureTests */ = {
 			isa = PBXGroup;
@@ -1504,14 +1508,13 @@
 		63DDFF571B05775D00B57DF7 /* AppLibCommon */ = {
 			isa = PBXGroup;
 			children = (
-				6347D5ED1B3760DD0065B075 /* AudioSettings.java */,
-				6347D5EE1B3760DD0065B075 /* CommonDefaultColors.java */,
 				63BE1A701B0E36850040F6D7 /* prefixes.properties */,
 				63DDFF6F1B057A4400B57DF7 /* src */,
 				63DDFF6D1B0577DE00B57DF7 /* AppLibCommonConfig.xcconfig */,
 			);
 			path = AppLibCommon;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		63DDFF641B05775D00B57DF7 /* AppLibCommonTests */ = {
 			isa = PBXGroup;
@@ -1535,7 +1538,7 @@
 				63DDFF701B057A4400B57DF7 /* org */,
 			);
 			name = src;
-			path = "../../app-builders/source/common/app-lib-common/src";
+			path = "../../../source/common/app-lib-common/src";
 			sourceTree = "<group>";
 		};
 		63DDFF701B057A4400B57DF7 /* org */ = {
@@ -1598,6 +1601,8 @@
 		63DDFF791B057A4400B57DF7 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				63A3F45F1B8B97EA008EC313 /* AudioSettings.java */,
+				63A3F4601B8B97EA008EC313 /* CommonDefaultColors.java */,
 				63DDFF7A1B057A4400B57DF7 /* About.java */,
 				63DDFF7B1B057A4400B57DF7 /* Analytics.java */,
 				63DDFF7C1B057A4400B57DF7 /* AudioSource.java */,
@@ -2393,6 +2398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DDFFE21B057A4400B57DF7 /* CommonStringId.java in Sources */,
+				63A3F4611B8B97EA008EC313 /* AudioSettings.java in Sources */,
 				63DD00111B057A4400B57DF7 /* DocxRelationship.java in Sources */,
 				63DDFFD71B057A4400B57DF7 /* Change.java in Sources */,
 				63DDFFF71B057A4400B57DF7 /* StyleDeclaration.java in Sources */,
@@ -2408,6 +2414,7 @@
 				63B8ABD01B5E9566002563FD /* EspeakParser.java in Sources */,
 				63DDFFEB1B057A4400B57DF7 /* Fonts.java in Sources */,
 				63DD00181B057A4400B57DF7 /* EpubSmil.java in Sources */,
+				63A3F4621B8B97EA008EC313 /* CommonDefaultColors.java in Sources */,
 				63DDFFDF1B057A4400B57DF7 /* ColorTheme.java in Sources */,
 				63DD00081B057A4400B57DF7 /* NumeralUtils.java in Sources */,
 				63DDFFE31B057A4400B57DF7 /* Expiry.java in Sources */,
@@ -2438,7 +2445,6 @@
 				63DD00001B057A4400B57DF7 /* LangCodes.java in Sources */,
 				63BE1BAE1B0FC9DF0040F6D7 /* FileUtilsCommon.java in Sources */,
 				63DD00151B057A4400B57DF7 /* DocxWriter.java in Sources */,
-				6347D5EF1B3760DD0065B075 /* AudioSettings.java in Sources */,
 				63DD00061B057A4400B57DF7 /* ColorUtils.java in Sources */,
 				63DDFFE51B057A4400B57DF7 /* Feature.java in Sources */,
 				63B8ABD11B5E9566002563FD /* EspeakVoice.java in Sources */,
@@ -2467,7 +2473,6 @@
 				63DD000D1B057A4400B57DF7 /* Version.java in Sources */,
 				63DD00021B057A4400B57DF7 /* ConfigHandler.java in Sources */,
 				63DD00131B057A4400B57DF7 /* DocxStyle.java in Sources */,
-				6347D5F01B3760DD0065B075 /* CommonDefaultColors.java in Sources */,
 				63DDFFFC1B057A4400B57DF7 /* TranslationMappings.java in Sources */,
 				63DD00161B057A4400B57DF7 /* EpubContentItem.java in Sources */,
 				63DDFFD91B057A4400B57DF7 /* CharacterInfo.java in Sources */,
@@ -2821,7 +2826,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppLibIOSEncryption",
-					"$(PROJECT_DIR)/../app-builders/source/libraries/fontmanager/ios",
+					"$(PROJECT_DIR)/../../source/libraries/fontmanager/ios",
+					"$(PROJECT_DIR)/AppLibIOSEncryption/FontManager.h",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2836,7 +2842,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AppLibIOSEncryption",
-					"$(PROJECT_DIR)/../app-builders/source/libraries/fontmanager/ios",
+					"$(PROJECT_DIR)/../../source/libraries/fontmanager/ios",
+					"$(PROJECT_DIR)/AppLibIOSEncryption/FontManager.h",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

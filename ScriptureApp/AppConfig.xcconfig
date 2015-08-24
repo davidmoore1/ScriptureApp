@@ -11,7 +11,7 @@
 // The path should be written without quotes, when modified use Xcode's Product -> Clean
 // Change to your actual J2OBJC_HOME path.
 
-J2OBJC_HOME = ${HOME}/Develop/j2objc;
+J2OBJC_HOME = ${SRCROOT}/../j2objc;
 
 GENERATED_FILES_DIR = ${SRCROOT}/ALCGenerated;
 GENERATED_AIS_FILES_DIR = ${SRCROOT}/AISGenerated;
