@@ -251,7 +251,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -use-arc -g --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -use-arc -g ${INPUT_FILE_PATH};\n";
 		};
 		6347D5DE1B375F050065B075 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -262,7 +262,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g -use-arc --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g -use-arc ${INPUT_FILE_PATH};\n";
 		};
 		63BE1B341B0E43760040F6D7 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -273,7 +273,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g -use-arc --no-class-methods ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in AppLibScriptureConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" -classpath \"${JAVA_CLASS_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g -use-arc ${INPUT_FILE_PATH};\n";
 		};
 		63DD001F1B057AD100B57DF7 /* PBXBuildRule */ = {
 			isa = PBXBuildRule;
@@ -284,7 +284,7 @@
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.m",
 				"${GENERATED_FILES_DIR}/${INPUT_FILE_BASE}.h",
 			);
-			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g --no-class-methods -use-arc ${INPUT_FILE_PATH};\n";
+			script = "if [ ! -f \"${J2OBJC_HOME}/j2objc\" ]; then echo \"J2OBJC_HOME not correctly defined in LibConfig.xcconfig, currently set to '${J2OBJC_HOME}'\"; exit 1; fi;\n\n\"${J2OBJC_HOME}/j2objc\" -d ${GENERATED_FILES_DIR} -sourcepath \"${JAVA_SOURCE_PATH}\" --no-package-directories --prefixes \"${SRCROOT}/AppLibCommon/prefixes.properties\" -g -use-arc ${INPUT_FILE_PATH};\n";
 		};
 /* End PBXBuildRule section */
 
