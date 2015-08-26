@@ -67,6 +67,7 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
         mBackGroundColorForHeader = scripture.getChapterButtonBackgroundColor()
         self.activityIndicator.color = mTextColorForHeader
         activityIndicator.startAnimating()
+        AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, scripture.getLibrary(), scripture.getDisplayWriter(), scripture.getFactory())
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.search()
             dispatch_async(dispatch_get_main_queue()) {
@@ -142,17 +143,19 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(Constants.SearchCellReuseIdentifier, forIndexPath: indexPath) as! SearchTableViewCell
 
-        // Configure the cell...
-        var result = searchInfo.mSearchResults[indexPath.section][indexPath.row]
-        // If no matches were found
-        if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
-            var emptyString = NSMutableAttributedString(string: "")
-            cell.reference = scripture.getNoMatchesFoundString()
-            cell.html = emptyString
-            return cell
+        if (searchInfo.mSearchResults.count > indexPath.section) && (searchInfo.mSearchResults[indexPath.section].count > indexPath.row){
+            // Configure the cell...
+            var result = searchInfo.mSearchResults[indexPath.section][indexPath.row]
+            // If no matches were found
+            if ((indexPath.section == 0) && (indexPath.row == 0) && (result.numberOfMatchesInReference() == 0)) {
+                var emptyString = NSMutableAttributedString(string: "")
+                cell.reference = scripture.getNoMatchesFoundString()
+                cell.html = emptyString
+                return cell
+            }
+            cell.reference = searchHandler.getReferenceTitleWithALSReference(result.getReference())
+            cell.html = getAttributedTextString(indexPath)
         }
-        cell.reference = searchHandler.getReferenceTitleWithALSReference(result.getReference())
-        cell.html = getAttributedTextString(indexPath)
         return cell
     }
 
@@ -225,7 +228,6 @@ class SearchResultsViewController: CommonViewController, UITableViewDataSource, 
     }
 
     func search() {
-        AISSearchHandler_initWithALSAppLibrary_withALSDisplayWriter_withAISScriptureFactoryIOS_(searchHandler, scripture.getLibrary(), scripture.getDisplayWriter(), scripture.getFactory())
         self.searchHandler.initSearchWithNSString(searchInfo.searchString, withBoolean: searchInfo.matchWholeWords, withBoolean: searchInfo.matchAccents)
         var books = self.scripture.getLibrary().getMainBookCollection().getBooks()
         var resultCount = SearchInfo.sharedInstance.resultCount
